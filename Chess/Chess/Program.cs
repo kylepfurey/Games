@@ -664,8 +664,8 @@ namespace Chess
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
                         BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == occupiedCheck)
                         {
-                            destinationX = 0;
-                            destinationY = 0;
+                            destinationX = 99;
+                            destinationY = -100;
                         }
 
 
