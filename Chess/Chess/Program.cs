@@ -14,12 +14,13 @@ namespace Chess
 
             bool noSymbols = false;
             bool sound = true;
+            bool showMovement = false;
 
             // Selections
             string[] pieceSelect = new string[] { "pawn1", "pawn2", "pawn3", "pawn4", "pawn5", "pawn6", "pawn7", "pawn8", "rook1", "rook2", "knight1", "knight2", "bishop1", "bishop2", "king", "queen",
             "castle", "shortcastle", "castleshort", "longcastle", "castlelong", "castleking", "castlequeen", "castlekingside", "castlequeenside", "castlek", "castleq", "enpassant", "ep", "promote", "promotion",
-            "exit", "resign", "forfeit", "draw", "grey", "gray", "green", "blue", "red", "yellow", "purple", "text", "letters", "symbols", "icons", "mute", "unmute", "clear" };
-            char[] letterSelect = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'h', 'i' };
+            "exit", "resign", "forfeit", "draw", "grey", "gray", "green", "blue", "red", "yellow", "purple", "text", "letters", "symbols", "icons", "show", "mute", "unmute", "clear" };
+            char[] letterSelect = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i' };
             int[] numberSelect = new int[] { 1, 2, 3, 4, 5, 6, 7, 8 };
 
 
@@ -172,6 +173,7 @@ namespace Chess
                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
                     BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
+
 
                     badinput = true;
 
@@ -557,6 +559,48 @@ namespace Chess
                                 BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
                                 break;
                             }
+
+                            if (piece == "show")                                // Show movements
+                            {
+                                if (showMovement)
+                                {
+                                    showMovement = false;
+                                }
+                                else
+                                {
+                                    showMovement = true;
+                                }
+
+                                RenderBoard(boardX, boardY, turn, showTurn, previousTurn, noSymbols, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
+                                break;
+                            }
+
+
+                            if (showMovement)
+                            {
+                                RenderMovement(boardX, boardY, turn, showTurn, previousTurn, noSymbols, piece, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
+                            }
+                            else
+                            {
+                                RenderBoard(boardX, boardY, turn, showTurn, previousTurn, noSymbols, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
+                            }
+
+
+                            Console.Write("Selected Piece: ");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine(piece);
 
 
                             string letterCheck;
@@ -2167,8 +2211,8 @@ namespace Chess
 
                     if (badinput == false)
                     {
-                        if ((piece != "exit" && piece != "resign" && piece != "forfeit" && piece != "draw" && piece != "green" && piece != "blue" && piece != "gray" && piece != "grey" && piece != "text" &&
-                             piece != "type" && piece != "letter" && piece != "symbol") && piece != "mute" && piece != "unmute" && piece != "clear" && (letter != 'π') && (number != 9))
+                        if (piece != "exit" && piece != "resign" && piece != "forfeit" && piece != "draw" && piece != "green" && piece != "blue" && piece != "gray" && piece != "grey" && piece != "text" &&
+                            piece != "type" && piece != "letter" && piece != "symbol" && piece != "mute" && piece != "unmute" && piece != "clear" && piece != "show" && (letter != 'π') && (number != 9))
                         {
                             previousTurn = showTurn + ". " + piece + " " + letter + number + pieceTaken;
 
@@ -2234,6 +2278,8 @@ namespace Chess
             Pawn BlackPawn1, Pawn BlackPawn2, Pawn BlackPawn3, Pawn BlackPawn4, Pawn BlackPawn5, Pawn BlackPawn6, Pawn BlackPawn7, Pawn BlackPawn8)
         {                                                                                                               // Render the Current Board
             Console.Clear();                                                    // Clear text
+
+            ConsoleColor BackgroundColor = Console.BackgroundColor;             // Background Color
 
             if (turn > 1)                                                       // Write previous turn
             {
@@ -2339,7 +2385,7 @@ namespace Chess
                     Console.Write("  ");                                        // Indent
                     for (boardX = 1; boardX < 9; boardX++)                      // For each column
                     {
-                        if (RenderPieces(boardX, boardY, type, WhitePromo, BlackPromo,
+                        if (RenderPieces(boardX, boardY, type, BackgroundColor, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -2355,12 +2401,18 @@ namespace Chess
                                 if (IsEven(boardX) == true)                     // Check if the column is even or odd
                                 {
                                     Console.ForegroundColor = ConsoleColor.Black;
-                                    Console.Write("■ ");                        // Empty black space
+                                    Console.Write("■");                         // Empty black space
+
+                                    Console.BackgroundColor = BackgroundColor;
+                                    Console.Write(" ");
                                 }
                                 else
                                 {
                                     Console.ForegroundColor = ConsoleColor.White;
-                                    Console.Write("■ ");                        // Empty white space
+                                    Console.Write("■");                         // Empty white space
+
+                                    Console.BackgroundColor = BackgroundColor;
+                                    Console.Write(" ");
                                 }
                             }
                             else
@@ -2368,12 +2420,18 @@ namespace Chess
                                 if (IsEven(boardX) == true)                     // Check if the column is even or odd
                                 {
                                     Console.ForegroundColor = ConsoleColor.White;
-                                    Console.Write("■ ");                        // Empty white space
+                                    Console.Write("■");                         // Empty white space
+
+                                    Console.BackgroundColor = BackgroundColor;
+                                    Console.Write(" ");
                                 }
                                 else
                                 {
                                     Console.ForegroundColor = ConsoleColor.Black;
-                                    Console.Write("■ ");                        // Empty black space
+                                    Console.Write("■");                         // Empty black space
+
+                                    Console.BackgroundColor = BackgroundColor;
+                                    Console.Write(" ");
                                 }
                             }
                         }
@@ -2382,7 +2440,7 @@ namespace Chess
                     Console.WriteLine();
                 }
                 Console.ForegroundColor = ConsoleColor.Black;
-                Console.WriteLine("\n   A B C D E F G H\n\n");                  // Write column numbers (x values)
+                Console.WriteLine("\n   A B C D E F G H\n");                    // Write column numbers (x values)
             }
             else                                                                // Black's Turn
             {
@@ -2397,7 +2455,7 @@ namespace Chess
                     Console.Write("  ");                                        // Indent
                     for (boardX = 8; boardX > 0; boardX--)                      // For each column
                     {
-                        if (RenderPieces(boardX, boardY, type, WhitePromo, BlackPromo,
+                        if (RenderPieces(boardX, boardY, type, BackgroundColor, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -2413,12 +2471,18 @@ namespace Chess
                                 if (IsEven(boardX) == true)                     // Check if the column is even or odd
                                 {
                                     Console.ForegroundColor = ConsoleColor.Black;
-                                    Console.Write("■ ");                        // Empty black space
+                                    Console.Write("■");                         // Empty black space
+
+                                    Console.BackgroundColor = BackgroundColor;
+                                    Console.Write(" ");
                                 }
                                 else
                                 {
                                     Console.ForegroundColor = ConsoleColor.White;
-                                    Console.Write("■ ");                        // Empty white space
+                                    Console.Write("■");                         // Empty white space
+
+                                    Console.BackgroundColor = BackgroundColor;
+                                    Console.Write(" ");
                                 }
                             }
                             else
@@ -2426,12 +2490,18 @@ namespace Chess
                                 if (IsEven(boardX) == true)                     // Check if the column is even or odd
                                 {
                                     Console.ForegroundColor = ConsoleColor.White;
-                                    Console.Write("■ ");                        // Empty white space
+                                    Console.Write("■");                         // Empty white space
+
+                                    Console.BackgroundColor = BackgroundColor;
+                                    Console.Write(" ");
                                 }
                                 else
                                 {
                                     Console.ForegroundColor = ConsoleColor.Black;
-                                    Console.Write("■ ");                        // Empty black space
+                                    Console.Write("■");                         // Empty black space
+
+                                    Console.BackgroundColor = BackgroundColor;
+                                    Console.Write(" ");
                                 }
                             }
                         }
@@ -2440,27 +2510,30 @@ namespace Chess
                     Console.WriteLine();
                 }
                 Console.ForegroundColor = ConsoleColor.Black;
-                Console.WriteLine("\n   H G F E D C B A\n\n");                  // Write column numbers (x values)
+                Console.WriteLine("\n   H G F E D C B A\n");                    // Write column numbers (x values)
             }
         }
 
-        static bool RenderPieces(int boardX, int boardY, bool type, NewPiece[] WhitePromo, NewPiece[] BlackPromo,
+        static bool RenderPieces(int boardX, int boardY, bool type, ConsoleColor BackgroundColor, NewPiece[] WhitePromo, NewPiece[] BlackPromo,
             King WhiteKing, Queen WhiteQueen, Bishop WhiteBishop1, Bishop WhiteBishop2, Knight WhiteKnight1, Knight WhiteKnight2, Rook WhiteRook1, Rook WhiteRook2,
             Pawn WhitePawn1, Pawn WhitePawn2, Pawn WhitePawn3, Pawn WhitePawn4, Pawn WhitePawn5, Pawn WhitePawn6, Pawn WhitePawn7, Pawn WhitePawn8,
             King BlackKing, Queen BlackQueen, Bishop BlackBishop1, Bishop BlackBishop2, Knight BlackKnight1, Knight BlackKnight2, Rook BlackRook1, Rook BlackRook2,
             Pawn BlackPawn1, Pawn BlackPawn2, Pawn BlackPawn3, Pawn BlackPawn4, Pawn BlackPawn5, Pawn BlackPawn6, Pawn BlackPawn7, Pawn BlackPawn8)
-        {                                                                                                               // Render the Current Pieces
+        {
+            // Render the Current Pieces
             if (boardX == WhiteKing.X && boardY == WhiteKing.Y)                 // Render White King
             {
                 Console.ForegroundColor = ConsoleColor.White;
                 if (type == false)
                 {
-                    Console.Write("♚ ");
+                    Console.Write("♚");
                 }
                 else
                 {
-                    Console.Write("K ");
+                    Console.Write("K");
                 }
+                Console.BackgroundColor = BackgroundColor;
+                Console.Write(" ");
                 return true;
             }
 
@@ -2469,12 +2542,15 @@ namespace Chess
                 Console.ForegroundColor = ConsoleColor.White;
                 if (type == false)
                 {
-                    Console.Write("♛ ");
+                    Console.Write("♛");
                 }
                 else
                 {
-                    Console.Write("Q ");
+                    Console.Write("Q");
                 }
+
+                Console.BackgroundColor = BackgroundColor;
+                Console.Write(" ");
                 return true;
             }
 
@@ -2483,12 +2559,15 @@ namespace Chess
                 Console.ForegroundColor = ConsoleColor.White;
                 if (type == false)
                 {
-                    Console.Write("♝ ");
+                    Console.Write("♝");
                 }
                 else
                 {
-                    Console.Write("B ");
+                    Console.Write("B");
                 }
+
+                Console.BackgroundColor = BackgroundColor;
+                Console.Write(" ");
                 return true;
             }
 
@@ -2497,12 +2576,15 @@ namespace Chess
                 Console.ForegroundColor = ConsoleColor.White;
                 if (type == false)
                 {
-                    Console.Write("♞ ");
+                    Console.Write("♞");
                 }
                 else
                 {
-                    Console.Write("N ");
+                    Console.Write("N");
                 }
+
+                Console.BackgroundColor = BackgroundColor;
+                Console.Write(" ");
                 return true;
             }
 
@@ -2511,12 +2593,15 @@ namespace Chess
                 Console.ForegroundColor = ConsoleColor.White;
                 if (type == false)
                 {
-                    Console.Write("♜ ");
+                    Console.Write("♜");
                 }
                 else
                 {
-                    Console.Write("R ");
+                    Console.Write("R");
                 }
+
+                Console.BackgroundColor = BackgroundColor;
+                Console.Write(" ");
                 return true;
             }
 
@@ -2527,12 +2612,15 @@ namespace Chess
                 Console.ForegroundColor = ConsoleColor.White;
                 if (type == false)
                 {
-                    Console.Write("♙ ");
+                    Console.Write("♙");
                 }
                 else
                 {
-                    Console.Write("P ");
+                    Console.Write("P");
                 }
+
+                Console.BackgroundColor = BackgroundColor;
+                Console.Write(" ");
                 return true;
             }
 
@@ -2541,12 +2629,15 @@ namespace Chess
                 Console.ForegroundColor = ConsoleColor.Black;
                 if (type == false)
                 {
-                    Console.Write("♚ ");
+                    Console.Write("♚");
                 }
                 else
                 {
-                    Console.Write("K ");
+                    Console.Write("K");
                 }
+
+                Console.BackgroundColor = BackgroundColor;
+                Console.Write(" ");
                 return true;
             }
 
@@ -2555,12 +2646,15 @@ namespace Chess
                 Console.ForegroundColor = ConsoleColor.Black;
                 if (type == false)
                 {
-                    Console.Write("♛ ");
+                    Console.Write("♛");
                 }
                 else
                 {
-                    Console.Write("Q ");
+                    Console.Write("Q");
                 }
+
+                Console.BackgroundColor = BackgroundColor;
+                Console.Write(" ");
                 return true;
             }
 
@@ -2569,12 +2663,15 @@ namespace Chess
                 Console.ForegroundColor = ConsoleColor.Black;
                 if (type == false)
                 {
-                    Console.Write("♝ ");
+                    Console.Write("♝");
                 }
                 else
                 {
-                    Console.Write("B ");
+                    Console.Write("B");
                 }
+
+                Console.BackgroundColor = BackgroundColor;
+                Console.Write(" ");
                 return true;
             }
 
@@ -2583,12 +2680,15 @@ namespace Chess
                 Console.ForegroundColor = ConsoleColor.Black;
                 if (type == false)
                 {
-                    Console.Write("♞ ");
+                    Console.Write("♞");
                 }
                 else
                 {
-                    Console.Write("N ");
+                    Console.Write("N");
                 }
+
+                Console.BackgroundColor = BackgroundColor;
+                Console.Write(" ");
                 return true;
             }
 
@@ -2597,12 +2697,15 @@ namespace Chess
                 Console.ForegroundColor = ConsoleColor.Black;
                 if (type == false)
                 {
-                    Console.Write("♜ ");
+                    Console.Write("♜");
                 }
                 else
                 {
-                    Console.Write("R ");
+                    Console.Write("R");
                 }
+
+                Console.BackgroundColor = BackgroundColor;
+                Console.Write(" ");
                 return true;
             }
 
@@ -2613,12 +2716,15 @@ namespace Chess
                 Console.ForegroundColor = ConsoleColor.Black;
                 if (type == false)
                 {
-                    Console.Write("♙ ");
+                    Console.Write("♙");
                 }
                 else
                 {
-                    Console.Write("P ");
+                    Console.Write("P");
                 }
+
+                Console.BackgroundColor = BackgroundColor;
+                Console.Write(" ");
                 return true;
             }
 
@@ -2632,12 +2738,15 @@ namespace Chess
                         Console.ForegroundColor = ConsoleColor.White;
                         if (type == false)
                         {
-                            Console.Write("♛ ");
+                            Console.Write("♛");
                         }
                         else
                         {
-                            Console.Write("Q ");
+                            Console.Write("Q");
                         }
+
+                        Console.BackgroundColor = BackgroundColor;
+                        Console.Write(" ");
                         return true;
                     }
 
@@ -2646,12 +2755,15 @@ namespace Chess
                         Console.ForegroundColor = ConsoleColor.White;
                         if (type == false)
                         {
-                            Console.Write("♝ ");
+                            Console.Write("♝");
                         }
                         else
                         {
-                            Console.Write("B ");
+                            Console.Write("B");
                         }
+
+                        Console.BackgroundColor = BackgroundColor;
+                        Console.Write(" ");
                         return true;
                     }
 
@@ -2660,12 +2772,15 @@ namespace Chess
                         Console.ForegroundColor = ConsoleColor.White;
                         if (type == false)
                         {
-                            Console.Write("♞ ");
+                            Console.Write("♞");
                         }
                         else
                         {
-                            Console.Write("N ");
+                            Console.Write("N");
                         }
+
+                        Console.BackgroundColor = BackgroundColor;
+                        Console.Write(" ");
                         return true;
                     }
 
@@ -2674,12 +2789,15 @@ namespace Chess
                         Console.ForegroundColor = ConsoleColor.White;
                         if (type == false)
                         {
-                            Console.Write("♜ ");
+                            Console.Write("♜");
                         }
                         else
                         {
-                            Console.Write("R ");
+                            Console.Write("R");
                         }
+
+                        Console.BackgroundColor = BackgroundColor;
+                        Console.Write(" ");
                         return true;
                     }
                 }
@@ -2691,12 +2809,15 @@ namespace Chess
                         Console.ForegroundColor = ConsoleColor.Black;
                         if (type == false)
                         {
-                            Console.Write("♛ ");
+                            Console.Write("♛");
                         }
                         else
                         {
-                            Console.Write("Q ");
+                            Console.Write("Q");
                         }
+
+                        Console.BackgroundColor = BackgroundColor;
+                        Console.Write(" ");
                         return true;
                     }
 
@@ -2705,12 +2826,15 @@ namespace Chess
                         Console.ForegroundColor = ConsoleColor.Black;
                         if (type == false)
                         {
-                            Console.Write("♝ ");
+                            Console.Write("♝");
                         }
                         else
                         {
-                            Console.Write("B ");
+                            Console.Write("B");
                         }
+
+                        Console.BackgroundColor = BackgroundColor;
+                        Console.Write(" ");
                         return true;
                     }
 
@@ -2719,12 +2843,15 @@ namespace Chess
                         Console.ForegroundColor = ConsoleColor.Black;
                         if (type == false)
                         {
-                            Console.Write("♞ ");
+                            Console.Write("♞");
                         }
                         else
                         {
-                            Console.Write("N ");
+                            Console.Write("N");
                         }
+
+                        Console.BackgroundColor = BackgroundColor;
+                        Console.Write(" ");
                         return true;
                     }
 
@@ -2733,18 +2860,1705 @@ namespace Chess
                         Console.ForegroundColor = ConsoleColor.Black;
                         if (type == false)
                         {
-                            Console.Write("♜ ");
+                            Console.Write("♜");
                         }
                         else
                         {
-                            Console.Write("R ");
+                            Console.Write("R");
                         }
+
+                        Console.BackgroundColor = BackgroundColor;
+                        Console.Write(" ");
                         return true;
                     }
                 }
             }
 
             return false;                                                       // Render Empty
+        }
+
+        static void RenderMovement(int boardX, int boardY, int turn, int showTurn, string previousTurn, bool type, string piece, int enPassantWhite, int enPassantBlack, NewPiece[] WhitePromo, NewPiece[] BlackPromo,
+            King WhiteKing, Queen WhiteQueen, Bishop WhiteBishop1, Bishop WhiteBishop2, Knight WhiteKnight1, Knight WhiteKnight2, Rook WhiteRook1, Rook WhiteRook2,
+            Pawn WhitePawn1, Pawn WhitePawn2, Pawn WhitePawn3, Pawn WhitePawn4, Pawn WhitePawn5, Pawn WhitePawn6, Pawn WhitePawn7, Pawn WhitePawn8,
+            King BlackKing, Queen BlackQueen, Bishop BlackBishop1, Bishop BlackBishop2, Knight BlackKnight1, Knight BlackKnight2, Rook BlackRook1, Rook BlackRook2,
+            Pawn BlackPawn1, Pawn BlackPawn2, Pawn BlackPawn3, Pawn BlackPawn4, Pawn BlackPawn5, Pawn BlackPawn6, Pawn BlackPawn7, Pawn BlackPawn8)
+        {                                                                                                               // Highlight where Pieces can Move
+            Console.Clear();                                                    // Clear text
+
+            ConsoleColor BackgroundColor = Console.BackgroundColor;             // Background Color
+
+            if (turn > 1)                                                       // Write previous turn
+            {
+                string points = "  +0";                                         // Calculate point advantage
+
+                int points1 = Points(turn, WhitePromo, BlackPromo,
+                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
+
+                int points2 = Points(turn + 1, WhitePromo, BlackPromo,
+                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
+
+                if (points1 >= points2)
+                {
+                    points = "  +" + (points1 - points2).ToString();
+                }
+                else
+                {
+                    points = "  " + (points1 - points2).ToString();
+                }
+
+
+                if (IsEven(turn) == false)
+                {
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.Write("\nPrevious Turn\n" + previousTurn);
+
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    if (InCheck(turn, enPassantWhite, enPassantBlack, WhiteKing.X, WhiteKing.Y, false, WhitePromo, BlackPromo,
+                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                    {
+                        Console.Write(" check");
+                    }
+
+                    if (Checkmate(turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                    {
+                        Console.Write("mate");
+                    }
+
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write(points);
+
+                    Console.WriteLine("\n");
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write("\nPrevious Turn\n" + previousTurn);
+
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    if (InCheck(turn, enPassantWhite, enPassantBlack, BlackKing.X, BlackKing.Y, false, WhitePromo, BlackPromo,
+                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                    {
+                        Console.Write(" check");
+                    }
+
+                    if (Checkmate(turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                    {
+                        Console.Write("mate");
+                    }
+
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.Write(points);
+
+                    Console.WriteLine("\n");
+                }
+            }
+            else
+            {
+                Console.WriteLine("\n\n\n");
+            }
+
+
+            if (IsEven(turn) == false)                                          // White's Turn
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("       Turn " + (showTurn));
+
+                for (boardY = 8; boardY > 0; boardY--)                          // For each row
+                {
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.Write(boardY);                                      // Write row number (y value)
+
+                    Console.Write("  ");                                        // Indent
+                    for (boardX = 1; boardX < 9; boardX++)                      // For each column
+                    {
+                        Console.BackgroundColor = BackgroundColor;
+
+                        if (piece == "king")
+                        {
+
+                            if (KingMove(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // King movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 1)
+                                {
+                                    int pieceX = WhiteKing.X;                               // Piece's current X
+                                    int pieceY = WhiteKing.Y;                               // Piece's current Y
+
+                                    WhiteKing.X = boardX;                                   // New piece position
+                                    WhiteKing.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, WhiteKing.X, WhiteKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        WhiteKing.X = pieceX;                               // Put piece back
+                                        WhiteKing.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        WhiteKing.X = pieceX;                               // Put piece back
+                                        WhiteKing.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "queen")
+                        {
+                            if (QueenMove(boardX, boardY, turn, WhitePromo, BlackPromo,                // Queen movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 1)
+                                {
+                                    int pieceX = WhiteQueen.X;                               // Piece's current X
+                                    int pieceY = WhiteQueen.Y;                               // Piece's current Y
+
+                                    WhiteQueen.X = boardX;                                   // New piece position
+                                    WhiteQueen.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, WhiteKing.X, WhiteKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        WhiteQueen.X = pieceX;                               // Put piece back
+                                        WhiteQueen.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        WhiteQueen.X = pieceX;                               // Put piece back
+                                        WhiteQueen.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "bishop1")
+                        {
+                            if (BishopMove1(boardX, boardY, turn, WhitePromo, BlackPromo,                // Bishop1 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 1)
+                                {
+                                    int pieceX = WhiteBishop1.X;                               // Piece's current X
+                                    int pieceY = WhiteBishop1.Y;                               // Piece's current Y
+
+                                    WhiteBishop1.X = boardX;                                   // New piece position
+                                    WhiteBishop1.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, WhiteKing.X, WhiteKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        WhiteBishop1.X = pieceX;                               // Put piece back
+                                        WhiteBishop1.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        WhiteBishop1.X = pieceX;                               // Put piece back
+                                        WhiteBishop1.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "bishop2")
+                        {
+                            if (BishopMove2(boardX, boardY, turn, WhitePromo, BlackPromo,                // Bishop2 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 1)
+                                {
+                                    int pieceX = WhiteBishop2.X;                               // Piece's current X
+                                    int pieceY = WhiteBishop2.Y;                               // Piece's current Y
+
+                                    WhiteBishop2.X = boardX;                                   // New piece position
+                                    WhiteBishop2.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, WhiteKing.X, WhiteKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        WhiteBishop2.X = pieceX;                               // Put piece back
+                                        WhiteBishop2.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        WhiteBishop2.X = pieceX;                               // Put piece back
+                                        WhiteBishop2.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "knight1")
+                        {
+                            if (KnightMove1(boardX, boardY, turn, WhitePromo, BlackPromo,                // Knight1 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 1)
+                                {
+                                    int pieceX = WhiteKnight1.X;                               // Piece's current X
+                                    int pieceY = WhiteKnight1.Y;                               // Piece's current Y
+
+                                    WhiteKnight1.X = boardX;                                   // New piece position
+                                    WhiteKnight1.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, WhiteKing.X, WhiteKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        WhiteKnight1.X = pieceX;                               // Put piece back
+                                        WhiteKnight1.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        WhiteKnight1.X = pieceX;                               // Put piece back
+                                        WhiteKnight1.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "knight2")
+                        {
+                            if (KnightMove2(boardX, boardY, turn, WhitePromo, BlackPromo,                // Knight2 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 1)
+                                {
+                                    int pieceX = WhiteKnight2.X;                               // Piece's current X
+                                    int pieceY = WhiteKnight2.Y;                               // Piece's current Y
+
+                                    WhiteKnight2.X = boardX;                                   // New piece position
+                                    WhiteKnight2.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, WhiteKing.X, WhiteKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        WhiteKnight2.X = pieceX;                               // Put piece back
+                                        WhiteKnight2.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        WhiteKnight2.X = pieceX;                               // Put piece back
+                                        WhiteKnight2.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "rook1")
+                        {
+                            if (RookMove1(boardX, boardY, turn, WhitePromo, BlackPromo,                // Rook1 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 1)
+                                {
+                                    int pieceX = WhiteRook1.X;                               // Piece's current X
+                                    int pieceY = WhiteRook1.Y;                               // Piece's current Y
+
+                                    WhiteRook1.X = boardX;                                   // New piece position
+                                    WhiteRook1.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, WhiteKing.X, WhiteKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        WhiteRook1.X = pieceX;                               // Put piece back
+                                        WhiteRook1.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        WhiteRook1.X = pieceX;                               // Put piece back
+                                        WhiteRook1.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "rook2")
+                        {
+                            if (RookMove2(boardX, boardY, turn, WhitePromo, BlackPromo,                // Rook2 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 1)
+                                {
+                                    int pieceX = WhiteRook2.X;                               // Piece's current X
+                                    int pieceY = WhiteRook2.Y;                               // Piece's current Y
+
+                                    WhiteRook2.X = boardX;                                   // New piece position
+                                    WhiteRook2.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, WhiteKing.X, WhiteKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        WhiteRook2.X = pieceX;                               // Put piece back
+                                        WhiteRook2.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        WhiteRook2.X = pieceX;                               // Put piece back
+                                        WhiteRook2.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "pawn1")
+                        {
+                            if (PawnMove1(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn1 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 1)
+                                {
+                                    int pieceX = WhitePawn1.X;                               // Piece's current X
+                                    int pieceY = WhitePawn1.Y;                               // Piece's current Y
+
+                                    WhitePawn1.X = boardX;                                   // New piece position
+                                    WhitePawn1.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, WhiteKing.X, WhiteKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        WhitePawn1.X = pieceX;                               // Put piece back
+                                        WhitePawn1.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        WhitePawn1.X = pieceX;                               // Put piece back
+                                        WhitePawn1.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "pawn2")
+                        {
+                            if (PawnMove2(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn2 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 1)
+                                {
+                                    int pieceX = WhitePawn2.X;                               // Piece's current X
+                                    int pieceY = WhitePawn2.Y;                               // Piece's current Y
+
+                                    WhitePawn2.X = boardX;                                   // New piece position
+                                    WhitePawn2.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, WhiteKing.X, WhiteKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        WhitePawn2.X = pieceX;                               // Put piece back
+                                        WhitePawn2.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        WhitePawn2.X = pieceX;                               // Put piece back
+                                        WhitePawn2.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "pawn3")
+                        {
+                            if (PawnMove3(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn3 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 1)
+                                {
+                                    int pieceX = WhitePawn3.X;                               // Piece's current X
+                                    int pieceY = WhitePawn3.Y;                               // Piece's current Y
+
+                                    WhitePawn3.X = boardX;                                   // New piece position
+                                    WhitePawn3.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, WhiteKing.X, WhiteKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        WhitePawn3.X = pieceX;                               // Put piece back
+                                        WhitePawn3.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        WhitePawn3.X = pieceX;                               // Put piece back
+                                        WhitePawn3.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "pawn4")
+                        {
+                            if (PawnMove4(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn4 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 1)
+                                {
+                                    int pieceX = WhitePawn4.X;                               // Piece's current X
+                                    int pieceY = WhitePawn4.Y;                               // Piece's current Y
+
+                                    WhitePawn4.X = boardX;                                   // New piece position
+                                    WhitePawn4.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, WhiteKing.X, WhiteKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        WhitePawn4.X = pieceX;                               // Put piece back
+                                        WhitePawn4.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        WhitePawn4.X = pieceX;                               // Put piece back
+                                        WhitePawn4.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "pawn5")
+                        {
+                            if (PawnMove5(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn5 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 1)
+                                {
+                                    int pieceX = WhitePawn5.X;                               // Piece's current X
+                                    int pieceY = WhitePawn5.Y;                               // Piece's current Y
+
+                                    WhitePawn5.X = boardX;                                   // New piece position
+                                    WhitePawn5.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, WhiteKing.X, WhiteKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        WhitePawn5.X = pieceX;                               // Put piece back
+                                        WhitePawn5.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        WhitePawn5.X = pieceX;                               // Put piece back
+                                        WhitePawn5.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "pawn6")
+                        {
+                            if (PawnMove6(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn6 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 1)
+                                {
+                                    int pieceX = WhitePawn6.X;                               // Piece's current X
+                                    int pieceY = WhitePawn6.Y;                               // Piece's current Y
+
+                                    WhitePawn6.X = boardX;                                   // New piece position
+                                    WhitePawn6.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, WhiteKing.X, WhiteKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        WhitePawn6.X = pieceX;                               // Put piece back
+                                        WhitePawn6.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        WhitePawn6.X = pieceX;                               // Put piece back
+                                        WhitePawn6.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "pawn7")
+                        {
+                            if (PawnMove7(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn7 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 1)
+                                {
+                                    int pieceX = WhitePawn7.X;                               // Piece's current X
+                                    int pieceY = WhitePawn7.Y;                               // Piece's current Y
+
+                                    WhitePawn7.X = boardX;                                   // New piece position
+                                    WhitePawn7.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, WhiteKing.X, WhiteKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        WhitePawn7.X = pieceX;                               // Put piece back
+                                        WhitePawn7.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        WhitePawn7.X = pieceX;                               // Put piece back
+                                        WhitePawn7.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "pawn8")
+                        {
+                            if (PawnMove8(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn8 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 1)
+                                {
+                                    int pieceX = WhitePawn8.X;                               // Piece's current X
+                                    int pieceY = WhitePawn8.Y;                               // Piece's current Y
+
+                                    WhitePawn8.X = boardX;                                   // New piece position
+                                    WhitePawn8.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, WhiteKing.X, WhiteKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        WhitePawn8.X = pieceX;                               // Put piece back
+                                        WhitePawn8.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        WhitePawn8.X = pieceX;                               // Put piece back
+                                        WhitePawn8.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        for (int i = 0; i < WhitePromo.Length; i++)
+                        {
+                            if (piece == WhitePromo[i].Tag)
+                            {
+                                if (NewPieceMove(boardX, boardY, turn, WhitePromo[i], WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                                {
+                                    if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                    WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                    WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                    BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                    BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 1)
+                                    {
+                                        int pieceX = WhitePromo[i].X;                   // Piece's current X
+                                        int pieceY = WhitePromo[i].Y;                   // Piece's current Y
+
+                                        WhitePromo[i].X = boardX;                       // New piece position
+                                        WhitePromo[i].Y = boardY;                       // New piece position
+
+                                        if (InCheck(turn, enPassantWhite, enPassantBlack, WhiteKing.X, WhiteKing.Y, false, WhitePromo, BlackPromo,
+                                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                        {
+                                            WhitePromo[i].X = pieceX;                   // Put piece back
+                                            WhitePromo[i].Y = pieceY;                   // Put piece back
+
+                                            Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                        }
+                                        else
+                                        {
+                                            WhitePromo[i].X = pieceX;                   // Put piece back
+                                            WhitePromo[i].Y = pieceY;                   // Put piece back
+
+                                            Console.BackgroundColor = ConsoleColor.DarkRed;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+
+                        if (RenderPieces(boardX, boardY, type, BackgroundColor, WhitePromo, BlackPromo,
+                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8)
+                        == true)                                                // Is there a piece present?
+                        {
+                            // Render that piece
+                        }
+                        else
+                        {
+                            if (IsEven(boardY) == true)                         // Check if the row is even or odd
+                            {
+                                if (IsEven(boardX) == true)                     // Check if the column is even or odd
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Black;
+                                    Console.Write("■");                         // Empty black space
+
+                                    Console.BackgroundColor = BackgroundColor;
+                                    Console.Write(" ");
+                                }
+                                else
+                                {
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Console.Write("■");                         // Empty white space
+
+                                    Console.BackgroundColor = BackgroundColor;
+                                    Console.Write(" ");
+                                }
+                            }
+                            else
+                            {
+                                if (IsEven(boardX) == true)                     // Check if the column is even or odd
+                                {
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Console.Write("■");                         // Empty white space
+
+                                    Console.BackgroundColor = BackgroundColor;
+                                    Console.Write(" ");
+                                }
+                                else
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Black;
+                                    Console.Write("■");                         // Empty black space
+
+                                    Console.BackgroundColor = BackgroundColor;
+                                    Console.Write(" ");
+                                }
+                            }
+                        }
+                    }
+
+                    Console.WriteLine();
+                }
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.WriteLine("\n   A B C D E F G H\n");                    // Write column numbers (x values)
+            }
+            else                                                                // Black's Turn
+            {
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.WriteLine("       Turn " + showTurn);
+
+                for (boardY = 1; boardY < 9; boardY++)                          // For each row
+                {
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.Write(boardY);                                      // Write row number (y value)
+
+                    Console.Write("  ");                                        // Indent
+                    for (boardX = 8; boardX > 0; boardX--)                      // For each column
+                    {
+                        Console.BackgroundColor = BackgroundColor;
+
+                        if (piece == "king")
+                        {
+                            if (KingMove(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // King movement
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 2)
+                                {
+                                    int pieceX = BlackKing.X;                               // Piece's current X
+                                    int pieceY = BlackKing.Y;                               // Piece's current Y
+
+                                    BlackKing.X = boardX;                                   // New piece position
+                                    BlackKing.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, BlackKing.X, BlackKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        BlackKing.X = pieceX;                               // Put piece back
+                                        BlackKing.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        BlackKing.X = pieceX;                               // Put piece back
+                                        BlackKing.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "queen")
+                        {
+                            if (QueenMove(boardX, boardY, turn, WhitePromo, BlackPromo,                // Queen movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 2)
+                                {
+                                    int pieceX = BlackQueen.X;                               // Piece's current X
+                                    int pieceY = BlackQueen.Y;                               // Piece's current Y
+
+                                    BlackQueen.X = boardX;                                   // New piece position
+                                    BlackQueen.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, BlackKing.X, BlackKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        BlackQueen.X = pieceX;                               // Put piece back
+                                        BlackQueen.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        BlackQueen.X = pieceX;                               // Put piece back
+                                        BlackQueen.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "bishop1")
+                        {
+                            if (BishopMove1(boardX, boardY, turn, WhitePromo, BlackPromo,                // Bishop1 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 2)
+                                {
+                                    int pieceX = BlackBishop1.X;                               // Piece's current X
+                                    int pieceY = BlackBishop1.Y;                               // Piece's current Y
+
+                                    BlackBishop1.X = boardX;                                   // New piece position
+                                    BlackBishop1.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, BlackKing.X, BlackKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        BlackBishop1.X = pieceX;                               // Put piece back
+                                        BlackBishop1.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        BlackBishop1.X = pieceX;                               // Put piece back
+                                        BlackBishop1.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "bishop2")
+                        {
+                            if (BishopMove2(boardX, boardY, turn, WhitePromo, BlackPromo,                // Bishop2 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 2)
+                                {
+                                    int pieceX = BlackBishop2.X;                               // Piece's current X
+                                    int pieceY = BlackBishop2.Y;                               // Piece's current Y
+
+                                    BlackBishop2.X = boardX;                                   // New piece position
+                                    BlackBishop2.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, BlackKing.X, BlackKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        BlackBishop2.X = pieceX;                               // Put piece back
+                                        BlackBishop2.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        BlackBishop2.X = pieceX;                               // Put piece back
+                                        BlackBishop2.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "knight1")
+                        {
+                            if (KnightMove1(boardX, boardY, turn, WhitePromo, BlackPromo,                // Knight1 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 2)
+                                {
+                                    int pieceX = BlackKnight1.X;                               // Piece's current X
+                                    int pieceY = BlackKnight1.Y;                               // Piece's current Y
+
+                                    BlackKnight1.X = boardX;                                   // New piece position
+                                    BlackKnight1.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, BlackKing.X, BlackKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        BlackKnight1.X = pieceX;                               // Put piece back
+                                        BlackKnight1.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        BlackKnight1.X = pieceX;                               // Put piece back
+                                        BlackKnight1.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "knight2")
+                        {
+                            if (KnightMove2(boardX, boardY, turn, WhitePromo, BlackPromo,                // Knight2 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 2)
+                                {
+                                    int pieceX = BlackKnight2.X;                               // Piece's current X
+                                    int pieceY = BlackKnight2.Y;                               // Piece's current Y
+
+                                    BlackKnight2.X = boardX;                                   // New piece position
+                                    BlackKnight2.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, BlackKing.X, BlackKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        BlackKnight2.X = pieceX;                               // Put piece back
+                                        BlackKnight2.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        BlackKnight2.X = pieceX;                               // Put piece back
+                                        BlackKnight2.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "rook1")
+                        {
+                            if (RookMove1(boardX, boardY, turn, WhitePromo, BlackPromo,                // Rook1 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 2)
+                                {
+                                    int pieceX = BlackRook1.X;                               // Piece's current X
+                                    int pieceY = BlackRook1.Y;                               // Piece's current Y
+
+                                    BlackRook1.X = boardX;                                   // New piece position
+                                    BlackRook1.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, BlackKing.X, BlackKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        BlackRook1.X = pieceX;                               // Put piece back
+                                        BlackRook1.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        BlackRook1.X = pieceX;                               // Put piece back
+                                        BlackRook1.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "rook2")
+                        {
+                            if (RookMove2(boardX, boardY, turn, WhitePromo, BlackPromo,                // Rook2 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 2)
+                                {
+                                    int pieceX = BlackRook2.X;                               // Piece's current X
+                                    int pieceY = BlackRook2.Y;                               // Piece's current Y
+
+                                    BlackRook2.X = boardX;                                   // New piece position
+                                    BlackRook2.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, BlackKing.X, BlackKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        BlackRook2.X = pieceX;                               // Put piece back
+                                        BlackRook2.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        BlackRook2.X = pieceX;                               // Put piece back
+                                        BlackRook2.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "pawn1")
+                        {
+                            if (PawnMove1(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn1 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 2)
+                                {
+                                    int pieceX = BlackPawn1.X;                               // Piece's current X
+                                    int pieceY = BlackPawn1.Y;                               // Piece's current Y
+
+                                    BlackPawn1.X = boardX;                                   // New piece position
+                                    BlackPawn1.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, BlackKing.X, BlackKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        BlackPawn1.X = pieceX;                               // Put piece back
+                                        BlackPawn1.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        BlackPawn1.X = pieceX;                               // Put piece back
+                                        BlackPawn1.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "pawn2")
+                        {
+                            if (PawnMove2(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn2 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 2)
+                                {
+                                    int pieceX = BlackPawn2.X;                               // Piece's current X
+                                    int pieceY = BlackPawn2.Y;                               // Piece's current Y
+
+                                    BlackPawn2.X = boardX;                                   // New piece position
+                                    BlackPawn2.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, BlackKing.X, BlackKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        BlackPawn2.X = pieceX;                               // Put piece back
+                                        BlackPawn2.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        BlackPawn2.X = pieceX;                               // Put piece back
+                                        BlackPawn2.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "pawn3")
+                        {
+                            if (PawnMove3(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn3 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 2)
+                                {
+                                    int pieceX = BlackPawn3.X;                               // Piece's current X
+                                    int pieceY = BlackPawn3.Y;                               // Piece's current Y
+
+                                    BlackPawn3.X = boardX;                                   // New piece position
+                                    BlackPawn3.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, BlackKing.X, BlackKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        BlackPawn3.X = pieceX;                               // Put piece back
+                                        BlackPawn3.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        BlackPawn3.X = pieceX;                               // Put piece back
+                                        BlackPawn3.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "pawn4")
+                        {
+                            if (PawnMove4(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn4 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 2)
+                                {
+                                    int pieceX = BlackPawn4.X;                               // Piece's current X
+                                    int pieceY = BlackPawn4.Y;                               // Piece's current Y
+
+                                    BlackPawn4.X = boardX;                                   // New piece position
+                                    BlackPawn4.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, BlackKing.X, BlackKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        BlackPawn4.X = pieceX;                               // Put piece back
+                                        BlackPawn4.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        BlackPawn4.X = pieceX;                               // Put piece back
+                                        BlackPawn4.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "pawn5")
+                        {
+                            if (PawnMove5(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn5 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 2)
+                                {
+                                    int pieceX = BlackPawn5.X;                               // Piece's current X
+                                    int pieceY = BlackPawn5.Y;                               // Piece's current Y
+
+                                    BlackPawn5.X = boardX;                                   // New piece position
+                                    BlackPawn5.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, BlackKing.X, BlackKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        BlackPawn5.X = pieceX;                               // Put piece back
+                                        BlackPawn5.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        BlackPawn5.X = pieceX;                               // Put piece back
+                                        BlackPawn5.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "pawn6")
+                        {
+                            if (PawnMove6(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn6 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 2)
+                                {
+                                    int pieceX = BlackPawn6.X;                               // Piece's current X
+                                    int pieceY = BlackPawn6.Y;                               // Piece's current Y
+
+                                    BlackPawn6.X = boardX;                                   // New piece position
+                                    BlackPawn6.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, BlackKing.X, BlackKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        BlackPawn6.X = pieceX;                               // Put piece back
+                                        BlackPawn6.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        BlackPawn6.X = pieceX;                               // Put piece back
+                                        BlackPawn6.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "pawn7")
+                        {
+                            if (PawnMove7(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn7 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 2)
+                                {
+                                    int pieceX = BlackPawn7.X;                               // Piece's current X
+                                    int pieceY = BlackPawn7.Y;                               // Piece's current Y
+
+                                    BlackPawn7.X = boardX;                                   // New piece position
+                                    BlackPawn7.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, BlackKing.X, BlackKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        BlackPawn7.X = pieceX;                               // Put piece back
+                                        BlackPawn7.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        BlackPawn7.X = pieceX;                               // Put piece back
+                                        BlackPawn7.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (piece == "pawn8")
+                        {
+                            if (PawnMove8(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn8 movement
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 2)
+                                {
+                                    int pieceX = BlackPawn8.X;                               // Piece's current X
+                                    int pieceY = BlackPawn8.Y;                               // Piece's current Y
+
+                                    BlackPawn8.X = boardX;                                   // New piece position
+                                    BlackPawn8.Y = boardY;                                   // New piece position
+
+                                    if (InCheck(turn, enPassantWhite, enPassantBlack, BlackKing.X, BlackKing.Y, false, WhitePromo, BlackPromo,
+                                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                    {
+                                        BlackPawn8.X = pieceX;                               // Put piece back
+                                        BlackPawn8.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                    }
+                                    else
+                                    {
+                                        BlackPawn8.X = pieceX;                               // Put piece back
+                                        BlackPawn8.Y = pieceY;                               // Put piece back
+
+                                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        for (int i = 0; i < BlackPromo.Length; i++)
+                        {
+                            if (piece == BlackPromo[i].Tag)
+                            {
+                                if (NewPieceMove(boardX, boardY, turn, BlackPromo[i], WhitePromo, BlackPromo,
+                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                                {
+                                    if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
+                                    WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                    WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                    BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                    BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) != 2)
+                                    {
+                                        int pieceX = BlackPromo[i].X;                   // Piece's current X
+                                        int pieceY = BlackPromo[i].Y;                   // Piece's current Y
+
+                                        BlackPromo[i].X = boardX;                       // New piece position
+                                        BlackPromo[i].Y = boardY;                       // New piece position
+
+                                        if (InCheck(turn, enPassantWhite, enPassantBlack, BlackKing.X, BlackKing.Y, false, WhitePromo, BlackPromo,
+                                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == false)
+                                        {
+                                            BlackPromo[i].X = pieceX;                   // Put piece back
+                                            BlackPromo[i].Y = pieceY;                   // Put piece back
+
+                                            Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                        }
+                                        else
+                                        {
+                                            BlackPromo[i].X = pieceX;                   // Put piece back
+                                            BlackPromo[i].Y = pieceY;                   // Put piece back
+
+                                            Console.BackgroundColor = ConsoleColor.DarkRed;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+
+                        if (RenderPieces(boardX, boardY, type, BackgroundColor, WhitePromo, BlackPromo,
+                        WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                        WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                        BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                        BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8)
+                        == true)                                                // Is there a piece present?
+                        {
+                            // Render that piece
+                        }
+                        else
+                        {
+                            if (IsEven(boardY) == true)                         // Check if the row is even or odd
+                            {
+                                if (IsEven(boardX) == true)                     // Check if the column is even or odd
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Black;
+                                    Console.Write("■");                         // Empty black space
+
+                                    Console.BackgroundColor = BackgroundColor;
+                                    Console.Write(" ");
+                                }
+                                else
+                                {
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Console.Write("■");                         // Empty white space
+
+                                    Console.BackgroundColor = BackgroundColor;
+                                    Console.Write(" ");
+                                }
+                            }
+                            else
+                            {
+                                if (IsEven(boardX) == true)                     // Check if the column is even or odd
+                                {
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Console.Write("■");                         // Empty white space
+
+                                    Console.BackgroundColor = BackgroundColor;
+                                    Console.Write(" ");
+                                }
+                                else
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Black;
+                                    Console.Write("■");                         // Empty black space
+
+                                    Console.BackgroundColor = BackgroundColor;
+                                    Console.Write(" ");
+                                }
+                            }
+                        }
+                    }
+
+                    Console.WriteLine();
+                }
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.WriteLine("\n   H G F E D C B A\n");                    // Write column numbers (x values)
+            }
         }
 
 
@@ -2760,7 +4574,7 @@ namespace Chess
             while (true)                                                        // Repeat forever
             {
                 Console.ForegroundColor = ConsoleColor.Black;
-                Console.WriteLine("\nEnter your Piece or Pawn's location.");    // Prompt
+                Console.WriteLine("\n\nEnter your Piece or Pawn's location.");  // Prompt
                 Console.WriteLine("Type 'help' for the key, and 'exit' to end the game.\n");
                 Console.ForegroundColor = ConsoleColor.White;
                 input = Console.ReadLine();                                     // Get input
@@ -2793,9 +4607,6 @@ namespace Chess
                 {
                     if (input == pieceSelection[i])                             // Does the selection match?
                     {
-                        Console.Write("\nSelected Piece: ");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.WriteLine(input);
                         return input;                                           // Chosen piece
                     }
 
@@ -2814,9 +4625,6 @@ namespace Chess
                     {
                         if (input == WhitePromo[i].Tag)                         // Does the selction match?
                         {
-                            Console.Write("\nSelected Piece: ");
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.WriteLine(input);
                             return input;                                       // Chosen piece
                         }
 
@@ -2835,9 +4643,6 @@ namespace Chess
                     {
                         if (input == BlackPromo[i].Tag)                         // Does the selction match?
                         {
-                            Console.Write("\nSelected Piece: ");
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.WriteLine(input);
                             return input;                                       // Chosen piece
                         }
 
@@ -2884,7 +4689,7 @@ namespace Chess
             {
                 Console.ForegroundColor = ConsoleColor.Black;
                 Console.WriteLine("\nEnter your Piece or Pawn's destination."); // Prompt
-                Console.WriteLine("Type 'help' for the key, and 'restart' to go back.\n");
+                Console.WriteLine("Type 'help' for the key, and 'back' to go back.\n");
                 Console.ForegroundColor = ConsoleColor.White;
                 input = Console.ReadLine();                                     // Get input
                 input = input.Replace(" ", string.Empty);                       // Remove any spaces from input
@@ -2939,7 +4744,7 @@ namespace Chess
                 }
 
 
-                if (input == "restart" || input == "exit")                      // Exit prompt
+                if (input == "back" || input == "exit")                         // Exit prompt
                 {
                     input = "π";
                     return input;
@@ -2978,7 +4783,7 @@ namespace Chess
                 else                                                            // Bad input
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("\nThat is not a valid destination. Please type 'help' for the key and 'restart' to go back.\n");
+                    Console.WriteLine("\nThat is not a valid destination. Please type 'help' for the key and 'back' to go back.\n");
                 }
             }
         }
@@ -2991,7 +4796,7 @@ namespace Chess
             {
                 Console.ForegroundColor = ConsoleColor.Black;
                 Console.WriteLine("\nEnter your Piece or Pawn's destination number.");// Prompt
-                Console.WriteLine("Type 'help' for the key, and 'restart' to go back.\n");
+                Console.WriteLine("Type 'help' for the key, and 'back' to go back.\n");
                 Console.ForegroundColor = ConsoleColor.White;
                 input = Console.ReadLine();                                     // Get input
                 input = input.Replace(" ", string.Empty);                       // Remove any spaces from input
@@ -3008,7 +4813,7 @@ namespace Chess
                 }
 
 
-                if (input == "restart" || input == "exit")                      // Exit prompt
+                if (input == "back" || input == "exit")                         // Exit prompt
                 {
                     output = 9;
                     return output;
@@ -3030,7 +4835,7 @@ namespace Chess
                 if (input == "help" || input == "key")                          // Help prompt
                 {
                     Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    Console.WriteLine("\nPlease enter your Piece or Pawn's destination number coordinate.\nThis is the Y value of the board. You have already entered the X value. Type 'restart' to go back.\n");
+                    Console.WriteLine("\nPlease enter your Piece or Pawn's destination number coordinate.\nThis is the Y value of the board. You have already entered the X value. Type 'back' to go back.\n");
                     Console.WriteLine("The pieces are as follows:");
                     Console.WriteLine("♟  P = Pawn     Moves up one space but captures diagonally forward, promotes upon reaching the top.");
                     Console.WriteLine("♜  R = Rook     Moves up and down or left and right.");
@@ -3047,7 +4852,7 @@ namespace Chess
                 else                                                            // Bad input
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("\nThat is not a valid number coordinate. Please type 'help' for the key and 'restart' to go back.\n");
+                    Console.WriteLine("\nThat is not a valid number coordinate. Please type 'help' for the key and 'back' to go back.\n");
                 }
             }
         }
