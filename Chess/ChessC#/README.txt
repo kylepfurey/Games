@@ -13,12 +13,12 @@ If you find any bugs, comment the string of exact moves you took to get there on
 
 Important Commands:
 
+clear = clear text 
 text = show symbols as text
 symbols = show text as symbols
-clear = clear text 
 
 help = will tell you how to input and how each piece works
-show = will highlight a piece’s possible movement squares
+show = highlights a selected piece’s possible movement squares
 exit = leaves the game or resets selection
 
 resign = lose the game (use if you want to forfeit the match)

@@ -2279,8 +2279,6 @@ namespace Chess
         {                                                                                                               // Render the Current Board
             Console.Clear();                                                    // Clear text
 
-            ConsoleColor BackgroundColor = Console.BackgroundColor;             // Background Color
-
             if (turn > 1)                                                       // Write previous turn
             {
                 string points = "  +0";                                         // Calculate point advantage
@@ -2385,7 +2383,7 @@ namespace Chess
                     Console.Write("  ");                                        // Indent
                     for (boardX = 1; boardX < 9; boardX++)                      // For each column
                     {
-                        if (RenderPieces(boardX, boardY, type, BackgroundColor, WhitePromo, BlackPromo,
+                        if (RenderPieces(boardX, boardY, type, Console.BackgroundColor, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -2401,18 +2399,12 @@ namespace Chess
                                 if (IsEven(boardX) == true)                     // Check if the column is even or odd
                                 {
                                     Console.ForegroundColor = ConsoleColor.Black;
-                                    Console.Write("■");                         // Empty black space
-
-                                    Console.BackgroundColor = BackgroundColor;
-                                    Console.Write(" ");
+                                    Console.Write("■ ");                        // Empty black space
                                 }
                                 else
                                 {
                                     Console.ForegroundColor = ConsoleColor.White;
-                                    Console.Write("■");                         // Empty white space
-
-                                    Console.BackgroundColor = BackgroundColor;
-                                    Console.Write(" ");
+                                    Console.Write("■ ");                        // Empty white space
                                 }
                             }
                             else
@@ -2420,18 +2412,12 @@ namespace Chess
                                 if (IsEven(boardX) == true)                     // Check if the column is even or odd
                                 {
                                     Console.ForegroundColor = ConsoleColor.White;
-                                    Console.Write("■");                         // Empty white space
-
-                                    Console.BackgroundColor = BackgroundColor;
-                                    Console.Write(" ");
+                                    Console.Write("■ ");                        // Empty white space
                                 }
                                 else
                                 {
                                     Console.ForegroundColor = ConsoleColor.Black;
-                                    Console.Write("■");                         // Empty black space
-
-                                    Console.BackgroundColor = BackgroundColor;
-                                    Console.Write(" ");
+                                    Console.Write("■ ");                        // Empty black space
                                 }
                             }
                         }
@@ -2455,7 +2441,7 @@ namespace Chess
                     Console.Write("  ");                                        // Indent
                     for (boardX = 8; boardX > 0; boardX--)                      // For each column
                     {
-                        if (RenderPieces(boardX, boardY, type, BackgroundColor, WhitePromo, BlackPromo,
+                        if (RenderPieces(boardX, boardY, type, Console.BackgroundColor, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -2471,18 +2457,12 @@ namespace Chess
                                 if (IsEven(boardX) == true)                     // Check if the column is even or odd
                                 {
                                     Console.ForegroundColor = ConsoleColor.Black;
-                                    Console.Write("■");                         // Empty black space
-
-                                    Console.BackgroundColor = BackgroundColor;
-                                    Console.Write(" ");
+                                    Console.Write("■ ");                        // Empty black space
                                 }
                                 else
                                 {
                                     Console.ForegroundColor = ConsoleColor.White;
-                                    Console.Write("■");                         // Empty white space
-
-                                    Console.BackgroundColor = BackgroundColor;
-                                    Console.Write(" ");
+                                    Console.Write("■ ");                        // Empty white space
                                 }
                             }
                             else
@@ -2490,18 +2470,12 @@ namespace Chess
                                 if (IsEven(boardX) == true)                     // Check if the column is even or odd
                                 {
                                     Console.ForegroundColor = ConsoleColor.White;
-                                    Console.Write("■");                         // Empty white space
-
-                                    Console.BackgroundColor = BackgroundColor;
-                                    Console.Write(" ");
+                                    Console.Write("■ ");                        // Empty white space
                                 }
                                 else
                                 {
                                     Console.ForegroundColor = ConsoleColor.Black;
-                                    Console.Write("■");                         // Empty black space
-
-                                    Console.BackgroundColor = BackgroundColor;
-                                    Console.Write(" ");
+                                    Console.Write("■ ");                        // Empty black space
                                 }
                             }
                         }
@@ -2882,7 +2856,7 @@ namespace Chess
             Pawn WhitePawn1, Pawn WhitePawn2, Pawn WhitePawn3, Pawn WhitePawn4, Pawn WhitePawn5, Pawn WhitePawn6, Pawn WhitePawn7, Pawn WhitePawn8,
             King BlackKing, Queen BlackQueen, Bishop BlackBishop1, Bishop BlackBishop2, Knight BlackKnight1, Knight BlackKnight2, Rook BlackRook1, Rook BlackRook2,
             Pawn BlackPawn1, Pawn BlackPawn2, Pawn BlackPawn3, Pawn BlackPawn4, Pawn BlackPawn5, Pawn BlackPawn6, Pawn BlackPawn7, Pawn BlackPawn8)
-        {                                                                                                               // Highlight where Pieces can Move
+        {                                                                                                               // Highlight Where Pieces Can Move
             Console.Clear();                                                    // Clear text
 
             ConsoleColor BackgroundColor = Console.BackgroundColor;             // Background Color
@@ -2991,11 +2965,8 @@ namespace Chess
                     Console.Write("  ");                                        // Indent
                     for (boardX = 1; boardX < 9; boardX++)                      // For each column
                     {
-                        Console.BackgroundColor = BackgroundColor;
-
                         if (piece == "king")
                         {
-
                             if (KingMove(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // King movement
                             WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                             WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
@@ -3712,7 +3683,10 @@ namespace Chess
                         }
 
 
-                        if (RenderPieces(boardX, boardY, type, BackgroundColor, WhitePromo, BlackPromo,
+                        ConsoleColor SpaceColor;                                // Used to color empty spaces after Pieces are rendered.
+                        SpaceColor = Console.BackgroundColor;
+
+                        if (RenderPieces(boardX, boardY, type, SpaceColor, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -3730,7 +3704,7 @@ namespace Chess
                                     Console.ForegroundColor = ConsoleColor.Black;
                                     Console.Write("■");                         // Empty black space
 
-                                    Console.BackgroundColor = BackgroundColor;
+                                    Console.BackgroundColor = SpaceColor;
                                     Console.Write(" ");
                                 }
                                 else
@@ -3738,7 +3712,7 @@ namespace Chess
                                     Console.ForegroundColor = ConsoleColor.White;
                                     Console.Write("■");                         // Empty white space
 
-                                    Console.BackgroundColor = BackgroundColor;
+                                    Console.BackgroundColor = SpaceColor;
                                     Console.Write(" ");
                                 }
                             }
@@ -3749,7 +3723,7 @@ namespace Chess
                                     Console.ForegroundColor = ConsoleColor.White;
                                     Console.Write("■");                         // Empty white space
 
-                                    Console.BackgroundColor = BackgroundColor;
+                                    Console.BackgroundColor = SpaceColor;
                                     Console.Write(" ");
                                 }
                                 else
@@ -3757,11 +3731,13 @@ namespace Chess
                                     Console.ForegroundColor = ConsoleColor.Black;
                                     Console.Write("■");                         // Empty black space
 
-                                    Console.BackgroundColor = BackgroundColor;
+                                    Console.BackgroundColor = SpaceColor;
                                     Console.Write(" ");
                                 }
                             }
                         }
+
+                        Console.BackgroundColor = BackgroundColor;
                     }
 
                     Console.WriteLine();
@@ -3776,21 +3752,21 @@ namespace Chess
 
                 for (boardY = 1; boardY < 9; boardY++)                          // For each row
                 {
+                    Console.BackgroundColor = BackgroundColor;
+
                     Console.ForegroundColor = ConsoleColor.Black;
                     Console.Write(boardY);                                      // Write row number (y value)
 
                     Console.Write("  ");                                        // Indent
                     for (boardX = 8; boardX > 0; boardX--)                      // For each column
                     {
-                        Console.BackgroundColor = BackgroundColor;
-
                         if (piece == "king")
                         {
                             if (KingMove(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // King movement
-                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
-                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
-                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
-                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
                             {
                                 if (IsOccupied(turn, boardX, boardY, WhitePromo, BlackPromo,
                                 WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
@@ -4502,7 +4478,10 @@ namespace Chess
                         }
 
 
-                        if (RenderPieces(boardX, boardY, type, BackgroundColor, WhitePromo, BlackPromo,
+                        ConsoleColor SpaceColor;                                // Used to color empty spaces after Pieces are rendered.
+                        SpaceColor = Console.BackgroundColor;
+
+                        if (RenderPieces(boardX, boardY, type, SpaceColor, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -4520,7 +4499,7 @@ namespace Chess
                                     Console.ForegroundColor = ConsoleColor.Black;
                                     Console.Write("■");                         // Empty black space
 
-                                    Console.BackgroundColor = BackgroundColor;
+                                    Console.BackgroundColor = SpaceColor;
                                     Console.Write(" ");
                                 }
                                 else
@@ -4528,7 +4507,7 @@ namespace Chess
                                     Console.ForegroundColor = ConsoleColor.White;
                                     Console.Write("■");                         // Empty white space
 
-                                    Console.BackgroundColor = BackgroundColor;
+                                    Console.BackgroundColor = SpaceColor;
                                     Console.Write(" ");
                                 }
                             }
@@ -4539,7 +4518,7 @@ namespace Chess
                                     Console.ForegroundColor = ConsoleColor.White;
                                     Console.Write("■");                         // Empty white space
 
-                                    Console.BackgroundColor = BackgroundColor;
+                                    Console.BackgroundColor = SpaceColor;
                                     Console.Write(" ");
                                 }
                                 else
@@ -4547,11 +4526,13 @@ namespace Chess
                                     Console.ForegroundColor = ConsoleColor.Black;
                                     Console.Write("■");                         // Empty black space
 
-                                    Console.BackgroundColor = BackgroundColor;
+                                    Console.BackgroundColor = SpaceColor;
                                     Console.Write(" ");
                                 }
                             }
                         }
+
+                        Console.BackgroundColor = BackgroundColor;
                     }
 
                     Console.WriteLine();
@@ -4689,7 +4670,7 @@ namespace Chess
             {
                 Console.ForegroundColor = ConsoleColor.Black;
                 Console.WriteLine("\nEnter your Piece or Pawn's destination."); // Prompt
-                Console.WriteLine("Type 'help' for the key, and 'back' to go back.\n");
+                Console.WriteLine("Type 'help' for the key, and 'restart' to go back.\n");
                 Console.ForegroundColor = ConsoleColor.White;
                 input = Console.ReadLine();                                     // Get input
                 input = input.Replace(" ", string.Empty);                       // Remove any spaces from input
@@ -4744,7 +4725,7 @@ namespace Chess
                 }
 
 
-                if (input == "back" || input == "exit")                         // Exit prompt
+                if (input == "back" || input == "restart" || input == "exit")   // Exit prompt
                 {
                     input = "π";
                     return input;
@@ -4783,7 +4764,7 @@ namespace Chess
                 else                                                            // Bad input
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("\nThat is not a valid destination. Please type 'help' for the key and 'back' to go back.\n");
+                    Console.WriteLine("\nThat is not a valid destination. Please type 'help' for the key and 'restart' to go back.\n");
                 }
             }
         }
@@ -4796,7 +4777,7 @@ namespace Chess
             {
                 Console.ForegroundColor = ConsoleColor.Black;
                 Console.WriteLine("\nEnter your Piece or Pawn's destination number.");// Prompt
-                Console.WriteLine("Type 'help' for the key, and 'back' to go back.\n");
+                Console.WriteLine("Type 'help' for the key, and 'restart' to go back.\n");
                 Console.ForegroundColor = ConsoleColor.White;
                 input = Console.ReadLine();                                     // Get input
                 input = input.Replace(" ", string.Empty);                       // Remove any spaces from input
@@ -4813,7 +4794,7 @@ namespace Chess
                 }
 
 
-                if (input == "back" || input == "exit")                         // Exit prompt
+                if (input == "back" || input == "restart" || input == "exit")   // Exit prompt
                 {
                     output = 9;
                     return output;
@@ -4835,7 +4816,7 @@ namespace Chess
                 if (input == "help" || input == "key")                          // Help prompt
                 {
                     Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    Console.WriteLine("\nPlease enter your Piece or Pawn's destination number coordinate.\nThis is the Y value of the board. You have already entered the X value. Type 'back' to go back.\n");
+                    Console.WriteLine("\nPlease enter your Piece or Pawn's destination number coordinate.\nThis is the Y value of the board. You have already entered the X value. Type 'restart' to go back.\n");
                     Console.WriteLine("The pieces are as follows:");
                     Console.WriteLine("♟  P = Pawn     Moves up one space but captures diagonally forward, promotes upon reaching the top.");
                     Console.WriteLine("♜  R = Rook     Moves up and down or left and right.");
@@ -4852,7 +4833,7 @@ namespace Chess
                 else                                                            // Bad input
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("\nThat is not a valid number coordinate. Please type 'help' for the key and 'back' to go back.\n");
+                    Console.WriteLine("\nThat is not a valid number coordinate. Please type 'help' for the key and 'restart' to go back.\n");
                 }
             }
         }
