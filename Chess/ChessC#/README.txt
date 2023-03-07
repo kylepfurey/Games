@@ -31,4 +31,4 @@ enpassant = find available enpassant
 castle = find available castling
 promote = find available promotion
 
-red, blue, green, yellow, purple, grey, gray = changes board colors
+red, blue, green, yellow, purple, grey, gray = changes board colors (resets on game end)
