@@ -18,7 +18,7 @@ text = show symbols as text
 symbols = show text as symbols
 
 help = will tell you how to input and how each piece works
-show = highlights a selected piece’s possible movement squares
+show = highlights or unhighlights a piece’s possible movement squares
 exit = leaves the game or resets selection
 
 resign = lose the game (use if you want to forfeit the match)

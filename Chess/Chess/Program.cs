@@ -236,6 +236,8 @@ namespace Chess
                         number = 0;
 
 
+                        Console.WriteLine();
+
                         piece = SelectPiece(input, pieceSelect, turn, WhitePromo, BlackPromo,                           // Piece Selection
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
@@ -580,7 +582,7 @@ namespace Chess
                             }
 
 
-                            if (showMovement)
+                            if (showMovement)                                   // If enabled, highlight the selected piece's possible movement spaces.
                             {
                                 RenderMovement(boardX, boardY, turn, showTurn, previousTurn, noSymbols, piece, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                                 WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
@@ -1228,7 +1230,7 @@ namespace Chess
                             case "pawn1":                                       // White Pawn1
                                 if (IsEven(turn) == false)
                                 {
-                                    if (PawnMove1(destinationX, destinationY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                                    if (PawnMove1(destinationX, destinationY, turn, true, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -1258,7 +1260,7 @@ namespace Chess
                                 }
                                 else                                            // Black Pawn1
                                 {
-                                    if (PawnMove1(destinationX, destinationY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                                    if (PawnMove1(destinationX, destinationY, turn, true, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -1291,7 +1293,7 @@ namespace Chess
                             case "pawn2":                                       // White Pawn2
                                 if (IsEven(turn) == false)
                                 {
-                                    if (PawnMove2(destinationX, destinationY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                                    if (PawnMove2(destinationX, destinationY, turn, true, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -1321,7 +1323,7 @@ namespace Chess
                                 }
                                 else                                            // Black Pawn2
                                 {
-                                    if (PawnMove2(destinationX, destinationY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                                    if (PawnMove2(destinationX, destinationY, turn, true, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -1354,7 +1356,7 @@ namespace Chess
                             case "pawn3":                                       // White Pawn3
                                 if (IsEven(turn) == false)
                                 {
-                                    if (PawnMove3(destinationX, destinationY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                                    if (PawnMove3(destinationX, destinationY, turn, true, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -1384,7 +1386,7 @@ namespace Chess
                                 }
                                 else                                            // Black Pawn3
                                 {
-                                    if (PawnMove3(destinationX, destinationY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                                    if (PawnMove3(destinationX, destinationY, turn, true, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -1417,7 +1419,7 @@ namespace Chess
                             case "pawn4":                                       // White Pawn4
                                 if (IsEven(turn) == false)
                                 {
-                                    if (PawnMove4(destinationX, destinationY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                                    if (PawnMove4(destinationX, destinationY, turn, true, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -1447,7 +1449,7 @@ namespace Chess
                                 }
                                 else                                            // Black Pawn4
                                 {
-                                    if (PawnMove4(destinationX, destinationY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                                    if (PawnMove4(destinationX, destinationY, turn, true, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -1480,7 +1482,7 @@ namespace Chess
                             case "pawn5":                                       // White Pawn5
                                 if (IsEven(turn) == false)
                                 {
-                                    if (PawnMove5(destinationX, destinationY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                                    if (PawnMove5(destinationX, destinationY, turn, true, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -1510,7 +1512,7 @@ namespace Chess
                                 }
                                 else                                            // Black Pawn5
                                 {
-                                    if (PawnMove5(destinationX, destinationY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                                    if (PawnMove5(destinationX, destinationY, turn, true, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -1543,7 +1545,7 @@ namespace Chess
                             case "pawn6":                                       // White Pawn6
                                 if (IsEven(turn) == false)
                                 {
-                                    if (PawnMove6(destinationX, destinationY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                                    if (PawnMove6(destinationX, destinationY, turn, true, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -1573,7 +1575,7 @@ namespace Chess
                                 }
                                 else                                            // Black Pawn6
                                 {
-                                    if (PawnMove6(destinationX, destinationY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                                    if (PawnMove6(destinationX, destinationY, turn, true, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -1606,7 +1608,7 @@ namespace Chess
                             case "pawn7":                                       // White Pawn7
                                 if (IsEven(turn) == false)
                                 {
-                                    if (PawnMove7(destinationX, destinationY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                                    if (PawnMove7(destinationX, destinationY, turn, true, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -1636,7 +1638,7 @@ namespace Chess
                                 }
                                 else                                            // Black Pawn7
                                 {
-                                    if (PawnMove7(destinationX, destinationY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                                    if (PawnMove7(destinationX, destinationY, turn, true, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -1669,7 +1671,7 @@ namespace Chess
                             case "pawn8":                                       // White Pawn8
                                 if (IsEven(turn) == false)
                                 {
-                                    if (PawnMove8(destinationX, destinationY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                                    if (PawnMove8(destinationX, destinationY, turn, true, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -1699,7 +1701,7 @@ namespace Chess
                                 }
                                 else                                            // Black Pawn8
                                 {
-                                    if (PawnMove8(destinationX, destinationY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                                    if (PawnMove8(destinationX, destinationY, turn, true, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -3314,7 +3316,7 @@ namespace Chess
 
                         if (piece == "pawn1")
                         {
-                            if (PawnMove1(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn1 movement
+                            if (PawnMove1(boardX, boardY, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn1 movement
                             WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                             WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                             BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -3356,7 +3358,7 @@ namespace Chess
 
                         if (piece == "pawn2")
                         {
-                            if (PawnMove2(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn2 movement
+                            if (PawnMove2(boardX, boardY, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn2 movement
                             WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                             WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                             BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -3398,7 +3400,7 @@ namespace Chess
 
                         if (piece == "pawn3")
                         {
-                            if (PawnMove3(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn3 movement
+                            if (PawnMove3(boardX, boardY, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn3 movement
                             WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                             WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                             BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -3440,7 +3442,7 @@ namespace Chess
 
                         if (piece == "pawn4")
                         {
-                            if (PawnMove4(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn4 movement
+                            if (PawnMove4(boardX, boardY, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn4 movement
                             WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                             WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                             BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -3482,7 +3484,7 @@ namespace Chess
 
                         if (piece == "pawn5")
                         {
-                            if (PawnMove5(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn5 movement
+                            if (PawnMove5(boardX, boardY, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn5 movement
                             WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                             WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                             BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -3524,7 +3526,7 @@ namespace Chess
 
                         if (piece == "pawn6")
                         {
-                            if (PawnMove6(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn6 movement
+                            if (PawnMove6(boardX, boardY, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn6 movement
                             WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                             WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                             BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -3566,7 +3568,7 @@ namespace Chess
 
                         if (piece == "pawn7")
                         {
-                            if (PawnMove7(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn7 movement
+                            if (PawnMove7(boardX, boardY, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn7 movement
                             WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                             WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                             BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -3608,7 +3610,7 @@ namespace Chess
 
                         if (piece == "pawn8")
                         {
-                            if (PawnMove8(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn8 movement
+                            if (PawnMove8(boardX, boardY, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn8 movement
                             WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                             WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                             BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -4109,7 +4111,7 @@ namespace Chess
 
                         if (piece == "pawn1")
                         {
-                            if (PawnMove1(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn1 movement
+                            if (PawnMove1(boardX, boardY, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn1 movement
                             WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                             WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                             BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -4151,7 +4153,7 @@ namespace Chess
 
                         if (piece == "pawn2")
                         {
-                            if (PawnMove2(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn2 movement
+                            if (PawnMove2(boardX, boardY, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn2 movement
                             WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                             WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                             BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -4193,7 +4195,7 @@ namespace Chess
 
                         if (piece == "pawn3")
                         {
-                            if (PawnMove3(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn3 movement
+                            if (PawnMove3(boardX, boardY, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn3 movement
                             WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                             WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                             BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -4235,7 +4237,7 @@ namespace Chess
 
                         if (piece == "pawn4")
                         {
-                            if (PawnMove4(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn4 movement
+                            if (PawnMove4(boardX, boardY, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn4 movement
                             WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                             WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                             BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -4277,7 +4279,7 @@ namespace Chess
 
                         if (piece == "pawn5")
                         {
-                            if (PawnMove5(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn5 movement
+                            if (PawnMove5(boardX, boardY, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn5 movement
                             WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                             WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                             BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -4319,7 +4321,7 @@ namespace Chess
 
                         if (piece == "pawn6")
                         {
-                            if (PawnMove6(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn6 movement
+                            if (PawnMove6(boardX, boardY, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn6 movement
                             WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                             WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                             BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -4361,7 +4363,7 @@ namespace Chess
 
                         if (piece == "pawn7")
                         {
-                            if (PawnMove7(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn7 movement
+                            if (PawnMove7(boardX, boardY, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn7 movement
                             WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                             WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                             BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -4403,7 +4405,7 @@ namespace Chess
 
                         if (piece == "pawn8")
                         {
-                            if (PawnMove8(boardX, boardY, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn8 movement
+                            if (PawnMove8(boardX, boardY, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn8 movement
                             WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                             WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                             BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -4566,7 +4568,7 @@ namespace Chess
             while (true)                                                        // Repeat forever
             {
                 Console.ForegroundColor = ConsoleColor.Black;
-                Console.WriteLine("\n\nEnter your Piece or Pawn's location.");  // Prompt
+                Console.WriteLine("\nEnter your Piece or Pawn's location.");  // Prompt
                 Console.WriteLine("Type 'help' for the key, and 'exit' to end the game.\n");
                 Console.ForegroundColor = ConsoleColor.White;
                 input = Console.ReadLine();                                     // Get input
@@ -4775,7 +4777,7 @@ namespace Chess
                 else                                                            // Bad input
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("\nThat is not a valid destination. Please type 'help' for the key or 'restart' to go back.\n\n");
+                    Console.WriteLine("\nThat is not a valid destination. Please type 'help' for the key or 'restart' to go back.\n");
                 }
             }
         }
@@ -4844,7 +4846,7 @@ namespace Chess
                 else                                                            // Bad input
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("\nThat is not a valid number coordinate. Please type 'help' for the key or 'restart' to go back.\n\n");
+                    Console.WriteLine("\nThat is not a valid number coordinate. Please type 'help' for the key or 'restart' to go back.\n");
                 }
             }
         }
@@ -8183,7 +8185,7 @@ namespace Chess
             return false;
         }
 
-        static bool PawnMove1(int destinationX, int destinationY, int turn, int enPassantWhite, int enPassantBlack, NewPiece[] WhitePromo, NewPiece[] BlackPromo, // Pawn Movement
+        static bool PawnMove1(int destinationX, int destinationY, int turn, bool capture, int enPassantWhite, int enPassantBlack, NewPiece[] WhitePromo, NewPiece[] BlackPromo, // Pawn Movement
             King WhiteKing, Queen WhiteQueen, Bishop WhiteBishop1, Bishop WhiteBishop2, Knight WhiteKnight1, Knight WhiteKnight2, Rook WhiteRook1, Rook WhiteRook2,
             Pawn WhitePawn1, Pawn WhitePawn2, Pawn WhitePawn3, Pawn WhitePawn4, Pawn WhitePawn5, Pawn WhitePawn6, Pawn WhitePawn7, Pawn WhitePawn8,
             King BlackKing, Queen BlackQueen, Bishop BlackBishop1, Bishop BlackBishop2, Knight BlackKnight1, Knight BlackKnight2, Rook BlackRook1, Rook BlackRook2,
@@ -8266,7 +8268,7 @@ namespace Chess
 
                     if (destinationY == WhitePawn1.Y + 1 && destinationX == WhitePawn1.X + 1)
                     {
-                        if (EnPassant(WhitePawn1.X, WhitePawn1.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(WhitePawn1.X, WhitePawn1.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -8278,7 +8280,7 @@ namespace Chess
 
                     if (destinationY == WhitePawn1.Y + 1 && destinationX == WhitePawn1.X - 1)
                     {
-                        if (EnPassant(WhitePawn1.X, WhitePawn1.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(WhitePawn1.X, WhitePawn1.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -8366,7 +8368,7 @@ namespace Chess
 
                     if (destinationY == BlackPawn1.Y - 1 && destinationX == BlackPawn1.X + 1)
                     {
-                        if (EnPassant(BlackPawn1.X, BlackPawn1.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(BlackPawn1.X, BlackPawn1.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -8378,7 +8380,7 @@ namespace Chess
 
                     if (destinationY == BlackPawn1.Y - 1 && destinationX == BlackPawn1.X - 1)
                     {
-                        if (EnPassant(BlackPawn1.X, BlackPawn1.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(BlackPawn1.X, BlackPawn1.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -8393,7 +8395,7 @@ namespace Chess
             return false;
         }
 
-        static bool PawnMove2(int destinationX, int destinationY, int turn, int enPassantWhite, int enPassantBlack, NewPiece[] WhitePromo, NewPiece[] BlackPromo, // Pawn Movement
+        static bool PawnMove2(int destinationX, int destinationY, int turn, bool capture, int enPassantWhite, int enPassantBlack, NewPiece[] WhitePromo, NewPiece[] BlackPromo, // Pawn Movement
             King WhiteKing, Queen WhiteQueen, Bishop WhiteBishop1, Bishop WhiteBishop2, Knight WhiteKnight1, Knight WhiteKnight2, Rook WhiteRook1, Rook WhiteRook2,
             Pawn WhitePawn1, Pawn WhitePawn2, Pawn WhitePawn3, Pawn WhitePawn4, Pawn WhitePawn5, Pawn WhitePawn6, Pawn WhitePawn7, Pawn WhitePawn8,
             King BlackKing, Queen BlackQueen, Bishop BlackBishop1, Bishop BlackBishop2, Knight BlackKnight1, Knight BlackKnight2, Rook BlackRook1, Rook BlackRook2,
@@ -8476,7 +8478,7 @@ namespace Chess
 
                     if (destinationY == WhitePawn2.Y + 1 && destinationX == WhitePawn2.X + 1)
                     {
-                        if (EnPassant(WhitePawn2.X, WhitePawn2.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(WhitePawn2.X, WhitePawn2.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -8488,7 +8490,7 @@ namespace Chess
 
                     if (destinationY == WhitePawn2.Y + 1 && destinationX == WhitePawn2.X - 1)
                     {
-                        if (EnPassant(WhitePawn2.X, WhitePawn2.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(WhitePawn2.X, WhitePawn2.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -8576,7 +8578,7 @@ namespace Chess
 
                     if (destinationY == BlackPawn2.Y - 1 && destinationX == BlackPawn2.X + 1)
                     {
-                        if (EnPassant(BlackPawn2.X, BlackPawn2.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(BlackPawn2.X, BlackPawn2.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -8588,7 +8590,7 @@ namespace Chess
 
                     if (destinationY == BlackPawn2.Y - 1 && destinationX == BlackPawn2.X - 1)
                     {
-                        if (EnPassant(BlackPawn2.X, BlackPawn2.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(BlackPawn2.X, BlackPawn2.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -8603,7 +8605,7 @@ namespace Chess
             return false;
         }
 
-        static bool PawnMove3(int destinationX, int destinationY, int turn, int enPassantWhite, int enPassantBlack, NewPiece[] WhitePromo, NewPiece[] BlackPromo, // Pawn Movement
+        static bool PawnMove3(int destinationX, int destinationY, int turn, bool capture, int enPassantWhite, int enPassantBlack, NewPiece[] WhitePromo, NewPiece[] BlackPromo, // Pawn Movement
             King WhiteKing, Queen WhiteQueen, Bishop WhiteBishop1, Bishop WhiteBishop2, Knight WhiteKnight1, Knight WhiteKnight2, Rook WhiteRook1, Rook WhiteRook2,
             Pawn WhitePawn1, Pawn WhitePawn2, Pawn WhitePawn3, Pawn WhitePawn4, Pawn WhitePawn5, Pawn WhitePawn6, Pawn WhitePawn7, Pawn WhitePawn8,
             King BlackKing, Queen BlackQueen, Bishop BlackBishop1, Bishop BlackBishop2, Knight BlackKnight1, Knight BlackKnight2, Rook BlackRook1, Rook BlackRook2,
@@ -8686,7 +8688,7 @@ namespace Chess
 
                     if (destinationY == WhitePawn3.Y + 1 && destinationX == WhitePawn3.X + 1)
                     {
-                        if (EnPassant(WhitePawn3.X, WhitePawn3.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(WhitePawn3.X, WhitePawn3.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -8698,7 +8700,7 @@ namespace Chess
 
                     if (destinationY == WhitePawn3.Y + 1 && destinationX == WhitePawn3.X - 1)
                     {
-                        if (EnPassant(WhitePawn3.X, WhitePawn3.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(WhitePawn3.X, WhitePawn3.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -8786,7 +8788,7 @@ namespace Chess
 
                     if (destinationY == BlackPawn3.Y - 1 && destinationX == BlackPawn3.X + 1)
                     {
-                        if (EnPassant(BlackPawn3.X, BlackPawn3.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(BlackPawn3.X, BlackPawn3.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -8798,7 +8800,7 @@ namespace Chess
 
                     if (destinationY == BlackPawn3.Y - 1 && destinationX == BlackPawn3.X - 1)
                     {
-                        if (EnPassant(BlackPawn3.X, BlackPawn3.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(BlackPawn3.X, BlackPawn3.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -8813,7 +8815,7 @@ namespace Chess
             return false;
         }
 
-        static bool PawnMove4(int destinationX, int destinationY, int turn, int enPassantWhite, int enPassantBlack, NewPiece[] WhitePromo, NewPiece[] BlackPromo, // Pawn Movement
+        static bool PawnMove4(int destinationX, int destinationY, int turn, bool capture, int enPassantWhite, int enPassantBlack, NewPiece[] WhitePromo, NewPiece[] BlackPromo, // Pawn Movement
             King WhiteKing, Queen WhiteQueen, Bishop WhiteBishop1, Bishop WhiteBishop2, Knight WhiteKnight1, Knight WhiteKnight2, Rook WhiteRook1, Rook WhiteRook2,
             Pawn WhitePawn1, Pawn WhitePawn2, Pawn WhitePawn3, Pawn WhitePawn4, Pawn WhitePawn5, Pawn WhitePawn6, Pawn WhitePawn7, Pawn WhitePawn8,
             King BlackKing, Queen BlackQueen, Bishop BlackBishop1, Bishop BlackBishop2, Knight BlackKnight1, Knight BlackKnight2, Rook BlackRook1, Rook BlackRook2,
@@ -8896,7 +8898,7 @@ namespace Chess
 
                     if (destinationY == WhitePawn4.Y + 1 && destinationX == WhitePawn4.X + 1)
                     {
-                        if (EnPassant(WhitePawn4.X, WhitePawn4.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(WhitePawn4.X, WhitePawn4.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -8908,7 +8910,7 @@ namespace Chess
 
                     if (destinationY == WhitePawn4.Y + 1 && destinationX == WhitePawn4.X - 1)
                     {
-                        if (EnPassant(WhitePawn4.X, WhitePawn4.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(WhitePawn4.X, WhitePawn4.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -8996,7 +8998,7 @@ namespace Chess
 
                     if (destinationY == BlackPawn4.Y - 1 && destinationX == BlackPawn4.X + 1)
                     {
-                        if (EnPassant(BlackPawn4.X, BlackPawn4.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(BlackPawn4.X, BlackPawn4.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -9008,7 +9010,7 @@ namespace Chess
 
                     if (destinationY == BlackPawn4.Y - 1 && destinationX == BlackPawn4.X - 1)
                     {
-                        if (EnPassant(BlackPawn4.X, BlackPawn4.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(BlackPawn4.X, BlackPawn4.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -9023,7 +9025,7 @@ namespace Chess
             return false;
         }
 
-        static bool PawnMove5(int destinationX, int destinationY, int turn, int enPassantWhite, int enPassantBlack, NewPiece[] WhitePromo, NewPiece[] BlackPromo, // Pawn Movement
+        static bool PawnMove5(int destinationX, int destinationY, int turn, bool capture, int enPassantWhite, int enPassantBlack, NewPiece[] WhitePromo, NewPiece[] BlackPromo, // Pawn Movement
             King WhiteKing, Queen WhiteQueen, Bishop WhiteBishop1, Bishop WhiteBishop2, Knight WhiteKnight1, Knight WhiteKnight2, Rook WhiteRook1, Rook WhiteRook2,
             Pawn WhitePawn1, Pawn WhitePawn2, Pawn WhitePawn3, Pawn WhitePawn4, Pawn WhitePawn5, Pawn WhitePawn6, Pawn WhitePawn7, Pawn WhitePawn8,
             King BlackKing, Queen BlackQueen, Bishop BlackBishop1, Bishop BlackBishop2, Knight BlackKnight1, Knight BlackKnight2, Rook BlackRook1, Rook BlackRook2,
@@ -9106,7 +9108,7 @@ namespace Chess
 
                     if (destinationY == WhitePawn5.Y + 1 && destinationX == WhitePawn5.X + 1)
                     {
-                        if (EnPassant(WhitePawn5.X, WhitePawn5.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(WhitePawn5.X, WhitePawn5.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -9118,7 +9120,7 @@ namespace Chess
 
                     if (destinationY == WhitePawn5.Y + 1 && destinationX == WhitePawn5.X - 1)
                     {
-                        if (EnPassant(WhitePawn5.X, WhitePawn5.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(WhitePawn5.X, WhitePawn5.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -9206,7 +9208,7 @@ namespace Chess
 
                     if (destinationY == BlackPawn5.Y - 1 && destinationX == BlackPawn5.X + 1)
                     {
-                        if (EnPassant(BlackPawn5.X, BlackPawn5.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(BlackPawn5.X, BlackPawn5.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -9218,7 +9220,7 @@ namespace Chess
 
                     if (destinationY == BlackPawn5.Y - 1 && destinationX == BlackPawn5.X - 1)
                     {
-                        if (EnPassant(BlackPawn5.X, BlackPawn5.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(BlackPawn5.X, BlackPawn5.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -9233,7 +9235,7 @@ namespace Chess
             return false;
         }
 
-        static bool PawnMove6(int destinationX, int destinationY, int turn, int enPassantWhite, int enPassantBlack, NewPiece[] WhitePromo, NewPiece[] BlackPromo, // Pawn Movement
+        static bool PawnMove6(int destinationX, int destinationY, int turn, bool capture, int enPassantWhite, int enPassantBlack, NewPiece[] WhitePromo, NewPiece[] BlackPromo, // Pawn Movement
             King WhiteKing, Queen WhiteQueen, Bishop WhiteBishop1, Bishop WhiteBishop2, Knight WhiteKnight1, Knight WhiteKnight2, Rook WhiteRook1, Rook WhiteRook2,
             Pawn WhitePawn1, Pawn WhitePawn2, Pawn WhitePawn3, Pawn WhitePawn4, Pawn WhitePawn5, Pawn WhitePawn6, Pawn WhitePawn7, Pawn WhitePawn8,
             King BlackKing, Queen BlackQueen, Bishop BlackBishop1, Bishop BlackBishop2, Knight BlackKnight1, Knight BlackKnight2, Rook BlackRook1, Rook BlackRook2,
@@ -9316,7 +9318,7 @@ namespace Chess
 
                     if (destinationY == WhitePawn6.Y + 1 && destinationX == WhitePawn6.X + 1)
                     {
-                        if (EnPassant(WhitePawn6.X, WhitePawn6.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(WhitePawn6.X, WhitePawn6.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -9328,7 +9330,7 @@ namespace Chess
 
                     if (destinationY == WhitePawn6.Y + 1 && destinationX == WhitePawn6.X - 1)
                     {
-                        if (EnPassant(WhitePawn6.X, WhitePawn6.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(WhitePawn6.X, WhitePawn6.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -9416,7 +9418,7 @@ namespace Chess
 
                     if (destinationY == BlackPawn6.Y - 1 && destinationX == BlackPawn6.X + 1)
                     {
-                        if (EnPassant(BlackPawn6.X, BlackPawn6.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(BlackPawn6.X, BlackPawn6.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -9428,7 +9430,7 @@ namespace Chess
 
                     if (destinationY == BlackPawn6.Y - 1 && destinationX == BlackPawn6.X - 1)
                     {
-                        if (EnPassant(BlackPawn6.X, BlackPawn6.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(BlackPawn6.X, BlackPawn6.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -9443,7 +9445,7 @@ namespace Chess
             return false;
         }
 
-        static bool PawnMove7(int destinationX, int destinationY, int turn, int enPassantWhite, int enPassantBlack, NewPiece[] WhitePromo, NewPiece[] BlackPromo, // Pawn Movement
+        static bool PawnMove7(int destinationX, int destinationY, int turn, bool capture, int enPassantWhite, int enPassantBlack, NewPiece[] WhitePromo, NewPiece[] BlackPromo, // Pawn Movement
             King WhiteKing, Queen WhiteQueen, Bishop WhiteBishop1, Bishop WhiteBishop2, Knight WhiteKnight1, Knight WhiteKnight2, Rook WhiteRook1, Rook WhiteRook2,
             Pawn WhitePawn1, Pawn WhitePawn2, Pawn WhitePawn3, Pawn WhitePawn4, Pawn WhitePawn5, Pawn WhitePawn6, Pawn WhitePawn7, Pawn WhitePawn8,
             King BlackKing, Queen BlackQueen, Bishop BlackBishop1, Bishop BlackBishop2, Knight BlackKnight1, Knight BlackKnight2, Rook BlackRook1, Rook BlackRook2,
@@ -9526,7 +9528,7 @@ namespace Chess
 
                     if (destinationY == WhitePawn7.Y + 1 && destinationX == WhitePawn7.X + 1)
                     {
-                        if (EnPassant(WhitePawn7.X, WhitePawn7.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(WhitePawn7.X, WhitePawn7.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -9538,7 +9540,7 @@ namespace Chess
 
                     if (destinationY == WhitePawn7.Y + 1 && destinationX == WhitePawn7.X - 1)
                     {
-                        if (EnPassant(WhitePawn7.X, WhitePawn7.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(WhitePawn7.X, WhitePawn7.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -9626,7 +9628,7 @@ namespace Chess
 
                     if (destinationY == BlackPawn7.Y - 1 && destinationX == BlackPawn7.X + 1)
                     {
-                        if (EnPassant(BlackPawn7.X, BlackPawn7.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(BlackPawn7.X, BlackPawn7.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -9638,7 +9640,7 @@ namespace Chess
 
                     if (destinationY == BlackPawn7.Y - 1 && destinationX == BlackPawn7.X - 1)
                     {
-                        if (EnPassant(BlackPawn7.X, BlackPawn7.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(BlackPawn7.X, BlackPawn7.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -9653,7 +9655,7 @@ namespace Chess
             return false;
         }
 
-        static bool PawnMove8(int destinationX, int destinationY, int turn, int enPassantWhite, int enPassantBlack, NewPiece[] WhitePromo, NewPiece[] BlackPromo, // Pawn Movement
+        static bool PawnMove8(int destinationX, int destinationY, int turn, bool capture, int enPassantWhite, int enPassantBlack, NewPiece[] WhitePromo, NewPiece[] BlackPromo, // Pawn Movement
             King WhiteKing, Queen WhiteQueen, Bishop WhiteBishop1, Bishop WhiteBishop2, Knight WhiteKnight1, Knight WhiteKnight2, Rook WhiteRook1, Rook WhiteRook2,
             Pawn WhitePawn1, Pawn WhitePawn2, Pawn WhitePawn3, Pawn WhitePawn4, Pawn WhitePawn5, Pawn WhitePawn6, Pawn WhitePawn7, Pawn WhitePawn8,
             King BlackKing, Queen BlackQueen, Bishop BlackBishop1, Bishop BlackBishop2, Knight BlackKnight1, Knight BlackKnight2, Rook BlackRook1, Rook BlackRook2,
@@ -9736,7 +9738,7 @@ namespace Chess
 
                     if (destinationY == WhitePawn8.Y + 1 && destinationX == WhitePawn8.X + 1)
                     {
-                        if (EnPassant(WhitePawn8.X, WhitePawn8.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(WhitePawn8.X, WhitePawn8.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -9748,7 +9750,7 @@ namespace Chess
 
                     if (destinationY == WhitePawn8.Y + 1 && destinationX == WhitePawn8.X - 1)
                     {
-                        if (EnPassant(WhitePawn8.X, WhitePawn8.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(WhitePawn8.X, WhitePawn8.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -9836,7 +9838,7 @@ namespace Chess
 
                     if (destinationY == BlackPawn8.Y - 1 && destinationX == BlackPawn8.X + 1)
                     {
-                        if (EnPassant(BlackPawn8.X, BlackPawn8.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(BlackPawn8.X, BlackPawn8.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -9848,7 +9850,7 @@ namespace Chess
 
                     if (destinationY == BlackPawn8.Y - 1 && destinationX == BlackPawn8.X - 1)
                     {
-                        if (EnPassant(BlackPawn8.X, BlackPawn8.Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                        if (EnPassant(BlackPawn8.X, BlackPawn8.Y, turn, capture, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -10813,7 +10815,7 @@ namespace Chess
         // Special Moves
 
 
-        static bool EnPassant(int currentX, int currentY, int turn, int enPassantWhite, int enPassantBlack, NewPiece[] WhitePromo, NewPiece[] BlackPromo, // En Passant
+        static bool EnPassant(int currentX, int currentY, int turn, bool capture, int enPassantWhite, int enPassantBlack, NewPiece[] WhitePromo, NewPiece[] BlackPromo, // En Passant
         King WhiteKing, Queen WhiteQueen, Bishop WhiteBishop1, Bishop WhiteBishop2, Knight WhiteKnight1, Knight WhiteKnight2, Rook WhiteRook1, Rook WhiteRook2,
         Pawn WhitePawn1, Pawn WhitePawn2, Pawn WhitePawn3, Pawn WhitePawn4, Pawn WhitePawn5, Pawn WhitePawn6, Pawn WhitePawn7, Pawn WhitePawn8,
         King BlackKing, Queen BlackQueen, Bishop BlackBishop1, Bishop BlackBishop2, Knight BlackKnight1, Knight BlackKnight2, Rook BlackRook1, Rook BlackRook2,
@@ -10828,12 +10830,14 @@ namespace Chess
                         {
                             if (currentX == BlackPawn1.X - 1 || currentX == BlackPawn1.X + 1)
                             {                                                       // Make sure both Pawns are adjacent
-
-                                CapturePiece(BlackPawn1.X, BlackPawn1.Y, turn, WhitePromo, BlackPromo,
-                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
-                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
-                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
-                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
+                                if (capture)
+                                {
+                                    CapturePiece(BlackPawn1.X, BlackPawn1.Y, turn, WhitePromo, BlackPromo,
+                                    WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                    WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                    BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                    BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
+                                }
 
                                 return true;
                             }
@@ -10845,13 +10849,14 @@ namespace Chess
                         {
                             if (currentX == BlackPawn2.X - 1 || currentX == BlackPawn2.X + 1)
                             {                                                       // Make sure both Pawns are adjacent
-
-                                CapturePiece(BlackPawn2.X, BlackPawn2.Y, turn, WhitePromo, BlackPromo,
-                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
-                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
-                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
-                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
-
+                                if (capture)
+                                {
+                                    CapturePiece(BlackPawn2.X, BlackPawn2.Y, turn, WhitePromo, BlackPromo,
+                                    WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                    WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                    BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                    BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
+                                }
                                 return true;
                             }
                         }
@@ -10862,13 +10867,14 @@ namespace Chess
                         {
                             if (currentX == BlackPawn3.X - 1 || currentX == BlackPawn3.X + 1)
                             {                                                       // Make sure both Pawns are adjacent
-
-                                CapturePiece(BlackPawn3.X, BlackPawn3.Y, turn, WhitePromo, BlackPromo,
-                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
-                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
-                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
-                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
-
+                                if (capture)
+                                {
+                                    CapturePiece(BlackPawn3.X, BlackPawn3.Y, turn, WhitePromo, BlackPromo,
+                                    WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                    WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                    BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                    BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
+                                }
                                 return true;
                             }
                         }
@@ -10879,13 +10885,14 @@ namespace Chess
                         {
                             if (currentX == BlackPawn4.X - 1 || currentX == BlackPawn4.X + 1)
                             {                                                       // Make sure both Pawns are adjacent
-
-                                CapturePiece(BlackPawn4.X, BlackPawn4.Y, turn, WhitePromo, BlackPromo,
-                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
-                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
-                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
-                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
-
+                                if (capture)
+                                {
+                                    CapturePiece(BlackPawn4.X, BlackPawn4.Y, turn, WhitePromo, BlackPromo,
+                                    WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                    WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                    BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                    BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
+                                }
                                 return true;
                             }
                         }
@@ -10896,13 +10903,14 @@ namespace Chess
                         {
                             if (currentX == BlackPawn5.X - 1 || currentX == BlackPawn5.X + 1)
                             {                                                       // Make sure both Pawns are adjacent
-
-                                CapturePiece(BlackPawn5.X, BlackPawn5.Y, turn, WhitePromo, BlackPromo,
-                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
-                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
-                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
-                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
-
+                                if (capture)
+                                {
+                                    CapturePiece(BlackPawn5.X, BlackPawn5.Y, turn, WhitePromo, BlackPromo,
+                                    WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                    WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                    BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                    BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
+                                }
                                 return true;
                             }
                         }
@@ -10913,13 +10921,14 @@ namespace Chess
                         {
                             if (currentX == BlackPawn6.X - 1 || currentX == BlackPawn6.X + 1)
                             {                                                       // Make sure both Pawns are adjacent
-
-                                CapturePiece(BlackPawn6.X, BlackPawn6.Y, turn, WhitePromo, BlackPromo,
-                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
-                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
-                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
-                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
-
+                                if (capture)
+                                {
+                                    CapturePiece(BlackPawn6.X, BlackPawn6.Y, turn, WhitePromo, BlackPromo,
+                                    WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                    WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                    BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                    BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
+                                }
                                 return true;
                             }
                         }
@@ -10930,13 +10939,14 @@ namespace Chess
                         {
                             if (currentX == BlackPawn7.X - 1 || currentX == BlackPawn7.X + 1)
                             {                                                       // Make sure both Pawns are adjacent
-
-                                CapturePiece(BlackPawn7.X, BlackPawn7.Y, turn, WhitePromo, BlackPromo,
-                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
-                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
-                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
-                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
-
+                                if (capture)
+                                {
+                                    CapturePiece(BlackPawn7.X, BlackPawn7.Y, turn, WhitePromo, BlackPromo,
+                                    WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                    WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                    BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                    BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
+                                }
                                 return true;
                             }
                         }
@@ -10947,13 +10957,14 @@ namespace Chess
                         {
                             if (currentX == BlackPawn8.X - 1 || currentX == BlackPawn8.X + 1)
                             {                                                       // Make sure both Pawns are adjacent
-
-                                CapturePiece(BlackPawn8.X, BlackPawn8.Y, turn, WhitePromo, BlackPromo,
-                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
-                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
-                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
-                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
-
+                                if (capture)
+                                {
+                                    CapturePiece(BlackPawn8.X, BlackPawn8.Y, turn, WhitePromo, BlackPromo,
+                                    WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                    WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                    BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                    BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
+                                }
                                 return true;
                             }
                         }
@@ -10969,12 +10980,14 @@ namespace Chess
                         {
                             if (currentX == WhitePawn1.X - 1 || currentX == WhitePawn1.X + 1)
                             {                                                       // Make sure both Pawns are adjacent
-                                CapturePiece(WhitePawn1.X, WhitePawn1.Y, turn, WhitePromo, BlackPromo,
-                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
-                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
-                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
-                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
-
+                                if (capture)
+                                {
+                                    CapturePiece(WhitePawn1.X, WhitePawn1.Y, turn, WhitePromo, BlackPromo,
+                                    WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                    WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                    BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                    BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
+                                }
                                 return true;
                             }
                         }
@@ -10985,12 +10998,14 @@ namespace Chess
                         {
                             if (currentX == WhitePawn2.X - 1 || currentX == WhitePawn2.X + 1)
                             {                                                       // Make sure both Pawns are adjacent
-                                CapturePiece(WhitePawn2.X, WhitePawn2.Y, turn, WhitePromo, BlackPromo,
-                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
-                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
-                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
-                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
-
+                                if (capture)
+                                {
+                                    CapturePiece(WhitePawn2.X, WhitePawn2.Y, turn, WhitePromo, BlackPromo,
+                                    WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                    WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                    BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                    BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
+                                }
                                 return true;
                             }
                         }
@@ -11001,12 +11016,14 @@ namespace Chess
                         {
                             if (currentX == WhitePawn3.X - 1 || currentX == WhitePawn3.X + 1)
                             {                                                       // Make sure both Pawns are adjacent
-                                CapturePiece(WhitePawn3.X, WhitePawn3.Y, turn, WhitePromo, BlackPromo,
-                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
-                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
-                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
-                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
-
+                                if (capture)
+                                {
+                                    CapturePiece(WhitePawn3.X, WhitePawn3.Y, turn, WhitePromo, BlackPromo,
+                                    WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                    WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                    BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                    BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
+                                }
                                 return true;
                             }
                         }
@@ -11017,12 +11034,14 @@ namespace Chess
                         {
                             if (currentX == WhitePawn4.X - 1 || currentX == WhitePawn4.X + 1)
                             {                                                       // Make sure both Pawns are adjacent
-                                CapturePiece(WhitePawn4.X, WhitePawn4.Y, turn, WhitePromo, BlackPromo,
-                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
-                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
-                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
-                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
-
+                                if (capture)
+                                {
+                                    CapturePiece(WhitePawn4.X, WhitePawn4.Y, turn, WhitePromo, BlackPromo,
+                                    WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                    WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                    BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                    BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
+                                }
                                 return true;
                             }
                         }
@@ -11033,12 +11052,14 @@ namespace Chess
                         {
                             if (currentX == WhitePawn5.X - 1 || currentX == WhitePawn5.X + 1)
                             {                                                       // Make sure both Pawns are adjacent
-                                CapturePiece(WhitePawn5.X, WhitePawn5.Y, turn, WhitePromo, BlackPromo,
-                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
-                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
-                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
-                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
-
+                                if (capture)
+                                {
+                                    CapturePiece(WhitePawn5.X, WhitePawn5.Y, turn, WhitePromo, BlackPromo,
+                                    WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                    WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                    BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                    BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
+                                }
                                 return true;
                             }
                         }
@@ -11049,12 +11070,14 @@ namespace Chess
                         {
                             if (currentX == WhitePawn6.X - 1 || currentX == WhitePawn6.X + 1)
                             {                                                       // Make sure both Pawns are adjacent
-                                CapturePiece(WhitePawn6.X, WhitePawn6.Y, turn, WhitePromo, BlackPromo,
-                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
-                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
-                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
-                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
-
+                                if (capture)
+                                {
+                                    CapturePiece(WhitePawn6.X, WhitePawn6.Y, turn, WhitePromo, BlackPromo,
+                                    WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                    WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                    BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                    BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
+                                }
                                 return true;
                             }
                         }
@@ -11065,12 +11088,14 @@ namespace Chess
                         {
                             if (currentX == WhitePawn7.X - 1 || currentX == WhitePawn7.X + 1)
                             {                                                       // Make sure both Pawns are adjacent
-                                CapturePiece(WhitePawn7.X, WhitePawn7.Y, turn, WhitePromo, BlackPromo,
-                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
-                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
-                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
-                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
-
+                                if (capture)
+                                {
+                                    CapturePiece(WhitePawn7.X, WhitePawn7.Y, turn, WhitePromo, BlackPromo,
+                                    WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                    WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                    BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                    BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
+                                }
                                 return true;
                             }
                         }
@@ -11081,12 +11106,14 @@ namespace Chess
                         {
                             if (currentX == WhitePawn8.X - 1 || currentX == WhitePawn8.X + 1)
                             {                                                       // Make sure both Pawns are adjacent
-                                CapturePiece(WhitePawn8.X, WhitePawn8.Y, turn, WhitePromo, BlackPromo,
-                                WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
-                                WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
-                                BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
-                                BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
-
+                                if (capture)
+                                {
+                                    CapturePiece(WhitePawn8.X, WhitePawn8.Y, turn, WhitePromo, BlackPromo,
+                                    WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                                    WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                                    BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                                    BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8);
+                                }
                                 return true;
                             }
                         }
@@ -14191,7 +14218,7 @@ namespace Chess
             {
                 for (int X = 1; X <= 8; X++)                                        // Check all possible spaces for promotion
                 {
-                    if (PawnMove1(X, 8, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                    if (PawnMove1(X, 8, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -14200,7 +14227,7 @@ namespace Chess
                         string code = "1" + NumberToLetter(X) + "8";
                         return code;
                     }
-                    if (PawnMove2(X, 8, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                    if (PawnMove2(X, 8, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -14209,7 +14236,7 @@ namespace Chess
                         string code = "2" + NumberToLetter(X) + "8";
                         return code;
                     }
-                    if (PawnMove3(X, 8, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                    if (PawnMove3(X, 8, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -14218,7 +14245,7 @@ namespace Chess
                         string code = "3" + NumberToLetter(X) + "8";
                         return code;
                     }
-                    if (PawnMove4(X, 8, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                    if (PawnMove4(X, 8, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -14227,7 +14254,7 @@ namespace Chess
                         string code = "4" + NumberToLetter(X) + "8";
                         return code;
                     }
-                    if (PawnMove5(X, 8, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                    if (PawnMove5(X, 8, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -14236,7 +14263,7 @@ namespace Chess
                         string code = "5" + NumberToLetter(X) + "8";
                         return code;
                     }
-                    if (PawnMove6(X, 8, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                    if (PawnMove6(X, 8, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -14245,7 +14272,7 @@ namespace Chess
                         string code = "6" + NumberToLetter(X) + "8";
                         return code;
                     }
-                    if (PawnMove7(X, 8, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                    if (PawnMove7(X, 8, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -14254,7 +14281,7 @@ namespace Chess
                         string code = "7" + NumberToLetter(X) + "8";
                         return code;
                     }
-                    if (PawnMove8(X, 8, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                    if (PawnMove8(X, 8, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -14269,7 +14296,7 @@ namespace Chess
             {
                 for (int X = 8; X >= 1; X--)                                        // Check all possible spaces for promotion
                 {
-                    if (PawnMove1(X, 1, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                    if (PawnMove1(X, 1, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -14278,7 +14305,7 @@ namespace Chess
                         string code = "1" + NumberToLetter(X) + "1";
                         return code;
                     }
-                    if (PawnMove2(X, 1, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                    if (PawnMove2(X, 1, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -14287,7 +14314,7 @@ namespace Chess
                         string code = "2" + NumberToLetter(X) + "1";
                         return code;
                     }
-                    if (PawnMove3(X, 1, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                    if (PawnMove3(X, 1, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -14296,7 +14323,7 @@ namespace Chess
                         string code = "3" + NumberToLetter(X) + "1";
                         return code;
                     }
-                    if (PawnMove4(X, 1, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                    if (PawnMove4(X, 1, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -14305,7 +14332,7 @@ namespace Chess
                         string code = "4" + NumberToLetter(X) + "1";
                         return code;
                     }
-                    if (PawnMove5(X, 1, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                    if (PawnMove5(X, 1, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -14314,7 +14341,7 @@ namespace Chess
                         string code = "5" + NumberToLetter(X) + "1";
                         return code;
                     }
-                    if (PawnMove6(X, 1, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                    if (PawnMove6(X, 1, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -14323,7 +14350,7 @@ namespace Chess
                         string code = "6" + NumberToLetter(X) + "1";
                         return code;
                     }
-                    if (PawnMove7(X, 1, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                    if (PawnMove7(X, 1, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -14332,7 +14359,7 @@ namespace Chess
                         string code = "7" + NumberToLetter(X) + "1";
                         return code;
                     }
-                    if (PawnMove8(X, 1, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+                    if (PawnMove8(X, 1, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                     WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                     WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                     BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -14610,7 +14637,7 @@ namespace Chess
                 return true;
             }
 
-            if (PawnMove1(X, Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+            if (PawnMove1(X, Y, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                 WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                 WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                 BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -14635,7 +14662,7 @@ namespace Chess
                 return true;
             }
 
-            if (PawnMove2(X, Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+            if (PawnMove2(X, Y, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                 WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                 WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                 BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -14660,7 +14687,7 @@ namespace Chess
                 return true;
             }
 
-            if (PawnMove3(X, Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+            if (PawnMove3(X, Y, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                 WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                 WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                 BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -14685,7 +14712,7 @@ namespace Chess
                 return true;
             }
 
-            if (PawnMove4(X, Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+            if (PawnMove4(X, Y, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                 WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                 WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                 BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -14710,7 +14737,7 @@ namespace Chess
                 return true;
             }
 
-            if (PawnMove5(X, Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+            if (PawnMove5(X, Y, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                 WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                 WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                 BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -14735,7 +14762,7 @@ namespace Chess
                 return true;
             }
 
-            if (PawnMove6(X, Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+            if (PawnMove6(X, Y, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                 WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                 WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                 BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -14760,7 +14787,7 @@ namespace Chess
                 return true;
             }
 
-            if (PawnMove7(X, Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+            if (PawnMove7(X, Y, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                 WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                 WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                 BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -14785,7 +14812,7 @@ namespace Chess
                 return true;
             }
 
-            if (PawnMove8(X, Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
+            if (PawnMove8(X, Y, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo,
                 WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                 WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                 BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -15396,7 +15423,7 @@ namespace Chess
                         }
 
 
-                        if (PawnMove1(X, Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn1 movement
+                        if (PawnMove1(X, Y, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn1 movement
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -15454,7 +15481,7 @@ namespace Chess
                             }
                         }
 
-                        if (PawnMove2(X, Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn2 movement
+                        if (PawnMove2(X, Y, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn2 movement
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -15512,7 +15539,7 @@ namespace Chess
                             }
                         }
 
-                        if (PawnMove3(X, Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn3 movement
+                        if (PawnMove3(X, Y, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn3 movement
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -15570,7 +15597,7 @@ namespace Chess
                             }
                         }
 
-                        if (PawnMove4(X, Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn4 movement
+                        if (PawnMove4(X, Y, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn4 movement
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -15628,7 +15655,7 @@ namespace Chess
                             }
                         }
 
-                        if (PawnMove5(X, Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn5 movement
+                        if (PawnMove5(X, Y, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn5 movement
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -15686,7 +15713,7 @@ namespace Chess
                             }
                         }
 
-                        if (PawnMove6(X, Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn6 movement
+                        if (PawnMove6(X, Y, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn6 movement
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -15744,7 +15771,7 @@ namespace Chess
                             }
                         }
 
-                        if (PawnMove7(X, Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn7 movement
+                        if (PawnMove7(X, Y, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn7 movement
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
@@ -15802,7 +15829,7 @@ namespace Chess
                             }
                         }
 
-                        if (PawnMove8(X, Y, turn, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn8 movement
+                        if (PawnMove8(X, Y, turn, false, enPassantWhite, enPassantBlack, WhitePromo, BlackPromo, // Pawn8 movement
                         WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
                         WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
                         BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
