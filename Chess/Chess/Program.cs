@@ -3018,6 +3018,30 @@ namespace Chess
                                     }
                                 }
                             }
+
+                            if (CastlingTest(turn, enPassantWhite, enPassantBlack, 1, WhitePromo, BlackPromo,
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (boardX == 7 && boardY == 1)
+                                {
+                                    Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                }
+                            }
+
+                            if (CastlingTest(turn, enPassantWhite, enPassantBlack, 2, WhitePromo, BlackPromo,
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (boardX == 3 && boardY == 1)
+                                {
+                                    Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                }
+                            }
                         }
 
                         if (piece == "queen")
@@ -3811,6 +3835,30 @@ namespace Chess
 
                                         Console.BackgroundColor = ConsoleColor.DarkRed;
                                     }
+                                }
+                            }
+
+                            if (CastlingTest(turn, enPassantWhite, enPassantBlack, 1, WhitePromo, BlackPromo,
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (boardX == 7 && boardY == 8)
+                                {
+                                    Console.BackgroundColor = ConsoleColor.DarkBlue;
+                                }
+                            }
+
+                            if (CastlingTest(turn, enPassantWhite, enPassantBlack, 2, WhitePromo, BlackPromo,
+                            WhiteKing, WhiteQueen, WhiteBishop1, WhiteBishop2, WhiteKnight1, WhiteKnight2, WhiteRook1, WhiteRook2,
+                            WhitePawn1, WhitePawn2, WhitePawn3, WhitePawn4, WhitePawn5, WhitePawn6, WhitePawn7, WhitePawn8,
+                            BlackKing, BlackQueen, BlackBishop1, BlackBishop2, BlackKnight1, BlackKnight2, BlackRook1, BlackRook2,
+                            BlackPawn1, BlackPawn2, BlackPawn3, BlackPawn4, BlackPawn5, BlackPawn6, BlackPawn7, BlackPawn8) == true)
+                            {
+                                if (boardX == 3 && boardY == 8)
+                                {
+                                    Console.BackgroundColor = ConsoleColor.DarkBlue;
                                 }
                             }
                         }
