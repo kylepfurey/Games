@@ -7,7 +7,14 @@ namespace Chess
     {
         static void Main(string[] args)
         {
-            Console.OutputEncoding = Encoding.Unicode;
+            if (args.Length >= 1 && args[0] == "--Unix")
+            {
+                Console.OutputEncoding = System.Text.Encoding.UTF8;
+            }
+            else
+            {
+                Console.OutputEncoding = Encoding.Unicode;
+            }
 
             int boardX = 0;
             int boardY = 0;
