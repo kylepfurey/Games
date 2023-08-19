@@ -1,0 +1,498 @@
+{ "cat":"", "pid":12345, "tid":0, "ts":0, "ph":"M", "name":"process_name", "args": { "name":"bee_backend" } }
+,{ "pid":12345, "tid":0, "ts":1692416366871144, "dur":853, "ph":"X", "name": "DriverInitData",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416366872004, "dur":42, "ph":"X", "name": "Tundra",  "args": { "detail":"RemoveStaleOutputs" }}
+,{ "pid":12345, "tid":0, "ts":1692416366872059, "dur":12, "ph":"X", "name": "Tundra",  "args": { "detail":"PrepareNodes" }}
+,{ "pid":12345, "tid":0, "ts":1692416366872071, "dur":388, "ph":"X", "name": "Tundra",  "args": { "detail":"BuildQueueInit" }}
+,{ "pid":12345, "tid":0, "ts":1692416366872473, "dur":348, "ph":"X", "name": "EnqueueRequestedNodes",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416366872821, "dur":0, "ph":"X", "name": "SortWorkingStack",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367511880, "dur":316, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512196, "dur":12, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512208, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512210, "dur":7, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512217, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512218, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512222, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512223, "dur":6, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512229, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512230, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512234, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512235, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512239, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512241, "dur":3, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512244, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512245, "dur":5, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512250, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512251, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512255, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512256, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512260, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512262, "dur":5, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512267, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512268, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512272, "dur":3, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512275, "dur":3, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512278, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512280, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512284, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512285, "dur":5, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512290, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512291, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512295, "dur":0, "ph":"X", "name": "SharedResourceDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512309, "dur":2, "ph":"X", "name": "BuildQueueDestroyTail",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367512333, "dur":1174, "ph":"X", "name": "Tundra",  "args": { "detail":"Write AllBuiltNodes" }}
+,{ "pid":12345, "tid":1, "ts":1692416366872531, "dur":299, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1692416366872830, "dur":3583, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1692416366876421, "dur":36890, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
+,{ "pid":12345, "tid":1, "ts":1692416366913316, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1692416366913559, "dur":872, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
+,{ "pid":12345, "tid":1, "ts":1692416366914460, "dur":18635, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1692416366933101, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1692416366933110, "dur":4505, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1692416366937645, "dur":39253, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1692416366976904, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1692416366976912, "dur":8662, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1692416366985608, "dur":32868, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.PhysicsModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1692416367018479, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1692416367018508, "dur":1088, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.PhysicsModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1692416367019626, "dur":16386, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1692416367036016, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1692416367036022, "dur":1465, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1692416367037515, "dur":20726, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.ARModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1692416367058245, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1692416367058251, "dur":6674, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.ARModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1692416367064964, "dur":67582, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll" }}
+,{ "pid":12345, "tid":1, "ts":1692416367132552, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1692416367132561, "dur":1211, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll" }}
+,{ "pid":12345, "tid":1, "ts":1692416367133803, "dur":41510, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/System.IO.Compression.FileSystem.dll" }}
+,{ "pid":12345, "tid":1, "ts":1692416367175319, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1692416367175328, "dur":1916, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/System.IO.Compression.FileSystem.dll" }}
+,{ "pid":12345, "tid":1, "ts":1692416367177276, "dur":54516, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/netstandard.dll" }}
+,{ "pid":12345, "tid":1, "ts":1692416367231796, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1692416367231802, "dur":975, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/netstandard.dll" }}
+,{ "pid":12345, "tid":1, "ts":1692416367232800, "dur":26, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/resources.assets" }}
+,{ "pid":12345, "tid":1, "ts":1692416367232828, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1692416367232831, "dur":2396, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/resources.assets" }}
+,{ "pid":12345, "tid":1, "ts":1692416367235261, "dur":28, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/level0" }}
+,{ "pid":12345, "tid":1, "ts":1692416367235291, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1692416367235295, "dur":3554, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/level0" }}
+,{ "pid":12345, "tid":1, "ts":1692416367238882, "dur":97, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/boot.config" }}
+,{ "pid":12345, "tid":1, "ts":1692416367238981, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1692416367238985, "dur":829, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/boot.config" }}
+,{ "pid":12345, "tid":1, "ts":1692416367239838, "dur":272044, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1692416366872602, "dur":246, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1692416366872848, "dur":3578, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1692416366876427, "dur":181, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
+,{ "pid":12345, "tid":2, "ts":1692416366876610, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1692416366878858, "dur":2877, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
+,{ "pid":12345, "tid":2, "ts":1692416366881779, "dur":119, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/MonoBleedingEdge/etc/mono/config" }}
+,{ "pid":12345, "tid":2, "ts":1692416366881900, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1692416366881905, "dur":1082, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/MonoBleedingEdge/etc/mono/config" }}
+,{ "pid":12345, "tid":2, "ts":1692416366883022, "dur":79256, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/UnityPlayer.dll" }}
+,{ "pid":12345, "tid":2, "ts":1692416366962282, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1692416366962287, "dur":17168, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/UnityPlayer.dll" }}
+,{ "pid":12345, "tid":2, "ts":1692416366979497, "dur":18627, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1692416366998127, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1692416366998133, "dur":824, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1692416366998987, "dur":18536, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1692416367017526, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1692416367017532, "dur":1190, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1692416367018753, "dur":23731, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.DirectorModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1692416367042490, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1692416367042498, "dur":1815, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.DirectorModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1692416367044350, "dur":121517, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1692416367165870, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1692416367165874, "dur":2595, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1692416367168496, "dur":118050, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/System.Core.dll" }}
+,{ "pid":12345, "tid":2, "ts":1692416367286553, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1692416367286562, "dur":1423, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/System.Core.dll" }}
+,{ "pid":12345, "tid":2, "ts":1692416367288014, "dur":223888, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1692416366872561, "dur":272, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1692416366872833, "dur":3594, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1692416366876428, "dur":11540, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
+,{ "pid":12345, "tid":3, "ts":1692416366887971, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1692416366887988, "dur":1744, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
+,{ "pid":12345, "tid":3, "ts":1692416366889767, "dur":28472, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.VRModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1692416366918243, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1692416366918249, "dur":5520, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.VRModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1692416366923799, "dur":17946, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UmbraModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1692416366941750, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1692416366941757, "dur":954, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UmbraModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1692416366942737, "dur":46961, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.TerrainModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1692416366989703, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1692416366989709, "dur":918, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.TerrainModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1692416366990668, "dur":21122, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.LocalizationModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1692416367011795, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1692416367011803, "dur":1314, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.LocalizationModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1692416367013150, "dur":22109, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.GridModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1692416367035265, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1692416367035273, "dur":4772, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.GridModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1692416367040076, "dur":38982, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.AnimationModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1692416367079064, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1692416367079071, "dur":3032, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.AnimationModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1692416367082130, "dur":116272, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/System.ServiceModel.Internals.dll" }}
+,{ "pid":12345, "tid":3, "ts":1692416367198408, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1692416367198417, "dur":8613, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/System.ServiceModel.Internals.dll" }}
+,{ "pid":12345, "tid":3, "ts":1692416367207058, "dur":303774, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/Assembly-CSharp.dll" }}
+,{ "pid":12345, "tid":3, "ts":1692416367510836, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1692416367510843, "dur":962, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/Assembly-CSharp.dll" }}
+,{ "pid":12345, "tid":3, "ts":1692416367511826, "dur":1, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"Player" }}
+,{ "pid":12345, "tid":3, "ts":1692416367511828, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1692416366872592, "dur":248, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1692416366872841, "dur":3577, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1692416366876421, "dur":162, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
+,{ "pid":12345, "tid":4, "ts":1692416366876586, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1692416366878897, "dur":3107, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
+,{ "pid":12345, "tid":4, "ts":1692416366882047, "dur":88, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/MonoBleedingEdge/etc/mono/browscap.ini" }}
+,{ "pid":12345, "tid":4, "ts":1692416366882137, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1692416366882187, "dur":1518, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/MonoBleedingEdge/etc/mono/browscap.ini" }}
+,{ "pid":12345, "tid":4, "ts":1692416366883730, "dur":5453, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/UnityCrashHandler64.exe" }}
+,{ "pid":12345, "tid":4, "ts":1692416366889186, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1692416366889190, "dur":1833, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/UnityCrashHandler64.exe" }}
+,{ "pid":12345, "tid":4, "ts":1692416366891079, "dur":18295, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.VehiclesModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1692416366909378, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1692416366909681, "dur":2448, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.VehiclesModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1692416366912179, "dur":17258, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1692416366929440, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1692416366929445, "dur":3862, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1692416366933342, "dur":35591, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1692416366968938, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1692416366968944, "dur":11533, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1692416366980504, "dur":19727, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1692416367000234, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1692416367000283, "dur":10343, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1692416367010659, "dur":16369, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.HotReloadModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1692416367027031, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1692416367027037, "dur":1142, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.HotReloadModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1692416367028205, "dur":45838, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.AudioModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1692416367074066, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1692416367074073, "dur":7524, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.AudioModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1692416367081629, "dur":58677, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/System.Transactions.dll" }}
+,{ "pid":12345, "tid":4, "ts":1692416367140310, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1692416367140317, "dur":1055, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/System.Transactions.dll" }}
+,{ "pid":12345, "tid":4, "ts":1692416367141399, "dur":215481, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/System.dll" }}
+,{ "pid":12345, "tid":4, "ts":1692416367356884, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1692416367356890, "dur":1564, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/System.dll" }}
+,{ "pid":12345, "tid":4, "ts":1692416367358480, "dur":153409, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1692416366872627, "dur":228, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1692416366872855, "dur":3570, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1692416366876426, "dur":10915, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/MonoBleedingEdge/etc/mono/4.0/web.config" }}
+,{ "pid":12345, "tid":5, "ts":1692416366887344, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1692416366887428, "dur":1814, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/MonoBleedingEdge/etc/mono/4.0/web.config" }}
+,{ "pid":12345, "tid":5, "ts":1692416366889302, "dur":20888, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.WindModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1692416366910193, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1692416366910198, "dur":16535, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.WindModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1692416366926765, "dur":39292, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1692416366966060, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1692416366967308, "dur":1641, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1692416366968977, "dur":37607, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1692416367006589, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1692416367006596, "dur":6616, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1692416367013326, "dur":16848, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.GIModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1692416367030179, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1692416367030186, "dur":2012, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.GIModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1692416367032228, "dur":38900, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1692416367071131, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1692416367071138, "dur":2646, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1692416367073813, "dur":220470, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/System.Xml.dll" }}
+,{ "pid":12345, "tid":5, "ts":1692416367294287, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1692416367294294, "dur":2514, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/System.Xml.dll" }}
+,{ "pid":12345, "tid":5, "ts":1692416367296838, "dur":215042, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1692416366872653, "dur":204, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1692416366872858, "dur":3558, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1692416366876421, "dur":200, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":6, "ts":1692416366876624, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1692416366888702, "dur":2310, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":6, "ts":1692416366891060, "dur":32221, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.VFXModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1692416366923286, "dur":3, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1692416366923294, "dur":3137, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.VFXModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1692416366926464, "dur":32979, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UIModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1692416366959456, "dur":6, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1692416366959480, "dur":1081, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UIModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1692416366960590, "dur":19040, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.StreamingModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1692416366979634, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1692416366979641, "dur":7827, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.StreamingModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1692416366987496, "dur":100008, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1692416367087510, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1692416367087519, "dur":7596, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1692416367095154, "dur":141199, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/System.Runtime.Serialization.dll" }}
+,{ "pid":12345, "tid":6, "ts":1692416367236356, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1692416367236361, "dur":4668, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/System.Runtime.Serialization.dll" }}
+,{ "pid":12345, "tid":6, "ts":1692416367241060, "dur":270817, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1692416366872689, "dur":175, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1692416366872864, "dur":3558, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1692416366876423, "dur":223, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":7, "ts":1692416366876649, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1692416366888765, "dur":3175, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":7, "ts":1692416366891974, "dur":17741, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1692416366909719, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1692416366909770, "dur":2295, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1692416366912101, "dur":16865, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1692416366928972, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1692416366928981, "dur":8985, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1692416366937995, "dur":17906, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1692416366955906, "dur":3, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1692416366955915, "dur":3673, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1692416366959621, "dur":25449, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.SubstanceModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1692416366985073, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1692416366985077, "dur":2092, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.SubstanceModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1692416366987195, "dur":17789, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1692416367004991, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1692416367004999, "dur":11052, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1692416367016080, "dur":29532, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1692416367045618, "dur":3, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1692416367045628, "dur":1119, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1692416367046775, "dur":32917, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.AIModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1692416367079695, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1692416367079701, "dur":15789, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.AIModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1692416367095515, "dur":72210, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/System.Numerics.dll" }}
+,{ "pid":12345, "tid":7, "ts":1692416367167729, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1692416367167735, "dur":1879, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/System.Numerics.dll" }}
+,{ "pid":12345, "tid":7, "ts":1692416367169641, "dur":105182, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/System.Configuration.dll" }}
+,{ "pid":12345, "tid":7, "ts":1692416367274828, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1692416367274835, "dur":1011, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/System.Configuration.dll" }}
+,{ "pid":12345, "tid":7, "ts":1692416367275868, "dur":236016, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1692416366872719, "dur":147, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1692416366872866, "dur":3563, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1692416366876429, "dur":235, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":8, "ts":1692416366876667, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1692416366916250, "dur":1390, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":8, "ts":1692416366917672, "dur":53643, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1692416366971320, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1692416366971326, "dur":9452, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1692416366980807, "dur":16806, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.ProfilerModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1692416366997618, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1692416366997626, "dur":996, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.ProfilerModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1692416366998657, "dur":81900, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.IMGUIModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1692416367080561, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1692416367080566, "dur":1823, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.IMGUIModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1692416367082420, "dur":166313, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/System.Security.dll" }}
+,{ "pid":12345, "tid":8, "ts":1692416367248738, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1692416367248746, "dur":1408, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/System.Security.dll" }}
+,{ "pid":12345, "tid":8, "ts":1692416367250181, "dur":261707, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1692416366872757, "dur":115, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1692416366872872, "dur":3549, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1692416366876422, "dur":11686, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
+,{ "pid":12345, "tid":9, "ts":1692416366888110, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1692416366888166, "dur":2587, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
+,{ "pid":12345, "tid":9, "ts":1692416366890825, "dur":35904, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1692416366926732, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1692416366926738, "dur":3825, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1692416366930595, "dur":19059, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.TLSModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1692416366949660, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1692416366949668, "dur":1004, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.TLSModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1692416366950701, "dur":42723, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1692416366993427, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1692416366993433, "dur":1752, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1692416366995214, "dur":30488, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1692416367025706, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1692416367025714, "dur":2028, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1692416367027774, "dur":19669, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1692416367047446, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1692416367047451, "dur":829, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1692416367048311, "dur":19068, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1692416367067383, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1692416367067390, "dur":1192, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1692416367068609, "dur":96898, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/Unity.InputSystem.dll" }}
+,{ "pid":12345, "tid":9, "ts":1692416367165514, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1692416367165523, "dur":2326, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/Unity.InputSystem.dll" }}
+,{ "pid":12345, "tid":9, "ts":1692416367167878, "dur":50419, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/System.Data.DataSetExtensions.dll" }}
+,{ "pid":12345, "tid":9, "ts":1692416367218303, "dur":3, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1692416367218312, "dur":1244, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/System.Data.DataSetExtensions.dll" }}
+,{ "pid":12345, "tid":9, "ts":1692416367219585, "dur":30, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Resources/unity_builtin_extra" }}
+,{ "pid":12345, "tid":9, "ts":1692416367219617, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1692416367219662, "dur":4575, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Resources/unity_builtin_extra" }}
+,{ "pid":12345, "tid":9, "ts":1692416367224268, "dur":31, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/sharedassets0.resource" }}
+,{ "pid":12345, "tid":9, "ts":1692416367224301, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1692416367224305, "dur":4303, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/sharedassets0.resource" }}
+,{ "pid":12345, "tid":9, "ts":1692416367228635, "dur":32, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/sharedassets0.assets" }}
+,{ "pid":12345, "tid":9, "ts":1692416367228669, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1692416367228674, "dur":1951, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/sharedassets0.assets" }}
+,{ "pid":12345, "tid":9, "ts":1692416367230650, "dur":12689, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/RuntimeInitializeOnLoads.json" }}
+,{ "pid":12345, "tid":9, "ts":1692416367243344, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1692416367243351, "dur":1183, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/RuntimeInitializeOnLoads.json" }}
+,{ "pid":12345, "tid":9, "ts":1692416367244563, "dur":267309, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1692416366872792, "dur":86, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1692416366872878, "dur":3552, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1692416366876431, "dur":225, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
+,{ "pid":12345, "tid":10, "ts":1692416366876658, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1692416366900854, "dur":2498, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
+,{ "pid":12345, "tid":10, "ts":1692416366903384, "dur":23088, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1692416366926538, "dur":3, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1692416366926545, "dur":3075, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1692416366929654, "dur":124133, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UIElementsModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1692416367053794, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1692416367053802, "dur":11829, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UIElementsModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1692416367065662, "dur":68641, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/Unity.Timeline.dll" }}
+,{ "pid":12345, "tid":10, "ts":1692416367134335, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1692416367134339, "dur":988, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/Unity.Timeline.dll" }}
+,{ "pid":12345, "tid":10, "ts":1692416367135361, "dur":88266, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/System.IO.Compression.dll" }}
+,{ "pid":12345, "tid":10, "ts":1692416367223633, "dur":3, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1692416367223642, "dur":2623, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/System.IO.Compression.dll" }}
+,{ "pid":12345, "tid":10, "ts":1692416367226296, "dur":29, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/sharedassets0.assets.resS" }}
+,{ "pid":12345, "tid":10, "ts":1692416367226327, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1692416367226332, "dur":3403, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/sharedassets0.assets.resS" }}
+,{ "pid":12345, "tid":10, "ts":1692416367229763, "dur":95, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/ScriptingAssemblies.json" }}
+,{ "pid":12345, "tid":10, "ts":1692416367229860, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1692416367229864, "dur":1916, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/ScriptingAssemblies.json" }}
+,{ "pid":12345, "tid":10, "ts":1692416367231805, "dur":30, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/resources.assets.resS" }}
+,{ "pid":12345, "tid":10, "ts":1692416367231837, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1692416367231840, "dur":4201, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/resources.assets.resS" }}
+,{ "pid":12345, "tid":10, "ts":1692416367236069, "dur":28, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/globalgamemanagers.assets" }}
+,{ "pid":12345, "tid":10, "ts":1692416367236119, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1692416367236123, "dur":1842, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/globalgamemanagers.assets" }}
+,{ "pid":12345, "tid":10, "ts":1692416367237994, "dur":28, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/globalgamemanagers" }}
+,{ "pid":12345, "tid":10, "ts":1692416367238024, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1692416367238029, "dur":1600, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/globalgamemanagers" }}
+,{ "pid":12345, "tid":10, "ts":1692416367239657, "dur":272224, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1692416366872815, "dur":8, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1692416366872823, "dur":3588, "ph":"X", "name": "CheckDagSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1692416366876422, "dur":1, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"WriteText Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info" }}
+,{ "pid":12345, "tid":11, "ts":1692416366876429, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1692416366877410, "dur":396, "ph":"X", "name": "WriteText",  "args": { "detail":"Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info" }}
+,{ "pid":12345, "tid":11, "ts":1692416366877811, "dur":49, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/app.info" }}
+,{ "pid":12345, "tid":11, "ts":1692416366877862, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1692416366878663, "dur":2549, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/app.info" }}
+,{ "pid":12345, "tid":11, "ts":1692416366881216, "dur":128, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":11, "ts":1692416366881347, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1692416366881552, "dur":1408, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":11, "ts":1692416366882991, "dur":20581, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
+,{ "pid":12345, "tid":11, "ts":1692416366903575, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1692416366903633, "dur":3934, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
+,{ "pid":12345, "tid":11, "ts":1692416366907599, "dur":21819, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1692416366929421, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1692416366929427, "dur":3966, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1692416366933433, "dur":80874, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1692416367014311, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1692416367014318, "dur":1021, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1692416367015367, "dur":54444, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.GameCenterModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1692416367069816, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1692416367069824, "dur":1007, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.GameCenterModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1692416367070861, "dur":94821, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/System.Xml.Linq.dll" }}
+,{ "pid":12345, "tid":11, "ts":1692416367165685, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1692416367165690, "dur":2012, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/System.Xml.Linq.dll" }}
+,{ "pid":12345, "tid":11, "ts":1692416367167743, "dur":155569, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/System.Data.dll" }}
+,{ "pid":12345, "tid":11, "ts":1692416367323316, "dur":3, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1692416367323323, "dur":1613, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/System.Data.dll" }}
+,{ "pid":12345, "tid":11, "ts":1692416367324957, "dur":186928, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1692416366872843, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1692416366872843, "dur":3574, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1692416366876422, "dur":12106, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/MonoBleedingEdge/etc/mono/4.5/web.config" }}
+,{ "pid":12345, "tid":12, "ts":1692416366888530, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1692416366888535, "dur":2843, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/MonoBleedingEdge/etc/mono/4.5/web.config" }}
+,{ "pid":12345, "tid":12, "ts":1692416366891412, "dur":34589, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1692416366926009, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1692416366926017, "dur":3855, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1692416366929903, "dur":133633, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UI.dll" }}
+,{ "pid":12345, "tid":12, "ts":1692416367063543, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1692416367063552, "dur":2910, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UI.dll" }}
+,{ "pid":12345, "tid":12, "ts":1692416367066491, "dur":188001, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/Unity.TextMeshPro.dll" }}
+,{ "pid":12345, "tid":12, "ts":1692416367254509, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1692416367254518, "dur":1752, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/Unity.TextMeshPro.dll" }}
+,{ "pid":12345, "tid":12, "ts":1692416367256303, "dur":255594, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":13, "ts":1692416366872884, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":13, "ts":1692416366872885, "dur":3545, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":13, "ts":1692416366876430, "dur":10831, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/MonoBleedingEdge/etc/mono/2.0/web.config" }}
+,{ "pid":12345, "tid":13, "ts":1692416366887266, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":13, "ts":1692416366887473, "dur":1461, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/MonoBleedingEdge/etc/mono/2.0/web.config" }}
+,{ "pid":12345, "tid":13, "ts":1692416366888975, "dur":720, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart.exe" }}
+,{ "pid":12345, "tid":13, "ts":1692416366889697, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":13, "ts":1692416366889700, "dur":1316, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart.exe" }}
+,{ "pid":12345, "tid":13, "ts":1692416366891047, "dur":36352, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.VideoModule.dll" }}
+,{ "pid":12345, "tid":13, "ts":1692416366927403, "dur":4, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":13, "ts":1692416366927411, "dur":3168, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.VideoModule.dll" }}
+,{ "pid":12345, "tid":13, "ts":1692416366930610, "dur":32441, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.TilemapModule.dll" }}
+,{ "pid":12345, "tid":13, "ts":1692416366963055, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":13, "ts":1692416366963061, "dur":2496, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.TilemapModule.dll" }}
+,{ "pid":12345, "tid":13, "ts":1692416366965598, "dur":19430, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
+,{ "pid":12345, "tid":13, "ts":1692416366985035, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":13, "ts":1692416366985044, "dur":1675, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
+,{ "pid":12345, "tid":13, "ts":1692416366986747, "dur":39158, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.Physics2DModule.dll" }}
+,{ "pid":12345, "tid":13, "ts":1692416367025908, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":13, "ts":1692416367025914, "dur":1922, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.Physics2DModule.dll" }}
+,{ "pid":12345, "tid":13, "ts":1692416367027866, "dur":18075, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.ClothModule.dll" }}
+,{ "pid":12345, "tid":13, "ts":1692416367045944, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":13, "ts":1692416367045950, "dur":2423, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.ClothModule.dll" }}
+,{ "pid":12345, "tid":13, "ts":1692416367048405, "dur":85704, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/Unity.VisualScripting.Flow.dll" }}
+,{ "pid":12345, "tid":13, "ts":1692416367134112, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":13, "ts":1692416367134329, "dur":5305, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/Unity.VisualScripting.Flow.dll" }}
+,{ "pid":12345, "tid":13, "ts":1692416367139667, "dur":195336, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/System.Drawing.dll" }}
+,{ "pid":12345, "tid":13, "ts":1692416367335009, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":13, "ts":1692416367335015, "dur":1063, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/System.Drawing.dll" }}
+,{ "pid":12345, "tid":13, "ts":1692416367336102, "dur":175784, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1692416366872911, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1692416366872911, "dur":3513, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1692416366876424, "dur":154, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":14, "ts":1692416366876580, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1692416366878996, "dur":3586, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":14, "ts":1692416366882616, "dur":4711, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
+,{ "pid":12345, "tid":14, "ts":1692416366887330, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1692416366887617, "dur":1355, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
+,{ "pid":12345, "tid":14, "ts":1692416366889016, "dur":105, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Resources/unity default resources" }}
+,{ "pid":12345, "tid":14, "ts":1692416366889184, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1692416366889847, "dur":6273, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Resources/unity default resources" }}
+,{ "pid":12345, "tid":14, "ts":1692416366896156, "dur":95441, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
+,{ "pid":12345, "tid":14, "ts":1692416366991601, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1692416366991608, "dur":755, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
+,{ "pid":12345, "tid":14, "ts":1692416366992388, "dur":24081, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.InputModule.dll" }}
+,{ "pid":12345, "tid":14, "ts":1692416367016472, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1692416367016479, "dur":2030, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.InputModule.dll" }}
+,{ "pid":12345, "tid":14, "ts":1692416367018542, "dur":37926, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.dll" }}
+,{ "pid":12345, "tid":14, "ts":1692416367056474, "dur":3, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1692416367056483, "dur":1112, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.dll" }}
+,{ "pid":12345, "tid":14, "ts":1692416367057708, "dur":110627, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/Unity.VisualScripting.Core.dll" }}
+,{ "pid":12345, "tid":14, "ts":1692416367168338, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1692416367168344, "dur":1301, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/Unity.VisualScripting.Core.dll" }}
+,{ "pid":12345, "tid":14, "ts":1692416367169680, "dur":137214, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/System.ComponentModel.Composition.dll" }}
+,{ "pid":12345, "tid":14, "ts":1692416367306898, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1692416367306904, "dur":955, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/System.ComponentModel.Composition.dll" }}
+,{ "pid":12345, "tid":14, "ts":1692416367307880, "dur":204012, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":15, "ts":1692416366872940, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":15, "ts":1692416366872940, "dur":3488, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":15, "ts":1692416366876428, "dur":238, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":15, "ts":1692416366876668, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":15, "ts":1692416366916376, "dur":5730, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":15, "ts":1692416366922145, "dur":65532, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UNETModule.dll" }}
+,{ "pid":12345, "tid":15, "ts":1692416366987680, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":15, "ts":1692416366987686, "dur":2059, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.UNETModule.dll" }}
+,{ "pid":12345, "tid":15, "ts":1692416366989775, "dur":29637, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
+,{ "pid":12345, "tid":15, "ts":1692416367019416, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":15, "ts":1692416367019421, "dur":7641, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
+,{ "pid":12345, "tid":15, "ts":1692416367027097, "dur":19835, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
+,{ "pid":12345, "tid":15, "ts":1692416367046935, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":15, "ts":1692416367046940, "dur":1350, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
+,{ "pid":12345, "tid":15, "ts":1692416367048322, "dur":45314, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/Unity.VisualScripting.State.dll" }}
+,{ "pid":12345, "tid":15, "ts":1692416367093641, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":15, "ts":1692416367093649, "dur":31562, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/Unity.VisualScripting.State.dll" }}
+,{ "pid":12345, "tid":15, "ts":1692416367125240, "dur":73795, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/System.Net.Http.dll" }}
+,{ "pid":12345, "tid":15, "ts":1692416367199039, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":15, "ts":1692416367199045, "dur":7530, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/System.Net.Http.dll" }}
+,{ "pid":12345, "tid":15, "ts":1692416367206609, "dur":193876, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/Mono.Security.dll" }}
+,{ "pid":12345, "tid":15, "ts":1692416367400489, "dur":3, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":15, "ts":1692416367400497, "dur":955, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/Mono.Security.dll" }}
+,{ "pid":12345, "tid":15, "ts":1692416367401471, "dur":110404, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":16, "ts":1692416366872971, "dur":1, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":16, "ts":1692416366872972, "dur":3472, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":16, "ts":1692416366876444, "dur":11415, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
+,{ "pid":12345, "tid":16, "ts":1692416366887862, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":16, "ts":1692416366887867, "dur":1248, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
+,{ "pid":12345, "tid":16, "ts":1692416366889164, "dur":75828, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.XRModule.dll" }}
+,{ "pid":12345, "tid":16, "ts":1692416366964998, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":16, "ts":1692416366965006, "dur":2418, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.XRModule.dll" }}
+,{ "pid":12345, "tid":16, "ts":1692416366967476, "dur":17754, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
+,{ "pid":12345, "tid":16, "ts":1692416366985233, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":16, "ts":1692416366985238, "dur":5455, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
+,{ "pid":12345, "tid":16, "ts":1692416366990726, "dur":29421, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
+,{ "pid":12345, "tid":16, "ts":1692416367020150, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":16, "ts":1692416367020156, "dur":5335, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
+,{ "pid":12345, "tid":16, "ts":1692416367025524, "dur":108714, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.CoreModule.dll" }}
+,{ "pid":12345, "tid":16, "ts":1692416367134333, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":16, "ts":1692416367134340, "dur":1833, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/UnityEngine.CoreModule.dll" }}
+,{ "pid":12345, "tid":16, "ts":1692416367136200, "dur":42244, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/System.EnterpriseServices.dll" }}
+,{ "pid":12345, "tid":16, "ts":1692416367178449, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":16, "ts":1692416367178456, "dur":25061, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/System.EnterpriseServices.dll" }}
+,{ "pid":12345, "tid":16, "ts":1692416367203553, "dur":268861, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Chandler Kart 1.0/Chandler Kart_Data/Managed/mscorlib.dll" }}
+,{ "pid":12345, "tid":16, "ts":1692416367472418, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":16, "ts":1692416367472442, "dur":2022, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Chandler Kart 1.0/Chandler Kart_Data/Managed/mscorlib.dll" }}
+,{ "pid":12345, "tid":16, "ts":1692416367474484, "dur":37403, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1692416367514556, "dur":1371, "ph":"X", "name": "ProfilerWriteOutput" }
+,
