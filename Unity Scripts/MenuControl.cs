@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MenuControl : MonoBehaviour
 {
-    public PlayerControl Player;
+    public Player Player;
 
     // Current Displayed Menu and Assets
     public int menu = 0;
