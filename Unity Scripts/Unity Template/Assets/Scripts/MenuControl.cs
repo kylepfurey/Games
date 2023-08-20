@@ -38,9 +38,9 @@ public class MenuControl : MonoBehaviour
         // Controls
         if (menuMoving == false)
         {
-            MOVE[0] = Player.Input.actions.FindAction("Move").ReadValue<Vector2>();
-            SELECT[0] = Button(Player.Input.actions.FindAction("Select").ReadValue<float>());
-            BACK[0] = Button(Player.Input.actions.FindAction("Back").ReadValue<float>());
+            MOVE[0] = Player.Input.actions.FindAction("Menu Move").ReadValue<Vector2>();
+            SELECT[0] = Button(Player.Input.actions.FindAction("Menu Select").ReadValue<float>());
+            BACK[0] = Button(Player.Input.actions.FindAction("Menu Back").ReadValue<float>());
         }
         else
         {
