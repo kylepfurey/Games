@@ -64,6 +64,50 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "up",
+                    "id": "3fb40e79-abb1-424c-9e93-5ca50b21c2ae",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Menu Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "f7f71197-c2b2-4d70-a8d2-9ffd5493e388",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Menu Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "04d083d9-6d18-442e-af9c-c0c2c68ed710",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Menu Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "2da0d813-eb74-4b8e-8885-914cd99a064e",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Menu Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "D Pad",
                     "id": "cf04c76e-b4ab-455f-9abe-cb581178ee58",
                     "path": "2DVector",
@@ -111,17 +155,6 @@
                     "name": "right",
                     "id": "53279fb1-4e00-4c49-9795-0d4469235bb5",
                     "path": "<Gamepad>/dpad/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Menu Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "up",
-                    "id": "3fb40e79-abb1-424c-9e93-5ca50b21c2ae",
-                    "path": "<Gamepad>/leftStick/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -240,39 +273,6 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "down",
-                    "id": "f7f71197-c2b2-4d70-a8d2-9ffd5493e388",
-                    "path": "<Gamepad>/leftStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Menu Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "04d083d9-6d18-442e-af9c-c0c2c68ed710",
-                    "path": "<Gamepad>/leftStick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Menu Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "2da0d813-eb74-4b8e-8885-914cd99a064e",
-                    "path": "<Gamepad>/leftStick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Menu Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "b8cce3cb-7477-4b46-a61e-c09f85dda39f",
                     "path": "<Gamepad>/buttonSouth",
@@ -296,8 +296,8 @@
                 },
                 {
                     "name": "",
-                    "id": "6bcffd84-a2df-4fbf-a14d-f33653d62d8c",
-                    "path": "<Keyboard>/enter",
+                    "id": "ac7dff5e-75db-4094-9dc5-1a2697c91cf4",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -307,8 +307,8 @@
                 },
                 {
                     "name": "",
-                    "id": "ac7dff5e-75db-4094-9dc5-1a2697c91cf4",
-                    "path": "<Keyboard>/space",
+                    "id": "6bcffd84-a2df-4fbf-a14d-f33653d62d8c",
+                    "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
