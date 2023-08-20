@@ -12,6 +12,15 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        
+
+    }
+    public bool Button(float input)
+    {
+        if (input > 0)
+        {
+            return true;
+        }
+
+        return false;
     }
 }
