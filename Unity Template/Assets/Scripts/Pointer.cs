@@ -69,6 +69,7 @@ public class Pointer : MonoBehaviour
             PointerDot.transform.position = Player.Camera.transform.position;
             PointerDot.transform.eulerAngles = new Vector3(Player.Camera.transform.eulerAngles.x + -deviation.y, Player.Camera.transform.eulerAngles.y + deviation.x, 0);
             PointerDot.transform.Translate(new Vector3(0, 0, rayMaxDistance));
+            pointerPosition = PointerDot.transform.position;
 
             // Ray Distance
             Ray.transform.localScale = new Vector3(Ray.transform.localScale.x, Ray.transform.localScale.y, rayMaxDistance);
