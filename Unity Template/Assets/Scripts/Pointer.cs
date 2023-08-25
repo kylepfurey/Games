@@ -24,6 +24,7 @@ public class Pointer : MonoBehaviour
     void Update()
     {
         hitscan = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2 + deviation.y, 0));
+        Ray.transform.parent.transform.position = Player.transform.position + new Vector3(0, 0, 0);
 
         // Deviation
         if (randomDeviation)
@@ -150,7 +151,7 @@ public class Pointer : MonoBehaviour
             pointerPosition = hitpoint.point;
 
             // Ray Distance
-            currentDistance = Mathf.Abs(Vector3.Distance(Player.Camera.transform.position, pointerPosition));
+            currentDistance = Mathf.Abs(Vector3.Distance(Player.transform.position, pointerPosition));
             Ray.transform.localScale = new Vector3(Ray.transform.localScale.x, Ray.transform.localScale.y, currentDistance);
             Ray.transform.localPosition = new Vector3(0, 0, currentDistance / 2);
 
