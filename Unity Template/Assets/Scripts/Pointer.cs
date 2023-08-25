@@ -38,7 +38,7 @@ public class Pointer : MonoBehaviour
 
             // Ray Distance
             rayCurrentDistance = Mathf.Abs(Vector3.Distance(Player.Camera.transform.position, pointerPosition));
-            Ray.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, rayCurrentDistance);
+            Ray.transform.localScale = new Vector3(Ray.transform.localScale.x, Ray.transform.localScale.y, rayCurrentDistance);
             Ray.transform.localPosition = new Vector3(0, 0, rayCurrentDistance / 2);
 
             if (randomDeviation == false)
@@ -60,7 +60,7 @@ public class Pointer : MonoBehaviour
             pointerPosition = PointerDot.transform.position;
 
             // Ray Distance
-            Ray.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, rayMaxDistance);
+            Ray.transform.localScale = new Vector3(Ray.transform.localScale.x, Ray.transform.localScale.y, rayMaxDistance);
             Ray.transform.localPosition = new Vector3(0, 0, rayMaxDistance / 2);
 
             if (randomDeviation == false)
