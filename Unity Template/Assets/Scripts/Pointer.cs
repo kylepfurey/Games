@@ -85,22 +85,22 @@ public class Pointer : MonoBehaviour
                     break;
                 case 9:
                     deviationX = 0;
-                    deviationY = -deviation.y / 2;
+                    deviationY = deviation.y / 2;
                     shotCounter++;
                     break;
                 case 10:
-                    deviationX = -deviation.x / 2;
-                    deviationY = 0;
-                    shotCounter++;
-                    break;
-                case 11:
                     deviationX = deviation.x / 2;
                     deviationY = 0;
                     shotCounter++;
                     break;
-                case 12:
+                case 11:
                     deviationX = 0;
-                    deviationY = deviation.y / 2;
+                    deviationY = -deviation.y / 2;
+                    shotCounter++;
+                    break;
+                case 12:
+                    deviationX = -deviation.x / 2;
+                    deviationY = 0;
                     shotCounter++;
                     break;
                 case 13:
@@ -121,7 +121,7 @@ public class Pointer : MonoBehaviour
                 case 16:
                     deviationX = -deviation.x / 2;
                     deviationY = -deviation.y / 2;
-                    shotCounter = 0;
+                    shotCounter++;
                     break;
             }
 
@@ -154,7 +154,7 @@ public class Pointer : MonoBehaviour
             Ray.transform.localScale = new Vector3(Ray.transform.localScale.x, Ray.transform.localScale.y, currentDistance);
             Ray.transform.localPosition = new Vector3(0, 0, currentDistance / 2);
 
-            if (randomDeviation == false)
+            if (randomDeviation == false && fixedDeviation == false)
             {
                 Ray.transform.parent.transform.localEulerAngles = new Vector3(-deviation.y, deviation.x, 0);
             }
@@ -181,7 +181,7 @@ public class Pointer : MonoBehaviour
             Ray.transform.localScale = new Vector3(Ray.transform.localScale.x, Ray.transform.localScale.y, maxDistance);
             Ray.transform.localPosition = new Vector3(0, 0, maxDistance / 2);
 
-            if (randomDeviation == false)
+            if (randomDeviation == false && fixedDeviation == false)
             {
                 Ray.transform.parent.transform.localEulerAngles = new Vector3(-deviation.y, deviation.x, 0);
             }
@@ -303,22 +303,22 @@ public class Pointer : MonoBehaviour
                         break;
                     case 9:
                         deviationX = 0;
-                        deviationY = -deviation.y / 2;
+                        deviationY = deviation.y / 2;
                         shotCounter++;
                         break;
                     case 10:
-                        deviationX = -deviation.x / 2;
-                        deviationY = 0;
-                        shotCounter++;
-                        break;
-                    case 11:
                         deviationX = deviation.x / 2;
                         deviationY = 0;
                         shotCounter++;
                         break;
-                    case 12:
+                    case 11:
                         deviationX = 0;
-                        deviationY = deviation.y / 2;
+                        deviationY = -deviation.y / 2;
+                        shotCounter++;
+                        break;
+                    case 12:
+                        deviationX = -deviation.x / 2;
+                        deviationY = 0;
                         shotCounter++;
                         break;
                     case 13:
@@ -339,7 +339,7 @@ public class Pointer : MonoBehaviour
                     case 16:
                         deviationX = -deviation.x / 2;
                         deviationY = -deviation.y / 2;
-                        shotCounter = 0;
+                        shotCounter++;
                         break;
                 }
 
