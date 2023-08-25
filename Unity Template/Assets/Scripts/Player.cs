@@ -5,6 +5,8 @@ public class Player : MonoBehaviour
 {
     // References
     public PlayerInput Input;
+    public Camera Camera;
+    public Rigidbody Rigidbody;
 
     void Start()
     {
