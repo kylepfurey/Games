@@ -12,6 +12,7 @@ public class Pointer : MonoBehaviour
     public float rayCurrentDistance;
 
     public Vector3 pointerPosition;
+    public Vector3 pointerCenterPosition;
 
     public bool randomDeviation;
     public Vector2 deviation;
@@ -33,6 +34,12 @@ public class Pointer : MonoBehaviour
         // Check Hitscan
         if (Physics.Raycast(hitscan, out hitpoint, rayMaxDistance))
         {
+            // Calculate Center Position
+            PointerDot.transform.position = Player.Camera.transform.position;
+            PointerDot.transform.eulerAngles = new Vector3(Player.Camera.transform.eulerAngles.x, Player.Camera.transform.eulerAngles.y, 0);
+            PointerDot.transform.Translate(new Vector3(0, 0, rayMaxDistance));
+            pointerCenterPosition = PointerDot.transform.position;
+
             // Calculate Pointer Hit Position
             pointerPosition = hitpoint.point;
 
@@ -52,12 +59,16 @@ public class Pointer : MonoBehaviour
         }
         else
         {
+            // Calculate Center Position
+            PointerDot.transform.position = Player.Camera.transform.position;
+            PointerDot.transform.eulerAngles = new Vector3(Player.Camera.transform.eulerAngles.x, Player.Camera.transform.eulerAngles.y, 0);
+            PointerDot.transform.Translate(new Vector3(0, 0, rayMaxDistance));
+            pointerCenterPosition = PointerDot.transform.position;
+
             // Calculate Position
             PointerDot.transform.position = Player.Camera.transform.position;
             PointerDot.transform.eulerAngles = new Vector3(Player.Camera.transform.eulerAngles.x + -deviation.y, Player.Camera.transform.eulerAngles.y + deviation.x, 0);
             PointerDot.transform.Translate(new Vector3(0, 0, rayMaxDistance));
-
-            pointerPosition = PointerDot.transform.position;
 
             // Ray Distance
             Ray.transform.localScale = new Vector3(Ray.transform.localScale.x, Ray.transform.localScale.y, rayMaxDistance);
