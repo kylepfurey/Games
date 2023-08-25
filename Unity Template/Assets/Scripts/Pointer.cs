@@ -125,7 +125,7 @@ public class Pointer : MonoBehaviour
                     break;
             }
 
-            if (shotCounter > totalShots)
+            if (shotCounter > totalShots - 1)
             {
                 shotCounter = 0;
             }
