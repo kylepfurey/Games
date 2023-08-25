@@ -40,7 +40,11 @@ public class Pointer : MonoBehaviour
             rayCurrentDistance = Mathf.Abs(Vector3.Distance(Player.Camera.transform.position, pointerPosition));
             Ray.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, rayCurrentDistance);
             Ray.transform.localPosition = new Vector3(0, 0, rayCurrentDistance / 2);
-            Ray.transform.parent.transform.localEulerAngles = new Vector3(-deviation.y, deviation.x, 0);
+
+            if (randomDeviation == false)
+            {
+                Ray.transform.parent.transform.localEulerAngles = new Vector3(-deviation.y, deviation.x, 0);
+            }
         }
         else
         {
@@ -53,7 +57,11 @@ public class Pointer : MonoBehaviour
             // Ray Distance
             Ray.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, rayMaxDistance);
             Ray.transform.localPosition = new Vector3(0, 0, rayMaxDistance / 2);
-            Ray.transform.parent.transform.localEulerAngles = new Vector3(-deviation.y, deviation.x, 0);
+
+            if (randomDeviation == false)
+            {
+                Ray.transform.parent.transform.localEulerAngles = new Vector3(-deviation.y, deviation.x, 0);
+            }
         }
 
         // Move Pointer Dot
