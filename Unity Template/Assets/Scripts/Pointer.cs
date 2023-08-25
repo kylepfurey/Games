@@ -28,7 +28,7 @@ public class Pointer : MonoBehaviour
         // Deviation
         if (randomDeviation)
         {
-            hitscan.direction = Quaternion.Euler(Player.Camera.transform.eulerAngles + new Vector3(-Random.Range(-deviation.y + 0.4f, deviation.y), Random.Range(-deviation.x, deviation.x), 0)) * Vector3.forward;
+            hitscan.direction = Quaternion.Euler(Player.Camera.transform.eulerAngles + new Vector3(-Random.Range(-deviation.y, deviation.y), Random.Range(-deviation.x, deviation.x), 0)) * Vector3.forward;
         }
         else if (fixedDeviation)
         {
@@ -130,11 +130,11 @@ public class Pointer : MonoBehaviour
                 shotCounter = 0;
             }
 
-            hitscan.direction = Quaternion.Euler(Player.Camera.transform.eulerAngles + new Vector3(-deviationY + 0.4f, deviationX, 0)) * Vector3.forward;
+            hitscan.direction = Quaternion.Euler(Player.Camera.transform.eulerAngles + new Vector3(-deviationY, deviationX, 0)) * Vector3.forward;
         }
         else
         {
-            hitscan.direction = Quaternion.Euler(Player.Camera.transform.eulerAngles + new Vector3(-deviation.y + 0.4f, deviation.x, 0)) * Vector3.forward;
+            hitscan.direction = Quaternion.Euler(Player.Camera.transform.eulerAngles + new Vector3(-deviation.y, deviation.x, 0)) * Vector3.forward;
         }
 
         // Check Hitscan
@@ -203,11 +203,11 @@ public class Pointer : MonoBehaviour
         // Deviation
         if (randomDeviation)
         {
-            hitscan.direction = Quaternion.Euler(Player.Camera.transform.eulerAngles + new Vector3(-Random.Range(-deviation.y + 0.4f, deviation.y), Random.Range(-deviation.x, deviation.x), 0)) * Vector3.forward;
+            hitscan.direction = Quaternion.Euler(Player.Camera.transform.eulerAngles + new Vector3(-Random.Range(-deviation.y, deviation.y), Random.Range(-deviation.x, deviation.x), 0)) * Vector3.forward;
         }
         else
         {
-            hitscan.direction = Quaternion.Euler(Player.Camera.transform.eulerAngles + new Vector3(-deviation.y + 0.4f, deviation.x, 0)) * Vector3.forward;
+            hitscan.direction = Quaternion.Euler(Player.Camera.transform.eulerAngles + new Vector3(-deviation.y, deviation.x, 0)) * Vector3.forward;
         }
 
         // Check Hitscan
@@ -249,7 +249,7 @@ public class Pointer : MonoBehaviour
             // Deviation
             if (randomDeviation)
             {
-                hitscan.direction = Quaternion.Euler(Player.Camera.transform.eulerAngles + new Vector3(-Random.Range(-deviation.y + 0.4f, deviation.y), Random.Range(-deviation.x, deviation.x), 0)) * Vector3.forward;
+                hitscan.direction = Quaternion.Euler(Player.Camera.transform.eulerAngles + new Vector3(-Random.Range(-deviation.y, deviation.y), Random.Range(-deviation.x, deviation.x), 0)) * Vector3.forward;
             }
             else
             {
@@ -343,7 +343,7 @@ public class Pointer : MonoBehaviour
                         break;
                 }
 
-                hitscan.direction = Quaternion.Euler(Player.Camera.transform.eulerAngles + new Vector3(-deviationY + 0.4f, deviationX, 0)) * Vector3.forward;
+                hitscan.direction = Quaternion.Euler(Player.Camera.transform.eulerAngles + new Vector3(-deviationY, deviationX, 0)) * Vector3.forward;
             }
 
             // Check Hitscan
