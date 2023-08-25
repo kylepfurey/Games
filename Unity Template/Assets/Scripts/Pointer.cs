@@ -8,14 +8,17 @@ public class Pointer : MonoBehaviour
 
     public Ray hitscan;
     public RaycastHit hitpoint;
-    public float rayMaxDistance;
-    public float rayCurrentDistance;
+    public float maxDistance;
+    public float currentDistance;
 
     public Vector3 pointerPosition;
     public Vector3 pointerCenterPosition;
 
     public bool randomDeviation;
+    public bool fixedDeviation;
     public Vector2 deviation;
+
+    public int shotCounter;
 
     void Update()
     {
@@ -26,27 +29,124 @@ public class Pointer : MonoBehaviour
         {
             hitscan.direction = Quaternion.Euler(Player.Camera.transform.eulerAngles + new Vector3(-Random.Range(-deviation.y, deviation.y), Random.Range(-deviation.x, deviation.x), 0)) * Vector3.forward;
         }
+        else if (fixedDeviation)
+        {
+            float deviationX = 0;
+            float deviationY = 0;
+
+            // Bullet Pattern
+            switch (shotCounter)
+            {
+                case 0:
+                    deviationX = 0;
+                    deviationY = 0;
+                    shotCounter++;
+                    break;
+                case 1:
+                    deviationX = 0;
+                    deviationY = deviation.y;
+                    shotCounter++;
+                    break;
+                case 2:
+                    deviationX = deviation.x;
+                    deviationY = 0;
+                    shotCounter++;
+                    break;
+                case 3:
+                    deviationX = 0;
+                    deviationY = -deviation.y;
+                    shotCounter++;
+                    break;
+                case 4:
+                    deviationX = -deviation.x;
+                    deviationY = 0;
+                    shotCounter++;
+                    break;
+                case 5:
+                    deviationX = -deviation.x;
+                    deviationY = deviation.y;
+                    shotCounter++;
+                    break;
+                case 6:
+                    deviationX = deviation.x;
+                    deviationY = deviation.y;
+                    shotCounter++;
+                    break;
+                case 7:
+                    deviationX = deviation.x;
+                    deviationY = -deviation.y;
+                    shotCounter++;
+                    break;
+                case 8:
+                    deviationX = -deviation.x;
+                    deviationY = -deviation.y;
+                    shotCounter++;
+                    break;
+                case 9:
+                    deviationX = 0;
+                    deviationY = -deviation.y / 2;
+                    shotCounter++;
+                    break;
+                case 10:
+                    deviationX = -deviation.x / 2;
+                    deviationY = 0;
+                    shotCounter++;
+                    break;
+                case 11:
+                    deviationX = deviation.x / 2;
+                    deviationY = 0;
+                    shotCounter++;
+                    break;
+                case 12:
+                    deviationX = 0;
+                    deviationY = deviation.y / 2;
+                    shotCounter++;
+                    break;
+                case 13:
+                    deviationX = -deviation.x / 2;
+                    deviationY = deviation.y / 2;
+                    shotCounter++;
+                    break;
+                case 14:
+                    deviationX = deviation.x / 2;
+                    deviationY = deviation.y / 2;
+                    shotCounter++;
+                    break;
+                case 15:
+                    deviationX = deviation.x / 2;
+                    deviationY = -deviation.y / 2;
+                    shotCounter++;
+                    break;
+                case 16:
+                    deviationX = -deviation.x / 2;
+                    deviationY = -deviation.y / 2;
+                    shotCounter = 0;
+                    break;
+            }
+
+            hitscan.direction = Quaternion.Euler(Player.Camera.transform.eulerAngles + new Vector3(-deviationY, deviationX, 0)) * Vector3.forward;
+        }
         else
         {
             hitscan.direction = Quaternion.Euler(Player.Camera.transform.eulerAngles + new Vector3(-deviation.y, deviation.x, 0)) * Vector3.forward;
         }
 
         // Check Hitscan
-        if (Physics.Raycast(hitscan, out hitpoint, rayMaxDistance))
+        if (Physics.Raycast(hitscan, out hitpoint, maxDistance))
         {
             // Calculate Center Position
             PointerDot.transform.position = Player.Camera.transform.position;
             PointerDot.transform.eulerAngles = new Vector3(Player.Camera.transform.eulerAngles.x, Player.Camera.transform.eulerAngles.y, 0);
-            PointerDot.transform.Translate(new Vector3(0, 0, rayMaxDistance));
+            PointerDot.transform.Translate(new Vector3(0, 0, maxDistance));
             pointerCenterPosition = PointerDot.transform.position;
 
             // Calculate Pointer Hit Position
             pointerPosition = hitpoint.point;
 
             // Ray Distance
-            rayCurrentDistance = Mathf.Abs(Vector3.Distance(Player.Camera.transform.position, pointerPosition));
-            Ray.transform.localScale = new Vector3(Ray.transform.localScale.x, Ray.transform.localScale.y, rayCurrentDistance);
-            Ray.transform.localPosition = new Vector3(0, 0, rayCurrentDistance / 2);
+            currentDistance = Mathf.Abs(Vector3.Distance(Player.Camera.transform.position, pointerPosition));
+            Ray.transform.localScale = new Vector3(Ray.transform.localScale.x, Ray.transform.localScale.y, currentDistance);
+            Ray.transform.localPosition = new Vector3(0, 0, currentDistance / 2);
 
             if (randomDeviation == false)
             {
@@ -62,18 +162,18 @@ public class Pointer : MonoBehaviour
             // Calculate Center Position
             PointerDot.transform.position = Player.Camera.transform.position;
             PointerDot.transform.eulerAngles = new Vector3(Player.Camera.transform.eulerAngles.x, Player.Camera.transform.eulerAngles.y, 0);
-            PointerDot.transform.Translate(new Vector3(0, 0, rayMaxDistance));
+            PointerDot.transform.Translate(new Vector3(0, 0, maxDistance));
             pointerCenterPosition = PointerDot.transform.position;
 
             // Calculate Position
             PointerDot.transform.position = Player.Camera.transform.position;
             PointerDot.transform.eulerAngles = new Vector3(Player.Camera.transform.eulerAngles.x + -deviation.y, Player.Camera.transform.eulerAngles.y + deviation.x, 0);
-            PointerDot.transform.Translate(new Vector3(0, 0, rayMaxDistance));
+            PointerDot.transform.Translate(new Vector3(0, 0, maxDistance));
             pointerPosition = PointerDot.transform.position;
 
             // Ray Distance
-            Ray.transform.localScale = new Vector3(Ray.transform.localScale.x, Ray.transform.localScale.y, rayMaxDistance);
-            Ray.transform.localPosition = new Vector3(0, 0, rayMaxDistance / 2);
+            Ray.transform.localScale = new Vector3(Ray.transform.localScale.x, Ray.transform.localScale.y, maxDistance);
+            Ray.transform.localPosition = new Vector3(0, 0, maxDistance / 2);
 
             if (randomDeviation == false)
             {
@@ -132,6 +232,10 @@ public class Pointer : MonoBehaviour
         hitPositions = new Vector3[totalShots];
         collisions = new Collider[totalShots];
 
+        int shotCounter = 0;
+        float deviationX = 0;
+        float deviationY = 0;
+
         for (int shotIndex = 0; shotIndex < totalShots; shotIndex++)
         {
             hitscan = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2 + deviation.y, 0));
@@ -143,7 +247,97 @@ public class Pointer : MonoBehaviour
             }
             else
             {
-                hitscan.direction = Quaternion.Euler(Player.Camera.transform.eulerAngles + new Vector3(-deviation.y, deviation.x, 0)) * Vector3.forward;
+                // Bullet Pattern
+                switch (shotCounter)
+                {
+                    case 0:
+                        deviationX = 0;
+                        deviationY = 0;
+                        shotCounter++;
+                        break;
+                    case 1:
+                        deviationX = 0;
+                        deviationY = deviation.y;
+                        shotCounter++;
+                        break;
+                    case 2:
+                        deviationX = deviation.x;
+                        deviationY = 0;
+                        shotCounter++;
+                        break;
+                    case 3:
+                        deviationX = 0;
+                        deviationY = -deviation.y;
+                        shotCounter++;
+                        break;
+                    case 4:
+                        deviationX = -deviation.x;
+                        deviationY = 0;
+                        shotCounter++;
+                        break;
+                    case 5:
+                        deviationX = -deviation.x;
+                        deviationY = deviation.y;
+                        shotCounter++;
+                        break;
+                    case 6:
+                        deviationX = deviation.x;
+                        deviationY = deviation.y;
+                        shotCounter++;
+                        break;
+                    case 7:
+                        deviationX = deviation.x;
+                        deviationY = -deviation.y;
+                        shotCounter++;
+                        break;
+                    case 8:
+                        deviationX = -deviation.x;
+                        deviationY = -deviation.y;
+                        shotCounter++;
+                        break;
+                    case 9:
+                        deviationX = 0;
+                        deviationY = -deviation.y / 2;
+                        shotCounter++;
+                        break;
+                    case 10:
+                        deviationX = -deviation.x / 2;
+                        deviationY = 0;
+                        shotCounter++;
+                        break;
+                    case 11:
+                        deviationX = deviation.x / 2;
+                        deviationY = 0;
+                        shotCounter++;
+                        break;
+                    case 12:
+                        deviationX = 0;
+                        deviationY = deviation.y / 2;
+                        shotCounter++;
+                        break;
+                    case 13:
+                        deviationX = -deviation.x / 2;
+                        deviationY = deviation.y / 2;
+                        shotCounter++;
+                        break;
+                    case 14:
+                        deviationX = deviation.x / 2;
+                        deviationY = deviation.y / 2;
+                        shotCounter++;
+                        break;
+                    case 15:
+                        deviationX = deviation.x / 2;
+                        deviationY = -deviation.y / 2;
+                        shotCounter++;
+                        break;
+                    case 16:
+                        deviationX = -deviation.x / 2;
+                        deviationY = -deviation.y / 2;
+                        shotCounter = 0;
+                        break;
+                }
+
+                hitscan.direction = Quaternion.Euler(Player.Camera.transform.eulerAngles + new Vector3(-deviationY, deviationX, 0)) * Vector3.forward;
             }
 
             // Check Hitscan
