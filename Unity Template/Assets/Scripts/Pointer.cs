@@ -19,6 +19,7 @@ public class Pointer : MonoBehaviour
     public Vector2 deviation;
 
     public int shotCounter;
+    public int totalShots;
 
     void Update()
     {
@@ -122,6 +123,11 @@ public class Pointer : MonoBehaviour
                     deviationY = -deviation.y / 2;
                     shotCounter = 0;
                     break;
+            }
+
+            if (shotCounter > totalShots)
+            {
+                shotCounter = 0;
             }
 
             hitscan.direction = Quaternion.Euler(Player.Camera.transform.eulerAngles + new Vector3(-deviationY, deviationX, 0)) * Vector3.forward;
