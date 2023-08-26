@@ -22,8 +22,6 @@ public class Pointer : MonoBehaviour
     public int shotCounter;
     public int totalShots;
 
-    public float clipPlaneConstant;
-
     void Update()
     {
         // Calculate Center Position from Camera
@@ -51,7 +49,6 @@ public class Pointer : MonoBehaviour
         hitscan = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
         Player.Camera.transform.position = currentPosition;
         Player.Camera.transform.eulerAngles = currentRotation;
-        Player.Camera.nearClipPlane = 0.3f + clipPlaneConstant;
 
 
         // Deviation
