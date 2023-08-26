@@ -8,10 +8,12 @@ public class Pointer : MonoBehaviour
 
     public Ray hitscan;
     public RaycastHit hitpoint;
+    public Ray hitscanCamera;
+    public RaycastHit hitpointCamera;
     public float maxDistance;
 
     public Vector3 pointerPosition;
-    public Vector3 pointerCamera;
+    public Vector3 pointerCameraPosition;
 
     public bool randomDeviation;
     public bool fixedDeviation;
@@ -22,18 +24,27 @@ public class Pointer : MonoBehaviour
 
     void Update()
     {
-        // Calculate Center Position from Camera
-        PointerDot.transform.position = Player.Camera.transform.position;
-        PointerDot.transform.eulerAngles = new Vector3(Player.Camera.transform.eulerAngles.x, Player.Camera.transform.eulerAngles.y, 0);
-        PointerDot.transform.Translate(new Vector3(0, 0, maxDistance));
-        pointerCamera = PointerDot.transform.position;
+        // Calculate Center Position of Camera
+        hitscanCamera = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
+
+        if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance) && Mathf.Abs(hitpointCamera.point.magnitude) > Mathf.Abs(Player.transform.position.magnitude))
+        {
+            pointerCameraPosition = hitpointCamera.point;
+        }
+        else
+        {
+            PointerDot.transform.position = Player.Camera.transform.position;
+            PointerDot.transform.eulerAngles = new Vector3(Player.Camera.transform.eulerAngles.x, Player.Camera.transform.eulerAngles.y, 0);
+            PointerDot.transform.Translate(new Vector3(0, 0, maxDistance));
+            pointerCameraPosition = PointerDot.transform.position;
+        }
 
 
         // Hitscan
         Vector3 currentPosition = Player.Camera.transform.position;
         Vector3 currentRotation = Player.Camera.transform.eulerAngles;
         Player.Camera.transform.position = Player.transform.position + Player.cameraStart;
-        Player.Camera.transform.LookAt(pointerCamera);
+        Player.Camera.transform.LookAt(pointerCameraPosition);
         Vector3 aimRotation = Player.Camera.transform.eulerAngles;
         hitscan = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
         Player.Camera.transform.position = currentPosition;
@@ -161,7 +172,7 @@ public class Pointer : MonoBehaviour
 
             // Render Ray
             Ray.transform.parent.position = hitscan.origin;
-            Ray.transform.parent.transform.LookAt(pointerCamera);
+            Ray.transform.parent.transform.LookAt(pointerCameraPosition);
             Ray.transform.localScale = new Vector3(Ray.transform.localScale.x, Ray.transform.localScale.y, hitpoint.distance);
             Ray.transform.localPosition = new Vector3(0, 0, hitpoint.distance / 2);
         }
@@ -172,10 +183,11 @@ public class Pointer : MonoBehaviour
 
             // Render Ray
             Ray.transform.parent.position = hitscan.origin;
-            Ray.transform.parent.transform.LookAt(pointerCamera);
+            Ray.transform.parent.transform.LookAt(pointerCameraPosition);
             Ray.transform.localScale = new Vector3(Ray.transform.localScale.x, Ray.transform.localScale.y, maxDistance);
             Ray.transform.localPosition = new Vector3(0, 0, maxDistance / 2);
         }
+
 
         // Move Pointer Dot
         PointerDot.transform.position = pointerPosition;
@@ -184,18 +196,27 @@ public class Pointer : MonoBehaviour
     // Singular Shot
     public RaycastHit Shoot(float maxDistance, bool randomDeviation, Vector2 deviation, out Vector3 hitPosition, out Collider collision)
     {
-        // Calculate Center Position from Camera
-        PointerDot.transform.position = Player.Camera.transform.position;
-        PointerDot.transform.eulerAngles = new Vector3(Player.Camera.transform.eulerAngles.x, Player.Camera.transform.eulerAngles.y, 0);
-        PointerDot.transform.Translate(new Vector3(0, 0, maxDistance));
-        pointerCamera = PointerDot.transform.position;
+        // Calculate Center Position of Camera
+        hitscanCamera = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
+
+        if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance))
+        {
+            pointerCameraPosition = hitpointCamera.point;
+        }
+        else
+        {
+            PointerDot.transform.position = Player.Camera.transform.position;
+            PointerDot.transform.eulerAngles = new Vector3(Player.Camera.transform.eulerAngles.x, Player.Camera.transform.eulerAngles.y, 0);
+            PointerDot.transform.Translate(new Vector3(0, 0, maxDistance));
+            pointerCameraPosition = PointerDot.transform.position;
+        }
 
 
         // Hitscan
         Vector3 currentPosition = Player.Camera.transform.position;
         Vector3 currentRotation = Player.Camera.transform.eulerAngles;
         Player.Camera.transform.position = Player.transform.position + Player.cameraStart;
-        Player.Camera.transform.LookAt(pointerCamera);
+        Player.Camera.transform.LookAt(pointerCameraPosition);
         Vector3 aimRotation = Player.Camera.transform.eulerAngles;
         hitscan = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
         Player.Camera.transform.position = currentPosition;
@@ -225,7 +246,7 @@ public class Pointer : MonoBehaviour
         {
             // Calculate End Position
             pointerPosition = hitscan.GetPoint(maxDistance);
-            hitPosition = pointerCamera;
+            hitPosition = pointerCameraPosition;
             collision = null;
         }
 
@@ -243,18 +264,27 @@ public class Pointer : MonoBehaviour
 
         for (int currentShot = 0; currentShot < totalShots; currentShot++)
         {
-            // Calculate Center Position from Camera
-            PointerDot.transform.position = Player.Camera.transform.position;
-            PointerDot.transform.eulerAngles = new Vector3(Player.Camera.transform.eulerAngles.x, Player.Camera.transform.eulerAngles.y, 0);
-            PointerDot.transform.Translate(new Vector3(0, 0, maxDistance));
-            pointerCamera = PointerDot.transform.position;
+            // Calculate Center Position of Camera
+            hitscanCamera = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
+
+            if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance))
+            {
+                pointerCameraPosition = hitpointCamera.point;
+            }
+            else
+            {
+                PointerDot.transform.position = Player.Camera.transform.position;
+                PointerDot.transform.eulerAngles = new Vector3(Player.Camera.transform.eulerAngles.x, Player.Camera.transform.eulerAngles.y, 0);
+                PointerDot.transform.Translate(new Vector3(0, 0, maxDistance));
+                pointerCameraPosition = PointerDot.transform.position;
+            }
 
 
             // Hitscan
             Vector3 currentPosition = Player.Camera.transform.position;
             Vector3 currentRotation = Player.Camera.transform.eulerAngles;
             Player.Camera.transform.position = Player.transform.position + Player.cameraStart;
-            Player.Camera.transform.LookAt(pointerCamera);
+            Player.Camera.transform.LookAt(pointerCameraPosition);
             Vector3 aimRotation = Player.Camera.transform.eulerAngles;
             hitscan = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
             Player.Camera.transform.position = currentPosition;
@@ -386,7 +416,7 @@ public class Pointer : MonoBehaviour
             {
                 // Calculate End Position
                 pointerPosition = hitscan.GetPoint(maxDistance);
-                hitPositions[currentShot] = pointerCamera;
+                hitPositions[currentShot] = pointerCameraPosition;
                 collisions[currentShot] = null;
             }
         }
