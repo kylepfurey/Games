@@ -150,7 +150,7 @@ public class Pointer : MonoBehaviour
             pointerPosition = hitpoint.point;
 
             // Ray Distance
-            currentDistance = Mathf.Abs(Vector3.Distance(Player.transform.position, pointerPosition));
+            currentDistance = Mathf.Abs(Vector3.Distance(Player.Camera.transform.position, pointerPosition));
             Ray.transform.localScale = new Vector3(Ray.transform.localScale.x, Ray.transform.localScale.y, currentDistance);
             Ray.transform.localPosition = new Vector3(0, 0, currentDistance / 2);
 
