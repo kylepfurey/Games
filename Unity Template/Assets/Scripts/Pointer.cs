@@ -22,8 +22,9 @@ public class Pointer : MonoBehaviour
     public int shotCounter;
     public int totalShots;
 
-    public float aimCorrectionDistance;
     public bool aimCorrection;
+    public float aimCorrectionStart;
+    public float aimCorrectionDistance;
 
     void Update()
     {
@@ -199,11 +200,11 @@ public class Pointer : MonoBehaviour
         if (aimCorrection && pointerPosition != pointerCameraPosition)
         {
             // Aim Correction Distance
-            aimCorrectionDistance = hitpoint.distance + -Player.cameraDistance.z;
+            aimCorrectionDistance = aimCorrectionStart + hitpoint.distance + -Player.cameraDistance.z;
 
-            if (aimCorrectionDistance == -Player.cameraDistance.z)
+            if (aimCorrectionDistance == aimCorrectionStart + -Player.cameraDistance.z)
             {
-                aimCorrectionDistance = maxDistance + -Player.cameraDistance.z;
+                aimCorrectionDistance = aimCorrectionStart + maxDistance + -Player.cameraDistance.z;
             }
 
 
@@ -395,7 +396,7 @@ public class Pointer : MonoBehaviour
 
 
     // Singular Shot
-    public RaycastHit Shoot(float maxDistance, Vector2 deviation, bool randomDeviation, bool aimCorrection, out Vector3 hitPosition, out Collider collision)
+    public RaycastHit Shoot(float maxDistance, Vector2 deviation, bool randomDeviation, bool aimCorrection, float aimCorrectionStart, out Vector3 hitPosition, out Collider collision)
     {
         // Calculate Center Position of Camera
         Vector3 currentPosition = Player.Camera.transform.position;
@@ -459,11 +460,11 @@ public class Pointer : MonoBehaviour
         if (aimCorrection && pointerPosition != pointerCameraPosition)
         {
             // Aim Correction Distance
-            aimCorrectionDistance = hitpoint.distance + -Player.cameraDistance.z;
+            aimCorrectionDistance = aimCorrectionStart + hitpoint.distance + -Player.cameraDistance.z;
 
-            if (aimCorrectionDistance == -Player.cameraDistance.z)
+            if (aimCorrectionDistance == aimCorrectionStart + -Player.cameraDistance.z)
             {
-                aimCorrectionDistance = maxDistance + -Player.cameraDistance.z;
+                aimCorrectionDistance = aimCorrectionStart + maxDistance + -Player.cameraDistance.z;
             }
 
 
@@ -533,7 +534,7 @@ public class Pointer : MonoBehaviour
 
 
     // Multiple Shots at Once
-    public RaycastHit[] ShootBurst(int totalShots, float maxDistance, Vector2 deviation, bool randomDeviation, bool aimCorrection, out Vector3[] hitPositions, out Collider[] collisions)
+    public RaycastHit[] ShootBurst(int totalShots, float maxDistance, Vector2 deviation, bool randomDeviation, bool aimCorrection, float aimCorrectionStart, out Vector3[] hitPositions, out Collider[] collisions)
     {
         RaycastHit[] hitpoints = new RaycastHit[totalShots];
         hitPositions = new Vector3[totalShots];
@@ -705,11 +706,11 @@ public class Pointer : MonoBehaviour
             if (aimCorrection && pointerPosition != pointerCameraPosition)
             {
                 // Aim Correction Distance
-                aimCorrectionDistance = hitpoint.distance + -Player.cameraDistance.z;
+                aimCorrectionDistance = aimCorrectionStart + hitpoint.distance + -Player.cameraDistance.z;
 
-                if (aimCorrectionDistance == -Player.cameraDistance.z)
+                if (aimCorrectionDistance == aimCorrectionStart + -Player.cameraDistance.z)
                 {
-                    aimCorrectionDistance = maxDistance + -Player.cameraDistance.z;
+                    aimCorrectionDistance = aimCorrectionStart + maxDistance + -Player.cameraDistance.z;
                 }
 
 
