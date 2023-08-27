@@ -192,6 +192,12 @@ public class Pointer : MonoBehaviour
         }
 
 
+        // Face Player
+        Vector3 playerRotation = Player.transform.eulerAngles;
+        Player.transform.LookAt(pointerPosition);
+        Player.transform.eulerAngles = new Vector3(playerRotation.x, transform.eulerAngles.y, playerRotation.z);
+
+
         // Move Pointer Dot
         PointerDot.transform.position = pointerPosition;
     }
