@@ -202,9 +202,9 @@ public class Pointer : MonoBehaviour
             // Aim Correction Distance
             aimCorrectionDistance = aimCorrectionStart + hitpoint.distance + -Player.cameraDistance.z;
 
-            if (aimCorrectionDistance == aimCorrectionStart + -Player.cameraDistance.z)
+            if (aimCorrectionDistance == aimCorrectionStart + -Player.cameraDistance.z || aimCorrectionDistance > maxDistance + -Player.cameraDistance.z)
             {
-                aimCorrectionDistance = aimCorrectionStart + maxDistance + -Player.cameraDistance.z;
+                aimCorrectionDistance = maxDistance + -Player.cameraDistance.z;
             }
 
 
@@ -462,9 +462,9 @@ public class Pointer : MonoBehaviour
             // Aim Correction Distance
             aimCorrectionDistance = aimCorrectionStart + hitpoint.distance + -Player.cameraDistance.z;
 
-            if (aimCorrectionDistance == aimCorrectionStart + -Player.cameraDistance.z)
+            if (aimCorrectionDistance == aimCorrectionStart + -Player.cameraDistance.z || aimCorrectionDistance > maxDistance + -Player.cameraDistance.z)
             {
-                aimCorrectionDistance = aimCorrectionStart + maxDistance + -Player.cameraDistance.z;
+                aimCorrectionDistance = maxDistance + -Player.cameraDistance.z;
             }
 
 
@@ -708,9 +708,9 @@ public class Pointer : MonoBehaviour
                 // Aim Correction Distance
                 aimCorrectionDistance = aimCorrectionStart + hitpoint.distance + -Player.cameraDistance.z;
 
-                if (aimCorrectionDistance == aimCorrectionStart + -Player.cameraDistance.z)
+                if (aimCorrectionDistance == aimCorrectionStart + -Player.cameraDistance.z || aimCorrectionDistance > maxDistance + -Player.cameraDistance.z)
                 {
-                    aimCorrectionDistance = aimCorrectionStart + maxDistance + -Player.cameraDistance.z;
+                    aimCorrectionDistance = maxDistance + -Player.cameraDistance.z;
                 }
 
 
