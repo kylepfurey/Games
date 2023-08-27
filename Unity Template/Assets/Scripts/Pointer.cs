@@ -27,7 +27,7 @@ public class Pointer : MonoBehaviour
         // Calculate Center Position of Camera
         hitscanCamera = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
 
-        if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance) && Mathf.Abs(hitpointCamera.point.magnitude) > Mathf.Abs(Player.transform.position.magnitude))
+        if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance))
         {
             pointerCameraPosition = hitpointCamera.point;
         }
