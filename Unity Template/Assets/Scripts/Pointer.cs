@@ -25,7 +25,10 @@ public class Pointer : MonoBehaviour
     void Update()
     {
         // Calculate Center Position of Camera
+        Vector3 currentPosition = Player.Camera.transform.position;
+        Player.Camera.transform.Translate(new Vector3(0, 0, -Player.cameraDistance.z + Player.transform.localScale.z / 2));
         hitscanCamera = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
+        Player.Camera.transform.position = currentPosition;
 
         if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance))
         {
@@ -41,7 +44,7 @@ public class Pointer : MonoBehaviour
 
 
         // Hitscan
-        Vector3 currentPosition = Player.Camera.transform.position;
+        currentPosition = Player.Camera.transform.position;
         Vector3 currentRotation = Player.Camera.transform.eulerAngles;
         Player.Camera.transform.position = Player.transform.position + Player.cameraStart;
         Player.Camera.transform.LookAt(pointerCameraPosition);
@@ -197,7 +200,10 @@ public class Pointer : MonoBehaviour
     public RaycastHit Shoot(float maxDistance, bool randomDeviation, Vector2 deviation, out Vector3 hitPosition, out Collider collision)
     {
         // Calculate Center Position of Camera
+        Vector3 currentPosition = Player.Camera.transform.position;
+        Player.Camera.transform.Translate(new Vector3(0, 0, -Player.cameraDistance.z + Player.transform.localScale.z / 2));
         hitscanCamera = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
+        Player.Camera.transform.position = currentPosition;
 
         if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance))
         {
@@ -213,7 +219,7 @@ public class Pointer : MonoBehaviour
 
 
         // Hitscan
-        Vector3 currentPosition = Player.Camera.transform.position;
+        currentPosition = Player.Camera.transform.position;
         Vector3 currentRotation = Player.Camera.transform.eulerAngles;
         Player.Camera.transform.position = Player.transform.position + Player.cameraStart;
         Player.Camera.transform.LookAt(pointerCameraPosition);
@@ -265,7 +271,10 @@ public class Pointer : MonoBehaviour
         for (int currentShot = 0; currentShot < totalShots; currentShot++)
         {
             // Calculate Center Position of Camera
+            Vector3 currentPosition = Player.Camera.transform.position;
+            Player.Camera.transform.Translate(new Vector3(0, 0, -Player.cameraDistance.z + Player.transform.localScale.z / 2));
             hitscanCamera = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
+            Player.Camera.transform.position = currentPosition;
 
             if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance))
             {
@@ -281,7 +290,7 @@ public class Pointer : MonoBehaviour
 
 
             // Hitscan
-            Vector3 currentPosition = Player.Camera.transform.position;
+            currentPosition = Player.Camera.transform.position;
             Vector3 currentRotation = Player.Camera.transform.eulerAngles;
             Player.Camera.transform.position = Player.transform.position + Player.cameraStart;
             Player.Camera.transform.LookAt(pointerCameraPosition);
