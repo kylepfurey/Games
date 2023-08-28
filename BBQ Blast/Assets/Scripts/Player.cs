@@ -367,25 +367,6 @@ public class Player : MonoBehaviour
         }
 
 
-        // Jumping
-        if (canDoubleJump)
-        {
-            maxJumps = 2;
-        }
-        else
-        {
-            maxJumps = 1;
-        }
-
-        if (JUMP && JUMP_UP && (isGrounded || (currentJumps < maxJumps && canDoubleJump)) && play)
-        {
-            JUMP_UP = false;
-            Rigidbody.velocity = new Vector3(Rigidbody.velocity.x, 0, Rigidbody.velocity.z);
-            Rigidbody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
-            currentJumps += 1;
-        }
-
-
         // Button Pressed
         // DODGE_UP = false;
         // DODGE_COOLDOWN = DODGE_COOLDOWN_TIME;
@@ -406,41 +387,75 @@ public class Player : MonoBehaviour
         // WEAPON_RIGHT_COOLDOWN = WEAPON_RIGHT_COOLDOWN_TIME;
 
 
-        // Movement
-        MOVE = Input.actions.FindAction("Move").ReadValue<Vector2>().normalized;
+        if (play)
+        {
+            // Movement
+            MOVE = Input.actions.FindAction("Move").ReadValue<Vector2>().normalized;
 
-        Vector3 forward = MOVE.y * Camera.transform.forward;
-        Vector3 right = MOVE.x * Camera.transform.right;
-        Vector3 movement = forward + right;
+            Vector3 forward = MOVE.y * Camera.transform.forward;
+            Vector3 right = MOVE.x * Camera.transform.right;
+            Vector3 movement = forward + right;
 
-        Rigidbody.velocity = new Vector3(movement.x * moveSpeed * moveSpeedModifier, Rigidbody.velocity.y, movement.z * moveSpeed * moveSpeedModifier);
+            if (isGrounded)
+            {
+                Rigidbody.velocity = new Vector3(movement.x * moveSpeed * moveSpeedModifier, Rigidbody.velocity.y, movement.z * moveSpeed * moveSpeedModifier);
+            }
+
+
+            // Camera
+            Camera.transform.position = transform.position + cameraStart;
+            Camera.transform.Translate(cameraDistance);
+
+            cameraRotationY = Mathf.Clamp(cameraRotationY, -90, 90);
+            Camera.transform.rotation = Quaternion.Euler(cameraRotationY, cameraRotationX, 0);
+
+
+            // Flick Stick
+            if (flickStick)
+            {
+                if (Mathf.Abs(LOOK_X) >= flickStickDeadzone || Mathf.Abs(LOOK_Y) >= flickStickDeadzone)
+                {
+                    Camera.transform.eulerAngles = new Vector3(0, flickStickRotation + Mathf.Atan2(LOOK_X, LOOK_Y) * Mathf.Rad2Deg, 0);
+                }
+                else
+                {
+                    flickStickRotation = Camera.transform.eulerAngles.y;
+                }
+            }
+
+
+            // Jumping
+            if (canDoubleJump)
+            {
+                maxJumps = 2;
+            }
+            else
+            {
+                maxJumps = 1;
+            }
+
+            if (JUMP && JUMP_UP && (isGrounded || (currentJumps < maxJumps && canDoubleJump)) && play)
+            {
+                JUMP_UP = false;
+                Rigidbody.velocity = new Vector3(movement.x * moveSpeed * moveSpeedModifier, 0, movement.z * moveSpeed * moveSpeedModifier);
+                Rigidbody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+                currentJumps += 1;
+            }
+        }
     }
-
-    // FIX JITTER WHEN AIMING AND MOVING (THIRD PERSON)
 
     void Update()
     {
         if (play)
         {
-            // Move Camera
-            Camera.transform.position = transform.position + cameraStart;
-            Camera.transform.Translate(cameraDistance);
-
-            // Mouse and Controller
+            // Mouse and Controller Input
             if (Input.GetDevice<Mouse>() != null)
             {
                 isMouse = true;
 
-                // Looking
+                // Mouse
                 LOOK_X = Input.actions.FindAction("Look X").ReadValue<float>() * lookSpeedMouse * lookSpeedModifier * Time.smoothDeltaTime;
                 LOOK_Y = Input.actions.FindAction("Look Y").ReadValue<float>() * lookSpeedMouse * lookSpeedModifier * Time.smoothDeltaTime;
-
-                // Camera Clamp
-                cameraRotationX += LOOK_X;
-                cameraRotationY -= LOOK_Y;
-                cameraRotationY = Mathf.Clamp(cameraRotationY, -90, 90);
-
-                Camera.transform.rotation = Quaternion.Euler(cameraRotationY, cameraRotationX, 0);
             }
             else
             {
@@ -448,33 +463,22 @@ public class Player : MonoBehaviour
 
                 if (flickStick == false)
                 {
-                    // Looking
+                    // Controller
                     LOOK_X = Input.actions.FindAction("Look X").ReadValue<float>() * lookSpeedX * lookSpeedModifier * Time.smoothDeltaTime;
                     LOOK_Y = Input.actions.FindAction("Look Y").ReadValue<float>() * lookSpeedY * lookSpeedModifier * Time.smoothDeltaTime;
-
-                    // Camera Clamp
-                    cameraRotationX += LOOK_X;
-                    cameraRotationY -= LOOK_Y;
-                    cameraRotationY = Mathf.Clamp(cameraRotationY, -90, 90);
-
-                    Camera.transform.rotation = Quaternion.Euler(cameraRotationY, cameraRotationX, 0);
                 }
                 else
                 {
-                    // Looking
+                    // Controller (Flick Stick)
                     LOOK_X = Input.actions.FindAction("Look X").ReadValue<float>();
                     LOOK_Y = Input.actions.FindAction("Look Y").ReadValue<float>();
-
-                    if (Mathf.Abs(LOOK_X) >= flickStickDeadzone || Mathf.Abs(LOOK_Y) >= flickStickDeadzone)
-                    {
-                        Camera.transform.eulerAngles = new Vector3(0, flickStickRotation + Mathf.Atan2(LOOK_X, LOOK_Y) * Mathf.Rad2Deg, 0);
-                    }
-                    else
-                    {
-                        flickStickRotation = Camera.transform.eulerAngles.y;
-                    }
                 }
             }
+
+
+            // Camera Clamp
+            cameraRotationX += LOOK_X;
+            cameraRotationY -= LOOK_Y;
         }
     }
 

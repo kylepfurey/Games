@@ -385,8 +385,10 @@ public class Pointer : MonoBehaviour
             // Move Pointer Dot
             PointerDot.transform.position = pointerPosition;
         }
+    }
 
-
+    void FixedUpdate()
+    {
         // Face Player
         Vector3 playerRotation = Player.transform.eulerAngles;
         Player.transform.LookAt(PointerDot.transform.position);
