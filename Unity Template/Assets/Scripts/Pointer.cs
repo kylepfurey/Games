@@ -30,6 +30,7 @@ public class Pointer : MonoBehaviour
     {
         // Layermask
         LayerMask layerMask = 1 << Player.gameObject.layer;
+        layerMask = ~layerMask;
 
 
         // Calculate Center Position of Camera
@@ -404,6 +405,7 @@ public class Pointer : MonoBehaviour
     {
         // Layermask
         LayerMask layerMask = 1 << Player.gameObject.layer;
+        layerMask = ~layerMask;
 
 
         // Calculate Center Position of Camera
@@ -552,6 +554,7 @@ public class Pointer : MonoBehaviour
         {
             // Layermask
             LayerMask layerMask = 1 << Player.gameObject.layer;
+            layerMask = ~layerMask;
 
 
             // Calculate Center Position of Camera
