@@ -28,13 +28,17 @@ public class Pointer : MonoBehaviour
 
     void Update()
     {
+        // Layermask
+        LayerMask layerMask = 1 << Player.gameObject.layer;
+
+
         // Calculate Center Position of Camera
         Vector3 currentPosition = Player.Camera.transform.position;
         Player.Camera.transform.Translate(new Vector3(0, 0, -Player.cameraDistance.z + Player.transform.localScale.z / 2));
         hitscanCamera = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
         Player.Camera.transform.position = currentPosition;
 
-        if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance + -Player.cameraDistance.z) && hitpointCamera.collider.gameObject.layer != Player.gameObject.layer)
+        if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance + -Player.cameraDistance.z, layerMask))
         {
             pointerCameraPosition = hitpointCamera.point;
         }
@@ -172,7 +176,7 @@ public class Pointer : MonoBehaviour
 
 
         // Check Hitscan
-        if (Physics.Raycast(hitscan, out hitpoint, maxDistance) && hitpoint.collider.gameObject.layer != Player.gameObject.layer)
+        if (Physics.Raycast(hitscan, out hitpoint, maxDistance, layerMask))
         {
             // Calculate Hit Position
             pointerPosition = hitpoint.point;
@@ -197,7 +201,7 @@ public class Pointer : MonoBehaviour
 
 
         // Smart Aim Correction
-        if (aimCorrection && Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance) && pointerPosition != pointerCameraPosition)
+        if (aimCorrection && Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance, layerMask) && pointerPosition != pointerCameraPosition)
         {
             // Aim Correction Distance
             aimCorrectionDistance = aimCorrectionStart + hitpoint.distance + -Player.cameraDistance.z;
@@ -215,7 +219,7 @@ public class Pointer : MonoBehaviour
             Player.Camera.transform.position = currentPosition;
 
 
-            if (Physics.Raycast(hitscanCamera, out hitpointCamera, aimCorrectionDistance) && hitpointCamera.collider.gameObject.layer != Player.gameObject.layer)
+            if (Physics.Raycast(hitscanCamera, out hitpointCamera, aimCorrectionDistance, layerMask))
             {
                 pointerCameraPosition = hitpointCamera.point;
             }
@@ -353,7 +357,7 @@ public class Pointer : MonoBehaviour
 
 
             // Check Hitscan
-            if (Physics.Raycast(hitscan, out hitpoint, maxDistance) && hitpoint.collider.gameObject.layer != Player.gameObject.layer)
+            if (Physics.Raycast(hitscan, out hitpoint, maxDistance, layerMask))
             {
                 // Calculate Hit Position
                 pointerPosition = hitpoint.point;
@@ -398,13 +402,17 @@ public class Pointer : MonoBehaviour
     // Singular Shot
     public RaycastHit Shoot(float maxDistance, Vector2 deviation, bool randomDeviation, bool aimCorrection, float aimCorrectionStart, out Vector3 hitPosition, out Collider collision)
     {
+        // Layermask
+        LayerMask layerMask = 1 << Player.gameObject.layer;
+
+
         // Calculate Center Position of Camera
         Vector3 currentPosition = Player.Camera.transform.position;
         Player.Camera.transform.Translate(new Vector3(0, 0, -Player.cameraDistance.z + Player.transform.localScale.z / 2));
         hitscanCamera = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
         Player.Camera.transform.position = currentPosition;
 
-        if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance + -Player.cameraDistance.z) && hitpointCamera.collider.gameObject.layer != Player.gameObject.layer)
+        if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance + -Player.cameraDistance.z, layerMask))
         {
             pointerCameraPosition = hitpointCamera.point;
         }
@@ -440,7 +448,7 @@ public class Pointer : MonoBehaviour
 
 
         // Check Hitscan
-        if (Physics.Raycast(hitscan, out hitpoint, maxDistance) && hitpoint.collider.gameObject.layer != Player.gameObject.layer)
+        if (Physics.Raycast(hitscan, out hitpoint, maxDistance, layerMask))
         {
             // Calculate Hit Position
             pointerPosition = hitpoint.point;
@@ -457,7 +465,7 @@ public class Pointer : MonoBehaviour
 
 
         // Smart Aim Correction
-        if (aimCorrection && Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance) && pointerPosition != pointerCameraPosition)
+        if (aimCorrection && Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance, layerMask) && pointerPosition != pointerCameraPosition)
         {
             // Aim Correction Distance
             aimCorrectionDistance = aimCorrectionStart + hitpoint.distance + -Player.cameraDistance.z;
@@ -474,7 +482,7 @@ public class Pointer : MonoBehaviour
             hitscanCamera = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
             Player.Camera.transform.position = currentPosition;
 
-            if (Physics.Raycast(hitscanCamera, out hitpointCamera, aimCorrectionDistance) && hitpointCamera.collider.gameObject.layer != Player.gameObject.layer)
+            if (Physics.Raycast(hitscanCamera, out hitpointCamera, aimCorrectionDistance, layerMask))
             {
                 pointerCameraPosition = hitpointCamera.point;
             }
@@ -510,7 +518,7 @@ public class Pointer : MonoBehaviour
 
 
             // Check Hitscan
-            if (Physics.Raycast(hitscan, out hitpoint, maxDistance) && hitpoint.collider.gameObject.layer != Player.gameObject.layer)
+            if (Physics.Raycast(hitscan, out hitpoint, maxDistance, layerMask))
             {
                 // Calculate Hit Position
                 pointerPosition = hitpoint.point;
@@ -542,13 +550,17 @@ public class Pointer : MonoBehaviour
 
         for (int currentShot = 0; currentShot < totalShots; currentShot++)
         {
+            // Layermask
+            LayerMask layerMask = 1 << Player.gameObject.layer;
+
+
             // Calculate Center Position of Camera
             Vector3 currentPosition = Player.Camera.transform.position;
             Player.Camera.transform.Translate(new Vector3(0, 0, -Player.cameraDistance.z + Player.transform.localScale.z / 2));
             hitscanCamera = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
             Player.Camera.transform.position = currentPosition;
 
-            if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance + -Player.cameraDistance.z) && hitpointCamera.collider.gameObject.layer != Player.gameObject.layer)
+            if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance + -Player.cameraDistance.z, layerMask))
             {
                 pointerCameraPosition = hitpointCamera.point;
             }
@@ -686,7 +698,7 @@ public class Pointer : MonoBehaviour
 
 
             // Check Hitscan
-            if (Physics.Raycast(hitscan, out hitpoint, maxDistance) && hitpoint.collider.gameObject.layer != Player.gameObject.layer)
+            if (Physics.Raycast(hitscan, out hitpoint, maxDistance, layerMask))
             {
                 // Calculate Hit Position
                 pointerPosition = hitpoint.point;
@@ -703,7 +715,7 @@ public class Pointer : MonoBehaviour
 
 
             // Smart Aim Correction
-            if (aimCorrection && Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance) && pointerPosition != pointerCameraPosition)
+            if (aimCorrection && Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance, layerMask) && pointerPosition != pointerCameraPosition)
             {
                 // Aim Correction Distance
                 aimCorrectionDistance = aimCorrectionStart + hitpoint.distance + -Player.cameraDistance.z;
@@ -720,7 +732,7 @@ public class Pointer : MonoBehaviour
                 hitscanCamera = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
                 Player.Camera.transform.position = currentPosition;
 
-                if (Physics.Raycast(hitscanCamera, out hitpointCamera, aimCorrectionDistance) && hitpointCamera.collider.gameObject.layer != Player.gameObject.layer)
+                if (Physics.Raycast(hitscanCamera, out hitpointCamera, aimCorrectionDistance, layerMask))
                 {
                     pointerCameraPosition = hitpointCamera.point;
                 }
@@ -858,7 +870,7 @@ public class Pointer : MonoBehaviour
 
 
                 // Check Hitscan
-                if (Physics.Raycast(hitscan, out hitpoint, maxDistance) && hitpoint.collider.gameObject.layer != Player.gameObject.layer)
+                if (Physics.Raycast(hitscan, out hitpoint, maxDistance, layerMask))
                 {
                     // Calculate Hit Position
                     pointerPosition = hitpoint.point;
