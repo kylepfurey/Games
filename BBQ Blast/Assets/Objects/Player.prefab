@@ -401,7 +401,7 @@ MonoBehaviour:
   cameraStart: {x: 0, y: 0.75, z: 0}
   cameraDistance: {x: 2, y: 0, z: -3}
   isMouse: 0
-  lookSpeedMouse: 200
+  lookSpeedMouse: 1
   lookSpeedX: 200
   lookSpeedY: 100
   lookSpeedModifier: 1
@@ -937,7 +937,7 @@ MonoBehaviour:
   shotCounter: 0
   totalShots: 9
   aimCorrection: 1
-  aimCorrectionStart: 0.6
+  aimCorrectionStart: 0
   aimCorrectionDistance: 0
 --- !u!1 &6173670444364307986
 GameObject:

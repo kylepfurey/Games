@@ -401,13 +401,13 @@ public class Player : MonoBehaviour
 
 
             // Mouse and Controller Input
-            if (Input.GetDevice<Mouse>() != null)
+            if (Input.GetDevice<Mouse>() == null || flickStick)
             {
                 isMouse = true;
 
                 // Mouse
-                LOOK_X = Input.actions.FindAction("Look X").ReadValue<float>() * lookSpeedMouse * lookSpeedModifier * Time.smoothDeltaTime;
-                LOOK_Y = Input.actions.FindAction("Look Y").ReadValue<float>() * lookSpeedMouse * lookSpeedModifier * Time.smoothDeltaTime;
+                LOOK_X = Input.actions.FindAction("Look X").ReadValue<float>() * lookSpeedMouse * lookSpeedModifier;
+                LOOK_Y = Input.actions.FindAction("Look Y").ReadValue<float>() * lookSpeedMouse * lookSpeedModifier;
             }
             else
             {
@@ -416,8 +416,8 @@ public class Player : MonoBehaviour
                 if (flickStick == false)
                 {
                     // Controller
-                    LOOK_X = Input.actions.FindAction("Look X").ReadValue<float>() * lookSpeedX * lookSpeedModifier * Time.smoothDeltaTime;
-                    LOOK_Y = Input.actions.FindAction("Look Y").ReadValue<float>() * lookSpeedY * lookSpeedModifier * Time.smoothDeltaTime;
+                    LOOK_X = Input.actions.FindAction("Look X").ReadValue<float>() * lookSpeedX * lookSpeedModifier * Time.deltaTime;
+                    LOOK_Y = Input.actions.FindAction("Look Y").ReadValue<float>() * lookSpeedY * lookSpeedModifier * Time.deltaTime;
                 }
                 else
                 {
@@ -431,7 +431,7 @@ public class Player : MonoBehaviour
             // Camera Clamp
             cameraRotationX += LOOK_X;
             cameraRotationY -= LOOK_Y;
-            cameraRotationY = Mathf.Clamp(cameraRotationY, -90, 90);
+            cameraRotationY = Mathf.Clamp(cameraRotationY, -85, 85);
         }
     }
 
@@ -440,23 +440,32 @@ public class Player : MonoBehaviour
         if (play)
         {
             // Movement
-            Vector3 forward = MOVE.y * Camera.transform.forward;
-            Vector3 right = MOVE.x * Camera.transform.right;
+            Vector3 forward = MOVE.y * transform.forward * moveSpeed * moveSpeedModifier;
+            Vector3 right = MOVE.x * transform.right * moveSpeed * moveSpeedModifier;
             Vector3 movement = forward + right;
+            float maxSpeed = moveSpeed * moveSpeedModifier;
+
+            movement.x -= Mathf.Clamp(Rigidbody.velocity.x, -maxSpeed, maxSpeed);
+            movement.z -= Mathf.Clamp(Rigidbody.velocity.z, -maxSpeed, maxSpeed);
 
             if (isGrounded)
             {
-                Rigidbody.velocity = new Vector3(movement.x * moveSpeed * moveSpeedModifier, Rigidbody.velocity.y, movement.z * moveSpeed * moveSpeedModifier);
+                Rigidbody.velocity += new Vector3(movement.x, 0, movement.z);
+            }
+            else
+            {
+
             }
 
 
             // Camera Rotation
-            Camera.transform.rotation = Quaternion.Euler(cameraRotationY, cameraRotationX, 0);
-
-
-            // Flick Stick
-            if (flickStick)
+            if (flickStick == false)
             {
+                Camera.transform.rotation = Quaternion.Euler(cameraRotationY, cameraRotationX, 0);
+            }
+            else
+            {
+                // Flick Stick
                 if (Mathf.Abs(LOOK_X) >= flickStickDeadzone || Mathf.Abs(LOOK_Y) >= flickStickDeadzone)
                 {
                     Camera.transform.eulerAngles = new Vector3(0, flickStickRotation + Mathf.Atan2(LOOK_X, LOOK_Y) * Mathf.Rad2Deg, 0);
@@ -481,7 +490,7 @@ public class Player : MonoBehaviour
             if (JUMP && JUMP_UP && (isGrounded || (currentJumps < maxJumps && canDoubleJump)) && play)
             {
                 JUMP_UP = false;
-                Rigidbody.velocity = new Vector3(movement.x * moveSpeed * moveSpeedModifier, 0, movement.z * moveSpeed * moveSpeedModifier);
+                Rigidbody.velocity += new Vector3(movement.x, -Rigidbody.velocity.y, movement.z);
                 Rigidbody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
                 currentJumps += 1;
             }
