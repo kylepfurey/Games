@@ -88,6 +88,7 @@ public class Player : MonoBehaviour
     // Movement Variables
     public float moveSpeed;
     public float moveSpeedModifier;
+    public float airSpeedModifier;
 
     public bool isGrounded;
     public float jumpForce;
@@ -127,7 +128,7 @@ public class Player : MonoBehaviour
         if (play)
         {
             // Controls
-            MOVE = Input.actions.FindAction("Move").ReadValue<Vector2>();
+            MOVE = Input.actions.FindAction("Move").ReadValue<Vector2>().normalized;
             JUMP = Button(Input.actions.FindAction("Jump").ReadValue<float>());
             DODGE = Button(Input.actions.FindAction("Dodge").ReadValue<float>());
             CROUCH = Button(Input.actions.FindAction("Crouch").ReadValue<float>());
@@ -450,11 +451,13 @@ public class Player : MonoBehaviour
 
             if (isGrounded)
             {
+                // Movement
                 Rigidbody.velocity += new Vector3(movement.x, 0, movement.z);
             }
             else
             {
-
+                // Midair Movement
+                Rigidbody.velocity = Quaternion.AngleAxis(LOOK_X, Camera.transform.up) * Rigidbody.velocity;
             }
 
 
