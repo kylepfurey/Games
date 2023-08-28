@@ -9,21 +9,33 @@ public class Player : MonoBehaviour
     public Rigidbody Rigidbody;
 
     // Camera Variables
+    public bool thirdPerson;
     public Vector3 cameraStart;
     public Vector3 cameraDistance;
 
-    void Start()
+    // INSERT VARIABLES
+
+    void Start()        // Start
     {
-        
+        // INSERT SCRIPTS
     }
 
-    void FixedUpdate()
+    void Update()       // Input and Position
     {
-        // Move Camera
+        // Camera Perspective
         Camera.transform.position = transform.position + cameraStart;
-        Camera.transform.Translate(cameraDistance);
+
+        if (thirdPerson)
+        {
+            Camera.transform.Translate(cameraDistance);
+        }
 
 
+        // INSERT SCRIPTS
+    }
+
+    void FixedUpdate()  // Physics and Rotation
+    {
         // INSERT SCRIPTS
     }
 
