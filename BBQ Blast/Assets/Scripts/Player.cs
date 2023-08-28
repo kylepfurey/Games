@@ -390,7 +390,7 @@ public class Player : MonoBehaviour
         if (play)
         {
             // Movement
-            MOVE = Input.actions.FindAction("Move").ReadValue<Vector2>().normalized;
+            MOVE = Input.actions.FindAction("Move").ReadValue<Vector2>();
 
             Vector3 forward = MOVE.y * Camera.transform.forward;
             Vector3 right = MOVE.x * Camera.transform.right;
@@ -406,7 +406,6 @@ public class Player : MonoBehaviour
             Camera.transform.position = transform.position + cameraStart;
             Camera.transform.Translate(cameraDistance);
 
-            cameraRotationY = Mathf.Clamp(cameraRotationY, -90, 90);
             Camera.transform.rotation = Quaternion.Euler(cameraRotationY, cameraRotationX, 0);
 
 
@@ -479,6 +478,7 @@ public class Player : MonoBehaviour
             // Camera Clamp
             cameraRotationX += LOOK_X;
             cameraRotationY -= LOOK_Y;
+            cameraRotationY = Mathf.Clamp(cameraRotationY, -90, 90);
         }
     }
 
