@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
     // Movement Variables
     public float moveSpeed;
     public float moveSpeedModifier;
-    public float airSpeedModifier;
+    public float airSpeed;
 
     public bool isGrounded;
     public float jumpForce;
@@ -457,7 +457,7 @@ public class Player : MonoBehaviour
             else
             {
                 // Midair Movement
-                Rigidbody.velocity = Quaternion.AngleAxis(LOOK_X, Camera.transform.up) * Rigidbody.velocity;
+
             }
 
 
