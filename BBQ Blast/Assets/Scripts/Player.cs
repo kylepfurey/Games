@@ -89,13 +89,14 @@ public class Player : MonoBehaviour
     public float moveSpeed;
     public float moveSpeedModifier;
 
-    public float jumpForce;
     public bool isGrounded;
+    public float jumpForce;
+    public bool canDoubleJump;
     public int currentJumps;
     public int maxJumps;
-    public bool canDoubleJump;
 
-    // Looking Variables
+    // Camera Variables
+    public bool thirdPerson;
     public Vector3 cameraStart;
     public Vector3 cameraDistance;
     public bool isMouse;
@@ -114,284 +115,331 @@ public class Player : MonoBehaviour
     public int playerNumber;
     public bool play;
 
-    void Start()
+    void Start()    // Start
     {
         playerNumber = Input.playerIndex + 1;
 
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void FixedUpdate()
+    void Update()   // Input and Position
     {
-        // Controls
-        JUMP = Button(Input.actions.FindAction("Jump").ReadValue<float>());
-        DODGE = Button(Input.actions.FindAction("Dodge").ReadValue<float>());
-        CROUCH = Button(Input.actions.FindAction("Crouch").ReadValue<float>());
-        SHOOT = Button(Input.actions.FindAction("Shoot").ReadValue<float>());
-        AIM = Button(Input.actions.FindAction("Aim").ReadValue<float>());
-        RELOAD = Button(Input.actions.FindAction("Reload").ReadValue<float>());
-        WEAPON_LEFT = Button(Input.actions.FindAction("Weapon Left").ReadValue<float>());
-        WEAPON_RIGHT = Button(Input.actions.FindAction("Weapon Right").ReadValue<float>());
-        WEAPON_PREVIOUS = Button(Input.actions.FindAction("Previous Weapon").ReadValue<float>());
-        PRIMARY = Button(Input.actions.FindAction("Primary").ReadValue<float>());
-        SECONDARY = Button(Input.actions.FindAction("Secondary").ReadValue<float>());
-        MELEE = Button(Input.actions.FindAction("Melee").ReadValue<float>());
-        SCOREBOARD = Button(Input.actions.FindAction("Scoreboard").ReadValue<float>());
-        RESTART = Button(Input.actions.FindAction("Restart").ReadValue<float>());
-        EXIT = Button(Input.actions.FindAction("Exit").ReadValue<float>());
-
-
-        // Restart and Exit
-        if (EXIT)
+        if (play)
         {
-            Application.Quit();
-        }
-        else if (RESTART && play)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+            // Controls
+            MOVE = Input.actions.FindAction("Move").ReadValue<Vector2>();
+            JUMP = Button(Input.actions.FindAction("Jump").ReadValue<float>());
+            DODGE = Button(Input.actions.FindAction("Dodge").ReadValue<float>());
+            CROUCH = Button(Input.actions.FindAction("Crouch").ReadValue<float>());
+            SHOOT = Button(Input.actions.FindAction("Shoot").ReadValue<float>());
+            AIM = Button(Input.actions.FindAction("Aim").ReadValue<float>());
+            RELOAD = Button(Input.actions.FindAction("Reload").ReadValue<float>());
+            WEAPON_LEFT = Button(Input.actions.FindAction("Weapon Left").ReadValue<float>());
+            WEAPON_RIGHT = Button(Input.actions.FindAction("Weapon Right").ReadValue<float>());
+            WEAPON_PREVIOUS = Button(Input.actions.FindAction("Previous Weapon").ReadValue<float>());
+            PRIMARY = Button(Input.actions.FindAction("Primary").ReadValue<float>());
+            SECONDARY = Button(Input.actions.FindAction("Secondary").ReadValue<float>());
+            MELEE = Button(Input.actions.FindAction("Melee").ReadValue<float>());
+            SCOREBOARD = Button(Input.actions.FindAction("Scoreboard").ReadValue<float>());
+            RESTART = Button(Input.actions.FindAction("Restart").ReadValue<float>());
+            EXIT = Button(Input.actions.FindAction("Exit").ReadValue<float>());
 
 
-        // Button Behavior
-        if (!JUMP)
-        {
-            JUMP_UP = true;
-
-            if (JUMP_COOLDOWN_RESET != 0)
+            // Restart and Exit
+            if (EXIT)
             {
-                if (JUMP_COOLDOWN > JUMP_COOLDOWN_RESET)
-                {
-                    JUMP_COOLDOWN = JUMP_COOLDOWN_RESET;
-                }
+                Application.Quit();
+            }
+            else if (RESTART && play)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
 
-                if (JUMP_COOLDOWN > 0)
+
+            // Button Behavior
+            if (!JUMP)
+            {
+                JUMP_UP = true;
+
+                if (JUMP_COOLDOWN_RESET != 0)
                 {
-                    JUMP_COOLDOWN -= Time.deltaTime;
+                    if (JUMP_COOLDOWN > JUMP_COOLDOWN_RESET)
+                    {
+                        JUMP_COOLDOWN = JUMP_COOLDOWN_RESET;
+                    }
+
+                    if (JUMP_COOLDOWN > 0)
+                    {
+                        JUMP_COOLDOWN -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        JUMP_COOLDOWN = 0;
+                    }
+                }
+            }
+
+            if (!DODGE)
+            {
+                DODGE_UP = true;
+
+                if (DODGE_COOLDOWN_RESET != 0)
+                {
+                    if (DODGE_COOLDOWN > DODGE_COOLDOWN_RESET)
+                    {
+                        DODGE_COOLDOWN = DODGE_COOLDOWN_RESET;
+                    }
+
+                    if (DODGE_COOLDOWN > 0)
+                    {
+                        DODGE_COOLDOWN -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        DODGE_COOLDOWN = 0;
+                    }
+                }
+            }
+
+            if (!CROUCH)
+            {
+                CROUCH_UP = true;
+
+                if (CROUCH_COOLDOWN_RESET != 0)
+                {
+                    if (CROUCH_COOLDOWN > DODGE_COOLDOWN_RESET)
+                    {
+                        CROUCH_COOLDOWN = CROUCH_COOLDOWN_RESET;
+                    }
+
+                    if (CROUCH_COOLDOWN > 0)
+                    {
+                        CROUCH_COOLDOWN -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        CROUCH_COOLDOWN = 0;
+                    }
+                }
+            }
+
+            if (!SHOOT)
+            {
+                SHOOT_UP = true;
+
+                if (SHOOT_COOLDOWN_RESET != 0)
+                {
+                    if (SHOOT_COOLDOWN > SHOOT_COOLDOWN_RESET)
+                    {
+                        SHOOT_COOLDOWN = SHOOT_COOLDOWN_RESET;
+                    }
+
+                    if (SHOOT_COOLDOWN > 0)
+                    {
+                        SHOOT_COOLDOWN -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        SHOOT_COOLDOWN = 0;
+                    }
+                }
+            }
+
+            if (!AIM)
+            {
+                AIM_UP = true;
+
+                if (AIM_COOLDOWN_RESET != 0)
+                {
+                    if (AIM_COOLDOWN > AIM_COOLDOWN_RESET)
+                    {
+                        AIM_COOLDOWN = AIM_COOLDOWN_RESET;
+                    }
+
+                    if (AIM_COOLDOWN > 0)
+                    {
+                        AIM_COOLDOWN -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        AIM_COOLDOWN = 0;
+                    }
+                }
+            }
+
+            if (!RELOAD)
+            {
+                RELOAD_UP = true;
+
+                if (RELOAD_COOLDOWN_RESET != 0)
+                {
+                    if (RELOAD_COOLDOWN > RELOAD_COOLDOWN_RESET)
+                    {
+                        RELOAD_COOLDOWN = RELOAD_COOLDOWN_RESET;
+                    }
+
+                    if (RELOAD_COOLDOWN > 0)
+                    {
+                        RELOAD_COOLDOWN -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        RELOAD_COOLDOWN = 0;
+                    }
+                }
+            }
+
+            if (!WEAPON_LEFT)
+            {
+                WEAPON_LEFT_UP = true;
+
+                if (WEAPON_LEFT_COOLDOWN_RESET != 0)
+                {
+                    if (WEAPON_LEFT_COOLDOWN > WEAPON_RIGHT_COOLDOWN_RESET)
+                    {
+                        WEAPON_LEFT_COOLDOWN = WEAPON_LEFT_COOLDOWN_RESET;
+                    }
+
+                    if (WEAPON_LEFT_COOLDOWN > 0)
+                    {
+                        WEAPON_LEFT_COOLDOWN -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        WEAPON_LEFT_COOLDOWN = 0;
+                    }
+                }
+            }
+
+            if (!WEAPON_RIGHT)
+            {
+                WEAPON_RIGHT_UP = true;
+
+                if (WEAPON_RIGHT_COOLDOWN_RESET != 0)
+                {
+                    if (WEAPON_RIGHT_COOLDOWN > WEAPON_RIGHT_COOLDOWN_RESET)
+                    {
+                        WEAPON_RIGHT_COOLDOWN = WEAPON_RIGHT_COOLDOWN_RESET;
+                    }
+
+                    if (WEAPON_RIGHT_COOLDOWN > 0)
+                    {
+                        WEAPON_RIGHT_COOLDOWN -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        WEAPON_RIGHT_COOLDOWN = 0;
+                    }
+                }
+            }
+
+            if (!WEAPON_PREVIOUS)
+            {
+                WEAPON_PREVIOUS_UP = true;
+
+                if (WEAPON_PREVIOUS_COOLDOWN_RESET != 0)
+                {
+                    if (WEAPON_PREVIOUS_COOLDOWN > WEAPON_PREVIOUS_COOLDOWN_RESET)
+                    {
+                        WEAPON_PREVIOUS_COOLDOWN = WEAPON_PREVIOUS_COOLDOWN_RESET;
+                    }
+
+                    if (WEAPON_PREVIOUS_COOLDOWN > 0)
+                    {
+                        WEAPON_PREVIOUS_COOLDOWN -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        WEAPON_PREVIOUS_COOLDOWN = 0;
+                    }
+                }
+            }
+
+            if (!PRIMARY)
+            {
+                PRIMARY_UP = true;
+            }
+
+            if (!SECONDARY)
+            {
+                SECONDARY_UP = true;
+            }
+
+            if (!MELEE)
+            {
+                MELEE_UP = true;
+            }
+
+
+            // Button Pressed
+            // DODGE_UP = false;
+            // DODGE_COOLDOWN = DODGE_COOLDOWN_TIME;
+
+            // CROUCH_UP = false;
+            // CROUCH_COOLDOWN = CROUCH_COOLDOWN_TIME;
+
+            // SHOOT_UP = false;
+            // SHOOT_COOLDOWN = SHOOT_COOLDOWN_TIME;
+
+            // AIM_UP = false;
+            // AIM_COOLDOWN = AIM_COOLDOWN_TIME;
+
+            // WEAPON_LEFT_UP = false;
+            // WEAPON_LEFT_COOLDOWN = WEAPON_RIGHT_COOLDOWN_TIME;
+
+            // WEAPON_RIGHT_UP = false;
+            // WEAPON_RIGHT_COOLDOWN = WEAPON_RIGHT_COOLDOWN_TIME;
+
+
+            // Camera Position
+            Camera.transform.position = transform.position + cameraStart;
+
+            if (thirdPerson)
+            {
+                Camera.transform.Translate(cameraDistance);
+            }
+
+
+            // Mouse and Controller Input
+            if (Input.GetDevice<Mouse>() != null)
+            {
+                isMouse = true;
+
+                // Mouse
+                LOOK_X = Input.actions.FindAction("Look X").ReadValue<float>() * lookSpeedMouse * lookSpeedModifier * Time.smoothDeltaTime;
+                LOOK_Y = Input.actions.FindAction("Look Y").ReadValue<float>() * lookSpeedMouse * lookSpeedModifier * Time.smoothDeltaTime;
+            }
+            else
+            {
+                isMouse = false;
+
+                if (flickStick == false)
+                {
+                    // Controller
+                    LOOK_X = Input.actions.FindAction("Look X").ReadValue<float>() * lookSpeedX * lookSpeedModifier * Time.smoothDeltaTime;
+                    LOOK_Y = Input.actions.FindAction("Look Y").ReadValue<float>() * lookSpeedY * lookSpeedModifier * Time.smoothDeltaTime;
                 }
                 else
                 {
-                    JUMP_COOLDOWN = 0;
+                    // Controller (Flick Stick)
+                    LOOK_X = Input.actions.FindAction("Look X").ReadValue<float>();
+                    LOOK_Y = Input.actions.FindAction("Look Y").ReadValue<float>();
                 }
             }
+
+
+            // Camera Clamp
+            cameraRotationX += LOOK_X;
+            cameraRotationY -= LOOK_Y;
+            cameraRotationY = Mathf.Clamp(cameraRotationY, -90, 90);
         }
+    }
 
-        if (!DODGE)
-        {
-            DODGE_UP = true;
-
-            if (DODGE_COOLDOWN_RESET != 0)
-            {
-                if (DODGE_COOLDOWN > DODGE_COOLDOWN_RESET)
-                {
-                    DODGE_COOLDOWN = DODGE_COOLDOWN_RESET;
-                }
-
-                if (DODGE_COOLDOWN > 0)
-                {
-                    DODGE_COOLDOWN -= Time.deltaTime;
-                }
-                else
-                {
-                    DODGE_COOLDOWN = 0;
-                }
-            }
-        }
-
-        if (!CROUCH)
-        {
-            CROUCH_UP = true;
-
-            if (CROUCH_COOLDOWN_RESET != 0)
-            {
-                if (CROUCH_COOLDOWN > DODGE_COOLDOWN_RESET)
-                {
-                    CROUCH_COOLDOWN = CROUCH_COOLDOWN_RESET;
-                }
-
-                if (CROUCH_COOLDOWN > 0)
-                {
-                    CROUCH_COOLDOWN -= Time.deltaTime;
-                }
-                else
-                {
-                    CROUCH_COOLDOWN = 0;
-                }
-            }
-        }
-
-        if (!SHOOT)
-        {
-            SHOOT_UP = true;
-
-            if (SHOOT_COOLDOWN_RESET != 0)
-            {
-                if (SHOOT_COOLDOWN > SHOOT_COOLDOWN_RESET)
-                {
-                    SHOOT_COOLDOWN = SHOOT_COOLDOWN_RESET;
-                }
-
-                if (SHOOT_COOLDOWN > 0)
-                {
-                    SHOOT_COOLDOWN -= Time.deltaTime;
-                }
-                else
-                {
-                    SHOOT_COOLDOWN = 0;
-                }
-            }
-        }
-
-        if (!AIM)
-        {
-            AIM_UP = true;
-
-            if (AIM_COOLDOWN_RESET != 0)
-            {
-                if (AIM_COOLDOWN > AIM_COOLDOWN_RESET)
-                {
-                    AIM_COOLDOWN = AIM_COOLDOWN_RESET;
-                }
-
-                if (AIM_COOLDOWN > 0)
-                {
-                    AIM_COOLDOWN -= Time.deltaTime;
-                }
-                else
-                {
-                    AIM_COOLDOWN = 0;
-                }
-            }
-        }
-
-        if (!RELOAD)
-        {
-            RELOAD_UP = true;
-
-            if (RELOAD_COOLDOWN_RESET != 0)
-            {
-                if (RELOAD_COOLDOWN > RELOAD_COOLDOWN_RESET)
-                {
-                    RELOAD_COOLDOWN = RELOAD_COOLDOWN_RESET;
-                }
-
-                if (RELOAD_COOLDOWN > 0)
-                {
-                    RELOAD_COOLDOWN -= Time.deltaTime;
-                }
-                else
-                {
-                    RELOAD_COOLDOWN = 0;
-                }
-            }
-        }
-
-        if (!WEAPON_LEFT)
-        {
-            WEAPON_LEFT_UP = true;
-
-            if (WEAPON_LEFT_COOLDOWN_RESET != 0)
-            {
-                if (WEAPON_LEFT_COOLDOWN > WEAPON_RIGHT_COOLDOWN_RESET)
-                {
-                    WEAPON_LEFT_COOLDOWN = WEAPON_LEFT_COOLDOWN_RESET;
-                }
-
-                if (WEAPON_LEFT_COOLDOWN > 0)
-                {
-                    WEAPON_LEFT_COOLDOWN -= Time.deltaTime;
-                }
-                else
-                {
-                    WEAPON_LEFT_COOLDOWN = 0;
-                }
-            }
-        }
-
-        if (!WEAPON_RIGHT)
-        {
-            WEAPON_RIGHT_UP = true;
-
-            if (WEAPON_RIGHT_COOLDOWN_RESET != 0)
-            {
-                if (WEAPON_RIGHT_COOLDOWN > WEAPON_RIGHT_COOLDOWN_RESET)
-                {
-                    WEAPON_RIGHT_COOLDOWN = WEAPON_RIGHT_COOLDOWN_RESET;
-                }
-
-                if (WEAPON_RIGHT_COOLDOWN > 0)
-                {
-                    WEAPON_RIGHT_COOLDOWN -= Time.deltaTime;
-                }
-                else
-                {
-                    WEAPON_RIGHT_COOLDOWN = 0;
-                }
-            }
-        }
-
-        if (!WEAPON_PREVIOUS)
-        {
-            WEAPON_PREVIOUS_UP = true;
-
-            if (WEAPON_PREVIOUS_COOLDOWN_RESET != 0)
-            {
-                if (WEAPON_PREVIOUS_COOLDOWN > WEAPON_PREVIOUS_COOLDOWN_RESET)
-                {
-                    WEAPON_PREVIOUS_COOLDOWN = WEAPON_PREVIOUS_COOLDOWN_RESET;
-                }
-
-                if (WEAPON_PREVIOUS_COOLDOWN > 0)
-                {
-                    WEAPON_PREVIOUS_COOLDOWN -= Time.deltaTime;
-                }
-                else
-                {
-                    WEAPON_PREVIOUS_COOLDOWN = 0;
-                }
-            }
-        }
-
-        if (!PRIMARY)
-        {
-            PRIMARY_UP = true;
-        }
-
-        if (!SECONDARY)
-        {
-            SECONDARY_UP = true;
-        }
-
-        if (!MELEE)
-        {
-            MELEE_UP = true;
-        }
-
-
-        // Button Pressed
-        // DODGE_UP = false;
-        // DODGE_COOLDOWN = DODGE_COOLDOWN_TIME;
-
-        // CROUCH_UP = false;
-        // CROUCH_COOLDOWN = CROUCH_COOLDOWN_TIME;
-
-        // SHOOT_UP = false;
-        // SHOOT_COOLDOWN = SHOOT_COOLDOWN_TIME;
-
-        // AIM_UP = false;
-        // AIM_COOLDOWN = AIM_COOLDOWN_TIME;
-
-        // WEAPON_LEFT_UP = false;
-        // WEAPON_LEFT_COOLDOWN = WEAPON_RIGHT_COOLDOWN_TIME;
-
-        // WEAPON_RIGHT_UP = false;
-        // WEAPON_RIGHT_COOLDOWN = WEAPON_RIGHT_COOLDOWN_TIME;
-
-
+    void FixedUpdate()      // Physics and Rotation
+    {
         if (play)
         {
             // Movement
-            MOVE = Input.actions.FindAction("Move").ReadValue<Vector2>();
-
             Vector3 forward = MOVE.y * Camera.transform.forward;
             Vector3 right = MOVE.x * Camera.transform.right;
             Vector3 movement = forward + right;
@@ -402,10 +450,7 @@ public class Player : MonoBehaviour
             }
 
 
-            // Camera
-            Camera.transform.position = transform.position + cameraStart;
-            Camera.transform.Translate(cameraDistance);
-
+            // Camera Rotation
             Camera.transform.rotation = Quaternion.Euler(cameraRotationY, cameraRotationX, 0);
 
 
@@ -440,45 +485,6 @@ public class Player : MonoBehaviour
                 Rigidbody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
                 currentJumps += 1;
             }
-        }
-    }
-
-    void Update()
-    {
-        if (play)
-        {
-            // Mouse and Controller Input
-            if (Input.GetDevice<Mouse>() != null)
-            {
-                isMouse = true;
-
-                // Mouse
-                LOOK_X = Input.actions.FindAction("Look X").ReadValue<float>() * lookSpeedMouse * lookSpeedModifier * Time.smoothDeltaTime;
-                LOOK_Y = Input.actions.FindAction("Look Y").ReadValue<float>() * lookSpeedMouse * lookSpeedModifier * Time.smoothDeltaTime;
-            }
-            else
-            {
-                isMouse = false;
-
-                if (flickStick == false)
-                {
-                    // Controller
-                    LOOK_X = Input.actions.FindAction("Look X").ReadValue<float>() * lookSpeedX * lookSpeedModifier * Time.smoothDeltaTime;
-                    LOOK_Y = Input.actions.FindAction("Look Y").ReadValue<float>() * lookSpeedY * lookSpeedModifier * Time.smoothDeltaTime;
-                }
-                else
-                {
-                    // Controller (Flick Stick)
-                    LOOK_X = Input.actions.FindAction("Look X").ReadValue<float>();
-                    LOOK_Y = Input.actions.FindAction("Look Y").ReadValue<float>();
-                }
-            }
-
-
-            // Camera Clamp
-            cameraRotationX += LOOK_X;
-            cameraRotationY -= LOOK_Y;
-            cameraRotationY = Mathf.Clamp(cameraRotationY, -90, 90);
         }
     }
 
