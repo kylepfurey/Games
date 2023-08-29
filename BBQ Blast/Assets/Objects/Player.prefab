@@ -338,14 +338,11 @@ MonoBehaviour:
   cameraRotationX: 0
   JUMP: 0
   JUMP_UP: 0
-  JUMP_COOLDOWN: 0
-  JUMP_COOLDOWN_TIME: 0
-  JUMP_COOLDOWN_RESET: 0
   DODGE: 0
   DODGE_UP: 0
   DODGE_COOLDOWN: 0
-  DODGE_COOLDOWN_TIME: 0
-  DODGE_COOLDOWN_RESET: 0
+  DODGE_COOLDOWN_TIME: 0.75
+  DODGE_COOLDOWN_RESET: 0.75
   CROUCH: 0
   CROUCH_UP: 0
   CROUCH_COOLDOWN: 0
@@ -398,6 +395,11 @@ MonoBehaviour:
   canDoubleJump: 1
   currentJumps: 0
   maxJumps: 1
+  bunnyHop: 1
+  canDodge: 1
+  hasDodged: 0
+  dodgeForce: 25
+  dodgeForceAir: 15
   thirdPerson: 0
   cameraStart: {x: 0, y: 0.75, z: 0}
   cameraDistance: {x: 2, y: 0, z: -3}

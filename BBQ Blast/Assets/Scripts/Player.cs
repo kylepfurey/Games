@@ -20,9 +20,6 @@ public class Player : MonoBehaviour
 
     public bool JUMP;
     public bool JUMP_UP;
-    public float JUMP_COOLDOWN;
-    public float JUMP_COOLDOWN_TIME;
-    public float JUMP_COOLDOWN_RESET;
 
     public bool DODGE;
     public bool DODGE_UP;
@@ -95,6 +92,12 @@ public class Player : MonoBehaviour
     public bool canDoubleJump;
     public int currentJumps;
     public int maxJumps;
+    public bool bunnyHop;
+
+    public bool canDodge;
+    public bool hasDodged;
+    public float dodgeForce;
+    public float dodgeForceAir;
 
     // Camera Variables
     public bool thirdPerson;
@@ -161,198 +164,181 @@ public class Player : MonoBehaviour
             if (!JUMP)
             {
                 JUMP_UP = true;
-
-                if (JUMP_COOLDOWN_RESET != 0)
-                {
-                    if (JUMP_COOLDOWN > JUMP_COOLDOWN_RESET)
-                    {
-                        JUMP_COOLDOWN = JUMP_COOLDOWN_RESET;
-                    }
-
-                    if (JUMP_COOLDOWN > 0)
-                    {
-                        JUMP_COOLDOWN -= Time.deltaTime;
-                    }
-                    else
-                    {
-                        JUMP_COOLDOWN = 0;
-                    }
-                }
             }
 
             if (!DODGE)
             {
                 DODGE_UP = true;
+            }
 
-                if (DODGE_COOLDOWN_RESET != 0)
+            if (DODGE_COOLDOWN_TIME != 0)
+            {
+                if (DODGE_COOLDOWN > DODGE_COOLDOWN_RESET)
                 {
-                    if (DODGE_COOLDOWN > DODGE_COOLDOWN_RESET)
-                    {
-                        DODGE_COOLDOWN = DODGE_COOLDOWN_RESET;
-                    }
+                    DODGE_COOLDOWN = DODGE_COOLDOWN_RESET;
+                }
 
-                    if (DODGE_COOLDOWN > 0)
-                    {
-                        DODGE_COOLDOWN -= Time.deltaTime;
-                    }
-                    else
-                    {
-                        DODGE_COOLDOWN = 0;
-                    }
+                if (DODGE_COOLDOWN > 0)
+                {
+                    DODGE_COOLDOWN -= Time.deltaTime;
+                }
+                else
+                {
+                    DODGE_COOLDOWN = 0;
                 }
             }
 
             if (!CROUCH)
             {
                 CROUCH_UP = true;
+            }
 
-                if (CROUCH_COOLDOWN_RESET != 0)
+            if (CROUCH_COOLDOWN_TIME != 0)
+            {
+                if (CROUCH_COOLDOWN > CROUCH_COOLDOWN_RESET)
                 {
-                    if (CROUCH_COOLDOWN > DODGE_COOLDOWN_RESET)
-                    {
-                        CROUCH_COOLDOWN = CROUCH_COOLDOWN_RESET;
-                    }
+                    CROUCH_COOLDOWN = CROUCH_COOLDOWN_RESET;
+                }
 
-                    if (CROUCH_COOLDOWN > 0)
-                    {
-                        CROUCH_COOLDOWN -= Time.deltaTime;
-                    }
-                    else
-                    {
-                        CROUCH_COOLDOWN = 0;
-                    }
+                if (CROUCH_COOLDOWN > 0)
+                {
+                    CROUCH_COOLDOWN -= Time.deltaTime;
+                }
+                else
+                {
+                    CROUCH_COOLDOWN = 0;
                 }
             }
 
             if (!SHOOT)
             {
                 SHOOT_UP = true;
+            }
 
-                if (SHOOT_COOLDOWN_RESET != 0)
+            if (SHOOT_COOLDOWN_TIME != 0)
+            {
+                if (SHOOT_COOLDOWN > SHOOT_COOLDOWN_RESET)
                 {
-                    if (SHOOT_COOLDOWN > SHOOT_COOLDOWN_RESET)
-                    {
-                        SHOOT_COOLDOWN = SHOOT_COOLDOWN_RESET;
-                    }
+                    SHOOT_COOLDOWN = SHOOT_COOLDOWN_RESET;
+                }
 
-                    if (SHOOT_COOLDOWN > 0)
-                    {
-                        SHOOT_COOLDOWN -= Time.deltaTime;
-                    }
-                    else
-                    {
-                        SHOOT_COOLDOWN = 0;
-                    }
+                if (SHOOT_COOLDOWN > 0)
+                {
+                    SHOOT_COOLDOWN -= Time.deltaTime;
+                }
+                else
+                {
+                    SHOOT_COOLDOWN = 0;
                 }
             }
 
             if (!AIM)
             {
                 AIM_UP = true;
+            }
 
-                if (AIM_COOLDOWN_RESET != 0)
+            if (AIM_COOLDOWN_TIME != 0)
+            {
+                if (AIM_COOLDOWN > AIM_COOLDOWN_RESET)
                 {
-                    if (AIM_COOLDOWN > AIM_COOLDOWN_RESET)
-                    {
-                        AIM_COOLDOWN = AIM_COOLDOWN_RESET;
-                    }
+                    AIM_COOLDOWN = AIM_COOLDOWN_RESET;
+                }
 
-                    if (AIM_COOLDOWN > 0)
-                    {
-                        AIM_COOLDOWN -= Time.deltaTime;
-                    }
-                    else
-                    {
-                        AIM_COOLDOWN = 0;
-                    }
+                if (AIM_COOLDOWN > 0)
+                {
+                    AIM_COOLDOWN -= Time.deltaTime;
+                }
+                else
+                {
+                    AIM_COOLDOWN = 0;
                 }
             }
 
             if (!RELOAD)
             {
                 RELOAD_UP = true;
+            }
 
-                if (RELOAD_COOLDOWN_RESET != 0)
+            if (RELOAD_COOLDOWN_TIME != 0)
+            {
+                if (RELOAD_COOLDOWN > RELOAD_COOLDOWN_RESET)
                 {
-                    if (RELOAD_COOLDOWN > RELOAD_COOLDOWN_RESET)
-                    {
-                        RELOAD_COOLDOWN = RELOAD_COOLDOWN_RESET;
-                    }
+                    RELOAD_COOLDOWN = RELOAD_COOLDOWN_RESET;
+                }
 
-                    if (RELOAD_COOLDOWN > 0)
-                    {
-                        RELOAD_COOLDOWN -= Time.deltaTime;
-                    }
-                    else
-                    {
-                        RELOAD_COOLDOWN = 0;
-                    }
+                if (RELOAD_COOLDOWN > 0)
+                {
+                    RELOAD_COOLDOWN -= Time.deltaTime;
+                }
+                else
+                {
+                    RELOAD_COOLDOWN = 0;
                 }
             }
 
             if (!WEAPON_LEFT)
             {
                 WEAPON_LEFT_UP = true;
+            }
 
-                if (WEAPON_LEFT_COOLDOWN_RESET != 0)
+            if (WEAPON_LEFT_COOLDOWN_TIME != 0)
+            {
+                if (WEAPON_LEFT_COOLDOWN > WEAPON_LEFT_COOLDOWN_RESET)
                 {
-                    if (WEAPON_LEFT_COOLDOWN > WEAPON_RIGHT_COOLDOWN_RESET)
-                    {
-                        WEAPON_LEFT_COOLDOWN = WEAPON_LEFT_COOLDOWN_RESET;
-                    }
+                    WEAPON_LEFT_COOLDOWN = WEAPON_LEFT_COOLDOWN_RESET;
+                }
 
-                    if (WEAPON_LEFT_COOLDOWN > 0)
-                    {
-                        WEAPON_LEFT_COOLDOWN -= Time.deltaTime;
-                    }
-                    else
-                    {
-                        WEAPON_LEFT_COOLDOWN = 0;
-                    }
+                if (WEAPON_LEFT_COOLDOWN > 0)
+                {
+                    WEAPON_LEFT_COOLDOWN -= Time.deltaTime;
+                }
+                else
+                {
+                    WEAPON_LEFT_COOLDOWN = 0;
                 }
             }
 
             if (!WEAPON_RIGHT)
             {
                 WEAPON_RIGHT_UP = true;
+            }
 
-                if (WEAPON_RIGHT_COOLDOWN_RESET != 0)
+            if (WEAPON_RIGHT_COOLDOWN_TIME != 0)
+            {
+                if (WEAPON_RIGHT_COOLDOWN > WEAPON_RIGHT_COOLDOWN_RESET)
                 {
-                    if (WEAPON_RIGHT_COOLDOWN > WEAPON_RIGHT_COOLDOWN_RESET)
-                    {
-                        WEAPON_RIGHT_COOLDOWN = WEAPON_RIGHT_COOLDOWN_RESET;
-                    }
+                    WEAPON_RIGHT_COOLDOWN = WEAPON_RIGHT_COOLDOWN_RESET;
+                }
 
-                    if (WEAPON_RIGHT_COOLDOWN > 0)
-                    {
-                        WEAPON_RIGHT_COOLDOWN -= Time.deltaTime;
-                    }
-                    else
-                    {
-                        WEAPON_RIGHT_COOLDOWN = 0;
-                    }
+                if (WEAPON_RIGHT_COOLDOWN > 0)
+                {
+                    WEAPON_RIGHT_COOLDOWN -= Time.deltaTime;
+                }
+                else
+                {
+                    WEAPON_RIGHT_COOLDOWN = 0;
                 }
             }
 
             if (!WEAPON_PREVIOUS)
             {
                 WEAPON_PREVIOUS_UP = true;
+            }
 
-                if (WEAPON_PREVIOUS_COOLDOWN_RESET != 0)
+            if (WEAPON_PREVIOUS_COOLDOWN_TIME != 0)
+            {
+                if (WEAPON_PREVIOUS_COOLDOWN > WEAPON_PREVIOUS_COOLDOWN_RESET)
                 {
-                    if (WEAPON_PREVIOUS_COOLDOWN > WEAPON_PREVIOUS_COOLDOWN_RESET)
-                    {
-                        WEAPON_PREVIOUS_COOLDOWN = WEAPON_PREVIOUS_COOLDOWN_RESET;
-                    }
+                    WEAPON_PREVIOUS_COOLDOWN = WEAPON_PREVIOUS_COOLDOWN_RESET;
+                }
 
-                    if (WEAPON_PREVIOUS_COOLDOWN > 0)
-                    {
-                        WEAPON_PREVIOUS_COOLDOWN -= Time.deltaTime;
-                    }
-                    else
-                    {
-                        WEAPON_PREVIOUS_COOLDOWN = 0;
-                    }
+                if (WEAPON_PREVIOUS_COOLDOWN > 0)
+                {
+                    WEAPON_PREVIOUS_COOLDOWN -= Time.deltaTime;
+                }
+                else
+                {
+                    WEAPON_PREVIOUS_COOLDOWN = 0;
                 }
             }
 
@@ -373,8 +359,6 @@ public class Player : MonoBehaviour
 
 
             // Button Pressed
-            // DODGE_UP = false;
-            // DODGE_COOLDOWN = DODGE_COOLDOWN_TIME;
 
             // CROUCH_UP = false;
             // CROUCH_COOLDOWN = CROUCH_COOLDOWN_TIME;
@@ -440,27 +424,6 @@ public class Player : MonoBehaviour
     {
         if (play)
         {
-            // Movement
-            Vector3 forward = MOVE.y * transform.forward * moveSpeed * moveSpeedModifier;
-            Vector3 right = MOVE.x * transform.right * moveSpeed * moveSpeedModifier;
-            Vector3 movement = forward + right;
-            float maxSpeed = moveSpeed * moveSpeedModifier;
-
-            movement.x -= Mathf.Clamp(Rigidbody.velocity.x, -maxSpeed, maxSpeed);
-            movement.z -= Mathf.Clamp(Rigidbody.velocity.z, -maxSpeed, maxSpeed);
-
-            if (isGrounded)
-            {
-                // Movement
-                Rigidbody.velocity += new Vector3(movement.x, 0, movement.z);
-            }
-            else
-            {
-                // Midair Movement
-
-            }
-
-
             // Camera Rotation
             if (flickStick == false)
             {
@@ -480,6 +443,29 @@ public class Player : MonoBehaviour
             }
 
 
+            // Movement
+            Vector3 forward = MOVE.y * transform.forward * moveSpeed * moveSpeedModifier;
+            Vector3 right = MOVE.x * transform.right * moveSpeed * moveSpeedModifier;
+            Vector3 movement = forward + right;
+            float maxSpeed = moveSpeed * moveSpeedModifier;
+
+            movement.x -= Mathf.Clamp(Rigidbody.velocity.x, -maxSpeed, maxSpeed);
+            movement.z -= Mathf.Clamp(Rigidbody.velocity.z, -maxSpeed, maxSpeed);
+
+
+            // Velocity
+            if (isGrounded)
+            {
+                // Movement
+                Rigidbody.velocity += new Vector3(movement.x, 0, movement.z);
+            }
+            else
+            {
+                // Midair Movement
+                Rigidbody.velocity = Quaternion.AngleAxis(Camera.transform.eulerAngles.y - transform.eulerAngles.y, Vector3.up) * Rigidbody.velocity;
+            }
+
+
             // Jumping
             if (canDoubleJump)
             {
@@ -493,9 +479,63 @@ public class Player : MonoBehaviour
             if (JUMP && JUMP_UP && (isGrounded || (currentJumps < maxJumps && canDoubleJump)) && play)
             {
                 JUMP_UP = false;
-                Rigidbody.velocity += new Vector3(movement.x, -Rigidbody.velocity.y, movement.z);
-                Rigidbody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+
+                if (bunnyHop && hasDodged == false)
+                {
+                    // Bunny Hopping
+                    Rigidbody.velocity += new Vector3(movement.x, -Rigidbody.velocity.y, movement.z);
+                }
+
+                Rigidbody.AddRelativeForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+
                 currentJumps += 1;
+
+                hasDodged = false;
+            }
+
+            // Dodging
+            if (DODGE && DODGE_UP && DODGE_COOLDOWN <= 0 && canDodge)
+            {
+                DODGE_UP = false;
+                DODGE_COOLDOWN = DODGE_COOLDOWN_TIME;
+
+                Vector2 absoluteMovement = MOVE;
+                if (absoluteMovement.x > 0) { absoluteMovement.x = 1; } else if (absoluteMovement.x < 0) { absoluteMovement.x = -1; }
+                if (absoluteMovement.y > 0) { absoluteMovement.y = 1; } else if (absoluteMovement.y < 0) { absoluteMovement.y = -1; }
+
+                if (hasDodged == false)
+                {
+                    Rigidbody.velocity = Vector3.zero;
+
+                    if (isGrounded)
+                    {
+                        Rigidbody.AddRelativeForce(new Vector3(0, 2, 0), ForceMode.Impulse);
+
+                        if (absoluteMovement == Vector2.zero)
+                        {
+                            Rigidbody.AddRelativeForce(new Vector3(0, 0, dodgeForce * 1.5f), ForceMode.Impulse);
+                        }
+                        else
+                        {
+                            Rigidbody.AddRelativeForce(new Vector3(absoluteMovement.x * dodgeForce, 0, absoluteMovement.y * dodgeForce), ForceMode.Impulse);
+                        }
+
+                        hasDodged = true;
+                    }
+                    else
+                    {
+                        if (absoluteMovement == Vector2.zero)
+                        {
+                            Rigidbody.AddRelativeForce(new Vector3(0, 0, dodgeForceAir), ForceMode.Impulse);
+                        }
+                        else
+                        {
+                            Rigidbody.AddRelativeForce(new Vector3(absoluteMovement.x * dodgeForceAir, 0, absoluteMovement.y * dodgeForceAir), ForceMode.Impulse);
+                        }
+
+                        hasDodged = true;
+                    }
+                }
             }
         }
     }
@@ -506,6 +546,12 @@ public class Player : MonoBehaviour
         if (collision.transform.tag == "Ground")
         {
             isGrounded = true;
+            currentJumps = 0;
+
+            if (DODGE_COOLDOWN <= 0)
+            {
+                hasDodged = false;
+            }
         }
     }
 
@@ -516,6 +562,11 @@ public class Player : MonoBehaviour
         {
             isGrounded = true;
             currentJumps = 0;
+
+            if (DODGE_COOLDOWN <= 0)
+            {
+                hasDodged = false;
+            }
         }
     }
 
