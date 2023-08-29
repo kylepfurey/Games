@@ -95,6 +95,7 @@ public class Player : MonoBehaviour
     public bool bunnyHop;
 
     public bool canDodge;
+    public float dodgeDeadzone;
     public bool hasDodged;
     public float dodgeForce;
     public float dodgeForceAir;
@@ -131,7 +132,7 @@ public class Player : MonoBehaviour
         if (play)
         {
             // Controls
-            MOVE = Input.actions.FindAction("Move").ReadValue<Vector2>().normalized;
+            MOVE = Input.actions.FindAction("Move").ReadValue<Vector2>();
             JUMP = Button(Input.actions.FindAction("Jump").ReadValue<float>());
             DODGE = Button(Input.actions.FindAction("Dodge").ReadValue<float>());
             CROUCH = Button(Input.actions.FindAction("Crouch").ReadValue<float>());
@@ -500,8 +501,8 @@ public class Player : MonoBehaviour
                 DODGE_COOLDOWN = DODGE_COOLDOWN_TIME;
 
                 Vector2 absoluteMovement = MOVE;
-                if (absoluteMovement.x > 0) { absoluteMovement.x = 1; } else if (absoluteMovement.x < 0) { absoluteMovement.x = -1; }
-                if (absoluteMovement.y > 0) { absoluteMovement.y = 1; } else if (absoluteMovement.y < 0) { absoluteMovement.y = -1; }
+                if (absoluteMovement.x > dodgeDeadzone) { absoluteMovement.x = 1; } else if (absoluteMovement.x < -dodgeDeadzone) { absoluteMovement.x = -1; }
+                if (absoluteMovement.y > dodgeDeadzone) { absoluteMovement.y = 1; } else if (absoluteMovement.y < -dodgeDeadzone) { absoluteMovement.y = -1; }
 
                 if (hasDodged == false)
                 {
