@@ -132,7 +132,7 @@ public class Player : MonoBehaviour
         if (play)
         {
             // Controls
-            MOVE = Input.actions.FindAction("Move").ReadValue<Vector2>();
+            MOVE = Input.actions.FindAction("Move").ReadValue<Vector2>().normalized;
             JUMP = Button(Input.actions.FindAction("Jump").ReadValue<float>());
             DODGE = Button(Input.actions.FindAction("Dodge").ReadValue<float>());
             CROUCH = Button(Input.actions.FindAction("Crouch").ReadValue<float>());
@@ -387,13 +387,13 @@ public class Player : MonoBehaviour
 
 
             // Mouse and Controller Input
-            if (Input.GetDevice<Mouse>() == null || flickStick)
+            if (Input.GetDevice<Mouse>() != null || flickStick)
             {
                 isMouse = true;
 
                 // Mouse
-                LOOK_X = Input.actions.FindAction("Look X").ReadValue<float>() * lookSpeedMouse * lookSpeedModifier * Time.smoothDeltaTime;
-                LOOK_Y = Input.actions.FindAction("Look Y").ReadValue<float>() * lookSpeedMouse * lookSpeedModifier * Time.smoothDeltaTime;
+                LOOK_X = Input.actions.FindAction("Look X").ReadValue<float>() * lookSpeedMouse * lookSpeedModifier * Time.deltaTime;
+                LOOK_Y = Input.actions.FindAction("Look Y").ReadValue<float>() * lookSpeedMouse * lookSpeedModifier * Time.deltaTime;
             }
             else
             {
