@@ -9,11 +9,11 @@ C:\Program Files\Unity\Hub\Editor\2021.3.11f1\Editor\Unity.exe
 -batchMode
 -noUpm
 -name
-AssetImportWorker1
+AssetImportWorker10
 -projectPath
 C:/Users/kylef/Documents/Github/Games/BBQ Blast
 -logFile
-Logs/AssetImportWorker1.log
+Logs/AssetImportWorker10.log
 -srvPort
 64499
 Successfully changed project path to: C:/Users/kylef/Documents/Github/Games/BBQ Blast
@@ -47,7 +47,7 @@ C:/Users/kylef/Documents/Github/Games/BBQ Blast
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Refreshing native plugins compatible for Editor in 1008.15 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 102.33 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.11f1 (0a5ca18544bf)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/Resources/UnitySubsystems
@@ -63,89 +63,89 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56284
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56680
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.004181 seconds.
+Registered in 0.004314 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 251.91 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 86.50 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.329 seconds
+- Completed reload, in  0.540 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1330ms)
-		BeginReloadAssembly (248ms)
+	ReloadAssembly (540ms)
+		BeginReloadAssembly (56ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (958ms)
-			LoadAssemblies (245ms)
+		EndReloadAssembly (396ms)
+			LoadAssemblies (55ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (159ms)
+			SetupTypeCache (81ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (38ms)
-			SetupLoadedEditorAssemblies (698ms)
+			RebuildScriptCaches (24ms)
+			SetupLoadedEditorAssemblies (247ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (7ms)
+				InitializePlatformSupportModulesInManaged (8ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (252ms)
-				BeforeProcessingInitializeOnLoad (17ms)
-				ProcessInitializeOnLoadAttributes (374ms)
-				ProcessInitializeOnLoadMethodAttributes (47ms)
+				RefreshPlugins (87ms)
+				BeforeProcessingInitializeOnLoad (2ms)
+				ProcessInitializeOnLoadAttributes (112ms)
+				ProcessInitializeOnLoadMethodAttributes (39ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.010476 seconds.
+Registered in 0.007749 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image C:\Users\kylef\Documents\Github\Games\BBQ Blast\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Symbol file LoadedFromMemory doesn't match image C:\Users\kylef\Documents\Github\Games\BBQ Blast\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 95.20 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 79.76 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.493 seconds
+- Completed reload, in  1.188 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1493ms)
-		BeginReloadAssembly (100ms)
+	ReloadAssembly (1189ms)
+		BeginReloadAssembly (93ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
+			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (24ms)
-		EndReloadAssembly (1283ms)
-			LoadAssemblies (94ms)
+			CreateAndSetChildDomain (18ms)
+		EndReloadAssembly (999ms)
+			LoadAssemblies (80ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (388ms)
+			SetupTypeCache (256ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (76ms)
-			SetupLoadedEditorAssemblies (664ms)
+			RebuildScriptCaches (55ms)
+			SetupLoadedEditorAssemblies (564ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (4ms)
+				InitializePlatformSupportModulesInManaged (3ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (95ms)
-				BeforeProcessingInitializeOnLoad (117ms)
-				ProcessInitializeOnLoadAttributes (415ms)
-				ProcessInitializeOnLoadMethodAttributes (26ms)
+				RefreshPlugins (80ms)
+				BeforeProcessingInitializeOnLoad (101ms)
+				ProcessInitializeOnLoadAttributes (352ms)
+				ProcessInitializeOnLoadMethodAttributes (22ms)
 				AfterProcessingInitializeOnLoad (6ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (5ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
-Refreshing native plugins compatible for Editor in 1.39 ms, found 3 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 1.48 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 4955 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 53 unused Assets / (237.0 KB). Loaded Objects now: 5402.
-Memory consumption went from 190.9 MB to 190.6 MB.
-Total: 3.681500 ms (FindLiveObjects: 0.399200 ms CreateObjectMapping: 0.203000 ms MarkObjects: 2.935100 ms  DeleteObjects: 0.143100 ms)
+Unloading 53 unused Assets / (236.9 KB). Loaded Objects now: 5402.
+Memory consumption went from 190.8 MB to 190.6 MB.
+Total: 3.724800 ms (FindLiveObjects: 0.391200 ms CreateObjectMapping: 0.180600 ms MarkObjects: 3.010200 ms  DeleteObjects: 0.141700 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -160,40 +160,34 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 36276.994154 seconds.
+  Time since last request: 37328.091129 seconds.
   path: Assets/Materials/Grid/Blue.mat
-  artifactKey: Guid(7c4346a5f8892fb4e8f1dd4b0a83418b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Grid/Blue.mat using Guid(7c4346a5f8892fb4e8f1dd4b0a83418b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b32dd2d01cd0500c4cd3679bb398a3ce') in 0.147593 seconds 
+  artifactKey: Guid(a5d0846b0d7af3e4f8dc7f3b2fd4dcbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Grid/Blue.mat using Guid(a5d0846b0d7af3e4f8dc7f3b2fd4dcbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a7e94df3250410ca291f37435b814c6') in 0.149383 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000067 seconds.
-  path: Assets/Materials/Grid/Cyan.mat
-  artifactKey: Guid(09797b4f00c25494ea2172aeb45d29c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Grid/Cyan.mat using Guid(09797b4f00c25494ea2172aeb45d29c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17c0145ea4a1901101537110bccb975a') in 0.030034 seconds 
+  Time since last request: 0.000038 seconds.
+  path: Assets/Materials/Grid/White.mat
+  artifactKey: Guid(cf6356354bce8514ab2b6705c9ecf127) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Grid/White.mat using Guid(cf6356354bce8514ab2b6705c9ecf127) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '294d4e13d83868d64dc00c24f74fa0d1') in 0.018638 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000034 seconds.
-  path: Assets/Materials/Grid/Red.mat
-  artifactKey: Guid(a8e4215d35e2b904dbbe02f0bf8e87c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Grid/Red.mat using Guid(a8e4215d35e2b904dbbe02f0bf8e87c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '92931ec7397b972db9b6d3b9bf94f589') in 0.019557 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000025 seconds.
-  path: Assets/Materials/Grid/Yellow.mat
-  artifactKey: Guid(c65ff89d25c3afb4fa5dcc2c461f897a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Grid/Yellow.mat using Guid(c65ff89d25c3afb4fa5dcc2c461f897a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3afaf0dcf4b172c574702d65602c4a43') in 0.026806 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000034 seconds.
-  path: Assets/Materials/Grid/Gray.mat
-  artifactKey: Guid(383764e71925b2343a3065d0e52938e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Grid/Gray.mat using Guid(383764e71925b2343a3065d0e52938e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce498804616622c834873238e5ba6b7c') in 0.023368 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000037 seconds.
+  Time since last request: 0.000041 seconds.
   path: Assets/Materials/Grid/Pink.mat
-  artifactKey: Guid(4549b12656c7ae44aa9aecf3428dff1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Grid/Pink.mat using Guid(4549b12656c7ae44aa9aecf3428dff1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e6ebe53f85a30763a4b510610c0e5c5') in 0.022829 seconds 
+  artifactKey: Guid(425246dc59122f347a14d46a6aef35bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Grid/Pink.mat using Guid(425246dc59122f347a14d46a6aef35bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e6595241ddb827ae2d3774f59fa017b') in 0.018345 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Materials/Grid/Purple.mat
+  artifactKey: Guid(a9065670a2fabb947b701fede021d5d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Grid/Purple.mat using Guid(a9065670a2fabb947b701fede021d5d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca33b8f235c2c0d2eb3762cd2fafcfb1') in 0.018088 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Materials/Grid/Brown.mat
+  artifactKey: Guid(a29e371ab3e28354b96e9ed29f3d8fb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Grid/Brown.mat using Guid(a29e371ab3e28354b96e9ed29f3d8fb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c9fe580606f66e5cf0b35fcafd14b160') in 0.017937 seconds 
 Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
 AssetImportWorker is now disconnected from the server
 Process exiting
