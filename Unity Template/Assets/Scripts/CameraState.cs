@@ -24,6 +24,8 @@ public class CameraState
 
     public float transitionMovementSpeed;
     public float transitionRotationSpeed;
+    public bool flip;
+    public float flipSpeed;
 
     // Player's New Rotation
     public Vector3 playerRotation;

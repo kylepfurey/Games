@@ -60,6 +60,14 @@ public class CameraControl : MonoBehaviour
                 // Set the Player's new Rotation
                 Player.transform.eulerAngles = cameraState[currentState].playerRotation;
             }
+            else if (cameraState[currentState].flip && cameraState[currentState].lookAtPlayer == false)
+            {
+                // Halt Player Movement
+                cameraMoving = true;
+
+                // Flip Player
+                Player.transform.eulerAngles = new Vector3(cameraState[currentState].playerRotation.x, Player.transform.eulerAngles.y + cameraState[currentState].flipSpeed, cameraState[currentState].playerRotation.z);
+            }
             else
             {
                 // Halt Player Movement
@@ -132,6 +140,14 @@ public class CameraControl : MonoBehaviour
 
                 // Set the Player's new Rotation
                 Player.transform.eulerAngles = cameraState[currentState].playerRotation;
+            }
+            else if (cameraState[currentState].flip)
+            {
+                // Halt Player Movement
+                cameraMoving = true;
+
+                // Flip Player
+                Player.transform.eulerAngles = new Vector3(cameraState[currentState].playerRotation.x, Player.transform.eulerAngles.y + cameraState[currentState].flipSpeed, cameraState[currentState].playerRotation.z);
             }
             else
             {
