@@ -426,6 +426,8 @@ public class Player : MonoBehaviour
         if (play)
         {
             // Camera Rotation
+            float cameraYaw = Camera.transform.eulerAngles.y;
+
             if (flickStick == false)
             {
                 Camera.transform.rotation = Quaternion.Euler(cameraRotationY, cameraRotationX, 0);
@@ -463,7 +465,7 @@ public class Player : MonoBehaviour
             else
             {
                 // Midair Movement
-                Rigidbody.velocity = Quaternion.AngleAxis(Camera.transform.eulerAngles.y - transform.eulerAngles.y, Vector3.up) * Rigidbody.velocity;
+                Rigidbody.velocity = Quaternion.AngleAxis(Camera.transform.eulerAngles.y - cameraYaw, Vector3.up) * Rigidbody.velocity;
             }
 
 
