@@ -202,7 +202,7 @@ public class Pointer : MonoBehaviour
 
 
         // Smart Aim Correction
-        if (aimCorrection && Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance, layerMask) && pointerPosition != pointerCameraPosition)
+        if (aimCorrection && Player.thirdPerson && Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance, layerMask) && pointerPosition != pointerCameraPosition)
         {
             // Aim Correction Distance
             aimCorrectionDistance = aimCorrectionStart + hitpoint.distance + -Player.cameraDistance.z;
@@ -467,7 +467,7 @@ public class Pointer : MonoBehaviour
 
 
         // Smart Aim Correction
-        if (aimCorrection && Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance, layerMask) && pointerPosition != pointerCameraPosition)
+        if (aimCorrection && Player.thirdPerson && Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance, layerMask) && pointerPosition != pointerCameraPosition)
         {
             // Aim Correction Distance
             aimCorrectionDistance = aimCorrectionStart + hitpoint.distance + -Player.cameraDistance.z;
@@ -718,7 +718,7 @@ public class Pointer : MonoBehaviour
 
 
             // Smart Aim Correction
-            if (aimCorrection && Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance, layerMask) && pointerPosition != pointerCameraPosition)
+            if (aimCorrection && Player.thirdPerson && Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance, layerMask) && pointerPosition != pointerCameraPosition)
             {
                 // Aim Correction Distance
                 aimCorrectionDistance = aimCorrectionStart + hitpoint.distance + -Player.cameraDistance.z;
