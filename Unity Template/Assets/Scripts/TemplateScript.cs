@@ -14,7 +14,12 @@ public class Name : MonoBehaviour
         // INSERT SCRIPTS
     }
 
-    void FixedUpdate()  // Physics and Rotation
+    void LateUpdate()   // Rotation
+    {
+        // INSERT SCRIPTS
+    }
+
+    void FixedUpdate()  // Physics
     {
         // INSERT SCRIPTS
     }

@@ -10,8 +10,8 @@ public class Player : MonoBehaviour
 
     // Camera Variables
     public bool thirdPerson;
-    public Vector3 cameraStart;
-    public Vector3 cameraDistance;
+    public Vector2 cameraStart;
+    public Vector2 cameraDistance;
 
     // INSERT VARIABLES
 
@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     void Update()       // Input and Position
     {
         // Camera Perspective
-        Camera.transform.position = transform.position + cameraStart;
+        Camera.transform.position = transform.position;
 
         if (thirdPerson)
         {
@@ -34,7 +34,12 @@ public class Player : MonoBehaviour
         // INSERT SCRIPTS
     }
 
-    void FixedUpdate()  // Physics and Rotation
+    void LateUpdate()   // Rotation
+    {
+        // INSERT SCRIPTS   
+    }
+
+    void FixedUpdate()  // Physics
     {
         // INSERT SCRIPTS
     }
