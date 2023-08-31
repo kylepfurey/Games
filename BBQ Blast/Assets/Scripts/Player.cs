@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 
     // Controls
     public Vector2 MOVE;
+
     public float LOOK_X;
     public float LOOK_Y;
     public float cameraRotationY;
