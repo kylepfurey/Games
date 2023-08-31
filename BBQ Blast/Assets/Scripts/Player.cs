@@ -24,51 +24,51 @@ public class Player : MonoBehaviour
 
     public bool DODGE;
     public bool DODGE_UP;
-    public float DODGE_COOLDOWN;
     public float DODGE_COOLDOWN_TIME;
     public float DODGE_COOLDOWN_RESET;
+    public float DODGE_COOLDOWN;
 
     public bool CROUCH;
     public bool CROUCH_UP;
-    public float CROUCH_COOLDOWN;
     public float CROUCH_COOLDOWN_TIME;
     public float CROUCH_COOLDOWN_RESET;
+    public float CROUCH_COOLDOWN;
 
     public bool SHOOT;
     public bool SHOOT_UP;
-    public float SHOOT_COOLDOWN;
     public float SHOOT_COOLDOWN_TIME;
     public float SHOOT_COOLDOWN_RESET;
+    public float SHOOT_COOLDOWN;
 
     public bool AIM;
     public bool AIM_UP;
-    public float AIM_COOLDOWN;
     public float AIM_COOLDOWN_TIME;
     public float AIM_COOLDOWN_RESET;
+    public float AIM_COOLDOWN;
 
     public bool RELOAD;
     public bool RELOAD_UP;
-    public float RELOAD_COOLDOWN;
     public float RELOAD_COOLDOWN_TIME;
     public float RELOAD_COOLDOWN_RESET;
+    public float RELOAD_COOLDOWN;
 
     public bool WEAPON_LEFT;
     public bool WEAPON_LEFT_UP;
-    public float WEAPON_LEFT_COOLDOWN;
     public float WEAPON_LEFT_COOLDOWN_TIME;
     public float WEAPON_LEFT_COOLDOWN_RESET;
+    public float WEAPON_LEFT_COOLDOWN;
 
     public bool WEAPON_RIGHT;
     public bool WEAPON_RIGHT_UP;
-    public float WEAPON_RIGHT_COOLDOWN;
     public float WEAPON_RIGHT_COOLDOWN_TIME;
     public float WEAPON_RIGHT_COOLDOWN_RESET;
+    public float WEAPON_RIGHT_COOLDOWN;
 
     public bool WEAPON_PREVIOUS;
     public bool WEAPON_PREVIOUS_UP;
-    public float WEAPON_PREVIOUS_COOLDOWN;
     public float WEAPON_PREVIOUS_COOLDOWN_TIME;
     public float WEAPON_PREVIOUS_COOLDOWN_RESET;
+    public float WEAPON_PREVIOUS_COOLDOWN;
 
     public bool PRIMARY;
     public bool PRIMARY_UP;
@@ -80,6 +80,7 @@ public class Player : MonoBehaviour
     public bool MELEE_UP;
 
     public bool SCOREBOARD;
+
     public bool RESTART;
     public bool EXIT;
 
@@ -135,6 +136,15 @@ public class Player : MonoBehaviour
     {
         if (play)
         {
+            // Camera Position
+            Camera.transform.position = transform.position + cameraStart;
+
+            if (thirdPerson)
+            {
+                Camera.transform.Translate(cameraDistance);
+            }
+
+
             // Controls
             MOVE = Input.actions.FindAction("Move").ReadValue<Vector2>();
             JUMP = Button(Input.actions.FindAction("Jump").ReadValue<float>());
@@ -150,19 +160,6 @@ public class Player : MonoBehaviour
             SECONDARY = Button(Input.actions.FindAction("Secondary").ReadValue<float>());
             MELEE = Button(Input.actions.FindAction("Melee").ReadValue<float>());
             SCOREBOARD = Button(Input.actions.FindAction("Scoreboard").ReadValue<float>());
-            RESTART = Button(Input.actions.FindAction("Restart").ReadValue<float>());
-            EXIT = Button(Input.actions.FindAction("Exit").ReadValue<float>());
-
-
-            // Restart and Exit
-            if (EXIT)
-            {
-                Application.Quit();
-            }
-            else if (RESTART && play)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
 
 
             // Button Behavior
@@ -176,20 +173,20 @@ public class Player : MonoBehaviour
                 DODGE_UP = true;
             }
 
-            if (DODGE_COOLDOWN_TIME != 0)
+            if (DODGE_COOLDOWN != 0)
             {
-                if (DODGE_COOLDOWN > DODGE_COOLDOWN_RESET)
+                if (DODGE_COOLDOWN_TIME > DODGE_COOLDOWN_RESET)
                 {
-                    DODGE_COOLDOWN = DODGE_COOLDOWN_RESET;
+                    DODGE_COOLDOWN_TIME = DODGE_COOLDOWN_RESET;
                 }
 
-                if (DODGE_COOLDOWN > 0)
+                if (DODGE_COOLDOWN_TIME > 0)
                 {
-                    DODGE_COOLDOWN -= Time.deltaTime;
+                    DODGE_COOLDOWN_TIME -= Time.deltaTime;
                 }
                 else
                 {
-                    DODGE_COOLDOWN = 0;
+                    DODGE_COOLDOWN_TIME = 0;
                 }
             }
 
@@ -198,20 +195,20 @@ public class Player : MonoBehaviour
                 CROUCH_UP = true;
             }
 
-            if (CROUCH_COOLDOWN_TIME != 0)
+            if (CROUCH_COOLDOWN != 0)
             {
-                if (CROUCH_COOLDOWN > CROUCH_COOLDOWN_RESET)
+                if (CROUCH_COOLDOWN_TIME > CROUCH_COOLDOWN_RESET)
                 {
-                    CROUCH_COOLDOWN = CROUCH_COOLDOWN_RESET;
+                    CROUCH_COOLDOWN_TIME = CROUCH_COOLDOWN_RESET;
                 }
 
-                if (CROUCH_COOLDOWN > 0)
+                if (CROUCH_COOLDOWN_TIME > 0)
                 {
-                    CROUCH_COOLDOWN -= Time.deltaTime;
+                    CROUCH_COOLDOWN_TIME -= Time.deltaTime;
                 }
                 else
                 {
-                    CROUCH_COOLDOWN = 0;
+                    CROUCH_COOLDOWN_TIME = 0;
                 }
             }
 
@@ -220,20 +217,20 @@ public class Player : MonoBehaviour
                 SHOOT_UP = true;
             }
 
-            if (SHOOT_COOLDOWN_TIME != 0)
+            if (SHOOT_COOLDOWN != 0)
             {
-                if (SHOOT_COOLDOWN > SHOOT_COOLDOWN_RESET)
+                if (SHOOT_COOLDOWN_TIME > SHOOT_COOLDOWN_RESET)
                 {
-                    SHOOT_COOLDOWN = SHOOT_COOLDOWN_RESET;
+                    SHOOT_COOLDOWN_TIME = SHOOT_COOLDOWN_RESET;
                 }
 
-                if (SHOOT_COOLDOWN > 0)
+                if (SHOOT_COOLDOWN_TIME > 0)
                 {
-                    SHOOT_COOLDOWN -= Time.deltaTime;
+                    SHOOT_COOLDOWN_TIME -= Time.deltaTime;
                 }
                 else
                 {
-                    SHOOT_COOLDOWN = 0;
+                    SHOOT_COOLDOWN_TIME = 0;
                 }
             }
 
@@ -242,20 +239,20 @@ public class Player : MonoBehaviour
                 AIM_UP = true;
             }
 
-            if (AIM_COOLDOWN_TIME != 0)
+            if (AIM_COOLDOWN != 0)
             {
-                if (AIM_COOLDOWN > AIM_COOLDOWN_RESET)
+                if (AIM_COOLDOWN_TIME > AIM_COOLDOWN_RESET)
                 {
-                    AIM_COOLDOWN = AIM_COOLDOWN_RESET;
+                    AIM_COOLDOWN_TIME = AIM_COOLDOWN_RESET;
                 }
 
-                if (AIM_COOLDOWN > 0)
+                if (AIM_COOLDOWN_TIME > 0)
                 {
-                    AIM_COOLDOWN -= Time.deltaTime;
+                    AIM_COOLDOWN_TIME -= Time.deltaTime;
                 }
                 else
                 {
-                    AIM_COOLDOWN = 0;
+                    AIM_COOLDOWN_TIME = 0;
                 }
             }
 
@@ -264,20 +261,20 @@ public class Player : MonoBehaviour
                 RELOAD_UP = true;
             }
 
-            if (RELOAD_COOLDOWN_TIME != 0)
+            if (RELOAD_COOLDOWN != 0)
             {
-                if (RELOAD_COOLDOWN > RELOAD_COOLDOWN_RESET)
+                if (RELOAD_COOLDOWN_TIME > RELOAD_COOLDOWN_RESET)
                 {
-                    RELOAD_COOLDOWN = RELOAD_COOLDOWN_RESET;
+                    RELOAD_COOLDOWN_TIME = RELOAD_COOLDOWN_RESET;
                 }
 
-                if (RELOAD_COOLDOWN > 0)
+                if (RELOAD_COOLDOWN_TIME > 0)
                 {
-                    RELOAD_COOLDOWN -= Time.deltaTime;
+                    RELOAD_COOLDOWN_TIME -= Time.deltaTime;
                 }
                 else
                 {
-                    RELOAD_COOLDOWN = 0;
+                    RELOAD_COOLDOWN_TIME = 0;
                 }
             }
 
@@ -286,20 +283,20 @@ public class Player : MonoBehaviour
                 WEAPON_LEFT_UP = true;
             }
 
-            if (WEAPON_LEFT_COOLDOWN_TIME != 0)
+            if (WEAPON_LEFT_COOLDOWN != 0)
             {
-                if (WEAPON_LEFT_COOLDOWN > WEAPON_LEFT_COOLDOWN_RESET)
+                if (WEAPON_LEFT_COOLDOWN_TIME > WEAPON_LEFT_COOLDOWN_RESET)
                 {
-                    WEAPON_LEFT_COOLDOWN = WEAPON_LEFT_COOLDOWN_RESET;
+                    WEAPON_LEFT_COOLDOWN_TIME = WEAPON_LEFT_COOLDOWN_RESET;
                 }
 
-                if (WEAPON_LEFT_COOLDOWN > 0)
+                if (WEAPON_LEFT_COOLDOWN_TIME > 0)
                 {
-                    WEAPON_LEFT_COOLDOWN -= Time.deltaTime;
+                    WEAPON_LEFT_COOLDOWN_TIME -= Time.deltaTime;
                 }
                 else
                 {
-                    WEAPON_LEFT_COOLDOWN = 0;
+                    WEAPON_LEFT_COOLDOWN_TIME = 0;
                 }
             }
 
@@ -308,20 +305,20 @@ public class Player : MonoBehaviour
                 WEAPON_RIGHT_UP = true;
             }
 
-            if (WEAPON_RIGHT_COOLDOWN_TIME != 0)
+            if (WEAPON_RIGHT_COOLDOWN != 0)
             {
-                if (WEAPON_RIGHT_COOLDOWN > WEAPON_RIGHT_COOLDOWN_RESET)
+                if (WEAPON_RIGHT_COOLDOWN_TIME > WEAPON_RIGHT_COOLDOWN_RESET)
                 {
-                    WEAPON_RIGHT_COOLDOWN = WEAPON_RIGHT_COOLDOWN_RESET;
+                    WEAPON_RIGHT_COOLDOWN_TIME = WEAPON_RIGHT_COOLDOWN_RESET;
                 }
 
-                if (WEAPON_RIGHT_COOLDOWN > 0)
+                if (WEAPON_RIGHT_COOLDOWN_TIME > 0)
                 {
-                    WEAPON_RIGHT_COOLDOWN -= Time.deltaTime;
+                    WEAPON_RIGHT_COOLDOWN_TIME -= Time.deltaTime;
                 }
                 else
                 {
-                    WEAPON_RIGHT_COOLDOWN = 0;
+                    WEAPON_RIGHT_COOLDOWN_TIME = 0;
                 }
             }
 
@@ -330,20 +327,20 @@ public class Player : MonoBehaviour
                 WEAPON_PREVIOUS_UP = true;
             }
 
-            if (WEAPON_PREVIOUS_COOLDOWN_TIME != 0)
+            if (WEAPON_PREVIOUS_COOLDOWN != 0)
             {
-                if (WEAPON_PREVIOUS_COOLDOWN > WEAPON_PREVIOUS_COOLDOWN_RESET)
+                if (WEAPON_PREVIOUS_COOLDOWN_TIME > WEAPON_PREVIOUS_COOLDOWN_RESET)
                 {
-                    WEAPON_PREVIOUS_COOLDOWN = WEAPON_PREVIOUS_COOLDOWN_RESET;
+                    WEAPON_PREVIOUS_COOLDOWN_TIME = WEAPON_PREVIOUS_COOLDOWN_RESET;
                 }
 
-                if (WEAPON_PREVIOUS_COOLDOWN > 0)
+                if (WEAPON_PREVIOUS_COOLDOWN_TIME > 0)
                 {
-                    WEAPON_PREVIOUS_COOLDOWN -= Time.deltaTime;
+                    WEAPON_PREVIOUS_COOLDOWN_TIME -= Time.deltaTime;
                 }
                 else
                 {
-                    WEAPON_PREVIOUS_COOLDOWN = 0;
+                    WEAPON_PREVIOUS_COOLDOWN_TIME = 0;
                 }
             }
 
@@ -366,28 +363,19 @@ public class Player : MonoBehaviour
             // Button Pressed
 
             // CROUCH_UP = false;
-            // CROUCH_COOLDOWN = CROUCH_COOLDOWN_TIME;
+             CROUCH_COOLDOWN_TIME = CROUCH_COOLDOWN;
 
             // SHOOT_UP = false;
-            // SHOOT_COOLDOWN = SHOOT_COOLDOWN_TIME;
+             SHOOT_COOLDOWN_TIME = SHOOT_COOLDOWN;
 
             // AIM_UP = false;
-            // AIM_COOLDOWN = AIM_COOLDOWN_TIME;
+             AIM_COOLDOWN_TIME = AIM_COOLDOWN;
 
             // WEAPON_LEFT_UP = false;
-            // WEAPON_LEFT_COOLDOWN = WEAPON_RIGHT_COOLDOWN_TIME;
+             WEAPON_LEFT_COOLDOWN_TIME = WEAPON_RIGHT_COOLDOWN;
 
             // WEAPON_RIGHT_UP = false;
-            // WEAPON_RIGHT_COOLDOWN = WEAPON_RIGHT_COOLDOWN_TIME;
-
-
-            // Camera Position
-            Camera.transform.position = transform.position + cameraStart;
-
-            if (thirdPerson)
-            {
-                Camera.transform.Translate(cameraDistance);
-            }
+             WEAPON_RIGHT_COOLDOWN_TIME = WEAPON_RIGHT_COOLDOWN;
 
 
             // Mouse and Controller Input
@@ -422,6 +410,20 @@ public class Player : MonoBehaviour
             cameraRotationX += LOOK_X;
             cameraRotationY -= LOOK_Y;
             cameraRotationY = Mathf.Clamp(cameraRotationY, -85, 85);
+        }
+
+
+        // Restart and Exit
+        RESTART = Button(Input.actions.FindAction("Restart").ReadValue<float>());
+        EXIT = Button(Input.actions.FindAction("Exit").ReadValue<float>());
+
+        if (EXIT)
+        {
+            Application.Quit();
+        }
+        else if (RESTART && play)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
@@ -507,10 +509,10 @@ public class Player : MonoBehaviour
 
 
             // Dodging
-            if (DODGE && DODGE_UP && DODGE_COOLDOWN <= 0 && canDodge && isDodging == false)
+            if (DODGE && DODGE_UP && DODGE_COOLDOWN_TIME <= 0 && canDodge && isDodging == false)
             {
                 DODGE_UP = false;
-                DODGE_COOLDOWN = DODGE_COOLDOWN_TIME;
+                DODGE_COOLDOWN_TIME = DODGE_COOLDOWN;
 
                 Rigidbody.velocity = Vector3.zero;
 
@@ -565,7 +567,7 @@ public class Player : MonoBehaviour
             isGrounded = true;
             currentJumps = 0;
 
-            if (DODGE_COOLDOWN <= 0)
+            if (DODGE_COOLDOWN_TIME <= 0)
             {
                 isDodging = false;
             }
@@ -580,7 +582,7 @@ public class Player : MonoBehaviour
             isGrounded = true;
             currentJumps = 0;
 
-            if (DODGE_COOLDOWN <= 0)
+            if (DODGE_COOLDOWN_TIME <= 0)
             {
                 isDodging = false;
             }
