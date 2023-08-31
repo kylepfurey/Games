@@ -363,19 +363,19 @@ public class Player : MonoBehaviour
             // Button Pressed
 
             // CROUCH_UP = false;
-             CROUCH_COOLDOWN_TIME = CROUCH_COOLDOWN;
+            // CROUCH_COOLDOWN_TIME = CROUCH_COOLDOWN;
 
             // SHOOT_UP = false;
-             SHOOT_COOLDOWN_TIME = SHOOT_COOLDOWN;
+            // SHOOT_COOLDOWN_TIME = SHOOT_COOLDOWN;
 
             // AIM_UP = false;
-             AIM_COOLDOWN_TIME = AIM_COOLDOWN;
+            // AIM_COOLDOWN_TIME = AIM_COOLDOWN;
 
             // WEAPON_LEFT_UP = false;
-             WEAPON_LEFT_COOLDOWN_TIME = WEAPON_RIGHT_COOLDOWN;
+            // WEAPON_LEFT_COOLDOWN_TIME = WEAPON_RIGHT_COOLDOWN;
 
             // WEAPON_RIGHT_UP = false;
-             WEAPON_RIGHT_COOLDOWN_TIME = WEAPON_RIGHT_COOLDOWN;
+            // WEAPON_RIGHT_COOLDOWN_TIME = WEAPON_RIGHT_COOLDOWN;
 
 
             // Mouse and Controller Input
