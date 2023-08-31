@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -13,6 +14,13 @@ public class Player : MonoBehaviour
     public Vector2 cameraStart;
     public Vector2 cameraDistance;
 
+    // Controls
+    public bool RESTART;
+    public bool EXIT;
+
+    // Player Variables
+    public bool play;
+
     // INSERT VARIABLES
 
     void Start()        // Start
@@ -22,16 +30,33 @@ public class Player : MonoBehaviour
 
     void Update()       // Input and Position
     {
-        // Camera Perspective
-        Camera.transform.position = transform.position;
-
-        if (thirdPerson)
+        if (play)
         {
-            Camera.transform.Translate(cameraDistance);
+            // Camera Perspective
+            Camera.transform.position = transform.position;
+
+            if (thirdPerson)
+            {
+                Camera.transform.Translate(cameraDistance);
+            }
+
+
+            // INSERT SCRIPTS
         }
 
 
-        // INSERT SCRIPTS
+        // Restart and Exit
+        RESTART = Button(Input.actions.FindAction("Restart").ReadValue<float>());
+        EXIT = Button(Input.actions.FindAction("Exit").ReadValue<float>());
+
+        if (EXIT)
+        {
+            Application.Quit();
+        }
+        else if (RESTART && play)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     void LateUpdate()   // Rotation
