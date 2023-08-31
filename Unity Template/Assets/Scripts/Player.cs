@@ -9,19 +9,19 @@ public class Player : MonoBehaviour
     public Camera Camera;
     public Rigidbody Rigidbody;
 
+    // Controls
+    public bool RESTART;
+    public bool EXIT;
+
     // Camera Variables
     public bool thirdPerson;
     public Vector2 cameraStart;
     public Vector2 cameraDistance;
 
-    // Controls
-    public bool RESTART;
-    public bool EXIT;
+    // INSERT VARIABLES
 
     // Player Variables
     public bool play;
-
-    // INSERT VARIABLES
 
     void Start()        // Start
     {
