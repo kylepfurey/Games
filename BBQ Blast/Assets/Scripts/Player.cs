@@ -132,19 +132,10 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void Update()   // Input and Position
+    void Update()   // Input
     {
         if (play)
         {
-            // Camera Position
-            Camera.transform.position = transform.position + cameraStart;
-
-            if (thirdPerson)
-            {
-                Camera.transform.Translate(cameraDistance);
-            }
-
-
             // Controls
             MOVE = Input.actions.FindAction("Move").ReadValue<Vector2>();
             JUMP = Button(Input.actions.FindAction("Jump").ReadValue<float>());
@@ -427,10 +418,19 @@ public class Player : MonoBehaviour
         }
     }
 
-    void LateUpdate()       // Rotation
+    void LateUpdate()       // Position and Rotation
     {
         if (play)
         {
+            // Camera Position
+            Camera.transform.position = transform.position + cameraStart;
+
+            if (thirdPerson)
+            {
+                Camera.transform.Translate(cameraDistance);
+            }
+
+
             // Camera Rotation
             float cameraYaw = Camera.transform.eulerAngles.y;
 
