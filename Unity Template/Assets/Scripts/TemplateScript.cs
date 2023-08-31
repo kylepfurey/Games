@@ -9,12 +9,12 @@ public class Name : MonoBehaviour
         // INSERT SCRIPTS
     }
 
-    void Update()       // Input and Position
+    void Update()       // Input
     {
         // INSERT SCRIPTS
     }
 
-    void LateUpdate()   // Rotation
+    void LateUpdate()   // Position and Rotation
     {
         // INSERT SCRIPTS
     }

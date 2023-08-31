@@ -28,19 +28,10 @@ public class Player : MonoBehaviour
         // INSERT SCRIPTS
     }
 
-    void Update()       // Input and Position
+    void Update()       // Input
     {
         if (play)
         {
-            // Camera Perspective
-            Camera.transform.position = transform.position;
-
-            if (thirdPerson)
-            {
-                Camera.transform.Translate(cameraDistance);
-            }
-
-
             // INSERT SCRIPTS
         }
 
@@ -59,9 +50,21 @@ public class Player : MonoBehaviour
         }
     }
 
-    void LateUpdate()   // Rotation
+    void LateUpdate()   // Position and Rotation
     {
-        // INSERT SCRIPTS   
+        if (play)
+        {
+            // Camera Perspective
+            Camera.transform.position = transform.position;
+
+            if (thirdPerson)
+            {
+                Camera.transform.Translate(cameraDistance);
+            }
+
+
+            // INSERT SCRIPTS
+        }
     }
 
     void FixedUpdate()  // Physics

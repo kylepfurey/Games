@@ -3,7 +3,7 @@ using UnityEngine;
 public class Pointer : MonoBehaviour
 {
     public Player Player;
-    public GameObject Ray;  // Parent is Pivot
+    public GameObject Ray;  // Pivot is Parent of Ray
     public GameObject PointerDot;
 
     public Ray hitscan;
