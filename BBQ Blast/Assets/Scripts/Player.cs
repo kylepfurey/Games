@@ -112,6 +112,7 @@ public class Player : MonoBehaviour
     public bool flickStick;
     public float flickStickRotation;
     public float flickStickDeadzone;
+    public float cameraYaw;
 
     // Weapon Variables
     public int weapon;
@@ -132,7 +133,7 @@ public class Player : MonoBehaviour
         if (play)
         {
             // Controls
-            MOVE = Input.actions.FindAction("Move").ReadValue<Vector2>().normalized;
+            MOVE = Input.actions.FindAction("Move").ReadValue<Vector2>();
             JUMP = Button(Input.actions.FindAction("Jump").ReadValue<float>());
             DODGE = Button(Input.actions.FindAction("Dodge").ReadValue<float>());
             CROUCH = Button(Input.actions.FindAction("Crouch").ReadValue<float>());
@@ -421,12 +422,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    void FixedUpdate()      // Physics and Rotation
+    void LateUpdate()       // Rotation
     {
         if (play)
         {
             // Camera Rotation
-            float cameraYaw = Camera.transform.eulerAngles.y;
+            cameraYaw = Camera.transform.eulerAngles.y;
 
             if (flickStick == false)
             {
@@ -444,8 +445,13 @@ public class Player : MonoBehaviour
                     flickStickRotation = Camera.transform.eulerAngles.y;
                 }
             }
+        }
+    }
 
-
+    void FixedUpdate()      // Physics
+    {
+        if (play)
+        {
             // Movement
             Vector3 forward = MOVE.y * transform.forward * moveSpeed * moveSpeedModifier;
             Vector3 right = MOVE.x * transform.right * moveSpeed * moveSpeedModifier;
