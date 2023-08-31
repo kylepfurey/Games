@@ -92,13 +92,16 @@ public class Player : MonoBehaviour
     public bool canDoubleJump;
     public int currentJumps;
     public int maxJumps;
-    public bool bunnyHop;
+    public bool canBunnyHop;
 
     public bool canDodge;
     public float dodgeDeadzone;
-    public bool hasDodged;
+    public bool isDodging;
     public float dodgeForce;
     public float dodgeForceAir;
+    public bool canLunge;
+    public float lungeCap;
+    public float lungeCapLow;
 
     // Camera Variables
     public bool thirdPerson;
@@ -112,7 +115,6 @@ public class Player : MonoBehaviour
     public bool flickStick;
     public float flickStickRotation;
     public float flickStickDeadzone;
-    public float cameraYaw;
 
     // Weapon Variables
     public int weapon;
@@ -427,7 +429,7 @@ public class Player : MonoBehaviour
         if (play)
         {
             // Camera Rotation
-            cameraYaw = Camera.transform.eulerAngles.y;
+            float cameraYaw = Camera.transform.eulerAngles.y;
 
             if (flickStick == false)
             {
@@ -445,6 +447,10 @@ public class Player : MonoBehaviour
                     flickStickRotation = Camera.transform.eulerAngles.y;
                 }
             }
+
+
+            // Rotate Movement
+            Rigidbody.velocity = Quaternion.AngleAxis(Camera.transform.eulerAngles.y - cameraYaw, Vector3.up) * Rigidbody.velocity;
         }
     }
 
@@ -461,17 +467,15 @@ public class Player : MonoBehaviour
             movement.x -= Mathf.Clamp(Rigidbody.velocity.x, -maxSpeed, maxSpeed);
             movement.z -= Mathf.Clamp(Rigidbody.velocity.z, -maxSpeed, maxSpeed);
 
+            Vector2 absoluteMovement = MOVE;
+            if (absoluteMovement.x > dodgeDeadzone) { absoluteMovement.x = 1; } else if (absoluteMovement.x < -dodgeDeadzone) { absoluteMovement.x = -1; }
+            if (absoluteMovement.y > dodgeDeadzone) { absoluteMovement.y = 1; } else if (absoluteMovement.y < -dodgeDeadzone) { absoluteMovement.y = -1; }
+
 
             // Velocity
             if (isGrounded)
             {
-                // Movement
                 Rigidbody.velocity += new Vector3(movement.x, 0, movement.z);
-            }
-            else
-            {
-                // Midair Movement
-                Rigidbody.velocity = Quaternion.AngleAxis(Camera.transform.eulerAngles.y - cameraYaw, Vector3.up) * Rigidbody.velocity;
             }
 
 
@@ -489,62 +493,65 @@ public class Player : MonoBehaviour
             {
                 JUMP_UP = false;
 
-                if (bunnyHop && hasDodged == false)
+                // Bunny Hopping
+                if (canBunnyHop || isGrounded == false)
                 {
-                    // Bunny Hopping
                     Rigidbody.velocity += new Vector3(movement.x, -Rigidbody.velocity.y, movement.z);
                 }
 
                 Rigidbody.AddRelativeForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
 
                 currentJumps += 1;
-
-                hasDodged = false;
             }
 
+
             // Dodging
-            if (DODGE && DODGE_UP && DODGE_COOLDOWN <= 0 && canDodge)
+            if (DODGE && DODGE_UP && DODGE_COOLDOWN <= 0 && canDodge && isDodging == false)
             {
                 DODGE_UP = false;
                 DODGE_COOLDOWN = DODGE_COOLDOWN_TIME;
 
-                Vector2 absoluteMovement = MOVE;
-                if (absoluteMovement.x > dodgeDeadzone) { absoluteMovement.x = 1; } else if (absoluteMovement.x < -dodgeDeadzone) { absoluteMovement.x = -1; }
-                if (absoluteMovement.y > dodgeDeadzone) { absoluteMovement.y = 1; } else if (absoluteMovement.y < -dodgeDeadzone) { absoluteMovement.y = -1; }
+                Rigidbody.velocity = Vector3.zero;
 
-                if (hasDodged == false)
+                if (isGrounded)
                 {
-                    Rigidbody.velocity = Vector3.zero;
+                    Rigidbody.AddRelativeForce(new Vector3(0, 2, 0), ForceMode.Impulse);
 
-                    if (isGrounded)
+                    if (absoluteMovement == Vector2.zero)
                     {
-                        Rigidbody.AddRelativeForce(new Vector3(0, 2, 0), ForceMode.Impulse);
-
-                        if (absoluteMovement == Vector2.zero)
-                        {
-                            Rigidbody.AddRelativeForce(new Vector3(0, 0, dodgeForce * 1.5f), ForceMode.Impulse);
-                        }
-                        else
-                        {
-                            Rigidbody.AddRelativeForce(new Vector3(absoluteMovement.x * dodgeForce, 0, absoluteMovement.y * dodgeForce), ForceMode.Impulse);
-                        }
-
-                        hasDodged = true;
+                        Rigidbody.AddRelativeForce(new Vector3(0, 0, dodgeForce * 1.5f), ForceMode.Impulse);
                     }
                     else
                     {
-                        if (absoluteMovement == Vector2.zero)
-                        {
-                            Rigidbody.AddRelativeForce(new Vector3(0, 0, dodgeForceAir), ForceMode.Impulse);
-                        }
-                        else
-                        {
-                            Rigidbody.AddRelativeForce(new Vector3(absoluteMovement.x * dodgeForceAir, 0, absoluteMovement.y * dodgeForceAir), ForceMode.Impulse);
-                        }
-
-                        hasDodged = true;
+                        Rigidbody.AddRelativeForce(new Vector3(absoluteMovement.x * dodgeForce, 0, absoluteMovement.y * dodgeForce), ForceMode.Impulse);
                     }
+
+                    isDodging = true;
                 }
+                else
+                {
+                    if (absoluteMovement == Vector2.zero)
+                    {
+                        Rigidbody.AddRelativeForce(new Vector3(0, 0, dodgeForceAir), ForceMode.Impulse);
+                    }
+                    else
+                    {
+                        Rigidbody.AddRelativeForce(new Vector3(absoluteMovement.x * dodgeForceAir, 0, absoluteMovement.y * dodgeForceAir), ForceMode.Impulse);
+                    }
+
+                    isDodging = true;
+                }
+            }
+
+
+            // Lunging Forward
+            if (canLunge == false && isDodging)
+            {
+                Rigidbody.velocity = new Vector3(Mathf.Clamp(Rigidbody.velocity.x, -lungeCapLow, lungeCapLow), Rigidbody.velocity.y, Mathf.Clamp(Rigidbody.velocity.z, -lungeCapLow, lungeCapLow));
+            }
+            else if (canLunge && isDodging)
+            {
+                Rigidbody.velocity = new Vector3(Mathf.Clamp(Rigidbody.velocity.x, -lungeCap, lungeCap), Rigidbody.velocity.y, Mathf.Clamp(Rigidbody.velocity.z, -lungeCap, lungeCap));
             }
         }
     }
@@ -559,7 +566,7 @@ public class Player : MonoBehaviour
 
             if (DODGE_COOLDOWN <= 0)
             {
-                hasDodged = false;
+                isDodging = false;
             }
         }
     }
@@ -574,7 +581,7 @@ public class Player : MonoBehaviour
 
             if (DODGE_COOLDOWN <= 0)
             {
-                hasDodged = false;
+                isDodging = false;
             }
         }
     }
