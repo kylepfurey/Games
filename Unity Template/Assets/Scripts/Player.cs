@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
     public bool RESTART;
     public bool EXIT;
 
+    // Movement Variables
+    public bool isGrounded;
+
     // Camera Variables
     public bool thirdPerson;
     public Vector2 cameraStart;
@@ -70,6 +73,51 @@ public class Player : MonoBehaviour
     void FixedUpdate()  // Physics
     {
         // INSERT SCRIPTS
+    }
+
+    // Entering Collision
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "Ground")
+        {
+            isGrounded = true;
+        }
+    }
+
+    // In Collision
+    void OnCollisionStay(Collision collision)
+    {
+        if (collision.transform.tag == "Ground")
+        {
+            isGrounded = true;
+        }
+    }
+
+    // Exiting Collision
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.transform.tag == "Ground")
+        {
+            isGrounded = false;
+        }
+    }
+
+    // Entering Trigger
+    void OnTriggerEnter(Collider other)
+    {
+
+    }
+
+    // In Trigger
+    void OnTriggerStay(Collider other)
+    {
+
+    }
+
+    // Exiting Trigger
+    void OnTriggerExit(Collider other)
+    {
+
     }
 
     public bool Button(float input)
