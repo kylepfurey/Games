@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
 
     // Movement Variables
     public bool isGrounded;
+    public float airTime;
 
     // Camera Variables
     public bool thirdPerson;
@@ -35,6 +36,17 @@ public class Player : MonoBehaviour
     {
         if (play)
         {
+            // Airtime
+            if (isGrounded)
+            {
+                airTime = 0;
+            }
+            else
+            {
+                airTime += Time.deltaTime;
+            }
+
+
             // INSERT SCRIPTS
         }
 
