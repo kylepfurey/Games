@@ -90,6 +90,8 @@ public class Player : MonoBehaviour
     public float airSpeed;
 
     public bool isGrounded;
+    public float airTime;
+    public float coyoteTime;
     public float jumpForce;
     public bool canDoubleJump;
     public int currentJumps;
@@ -136,6 +138,17 @@ public class Player : MonoBehaviour
     {
         if (play)
         {
+            // Airtime
+            if (isGrounded)
+            {
+                airTime = 0;
+            }
+            else
+            {
+                airTime += Time.deltaTime;
+            }
+
+
             // Controls
             MOVE = Input.actions.FindAction("Move").ReadValue<Vector2>();
             JUMP = Button(Input.actions.FindAction("Jump").ReadValue<float>());
@@ -492,7 +505,7 @@ public class Player : MonoBehaviour
                 maxJumps = 1;
             }
 
-            if (JUMP && JUMP_UP && (isGrounded || (currentJumps < maxJumps && canDoubleJump)) && play)
+            if (JUMP && JUMP_UP && ((isGrounded || airTime <= coyoteTime) || (currentJumps < maxJumps && canDoubleJump)) && play)
             {
                 JUMP_UP = false;
 
