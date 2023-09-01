@@ -5,22 +5,22 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     // References
-    public PlayerInput Input;
-    public Camera Camera;
-    public Rigidbody Rigidbody;
+    [SerializeField] private PlayerInput Input;
+    [SerializeField] private Camera Camera;
+    [SerializeField] private Rigidbody Rigidbody;
 
     // Controls
-    public bool RESTART;
-    public bool EXIT;
+    [SerializeField] private bool RESTART;
+    [SerializeField] private bool EXIT;
 
     // Movement Variables
-    public bool isGrounded;
-    public float airTime;
+    [SerializeField] private bool isGrounded;
+    [SerializeField] private float airTime;
 
     // Camera Variables
-    public bool thirdPerson;
-    public Vector2 cameraStart;
-    public Vector2 cameraDistance;
+    [SerializeField] private bool thirdPerson;
+    [SerializeField] private Vector2 cameraStart;
+    [SerializeField] private Vector2 cameraDistance;
 
     // INSERT VARIABLES
 
