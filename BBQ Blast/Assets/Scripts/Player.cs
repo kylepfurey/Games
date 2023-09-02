@@ -127,14 +127,14 @@ public class Player : MonoBehaviour
     public int playerNumber;
     public bool play;
 
-    void Start()    // Start
+    void Start()
     {
         playerNumber = Input.playerIndex + 1;
 
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void Update()   // Input
+    void Update()
     {
         if (play)
         {
@@ -431,7 +431,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void LateUpdate()       // Position and Rotation
+    void LateUpdate()
     {
         if (play)
         {
@@ -470,7 +470,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void FixedUpdate()      // Physics
+    void FixedUpdate()
     {
         if (play)
         {
