@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public float LOOK_Y;
     public float cameraRotationY;
     public float cameraRotationX;
+    public float cameraYaw;
 
     public bool JUMP;
     public bool JUMP_UP;
@@ -112,6 +113,7 @@ public class Player : MonoBehaviour
     public Vector3 cameraStart;
     public Vector3 cameraDistance;
     public bool isMouse;
+    public bool forceController;
     public float lookSpeedMouse;
     public float lookSpeedX;
     public float lookSpeedY;
@@ -138,17 +140,6 @@ public class Player : MonoBehaviour
     {
         if (play)
         {
-            // Airtime
-            if (isGrounded)
-            {
-                airTime = 0;
-            }
-            else
-            {
-                airTime += Time.deltaTime;
-            }
-
-
             // Controls
             MOVE = Input.actions.FindAction("Move").ReadValue<Vector2>();
             JUMP = Button(Input.actions.FindAction("Jump").ReadValue<float>());
@@ -383,13 +374,13 @@ public class Player : MonoBehaviour
 
 
             // Mouse and Controller Input
-            if (Input.GetDevice<Mouse>() != null || flickStick)
+            if (Input.GetDevice<Mouse>() != null && forceController == false)
             {
                 isMouse = true;
 
                 // Mouse
-                LOOK_X = Input.actions.FindAction("Look X").ReadValue<float>() * lookSpeedMouse * lookSpeedModifier * Time.deltaTime;
-                LOOK_Y = Input.actions.FindAction("Look Y").ReadValue<float>() * lookSpeedMouse * lookSpeedModifier * Time.deltaTime;
+                LOOK_X = Input.actions.FindAction("Look X").ReadValue<float>() * lookSpeedMouse * lookSpeedModifier;
+                LOOK_Y = Input.actions.FindAction("Look Y").ReadValue<float>() * lookSpeedMouse * lookSpeedModifier;
             }
             else
             {
@@ -407,6 +398,15 @@ public class Player : MonoBehaviour
                     LOOK_X = Input.actions.FindAction("Look X").ReadValue<float>();
                     LOOK_Y = Input.actions.FindAction("Look Y").ReadValue<float>();
                 }
+            }
+
+
+            // Camera Position
+            Camera.transform.position = transform.position + cameraStart;
+
+            if (thirdPerson)
+            {
+                Camera.transform.Translate(cameraDistance);
             }
 
 
@@ -428,45 +428,6 @@ public class Player : MonoBehaviour
         else if (RESTART && play)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-    }
-
-    void LateUpdate()
-    {
-        if (play)
-        {
-            // Camera Position
-            Camera.transform.position = transform.position + cameraStart;
-
-            if (thirdPerson)
-            {
-                Camera.transform.Translate(cameraDistance);
-            }
-
-
-            // Camera Rotation
-            float cameraYaw = Camera.transform.eulerAngles.y;
-
-            if (flickStick == false)
-            {
-                Camera.transform.rotation = Quaternion.Euler(cameraRotationY, cameraRotationX, 0);
-            }
-            else
-            {
-                // Flick Stick
-                if (Mathf.Abs(LOOK_X) >= flickStickDeadzone || Mathf.Abs(LOOK_Y) >= flickStickDeadzone)
-                {
-                    Camera.transform.eulerAngles = new Vector3(0, flickStickRotation + Mathf.Atan2(LOOK_X, LOOK_Y) * Mathf.Rad2Deg, 0);
-                }
-                else
-                {
-                    flickStickRotation = Camera.transform.eulerAngles.y;
-                }
-            }
-
-
-            // Rotate Movement
-            Rigidbody.velocity = Quaternion.AngleAxis(Camera.transform.eulerAngles.y - cameraYaw, Vector3.up) * Rigidbody.velocity;
         }
     }
 
@@ -495,6 +456,31 @@ public class Player : MonoBehaviour
             }
 
 
+            // Rotate Movement
+            Rigidbody.velocity = Quaternion.AngleAxis(Camera.transform.eulerAngles.y - cameraYaw, Vector3.up) * Rigidbody.velocity;
+
+
+            // Camera Rotation
+            cameraYaw = Camera.transform.eulerAngles.y;
+
+            if (flickStick == false)
+            {
+                Camera.transform.rotation = Quaternion.Euler(cameraRotationY, cameraRotationX, 0);
+            }
+            else
+            {
+                // Flick Stick
+                if (Mathf.Abs(LOOK_X) >= flickStickDeadzone || Mathf.Abs(LOOK_Y) >= flickStickDeadzone)
+                {
+                    Camera.transform.eulerAngles = new Vector3(0, flickStickRotation + Mathf.Atan2(LOOK_X, LOOK_Y) * Mathf.Rad2Deg, 0);
+                }
+                else
+                {
+                    flickStickRotation = Camera.transform.eulerAngles.y;
+                }
+            }
+
+
             // Jumping
             if (canDoubleJump)
             {
@@ -518,6 +504,16 @@ public class Player : MonoBehaviour
                 Rigidbody.AddRelativeForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
 
                 currentJumps += 1;
+            }
+
+            // Airtime
+            if (isGrounded)
+            {
+                airTime = 0;
+            }
+            else
+            {
+                airTime += Time.deltaTime;
             }
 
 

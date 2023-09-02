@@ -391,6 +391,8 @@ MonoBehaviour:
   moveSpeedModifier: 1
   airSpeed: 5
   isGrounded: 1
+  airTime: 0
+  coyoteTime: 0
   jumpForce: 12
   canDoubleJump: 1
   currentJumps: 0
@@ -408,7 +410,7 @@ MonoBehaviour:
   cameraStart: {x: 0, y: 0.75, z: 0}
   cameraDistance: {x: 2, y: 0, z: -3}
   isMouse: 0
-  lookSpeedMouse: 150
+  lookSpeedMouse: 1
   lookSpeedX: 200
   lookSpeedY: 100
   lookSpeedModifier: 1
@@ -935,7 +937,6 @@ MonoBehaviour:
   Player: {fileID: 917094451624610507}
   Ray: {fileID: 9147290475938118327}
   PointerDot: {fileID: 5959098363590479612}
-  targetDistance: 100
   maxDistance: 100
   pointerPosition: {x: 0, y: 0, z: 0}
   pointerCameraPosition: {x: 0, y: 0, z: 0}
