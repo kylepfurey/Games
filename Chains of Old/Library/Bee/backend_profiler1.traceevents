@@ -1,0 +1,530 @@
+{ "cat":"", "pid":12345, "tid":0, "ts":0, "ph":"M", "name":"process_name", "args": { "name":"bee_backend" } }
+,{ "pid":12345, "tid":0, "ts":1667447401147141, "dur":1115, "ph":"X", "name": "DriverInitData",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401148262, "dur":43, "ph":"X", "name": "Tundra",  "args": { "detail":"RemoveStaleOutputs" }}
+,{ "pid":12345, "tid":0, "ts":1667447401148314, "dur":16, "ph":"X", "name": "Tundra",  "args": { "detail":"PrepareNodes" }}
+,{ "pid":12345, "tid":0, "ts":1667447401148330, "dur":520, "ph":"X", "name": "Tundra",  "args": { "detail":"BuildQueueInit" }}
+,{ "pid":12345, "tid":0, "ts":1667447401148880, "dur":516, "ph":"X", "name": "EnqueueRequestedNodes",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401149396, "dur":1, "ph":"X", "name": "SortWorkingStack",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401752720, "dur":344, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753064, "dur":25, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753089, "dur":21, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753110, "dur":47, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753157, "dur":4, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753161, "dur":5, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753166, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753168, "dur":6, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753174, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753175, "dur":3, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753178, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753180, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753184, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753185, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753189, "dur":0, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753189, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753193, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753194, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753198, "dur":8, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753206, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753210, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753211, "dur":3, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753214, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753215, "dur":5, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753220, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753221, "dur":3, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753224, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753225, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753229, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753230, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753234, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753235, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753239, "dur":0, "ph":"X", "name": "SharedResourceDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753256, "dur":1, "ph":"X", "name": "BuildQueueDestroyTail",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401753323, "dur":1396, "ph":"X", "name": "Tundra",  "args": { "detail":"Write AllBuiltNodes" }}
+,{ "pid":12345, "tid":1, "ts":1667447401148943, "dur":467, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1667447401149413, "dur":3634, "ph":"X", "name": "CheckDagSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1667447401153057, "dur":1, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"WriteText Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info" }}
+,{ "pid":12345, "tid":1, "ts":1667447401153060, "dur":81, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1667447401153145, "dur":2, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/app.info" }}
+,{ "pid":12345, "tid":1, "ts":1667447401153150, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1667447401153687, "dur":1534, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/app.info" }}
+,{ "pid":12345, "tid":1, "ts":1667447401155224, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":1, "ts":1667447401155282, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1667447401155397, "dur":597, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":1, "ts":1667447401156017, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
+,{ "pid":12345, "tid":1, "ts":1667447401156071, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1667447401156173, "dur":968, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
+,{ "pid":12345, "tid":1, "ts":1667447401157172, "dur":69, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/UnityPlayer.dll" }}
+,{ "pid":12345, "tid":1, "ts":1667447401157243, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1667447401157247, "dur":77679, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/UnityPlayer.dll" }}
+,{ "pid":12345, "tid":1, "ts":1667447401234965, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1667447401235003, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1667447401235008, "dur":71446, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1667447401306512, "dur":33, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1667447401306548, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1667447401306554, "dur":51368, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1667447401357952, "dur":32, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.dll" }}
+,{ "pid":12345, "tid":1, "ts":1667447401357986, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1667447401357991, "dur":38494, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.dll" }}
+,{ "pid":12345, "tid":1, "ts":1667447401396514, "dur":30, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll" }}
+,{ "pid":12345, "tid":1, "ts":1667447401396547, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1667447401396555, "dur":50315, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll" }}
+,{ "pid":12345, "tid":1, "ts":1667447401446898, "dur":32, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.Net.Http.dll" }}
+,{ "pid":12345, "tid":1, "ts":1667447401446932, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1667447401446937, "dur":60528, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.Net.Http.dll" }}
+,{ "pid":12345, "tid":1, "ts":1667447401507496, "dur":28, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Newtonsoft.Json.dll" }}
+,{ "pid":12345, "tid":1, "ts":1667447401507526, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1667447401507534, "dur":91850, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Newtonsoft.Json.dll" }}
+,{ "pid":12345, "tid":1, "ts":1667447401599413, "dur":153343, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1667447401149182, "dur":252, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1667447401149434, "dur":3615, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1667447401153057, "dur":194, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
+,{ "pid":12345, "tid":2, "ts":1667447401153253, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1667447401168645, "dur":66323, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
+,{ "pid":12345, "tid":2, "ts":1667447401235001, "dur":39, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1667447401235042, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1667447401235047, "dur":23028, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1667447401258106, "dur":29, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.TLSModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1667447401258137, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1667447401258143, "dur":17027, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.TLSModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1667447401275197, "dur":26, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.TerrainModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1667447401275225, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1667447401275231, "dur":43233, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.TerrainModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1667447401318499, "dur":33, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.Physics2DModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1667447401318534, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1667447401318542, "dur":71554, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.Physics2DModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1667447401390125, "dur":96227, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.VisualScripting.Flow.dll" }}
+,{ "pid":12345, "tid":2, "ts":1667447401486356, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1667447401486370, "dur":916, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.VisualScripting.Flow.dll" }}
+,{ "pid":12345, "tid":2, "ts":1667447401487311, "dur":27, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.Core.dll" }}
+,{ "pid":12345, "tid":2, "ts":1667447401487340, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1667447401487345, "dur":109516, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.Core.dll" }}
+,{ "pid":12345, "tid":2, "ts":1667447401596892, "dur":155861, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1667447401149246, "dur":200, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1667447401149446, "dur":3604, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1667447401153058, "dur":173, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":3, "ts":1667447401153234, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1667447401158132, "dur":648, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":3, "ts":1667447401158810, "dur":70, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Resources/unity default resources" }}
+,{ "pid":12345, "tid":3, "ts":1667447401158882, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1667447401159033, "dur":75334, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Resources/unity default resources" }}
+,{ "pid":12345, "tid":3, "ts":1667447401234402, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.VFXModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1667447401234443, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1667447401234447, "dur":44092, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.VFXModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1667447401278569, "dur":31, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1667447401278603, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1667447401278611, "dur":52032, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1667447401330679, "dur":33, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.LocalizationModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1667447401330715, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1667447401330722, "dur":18296, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.LocalizationModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1667447401349048, "dur":29, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.GIModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1667447401349079, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1667447401349084, "dur":29910, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.GIModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1667447401379058, "dur":78, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.ARModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1667447401379143, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1667447401379151, "dur":18492, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.ARModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1667447401397675, "dur":59184, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Timeline.dll" }}
+,{ "pid":12345, "tid":3, "ts":1667447401456863, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1667447401456900, "dur":1024, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Timeline.dll" }}
+,{ "pid":12345, "tid":3, "ts":1667447401457953, "dur":29, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.IO.Compression.dll" }}
+,{ "pid":12345, "tid":3, "ts":1667447401457984, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1667447401457991, "dur":81937, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.IO.Compression.dll" }}
+,{ "pid":12345, "tid":3, "ts":1667447401539957, "dur":87, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/StreamingAssets/UnityServicesProjectConfiguration.json" }}
+,{ "pid":12345, "tid":3, "ts":1667447401540047, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1667447401542069, "dur":690, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/StreamingAssets/UnityServicesProjectConfiguration.json" }}
+,{ "pid":12345, "tid":3, "ts":1667447401542788, "dur":30, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Resources/unity_builtin_extra" }}
+,{ "pid":12345, "tid":3, "ts":1667447401542820, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1667447401542866, "dur":993, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Resources/unity_builtin_extra" }}
+,{ "pid":12345, "tid":3, "ts":1667447401543899, "dur":27, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/sharedassets0.assets.resS" }}
+,{ "pid":12345, "tid":3, "ts":1667447401543929, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1667447401543934, "dur":15148, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/sharedassets0.assets.resS" }}
+,{ "pid":12345, "tid":3, "ts":1667447401559114, "dur":96, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/ScriptingAssemblies.json" }}
+,{ "pid":12345, "tid":3, "ts":1667447401559221, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1667447401559228, "dur":708, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/ScriptingAssemblies.json" }}
+,{ "pid":12345, "tid":3, "ts":1667447401559964, "dur":772, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/RuntimeInitializeOnLoads.json" }}
+,{ "pid":12345, "tid":3, "ts":1667447401560738, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1667447401560743, "dur":631, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/RuntimeInitializeOnLoads.json" }}
+,{ "pid":12345, "tid":3, "ts":1667447401561398, "dur":28, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/level0" }}
+,{ "pid":12345, "tid":3, "ts":1667447401561428, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1667447401561432, "dur":3788, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/level0" }}
+,{ "pid":12345, "tid":3, "ts":1667447401565247, "dur":187474, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1667447401149071, "dur":348, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1667447401149419, "dur":3635, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1667447401153058, "dur":206, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
+,{ "pid":12345, "tid":4, "ts":1667447401153279, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1667447401175292, "dur":59930, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
+,{ "pid":12345, "tid":4, "ts":1667447401235258, "dur":37, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1667447401235298, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1667447401235303, "dur":70256, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1667447401305606, "dur":31, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1667447401305640, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1667447401305645, "dur":29826, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1667447401335504, "dur":87, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.IMGUIModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1667447401335594, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1667447401335601, "dur":80119, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.IMGUIModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1667447401415752, "dur":656, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Services.Core.Environments.Internal.dll" }}
+,{ "pid":12345, "tid":4, "ts":1667447401416412, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1667447401416420, "dur":582, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Services.Core.Environments.Internal.dll" }}
+,{ "pid":12345, "tid":4, "ts":1667447401417030, "dur":21060, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Services.Core.dll" }}
+,{ "pid":12345, "tid":4, "ts":1667447401438094, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1667447401438102, "dur":811, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Services.Core.dll" }}
+,{ "pid":12345, "tid":4, "ts":1667447401438941, "dur":28, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.Transactions.dll" }}
+,{ "pid":12345, "tid":4, "ts":1667447401438972, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1667447401438977, "dur":42631, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.Transactions.dll" }}
+,{ "pid":12345, "tid":4, "ts":1667447401481638, "dur":30, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.Data.dll" }}
+,{ "pid":12345, "tid":4, "ts":1667447401481671, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1667447401481678, "dur":156098, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.Data.dll" }}
+,{ "pid":12345, "tid":4, "ts":1667447401637797, "dur":114951, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1667447401149611, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1667447401149611, "dur":3461, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1667447401153073, "dur":159, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
+,{ "pid":12345, "tid":5, "ts":1667447401153235, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1667447401159871, "dur":1599, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
+,{ "pid":12345, "tid":5, "ts":1667447401161513, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.WindModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1667447401161552, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1667447401161605, "dur":73376, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.WindModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1667447401235014, "dur":35, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1667447401235051, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1667447401235057, "dur":83413, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1667447401318501, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1667447401318541, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1667447401318547, "dur":28788, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1667447401347369, "dur":28, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.HotReloadModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1667447401347400, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1667447401347408, "dur":28549, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.HotReloadModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1667447401375986, "dur":27, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.AudioModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1667447401376016, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1667447401376024, "dur":40449, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.AudioModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1667447401416503, "dur":1606, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Services.Core.Environments.dll" }}
+,{ "pid":12345, "tid":5, "ts":1667447401418112, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1667447401418119, "dur":683, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Services.Core.Environments.dll" }}
+,{ "pid":12345, "tid":5, "ts":1667447401418833, "dur":512, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Services.Core.Device.dll" }}
+,{ "pid":12345, "tid":5, "ts":1667447401419348, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1667447401419354, "dur":686, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Services.Core.Device.dll" }}
+,{ "pid":12345, "tid":5, "ts":1667447401420068, "dur":24885, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Services.Core.Configuration.dll" }}
+,{ "pid":12345, "tid":5, "ts":1667447401444957, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1667447401444970, "dur":1303, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Services.Core.Configuration.dll" }}
+,{ "pid":12345, "tid":5, "ts":1667447401446304, "dur":29, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.Runtime.Serialization.dll" }}
+,{ "pid":12345, "tid":5, "ts":1667447401446335, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1667447401446340, "dur":113926, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.Runtime.Serialization.dll" }}
+,{ "pid":12345, "tid":5, "ts":1667447401560291, "dur":27, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/level0.resS" }}
+,{ "pid":12345, "tid":5, "ts":1667447401560321, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1667447401560326, "dur":6419, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/level0.resS" }}
+,{ "pid":12345, "tid":5, "ts":1667447401566774, "dur":185949, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1667447401149104, "dur":322, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1667447401149426, "dur":3626, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1667447401153057, "dur":192, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/4.5/web.config" }}
+,{ "pid":12345, "tid":6, "ts":1667447401153252, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1667447401171747, "dur":63408, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/4.5/web.config" }}
+,{ "pid":12345, "tid":6, "ts":1667447401235192, "dur":34, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1667447401235228, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1667447401235251, "dur":29953, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1667447401265238, "dur":30, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1667447401265270, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1667447401265279, "dur":38862, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1667447401304183, "dur":35, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1667447401304220, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1667447401304228, "dur":24997, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1667447401329258, "dur":33, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1667447401329294, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1667447401329303, "dur":33671, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1667447401363027, "dur":29, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1667447401363058, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1667447401363064, "dur":31414, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1667447401394514, "dur":76977, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.VisualScripting.Core.dll" }}
+,{ "pid":12345, "tid":6, "ts":1667447401471496, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1667447401471506, "dur":1928, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.VisualScripting.Core.dll" }}
+,{ "pid":12345, "tid":6, "ts":1667447401473476, "dur":1162, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.Drawing.dll" }}
+,{ "pid":12345, "tid":6, "ts":1667447401474642, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1667447401474650, "dur":146547, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.Drawing.dll" }}
+,{ "pid":12345, "tid":6, "ts":1667447401621219, "dur":131539, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1667447401149197, "dur":243, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1667447401149440, "dur":3613, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1667447401153057, "dur":167, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
+,{ "pid":12345, "tid":7, "ts":1667447401153227, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1667447401157122, "dur":1370, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
+,{ "pid":12345, "tid":7, "ts":1667447401158526, "dur":37, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old.exe" }}
+,{ "pid":12345, "tid":7, "ts":1667447401158565, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1667447401158568, "dur":76696, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old.exe" }}
+,{ "pid":12345, "tid":7, "ts":1667447401235297, "dur":45, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1667447401235345, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1667447401235350, "dur":50098, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1667447401285477, "dur":30, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.SubstanceModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1667447401285509, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1667447401285516, "dur":36900, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.SubstanceModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1667447401322449, "dur":31, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1667447401322482, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1667447401322502, "dur":56938, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1667447401379469, "dur":27, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1667447401379499, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1667447401379503, "dur":96041, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1667447401475571, "dur":27, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.dll" }}
+,{ "pid":12345, "tid":7, "ts":1667447401475600, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1667447401475606, "dur":164370, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.dll" }}
+,{ "pid":12345, "tid":7, "ts":1667447401639996, "dur":112785, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1667447401149278, "dur":173, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1667447401149451, "dur":3607, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1667447401153061, "dur":162, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":8, "ts":1667447401153226, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1667447401156946, "dur":709, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":8, "ts":1667447401157676, "dur":46, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/UnityCrashHandler64.exe" }}
+,{ "pid":12345, "tid":8, "ts":1667447401157723, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1667447401157726, "dur":1844, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/UnityCrashHandler64.exe" }}
+,{ "pid":12345, "tid":8, "ts":1667447401159603, "dur":40, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.XRModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1667447401159645, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1667447401159816, "dur":75368, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.XRModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1667447401235220, "dur":43, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1667447401235265, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1667447401235270, "dur":37886, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1667447401273186, "dur":32, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1667447401273229, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1667447401273236, "dur":31069, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1667447401304355, "dur":42, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1667447401304400, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1667447401304405, "dur":53697, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1667447401358130, "dur":28, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.DirectorModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1667447401358160, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1667447401358168, "dur":21113, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.DirectorModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1667447401379308, "dur":26, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.AnimationModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1667447401379337, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1667447401379342, "dur":50699, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.AnimationModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1667447401430074, "dur":686, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Services.Core.Analytics.dll" }}
+,{ "pid":12345, "tid":8, "ts":1667447401430764, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1667447401430774, "dur":809, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Services.Core.Analytics.dll" }}
+,{ "pid":12345, "tid":8, "ts":1667447401431608, "dur":169141, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Postprocessing.Runtime.dll" }}
+,{ "pid":12345, "tid":8, "ts":1667447401600752, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1667447401600761, "dur":660, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Postprocessing.Runtime.dll" }}
+,{ "pid":12345, "tid":8, "ts":1667447401601443, "dur":151337, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1667447401149308, "dur":148, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1667447401149456, "dur":3611, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1667447401153067, "dur":178, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
+,{ "pid":12345, "tid":9, "ts":1667447401153248, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1667447401168153, "dur":67323, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
+,{ "pid":12345, "tid":9, "ts":1667447401235521, "dur":34, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UNETModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1667447401235557, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1667447401235562, "dur":153313, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UNETModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1667447401388906, "dur":56669, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.VisualScripting.State.dll" }}
+,{ "pid":12345, "tid":9, "ts":1667447401445579, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1667447401445586, "dur":830, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.VisualScripting.State.dll" }}
+,{ "pid":12345, "tid":9, "ts":1667447401446446, "dur":32, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.Numerics.dll" }}
+,{ "pid":12345, "tid":9, "ts":1667447401446480, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1667447401446485, "dur":57798, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.Numerics.dll" }}
+,{ "pid":12345, "tid":9, "ts":1667447401504322, "dur":28, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.ComponentModel.Composition.dll" }}
+,{ "pid":12345, "tid":9, "ts":1667447401504353, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1667447401504361, "dur":96385, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.ComponentModel.Composition.dll" }}
+,{ "pid":12345, "tid":9, "ts":1667447401600772, "dur":151987, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1667447401149410, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1667447401149411, "dur":3644, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1667447401153059, "dur":185, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":10, "ts":1667447401153247, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1667447401164212, "dur":71280, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":10, "ts":1667447401235528, "dur":32, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UmbraModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1667447401235563, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1667447401235567, "dur":18472, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UmbraModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1667447401254071, "dur":32, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1667447401254126, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1667447401254134, "dur":50085, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1667447401304256, "dur":31, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1667447401304289, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1667447401304294, "dur":27320, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1667447401331648, "dur":31, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1667447401331704, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1667447401331711, "dur":25746, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1667447401357484, "dur":26, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1667447401357512, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1667447401357518, "dur":25491, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1667447401383039, "dur":29, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.AIModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1667447401383071, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1667447401383079, "dur":57416, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.AIModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1667447401440527, "dur":29, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.ServiceModel.Internals.dll" }}
+,{ "pid":12345, "tid":10, "ts":1667447401440559, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1667447401440566, "dur":93608, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.ServiceModel.Internals.dll" }}
+,{ "pid":12345, "tid":10, "ts":1667447401534205, "dur":33, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Mono.Security.dll" }}
+,{ "pid":12345, "tid":10, "ts":1667447401534240, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1667447401534248, "dur":182872, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Mono.Security.dll" }}
+,{ "pid":12345, "tid":10, "ts":1667447401717143, "dur":35585, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1667447401149446, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1667447401149446, "dur":3623, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1667447401153071, "dur":147, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":11, "ts":1667447401153221, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1667447401154211, "dur":1038, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":11, "ts":1667447401155270, "dur":49, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/config" }}
+,{ "pid":12345, "tid":11, "ts":1667447401155320, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1667447401155398, "dur":547, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/config" }}
+,{ "pid":12345, "tid":11, "ts":1667447401155966, "dur":47, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/browscap.ini" }}
+,{ "pid":12345, "tid":11, "ts":1667447401156014, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1667447401156018, "dur":1064, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/browscap.ini" }}
+,{ "pid":12345, "tid":11, "ts":1667447401157114, "dur":73, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
+,{ "pid":12345, "tid":11, "ts":1667447401157189, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1667447401157245, "dur":76679, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
+,{ "pid":12345, "tid":11, "ts":1667447401233966, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.VideoModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1667447401234007, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1667447401234012, "dur":34550, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.VideoModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1667447401268591, "dur":29, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1667447401268622, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1667447401268629, "dur":73414, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1667447401342078, "dur":31, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1667447401342111, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1667447401342120, "dur":27535, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1667447401369684, "dur":33, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.ClothModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1667447401369720, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1667447401369727, "dur":28583, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.ClothModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1667447401398337, "dur":203450, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.TextMeshPro.dll" }}
+,{ "pid":12345, "tid":11, "ts":1667447401601789, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1667447401601794, "dur":700, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.TextMeshPro.dll" }}
+,{ "pid":12345, "tid":11, "ts":1667447401602514, "dur":150250, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1667447401149475, "dur":1, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1667447401149476, "dur":3603, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1667447401153079, "dur":157, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
+,{ "pid":12345, "tid":12, "ts":1667447401153238, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1667447401160246, "dur":1588, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
+,{ "pid":12345, "tid":12, "ts":1667447401161866, "dur":71967, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1667447401233842, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1667447401233854, "dur":36550, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1667447401270441, "dur":32, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1667447401270475, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1667447401270482, "dur":37898, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1667447401308410, "dur":27, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.PhysicsModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1667447401308439, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1667447401308444, "dur":39942, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.PhysicsModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1667447401348414, "dur":30, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.GridModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1667447401348468, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1667447401348475, "dur":28068, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.GridModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1667447401376572, "dur":31, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1667447401376627, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1667447401376633, "dur":57937, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1667447401434601, "dur":86, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.Xml.Linq.dll" }}
+,{ "pid":12345, "tid":12, "ts":1667447401434690, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1667447401434700, "dur":82401, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.Xml.Linq.dll" }}
+,{ "pid":12345, "tid":12, "ts":1667447401517132, "dur":29, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/mscorlib.dll" }}
+,{ "pid":12345, "tid":12, "ts":1667447401517163, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1667447401517185, "dur":235448, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/mscorlib.dll" }}
+,{ "pid":12345, "tid":12, "ts":1667447401752655, "dur":1, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"Player" }}
+,{ "pid":12345, "tid":12, "ts":1667447401752656, "dur":0, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":13, "ts":1667447401149501, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":13, "ts":1667447401149501, "dur":3569, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":13, "ts":1667447401153070, "dur":183, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/2.0/web.config" }}
+,{ "pid":12345, "tid":13, "ts":1667447401153255, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":13, "ts":1667447401172186, "dur":62727, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/2.0/web.config" }}
+,{ "pid":12345, "tid":13, "ts":1667447401234951, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.VehiclesModule.dll" }}
+,{ "pid":12345, "tid":13, "ts":1667447401234989, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":13, "ts":1667447401234994, "dur":25680, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.VehiclesModule.dll" }}
+,{ "pid":12345, "tid":13, "ts":1667447401260703, "dur":32, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.TilemapModule.dll" }}
+,{ "pid":12345, "tid":13, "ts":1667447401260737, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":13, "ts":1667447401260744, "dur":41604, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.TilemapModule.dll" }}
+,{ "pid":12345, "tid":13, "ts":1667447401302379, "dur":29, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.StreamingModule.dll" }}
+,{ "pid":12345, "tid":13, "ts":1667447401302411, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":13, "ts":1667447401302420, "dur":30138, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.StreamingModule.dll" }}
+,{ "pid":12345, "tid":13, "ts":1667447401332590, "dur":31, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
+,{ "pid":12345, "tid":13, "ts":1667447401332624, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":13, "ts":1667447401332629, "dur":29389, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
+,{ "pid":12345, "tid":13, "ts":1667447401362045, "dur":46, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.CoreModule.dll" }}
+,{ "pid":12345, "tid":13, "ts":1667447401362093, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":13, "ts":1667447401362098, "dur":104155, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.CoreModule.dll" }}
+,{ "pid":12345, "tid":13, "ts":1667447401466284, "dur":27, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.EnterpriseServices.dll" }}
+,{ "pid":12345, "tid":13, "ts":1667447401466325, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":13, "ts":1667447401466333, "dur":34404, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.EnterpriseServices.dll" }}
+,{ "pid":12345, "tid":13, "ts":1667447401500766, "dur":28, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.Configuration.dll" }}
+,{ "pid":12345, "tid":13, "ts":1667447401500797, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":13, "ts":1667447401500806, "dur":98276, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.Configuration.dll" }}
+,{ "pid":12345, "tid":13, "ts":1667447401599106, "dur":153619, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1667447401149531, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1667447401149531, "dur":3533, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1667447401153066, "dur":179, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
+,{ "pid":12345, "tid":14, "ts":1667447401153247, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1667447401160836, "dur":693, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
+,{ "pid":12345, "tid":14, "ts":1667447401161569, "dur":35, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.VRModule.dll" }}
+,{ "pid":12345, "tid":14, "ts":1667447401161607, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1667447401161612, "dur":73454, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.VRModule.dll" }}
+,{ "pid":12345, "tid":14, "ts":1667447401235100, "dur":46, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
+,{ "pid":12345, "tid":14, "ts":1667447401235149, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1667447401235154, "dur":21493, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
+,{ "pid":12345, "tid":14, "ts":1667447401256684, "dur":29, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UIElementsModule.dll" }}
+,{ "pid":12345, "tid":14, "ts":1667447401256716, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1667447401256724, "dur":108116, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UIElementsModule.dll" }}
+,{ "pid":12345, "tid":14, "ts":1667447401364868, "dur":28, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
+,{ "pid":12345, "tid":14, "ts":1667447401364898, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1667447401364905, "dur":36252, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
+,{ "pid":12345, "tid":14, "ts":1667447401401188, "dur":5485, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Services.Core.Threading.dll" }}
+,{ "pid":12345, "tid":14, "ts":1667447401406679, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1667447401406689, "dur":2370, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Services.Core.Threading.dll" }}
+,{ "pid":12345, "tid":14, "ts":1667447401409089, "dur":1143, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Services.Core.Scheduler.dll" }}
+,{ "pid":12345, "tid":14, "ts":1667447401410235, "dur":8, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1667447401410252, "dur":806, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Services.Core.Scheduler.dll" }}
+,{ "pid":12345, "tid":14, "ts":1667447401411088, "dur":510, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Services.Core.Networking.dll" }}
+,{ "pid":12345, "tid":14, "ts":1667447401411601, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1667447401411608, "dur":639, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Services.Core.Networking.dll" }}
+,{ "pid":12345, "tid":14, "ts":1667447401412270, "dur":41490, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Services.Core.Internal.dll" }}
+,{ "pid":12345, "tid":14, "ts":1667447401453766, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1667447401453777, "dur":1044, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Services.Core.Internal.dll" }}
+,{ "pid":12345, "tid":14, "ts":1667447401454851, "dur":25, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.IO.Compression.FileSystem.dll" }}
+,{ "pid":12345, "tid":14, "ts":1667447401454879, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1667447401454885, "dur":30596, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.IO.Compression.FileSystem.dll" }}
+,{ "pid":12345, "tid":14, "ts":1667447401485539, "dur":29, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.Data.DataSetExtensions.dll" }}
+,{ "pid":12345, "tid":14, "ts":1667447401485571, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1667447401485598, "dur":30620, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.Data.DataSetExtensions.dll" }}
+,{ "pid":12345, "tid":14, "ts":1667447401516248, "dur":28, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/netstandard.dll" }}
+,{ "pid":12345, "tid":14, "ts":1667447401516278, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1667447401516289, "dur":38078, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/netstandard.dll" }}
+,{ "pid":12345, "tid":14, "ts":1667447401554398, "dur":32, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/sharedassets0.assets" }}
+,{ "pid":12345, "tid":14, "ts":1667447401554439, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1667447401554447, "dur":8840, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/sharedassets0.assets" }}
+,{ "pid":12345, "tid":14, "ts":1667447401563314, "dur":29, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/globalgamemanagers.assets" }}
+,{ "pid":12345, "tid":14, "ts":1667447401563345, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1667447401563350, "dur":845, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/globalgamemanagers.assets" }}
+,{ "pid":12345, "tid":14, "ts":1667447401564221, "dur":28, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/globalgamemanagers" }}
+,{ "pid":12345, "tid":14, "ts":1667447401564251, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1667447401564267, "dur":719, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/globalgamemanagers" }}
+,{ "pid":12345, "tid":14, "ts":1667447401565012, "dur":85, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/boot.config" }}
+,{ "pid":12345, "tid":14, "ts":1667447401565099, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":14, "ts":1667447401565103, "dur":564, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/boot.config" }}
+,{ "pid":12345, "tid":14, "ts":1667447401565695, "dur":187027, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":15, "ts":1667447401149553, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":15, "ts":1667447401149554, "dur":3507, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":15, "ts":1667447401153064, "dur":192, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/4.0/web.config" }}
+,{ "pid":12345, "tid":15, "ts":1667447401153274, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":15, "ts":1667447401175865, "dur":59346, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/4.0/web.config" }}
+,{ "pid":12345, "tid":15, "ts":1667447401235247, "dur":33, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
+,{ "pid":12345, "tid":15, "ts":1667447401235285, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":15, "ts":1667447401235289, "dur":22086, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
+,{ "pid":12345, "tid":15, "ts":1667447401257399, "dur":103249, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UI.dll" }}
+,{ "pid":12345, "tid":15, "ts":1667447401360653, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":15, "ts":1667447401360661, "dur":1108, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UI.dll" }}
+,{ "pid":12345, "tid":15, "ts":1667447401361801, "dur":30, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
+,{ "pid":12345, "tid":15, "ts":1667447401361834, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":15, "ts":1667447401361840, "dur":21719, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
+,{ "pid":12345, "tid":15, "ts":1667447401383586, "dur":27, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
+,{ "pid":12345, "tid":15, "ts":1667447401383615, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":15, "ts":1667447401383621, "dur":23997, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
+,{ "pid":12345, "tid":15, "ts":1667447401407650, "dur":36062, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Services.Core.Telemetry.dll" }}
+,{ "pid":12345, "tid":15, "ts":1667447401443717, "dur":3, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":15, "ts":1667447401443727, "dur":1013, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Services.Core.Telemetry.dll" }}
+,{ "pid":12345, "tid":15, "ts":1667447401444771, "dur":30, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.Security.dll" }}
+,{ "pid":12345, "tid":15, "ts":1667447401444803, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":15, "ts":1667447401444808, "dur":135824, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.Security.dll" }}
+,{ "pid":12345, "tid":15, "ts":1667447401580673, "dur":172078, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":16, "ts":1667447401149578, "dur":1, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":16, "ts":1667447401149579, "dur":3489, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":16, "ts":1667447401153068, "dur":175, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":16, "ts":1667447401153247, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":16, "ts":1667447401163826, "dur":72913, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":16, "ts":1667447401236773, "dur":32, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UIModule.dll" }}
+,{ "pid":12345, "tid":16, "ts":1667447401236807, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":16, "ts":1667447401236812, "dur":70893, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.UIModule.dll" }}
+,{ "pid":12345, "tid":16, "ts":1667447401307729, "dur":30, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.ProfilerModule.dll" }}
+,{ "pid":12345, "tid":16, "ts":1667447401307761, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":16, "ts":1667447401307766, "dur":24786, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.ProfilerModule.dll" }}
+,{ "pid":12345, "tid":16, "ts":1667447401332586, "dur":33, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.InputModule.dll" }}
+,{ "pid":12345, "tid":16, "ts":1667447401332621, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":16, "ts":1667447401332627, "dur":24630, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.InputModule.dll" }}
+,{ "pid":12345, "tid":16, "ts":1667447401357293, "dur":32, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.GameCenterModule.dll" }}
+,{ "pid":12345, "tid":16, "ts":1667447401357327, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":16, "ts":1667447401357335, "dur":51881, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/UnityEngine.GameCenterModule.dll" }}
+,{ "pid":12345, "tid":16, "ts":1667447401409242, "dur":26338, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Services.Core.Registration.dll" }}
+,{ "pid":12345, "tid":16, "ts":1667447401435584, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":16, "ts":1667447401435592, "dur":809, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/Unity.Services.Core.Registration.dll" }}
+,{ "pid":12345, "tid":16, "ts":1667447401436496, "dur":43, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.Xml.dll" }}
+,{ "pid":12345, "tid":16, "ts":1667447401436542, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":16, "ts":1667447401436547, "dur":197868, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/kylef/Downloads/Chains of Old/Chains of Old_Data/Managed/System.Xml.dll" }}
+,{ "pid":12345, "tid":16, "ts":1667447401634436, "dur":118329, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1667447401756002, "dur":1353, "ph":"X", "name": "ProfilerWriteOutput" }
+,
