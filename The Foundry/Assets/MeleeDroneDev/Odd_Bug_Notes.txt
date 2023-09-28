@@ -1,0 +1,3 @@
+Leaving a note here for future reference.
+
+Very odd bug was observed during dev. Leaper drone wouldn't play the landing animation, despite being in the landing state in the ANimator with the correct animation in place. Placing a separate drone model FBX in the scene and having it play the landing animation using the same animator seemed to fix the issue for the leap drone prefab. Makes no sense considering they're unrelated, but if it happens again consider this lead.

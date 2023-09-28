@@ -1,0 +1,15 @@
+TO OVERCOME GPU MEMORY USAGE CAUSING LIGHTMAPPER TO SWITCH TO CPU:
+1) Clear main game lighting data
+2) set mainscenelighting resolution to 1
+3) switch to lightingdebugscene
+4) clear lightingdebugscene baked lighting data
+5) bake lightingdebugscene lighting with the mainscenelighting, save scene
+6) switch to TheMainGameScene
+7) bake lighting (with resolution of 1), inspect scene for errors (no light, blastouts, etc). SHOULD BE QUICK
+8) once done baking, crank resolution to high value (at least 40) and hit bake again. DO NOT CLEAR
+9) Lightmapper should not switch to CPU on RTX 3070 or higher at max res of 2048. If it does, then something is wrong
+
+FILTERING SETTINGS
+Set to advanced
+Set Indirect Denoiser to OpenImageDenoise
+Set Indirect Filter to Gaussian, Radius to 1
