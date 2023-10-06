@@ -336,6 +336,7 @@ MonoBehaviour:
   LOOK_Y: 0
   cameraRotationY: 0
   cameraRotationX: 0
+  cameraYaw: 0
   JUMP: 0
   JUMP_UP: 0
   DODGE: 0
@@ -389,7 +390,7 @@ MonoBehaviour:
   EXIT: 0
   moveSpeed: 10
   moveSpeedModifier: 1
-  airSpeed: 5
+  airSpeed: 0.25
   isGrounded: 1
   airTime: 0
   coyoteTime: 0
@@ -398,21 +399,22 @@ MonoBehaviour:
   currentJumps: 0
   maxJumps: 1
   canBunnyHop: 1
-  canDodge: 1
+  canDodge: 0
   dodgeDeadzone: 0.25
   isDodging: 0
   dodgeForce: 25
   dodgeForceAir: 15
-  canLunge: 1
+  canLunge: 0
   lungeCap: 13
   lungeCapLow: 10
   thirdPerson: 0
   cameraStart: {x: 0, y: 0.75, z: 0}
   cameraDistance: {x: 2, y: 0, z: -3}
   isMouse: 0
-  lookSpeedMouse: 1
-  lookSpeedX: 200
-  lookSpeedY: 100
+  forceController: 0
+  lookSpeedMouse: 0.5
+  lookSpeedX: 100
+  lookSpeedY: 50
   lookSpeedModifier: 1
   flickStick: 0
   flickStickRotation: 0

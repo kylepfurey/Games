@@ -452,7 +452,13 @@ public class Player : MonoBehaviour
             // Velocity
             if (isGrounded)
             {
+                // Ground Movement
                 Rigidbody.velocity += new Vector3(movement.x, 0, movement.z);
+            }
+            else
+            {
+                // Air Movement                  
+                Rigidbody.velocity += new Vector3(movement.x * airSpeed, 0, movement.z * airSpeed);
             }
 
 
@@ -491,7 +497,7 @@ public class Player : MonoBehaviour
                 maxJumps = 1;
             }
 
-            if (JUMP && JUMP_UP && ((isGrounded || airTime <= coyoteTime) || (currentJumps < maxJumps && canDoubleJump)) && play)
+            if (JUMP && JUMP_UP && (isGrounded || (airTime <= coyoteTime && currentJumps == 0) || (currentJumps < maxJumps && canDoubleJump)) && play)
             {
                 JUMP_UP = false;
 
