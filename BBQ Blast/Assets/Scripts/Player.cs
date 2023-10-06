@@ -458,7 +458,7 @@ public class Player : MonoBehaviour
             else
             {
                 // Air Movement                  
-                Rigidbody.velocity += new Vector3(movement.x * airSpeed, 0, movement.z * airSpeed);
+                //Rigidbody.velocity += new Vector3(movement.x * airSpeed, 0, movement.z * airSpeed);
             }
 
 
