@@ -99,10 +99,11 @@ public class Player : MonoBehaviour
     public int maxJumps;
 
     public float airSpeed;
-    public float airDeltaX;
-    public float airDeltaZ;
+    public float airMoveX;
+    public float airMoveZ;
     public Vector3 airVelocity;
     public Vector3 highestVelocity;
+    public float velocityRotationCap;
 
     public bool canBunnyHop;
     public bool bunnyHopFrame;
@@ -492,17 +493,17 @@ public class Player : MonoBehaviour
                 // Ground Movement
                 Rigidbody.velocity = new Vector3(movement.x, Rigidbody.velocity.y, movement.z);
 
-                airDeltaX = 0;
-                airDeltaZ = 0;
+                airMoveX = 0;
+                airMoveZ = 0;
             }
             else
             {
                 // Air Movement
-                airVelocity = new Vector3(Rigidbody.velocity.x - airDeltaX, Rigidbody.velocity.y, Rigidbody.velocity.z - airDeltaZ);
-                airDeltaX = movement.x * airSpeed;
-                airDeltaZ = movement.z * airSpeed;
+                airVelocity = new Vector3(Rigidbody.velocity.x - airMoveX, Rigidbody.velocity.y, Rigidbody.velocity.z - airMoveZ);
+                airMoveX = movement.x * airSpeed;
+                airMoveZ = movement.z * airSpeed;
 
-                Rigidbody.velocity = airVelocity + new Vector3(airDeltaX, 0, airDeltaZ);
+                Rigidbody.velocity = airVelocity + new Vector3(airMoveX, 0, airMoveZ);
             }
 
 
@@ -547,9 +548,10 @@ public class Player : MonoBehaviour
 
 
             // Rotate Velocity
-            if (isGrounded == false)
+            if (isGrounded == false && Camera.transform.eulerAngles.y - cameraYaw != 0)
             {
                 Rigidbody.velocity = Quaternion.Euler(0, Camera.transform.eulerAngles.y - cameraYaw, 0) * Rigidbody.velocity;
+                Rigidbody.velocity = new Vector3(Mathf.Clamp(Rigidbody.velocity.x, -velocityRotationCap, velocityRotationCap), Rigidbody.velocity.y, Mathf.Clamp(Rigidbody.velocity.z, -velocityRotationCap, velocityRotationCap));
             }
         }
     }

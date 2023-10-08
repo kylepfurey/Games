@@ -399,10 +399,11 @@ MonoBehaviour:
   currentJump: 0
   maxJumps: 1
   airSpeed: 0.25
-  airDeltaX: 0
-  airDeltaZ: 0
+  airMoveX: 0
+  airMoveZ: 0
   airVelocity: {x: 0, y: 0, z: 0}
   highestVelocity: {x: 0, y: 0, z: 0}
+  velocityRotationCap: 15
   canBunnyHop: 1
   bunnyHopFrame: 0
   bunnyHopModifier: 2
