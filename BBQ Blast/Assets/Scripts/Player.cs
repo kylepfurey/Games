@@ -642,8 +642,7 @@ public class Player : MonoBehaviour
         // Rotate Velocity
         if (isGrounded == false && Camera.transform.eulerAngles.y - cameraYaw != 0 && airControl < 1)
         {
-            float rotationAngle = Camera.transform.eulerAngles.y - cameraYaw;
-            Rigidbody.velocity = Quaternion.Euler(0, rotationAngle, 0) * Rigidbody.velocity;
+            Rigidbody.velocity = Quaternion.Euler(0, Camera.transform.eulerAngles.y - cameraYaw, 0) * Rigidbody.velocity;
             Rigidbody.velocity = new Vector3(Mathf.Clamp(Rigidbody.velocity.x, -rotationVelocityCap, rotationVelocityCap), Rigidbody.velocity.y, Mathf.Clamp(Rigidbody.velocity.z, -rotationVelocityCap, rotationVelocityCap));
         }
     }
@@ -666,7 +665,7 @@ public class Player : MonoBehaviour
 
     private void DebugVelocity()
     {
-        // Velocity Debug
+        // Record the Greatest Velocity and Print It
         if (Mathf.Abs(Rigidbody.velocity.x) > highestVelocity.x)
         {
             highestVelocity = new Vector3(Mathf.Abs(Rigidbody.velocity.x), highestVelocity.y, highestVelocity.z);
