@@ -88,25 +88,25 @@ public class Player : MonoBehaviour
     // Movement Variables
     public float moveSpeed;
     public float moveSpeedModifier;
-    public float airSpeed;
+    public Vector3 movement;
 
     public bool isGrounded;
     public float airTime;
     public float coyoteTime;
     public float jumpForce;
     public bool canDoubleJump;
-    public int currentJumps;
+    public int currentJump;
     public int maxJumps;
-    public bool canBunnyHop;
 
-    public bool canDodge;
-    public float dodgeDeadzone;
-    public bool isDodging;
-    public float dodgeForce;
-    public float dodgeForceAir;
-    public bool canLunge;
-    public float lungeCap;
-    public float lungeCapLow;
+    public float airSpeed;
+    public float airDeltaX;
+    public float airDeltaZ;
+    public Vector3 airVelocity;
+    public Vector3 highestVelocity;
+
+    public bool canBunnyHop;
+    public bool bunnyHopFrame;
+    public float bunnyHopModifier;
 
     // Camera Variables
     public bool thirdPerson;
@@ -414,6 +414,57 @@ public class Player : MonoBehaviour
             cameraRotationX += LOOK_X;
             cameraRotationY -= LOOK_Y;
             cameraRotationY = Mathf.Clamp(cameraRotationY, -85, 85);
+
+
+            // Movement
+            Vector3 forward = MOVE.y * transform.forward * moveSpeed * moveSpeedModifier;
+            Vector3 right = MOVE.x * transform.right * moveSpeed * moveSpeedModifier;
+            movement = forward + right;
+
+
+            // Double Jump
+            if (canDoubleJump)
+            {
+                maxJumps = 2;
+            }
+            else
+            {
+                maxJumps = 1;
+            }
+
+
+            // Jumping
+            if (JUMP && JUMP_UP && (isGrounded || (airTime <= coyoteTime && currentJump == 0) || (currentJump < maxJumps && canDoubleJump)))
+            {
+                JUMP_UP = false;
+
+                // Bunny Hopping
+                if (canBunnyHop && bunnyHopFrame)
+                {
+                    // BUNNY HOP LOGIC
+                }
+                else
+                {
+                    Rigidbody.velocity = new Vector3(movement.x, 0, movement.z);
+                }
+
+                Rigidbody.AddRelativeForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+
+                airTime = 0;
+
+                currentJump += 1;
+            }
+
+
+            // Airtime
+            if (isGrounded)
+            {
+                airTime = 0;
+            }
+            else
+            {
+                airTime += Time.deltaTime;
+            }
         }
 
 
@@ -435,35 +486,44 @@ public class Player : MonoBehaviour
     {
         if (play)
         {
-            // Movement
-            Vector3 forward = MOVE.y * transform.forward * moveSpeed * moveSpeedModifier;
-            Vector3 right = MOVE.x * transform.right * moveSpeed * moveSpeedModifier;
-            Vector3 movement = forward + right;
-            float maxSpeed = moveSpeed * moveSpeedModifier;
-
-            movement.x -= Mathf.Clamp(Rigidbody.velocity.x, -maxSpeed, maxSpeed);
-            movement.z -= Mathf.Clamp(Rigidbody.velocity.z, -maxSpeed, maxSpeed);
-
-            Vector2 absoluteMovement = MOVE;
-            if (absoluteMovement.x > dodgeDeadzone) { absoluteMovement.x = 1; } else if (absoluteMovement.x < -dodgeDeadzone) { absoluteMovement.x = -1; }
-            if (absoluteMovement.y > dodgeDeadzone) { absoluteMovement.y = 1; } else if (absoluteMovement.y < -dodgeDeadzone) { absoluteMovement.y = -1; }
-
-
             // Velocity
             if (isGrounded)
             {
                 // Ground Movement
-                Rigidbody.velocity += new Vector3(movement.x, 0, movement.z);
+                Rigidbody.velocity = new Vector3(movement.x, Rigidbody.velocity.y, movement.z);
+
+                airVelocity = Rigidbody.velocity;
+                airDeltaX = 0;
+                airDeltaZ = 0;
             }
             else
             {
-                // Air Movement                  
-                //Rigidbody.velocity += new Vector3(movement.x * airSpeed, 0, movement.z * airSpeed);
+                // Air Movement
+                airVelocity = new Vector3(Rigidbody.velocity.x - airDeltaX, Rigidbody.velocity.y, Rigidbody.velocity.z - airDeltaZ);
+                airDeltaX = movement.x * airSpeed;
+                airDeltaZ = movement.z * airSpeed;
+
+                Rigidbody.velocity = airVelocity + new Vector3(airDeltaX, 0, airDeltaZ);
             }
 
 
-            // Rotate Movement
-            Rigidbody.velocity = Quaternion.AngleAxis(Camera.transform.eulerAngles.y - cameraYaw, Vector3.up) * Rigidbody.velocity;
+            // Velocity Debug
+            if (Mathf.Abs(Rigidbody.velocity.x) > highestVelocity.x)
+            {
+                highestVelocity = new Vector3(Mathf.Abs(Rigidbody.velocity.x), highestVelocity.y, highestVelocity.z);
+            }
+
+            if (Mathf.Abs(Rigidbody.velocity.y) > highestVelocity.y)
+            {
+                highestVelocity = new Vector3(highestVelocity.x, Mathf.Abs(Rigidbody.velocity.y), highestVelocity.z);
+            }
+
+            if (Mathf.Abs(Rigidbody.velocity.z) > highestVelocity.z)
+            {
+                highestVelocity = new Vector3(highestVelocity.x, highestVelocity.y, Mathf.Abs(Rigidbody.velocity.z));
+            }
+
+            print(highestVelocity);
 
 
             // Camera Rotation
@@ -487,90 +547,8 @@ public class Player : MonoBehaviour
             }
 
 
-            // Jumping
-            if (canDoubleJump)
-            {
-                maxJumps = 2;
-            }
-            else
-            {
-                maxJumps = 1;
-            }
-
-            if (JUMP && JUMP_UP && (isGrounded || (airTime <= coyoteTime && currentJumps == 0) || (currentJumps < maxJumps && canDoubleJump)) && play)
-            {
-                JUMP_UP = false;
-
-                // Bunny Hopping
-                if (canBunnyHop || isGrounded == false)
-                {
-                    Rigidbody.velocity += new Vector3(movement.x, -Rigidbody.velocity.y, movement.z);
-                }
-
-                Rigidbody.AddRelativeForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
-
-                currentJumps += 1;
-            }
-
-            // Airtime
-            if (isGrounded)
-            {
-                airTime = 0;
-            }
-            else
-            {
-                airTime += Time.deltaTime;
-            }
-
-
-            // Dodging
-            if (DODGE && DODGE_UP && DODGE_COOLDOWN_TIME <= 0 && canDodge && isDodging == false)
-            {
-                DODGE_UP = false;
-                DODGE_COOLDOWN_TIME = DODGE_COOLDOWN;
-
-                Rigidbody.velocity = Vector3.zero;
-
-                if (isGrounded)
-                {
-                    Rigidbody.AddRelativeForce(new Vector3(0, 2, 0), ForceMode.Impulse);
-
-                    if (absoluteMovement == Vector2.zero)
-                    {
-                        Rigidbody.AddRelativeForce(new Vector3(0, 0, dodgeForce * 1.5f), ForceMode.Impulse);
-                    }
-                    else
-                    {
-                        Rigidbody.AddRelativeForce(new Vector3(absoluteMovement.x * dodgeForce, 0, absoluteMovement.y * dodgeForce), ForceMode.Impulse);
-                    }
-
-                    isDodging = true;
-                }
-                else
-                {
-                    if (absoluteMovement == Vector2.zero)
-                    {
-                        Rigidbody.AddRelativeForce(new Vector3(0, 0, dodgeForceAir), ForceMode.Impulse);
-                    }
-                    else
-                    {
-                        Rigidbody.AddRelativeForce(new Vector3(absoluteMovement.x * dodgeForceAir, 0, absoluteMovement.y * dodgeForceAir), ForceMode.Impulse);
-                    }
-
-                    isDodging = true;
-                }
-            }
-
-
-            // Lunging Forward
-            if (canLunge == false && isDodging)
-            {
-                Rigidbody.velocity = new Vector3(Mathf.Clamp(Rigidbody.velocity.x, -lungeCapLow, lungeCapLow), Rigidbody.velocity.y, Mathf.Clamp(Rigidbody.velocity.z, -lungeCapLow, lungeCapLow));
-            }
-            else if (canLunge && isDodging)
-            {
-                Rigidbody.velocity = new Vector3(Mathf.Clamp(Rigidbody.velocity.x, -lungeCap, lungeCap), Rigidbody.velocity.y, Mathf.Clamp(Rigidbody.velocity.z, -lungeCap, lungeCap));
-            }
+            // Rotate Velocity
+            // VELOCITY ROTATION LOGIC
         }
     }
 
@@ -580,12 +558,13 @@ public class Player : MonoBehaviour
         if (collision.transform.tag == "Ground")
         {
             isGrounded = true;
-            currentJumps = 0;
+            currentJump = 0;
 
-            if (DODGE_COOLDOWN_TIME <= 0)
-            {
-                isDodging = false;
-            }
+            airVelocity = Rigidbody.velocity;
+            airDeltaX = 0;
+            airDeltaZ = 0;
+
+            bunnyHopFrame = true;
         }
     }
 
@@ -595,11 +574,14 @@ public class Player : MonoBehaviour
         if (collision.transform.tag == "Ground")
         {
             isGrounded = true;
-            currentJumps = 0;
 
-            if (DODGE_COOLDOWN_TIME <= 0)
+            airVelocity = Rigidbody.velocity;
+            airDeltaX = 0;
+            airDeltaZ = 0;
+
+            if (bunnyHopFrame)
             {
-                isDodging = false;
+                bunnyHopFrame = false;
             }
         }
     }
@@ -610,7 +592,50 @@ public class Player : MonoBehaviour
         if (collision.transform.tag == "Ground")
         {
             isGrounded = false;
-            currentJumps = 1;
+
+            if (canDoubleJump)
+            {
+                currentJump = 1;
+            }
+
+            // Limit Air Speed so players are not faster while jumping.
+            Vector3 airSpeedControl = new Vector3(moveSpeed * moveSpeedModifier * airSpeed, 0, moveSpeed * moveSpeedModifier * airSpeed);
+
+            if (Mathf.Abs(Rigidbody.velocity.x) >= airSpeedControl.x)
+            {
+                if (Rigidbody.velocity.x < 0)
+                {
+                    airSpeedControl.x *= -1;
+                }
+            }
+            else
+            {
+                airSpeedControl.x = Mathf.Abs(Rigidbody.velocity.x);
+
+                if (Rigidbody.velocity.x < 0)
+                {
+                    airSpeedControl.x *= -1;
+                }
+            }
+
+            if (Mathf.Abs(Rigidbody.velocity.z) >= airSpeedControl.z)
+            {
+                if (Rigidbody.velocity.z < 0)
+                {
+                    airSpeedControl.z *= -1;
+                }
+            }
+            else
+            {
+                airSpeedControl.z = Mathf.Abs(Rigidbody.velocity.z);
+
+                if (Rigidbody.velocity.z < 0)
+                {
+                    airSpeedControl.z *= -1;
+                }
+            }
+
+            Rigidbody.velocity -= airSpeedControl;
         }
     }
 
