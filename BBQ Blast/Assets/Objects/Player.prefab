@@ -331,96 +331,42 @@ MonoBehaviour:
   Rigidbody: {fileID: 917094451624610506}
   Camera: {fileID: 9147290475958741825}
   Pointer: {fileID: 1207509266239218185}
-  MOVE: {x: 0, y: 0}
-  LOOK_X: 0
-  LOOK_Y: 0
-  cameraRotationY: 0
-  cameraRotationX: 0
-  cameraYaw: 0
-  JUMP: 0
-  JUMP_UP: 0
-  DODGE: 0
-  DODGE_UP: 0
-  DODGE_COOLDOWN_TIME: 0
-  DODGE_COOLDOWN_RESET: 0.75
   DODGE_COOLDOWN: 0.75
-  CROUCH: 0
-  CROUCH_UP: 0
-  CROUCH_COOLDOWN_TIME: 0
-  CROUCH_COOLDOWN_RESET: 0
+  DODGE_COOLDOWN_RESET: 0.75
   CROUCH_COOLDOWN: 0
-  SHOOT: 0
-  SHOOT_UP: 0
-  SHOOT_COOLDOWN_TIME: 0
-  SHOOT_COOLDOWN_RESET: 0
+  CROUCH_COOLDOWN_RESET: 0
   SHOOT_COOLDOWN: 0
-  AIM: 0
-  AIM_UP: 0
-  AIM_COOLDOWN_TIME: 0
-  AIM_COOLDOWN_RESET: 0
+  SHOOT_COOLDOWN_RESET: 0
   AIM_COOLDOWN: 0
-  RELOAD: 0
-  RELOAD_UP: 0
-  RELOAD_COOLDOWN_TIME: 0
-  RELOAD_COOLDOWN_RESET: 0
+  AIM_COOLDOWN_RESET: 0
   RELOAD_COOLDOWN: 0
-  WEAPON_LEFT: 0
-  WEAPON_LEFT_UP: 0
-  WEAPON_LEFT_COOLDOWN_TIME: 0
-  WEAPON_LEFT_COOLDOWN_RESET: 0
+  RELOAD_COOLDOWN_RESET: 0
   WEAPON_LEFT_COOLDOWN: 0
-  WEAPON_RIGHT: 0
-  WEAPON_RIGHT_UP: 0
-  WEAPON_RIGHT_COOLDOWN_TIME: 0
-  WEAPON_RIGHT_COOLDOWN_RESET: 0
+  WEAPON_LEFT_COOLDOWN_RESET: 0
   WEAPON_RIGHT_COOLDOWN: 0
-  WEAPON_PREVIOUS: 0
-  WEAPON_PREVIOUS_UP: 0
-  WEAPON_PREVIOUS_COOLDOWN_TIME: 0
-  WEAPON_PREVIOUS_COOLDOWN_RESET: 0
+  WEAPON_RIGHT_COOLDOWN_RESET: 0
   WEAPON_PREVIOUS_COOLDOWN: 0
-  PRIMARY: 0
-  PRIMARY_UP: 0
-  SECONDARY: 0
-  SECONDARY_UP: 0
-  MELEE: 0
-  MELEE_UP: 0
-  SCOREBOARD: 0
-  RESTART: 0
-  EXIT: 0
+  WEAPON_PREVIOUS_COOLDOWN_RESET: 0
   moveSpeed: 10
   moveSpeedModifier: 1
-  movement: {x: 0, y: 0, z: 0}
-  isGrounded: 1
-  airTime: 0
   coyoteTime: 0.1
   jumpForce: 12
   canDoubleJump: 0
-  currentJump: 0
-  maxJumps: 1
-  airSpeed: 0.25
-  airMoveX: 0
-  airMoveZ: 0
-  airVelocity: {x: 0, y: 0, z: 0}
-  highestVelocity: {x: 0, y: 0, z: 0}
+  airControl: 0.25
   velocityRotationCap: 15
   canBunnyHop: 1
-  bunnyHopFrame: 0
   bunnyHopModifier: 2
   thirdPerson: 0
   cameraStart: {x: 0, y: 0.75, z: 0}
   cameraDistance: {x: 2, y: 0, z: -3}
-  isMouse: 0
   forceController: 0
   lookSpeedMouse: 0.25
   lookSpeedX: 150
   lookSpeedY: 100
   lookSpeedModifier: 1
   flickStick: 0
-  flickStickRotation: 0
   flickStickDeadzone: 0.25
   weapon: 2
-  playerNumber: 0
   play: 1
 --- !u!1 &1480859495862007308
 GameObject:
@@ -889,7 +835,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5959098363590479612}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -940,16 +886,12 @@ MonoBehaviour:
   Ray: {fileID: 9147290475938118327}
   PointerDot: {fileID: 5959098363590479612}
   maxDistance: 100
-  pointerPosition: {x: 0, y: 0, z: 0}
-  pointerCameraPosition: {x: 0, y: 0, z: 0}
   randomDeviation: 0
   fixedDeviation: 0
   deviation: {x: 0, y: 0}
-  shotCounter: 0
   totalShots: 9
   aimCorrection: 1
   aimCorrectionStart: 0
-  aimCorrectionDistance: 0
 --- !u!1 &6173670444364307986
 GameObject:
   m_ObjectHideFlags: 0
@@ -1281,7 +1223,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9147290475938118327}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -1374,7 +1316,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0

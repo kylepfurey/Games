@@ -104,9 +104,9 @@ public class Player : MonoBehaviour
     private int currentJump;
     private int maxJumps;
 
-    [SerializeField] private float airSpeed;
-    private float airMoveX;
-    private float airMoveZ;
+    [SerializeField] private float airControl;
+    private float airDeltaX;
+    private float airDeltaZ;
     private Vector3 airVelocity;
     private Vector3 highestVelocity;
     [SerializeField] private float velocityRotationCap;
@@ -161,8 +161,8 @@ public class Player : MonoBehaviour
         if (play)
         {
             Movement();
-            RotateVelocity();
             CameraRotation();
+            RotateVelocity();
         }
     }
 
@@ -525,17 +525,17 @@ public class Player : MonoBehaviour
             // Ground Movement
             Rigidbody.velocity = new Vector3(movement.x, Rigidbody.velocity.y, movement.z);
 
-            airMoveX = 0;
-            airMoveZ = 0;
+            airDeltaX = 0;
+            airDeltaZ = 0;
         }
         else
         {
             // Air Movement
-            airVelocity = new Vector3(Rigidbody.velocity.x - airMoveX, Rigidbody.velocity.y, Rigidbody.velocity.z - airMoveZ);
-            airMoveX = movement.x * airSpeed;
-            airMoveZ = movement.z * airSpeed;
+            airVelocity = new Vector3(Rigidbody.velocity.x - airDeltaX, Rigidbody.velocity.y, Rigidbody.velocity.z - airDeltaZ);
+            airDeltaX = movement.x * airControl;
+            airDeltaZ = movement.z * airControl;
 
-            Rigidbody.velocity = airVelocity + new Vector3(airMoveX, 0, airMoveZ);
+            Rigidbody.velocity = airVelocity + new Vector3(airDeltaX, 0, airDeltaZ);
         }
     }
 
@@ -587,7 +587,7 @@ public class Player : MonoBehaviour
     private void LimitAirSpeed()
     {
         // Limit Air Speed so players are not faster while jumping.
-        Vector3 airSpeedControl = new Vector3(moveSpeed * moveSpeedModifier * airSpeed, 0, moveSpeed * moveSpeedModifier * airSpeed);
+        Vector3 airSpeedControl = new Vector3(moveSpeed * moveSpeedModifier * airControl, 0, moveSpeed * moveSpeedModifier * airControl);
 
         if (Mathf.Abs(Rigidbody.velocity.x) >= airSpeedControl.x)
         {
@@ -629,9 +629,10 @@ public class Player : MonoBehaviour
     private void RotateVelocity()
     {
         // Rotate Velocity
-        if (isGrounded == false && Camera.transform.eulerAngles.y - cameraYaw != 0)
+        if (isGrounded == false && Camera.transform.eulerAngles.y - cameraYaw != 0 && airControl < 1)
         {
-            Rigidbody.velocity = Quaternion.Euler(0, Camera.transform.eulerAngles.y - cameraYaw, 0) * Rigidbody.velocity;
+            float rotationAngle = Camera.transform.eulerAngles.y - cameraYaw;
+            Rigidbody.velocity = Quaternion.Euler(0, rotationAngle, 0) * Rigidbody.velocity;
             Rigidbody.velocity = new Vector3(Mathf.Clamp(Rigidbody.velocity.x, -velocityRotationCap, velocityRotationCap), Rigidbody.velocity.y, Mathf.Clamp(Rigidbody.velocity.z, -velocityRotationCap, velocityRotationCap));
         }
     }
