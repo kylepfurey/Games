@@ -492,7 +492,6 @@ public class Player : MonoBehaviour
                 // Ground Movement
                 Rigidbody.velocity = new Vector3(movement.x, Rigidbody.velocity.y, movement.z);
 
-                airVelocity = Rigidbody.velocity;
                 airDeltaX = 0;
                 airDeltaZ = 0;
             }
@@ -548,7 +547,10 @@ public class Player : MonoBehaviour
 
 
             // Rotate Velocity
-            // VELOCITY ROTATION LOGIC
+            if (isGrounded == false)
+            {
+                Rigidbody.velocity = Quaternion.Euler(0, Camera.transform.eulerAngles.y - cameraYaw, 0) * Rigidbody.velocity;
+            }
         }
     }
 
@@ -560,10 +562,6 @@ public class Player : MonoBehaviour
             isGrounded = true;
             currentJump = 0;
 
-            airVelocity = Rigidbody.velocity;
-            airDeltaX = 0;
-            airDeltaZ = 0;
-
             bunnyHopFrame = true;
         }
     }
@@ -574,10 +572,6 @@ public class Player : MonoBehaviour
         if (collision.transform.tag == "Ground")
         {
             isGrounded = true;
-
-            airVelocity = Rigidbody.velocity;
-            airDeltaX = 0;
-            airDeltaZ = 0;
 
             if (bunnyHopFrame)
             {
