@@ -331,6 +331,8 @@ MonoBehaviour:
   Rigidbody: {fileID: 917094451624610506}
   Camera: {fileID: 9147290475958741825}
   Pointer: {fileID: 1207509266239218185}
+  JUMP_COOLDOWN: 0.25
+  JUMP_COOLDOWN_RESET: 0.25
   DODGE_COOLDOWN: 0.75
   DODGE_COOLDOWN_RESET: 0.75
   CROUCH_COOLDOWN: 0
@@ -361,7 +363,7 @@ MonoBehaviour:
   flickStickDeadzone: 0.25
   moveSpeed: 10
   moveSpeedModifier: 1
-  coyoteTime: 0.1
+  coyoteTime: 0.25
   jumpForce: 12
   canDoubleJump: 0
   rotateVelocity: 0

@@ -28,6 +28,9 @@ public class Player : MonoBehaviour
 
     private bool JUMP;
     private bool JUMP_UP;
+    [SerializeField] private float JUMP_COOLDOWN;
+    [SerializeField] private float JUMP_COOLDOWN_RESET;
+    private float JUMP_COOLDOWN_TIME;
 
     private bool DODGE;
     private bool DODGE_UP;
@@ -181,12 +184,14 @@ public class Player : MonoBehaviour
     {
         if (collision.transform.tag == "Ground")
         {
-            lastStablePosition = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+            lastStablePosition = new Vector3(transform.position.x, transform.position.y + cameraStart.y * 2, transform.position.z);
 
             isGrounded = true;
             currentJump = 0;
 
             bunnyHopFrame = true;
+
+            JUMP_COOLDOWN_TIME = JUMP_COOLDOWN;
         }
     }
 
@@ -195,7 +200,7 @@ public class Player : MonoBehaviour
     {
         if (collision.transform.tag == "Ground")
         {
-            lastStablePosition = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+            lastStablePosition = new Vector3(transform.position.x, transform.position.y + cameraStart.y * 2, transform.position.z);
 
             isGrounded = true;
 
@@ -258,6 +263,23 @@ public class Player : MonoBehaviour
         if (!JUMP)
         {
             JUMP_UP = true;
+        }
+
+        if (JUMP_COOLDOWN != 0)
+        {
+            if (JUMP_UP && JUMP_COOLDOWN_TIME > JUMP_COOLDOWN_RESET)
+            {
+                JUMP_COOLDOWN_TIME = JUMP_COOLDOWN_RESET;
+            }
+
+            if (JUMP_COOLDOWN_TIME > 0)
+            {
+                JUMP_COOLDOWN_TIME -= Time.deltaTime;
+            }
+            else
+            {
+                JUMP_COOLDOWN_TIME = 0;
+            }
         }
 
         if (!DODGE)
@@ -597,7 +619,7 @@ public class Player : MonoBehaviour
         }
 
         // Jumping
-        if (JUMP && JUMP_UP && (isGrounded || (airTime <= coyoteTime && currentJump == 0) || (currentJump < maxJumps && canDoubleJump)))
+        if (JUMP && JUMP_UP && (JUMP_COOLDOWN_TIME <= 0 || (canBunnyHop && bunnyHopFrame)) && (isGrounded || (airTime <= coyoteTime && currentJump == 0) || (currentJump < maxJumps && canDoubleJump)))
         {
             JUMP_UP = false;
 
