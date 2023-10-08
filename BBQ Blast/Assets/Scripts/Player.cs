@@ -138,8 +138,17 @@ public class Player : MonoBehaviour
     [SerializeField] private bool canBunnyHop;
     private bool bunnyHopFrame;
     [SerializeField] private float bunnyHopModifier;
-    private bool hasBunnyHopped;
+    private bool isBunnyHopping;
     [SerializeField] private float bunnyHopCap;
+
+    // Dodging Variables
+    [SerializeField] private bool canDodge;
+    [SerializeField] private bool canDodgeIntoBunnyHop;
+    [SerializeField] private float dodgeForceGround;
+    [SerializeField] private float dodgeForceVertical;
+    [SerializeField] private float dodgeForceAir;
+    private bool isDodging;
+    [SerializeField] private bool canLunge;
 
     // Weapon Variables
     public int weapon;
@@ -161,8 +170,8 @@ public class Player : MonoBehaviour
         {
             GetControls();
             CameraPosition();
-            Jumping();
             Dodging();
+            Jumping();
             DebugVelocity();
         }
 
@@ -187,11 +196,14 @@ public class Player : MonoBehaviour
             lastStablePosition = new Vector3(transform.position.x, transform.position.y + cameraStart.y * 2, transform.position.z);
 
             isGrounded = true;
+
+            JUMP_COOLDOWN_TIME = JUMP_COOLDOWN;
+
             currentJump = 0;
 
             bunnyHopFrame = true;
 
-            JUMP_COOLDOWN_TIME = JUMP_COOLDOWN;
+            isDodging = false;
         }
     }
 
@@ -588,7 +600,7 @@ public class Player : MonoBehaviour
         else
         {
             // Air Movement
-            if (hasBunnyHopped == false)
+            if (isBunnyHopping == false)
             {
                 airVelocity = new Vector3(Rigidbody.velocity.x - airDeltaX, Rigidbody.velocity.y, Rigidbody.velocity.z - airDeltaZ);
 
@@ -599,7 +611,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                hasBunnyHopped = false;
+                isBunnyHopping = false;
 
                 Rigidbody.velocity = new Vector3(Mathf.Clamp(airVelocity.x * bunnyHopModifier, -bunnyHopCap, bunnyHopCap), Rigidbody.velocity.y, Mathf.Clamp(airVelocity.z * bunnyHopModifier, -bunnyHopCap, bunnyHopCap));
             }
@@ -626,7 +638,7 @@ public class Player : MonoBehaviour
             // Bunny Hopping
             if (canBunnyHop && bunnyHopFrame)
             {
-                hasBunnyHopped = true;
+                isBunnyHopping = true;
             }
             else
             {
@@ -653,7 +665,43 @@ public class Player : MonoBehaviour
 
     private void Dodging()
     {
-        // DODGING LOGIC
+        if (DODGE && DODGE_UP && DODGE_COOLDOWN_TIME <= 0 && isDodging == false)
+        {
+            DODGE_UP = false;
+            DODGE_COOLDOWN_TIME = DODGE_COOLDOWN;
+            isDodging = true;
+
+            if (isGrounded)
+            {
+                // Dodging on Ground
+                if (Mathf.Abs(movement.x) > 0 || Mathf.Abs(movement.z) > 0)
+                {
+                    Rigidbody.velocity = new Vector3(Rigidbody.velocity.x, 0, Rigidbody.velocity.z);
+                    transform.Translate(0, .1f, 0);
+                    Rigidbody.AddForce(new Vector3(movement.x * dodgeForceGround / moveSpeed, dodgeForceVertical, movement.z * dodgeForceGround / moveSpeed), ForceMode.Impulse);
+                }
+                else
+                {
+                    Rigidbody.velocity = new Vector3(Rigidbody.velocity.x, 0, Rigidbody.velocity.z);
+                    transform.Translate(0, .1f, 0);
+                    Rigidbody.AddRelativeForce(new Vector3(0, dodgeForceVertical, dodgeForceGround), ForceMode.Impulse);
+                }
+            }
+            else
+            {
+                // Dodging in Air
+                if (Mathf.Abs(movement.x) > 0 || Mathf.Abs(movement.z) > 0)
+                {
+                    Rigidbody.velocity = new Vector3(Rigidbody.velocity.x, 0, Rigidbody.velocity.z);
+                    Rigidbody.AddForce(new Vector3(movement.x * dodgeForceAir / moveSpeed, 0, movement.z * dodgeForceAir / moveSpeed), ForceMode.Impulse);
+                }
+                else
+                {
+                    Rigidbody.velocity = new Vector3(Rigidbody.velocity.x, 0, Rigidbody.velocity.z);
+                    Rigidbody.AddRelativeForce(new Vector3(0, 0, dodgeForceAir), ForceMode.Impulse);
+                }
+            }
+        }
     }
 
     private void LimitAirSpeed()
