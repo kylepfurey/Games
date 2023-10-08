@@ -91,32 +91,6 @@ public class Player : MonoBehaviour
     private bool RESTART;
     private bool EXIT;
 
-    // Movement Variables
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float moveSpeedModifier;
-    private Vector3 movement;
-
-    private bool isGrounded;
-    private float airTime;
-    [SerializeField] private float coyoteTime;
-    [SerializeField] private float jumpForce;
-    [SerializeField] private bool canDoubleJump;
-    private int currentJump;
-    private int maxJumps;
-
-    [SerializeField] private float airControl;
-    private float airDeltaX;
-    private float airDeltaZ;
-    private Vector3 airVelocity;
-    private Vector3 highestVelocity;
-    [SerializeField] private float rotationVelocityCap;
-
-    [SerializeField] private bool canBunnyHop;
-    private bool bunnyHopFrame;
-    [SerializeField] private float bunnyHopModifier;
-    private bool hasBunnyHopped;
-    [SerializeField] private float bunnyHopCap;
-
     // Camera Variables
     public bool thirdPerson;
     public Vector3 cameraStart;
@@ -130,6 +104,37 @@ public class Player : MonoBehaviour
     [SerializeField] private bool flickStick;
     private float flickStickRotation;
     [SerializeField] private float flickStickDeadzone;
+
+    // Movement Variables
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float moveSpeedModifier;
+    private Vector3 movement;
+    private Vector3 lastStablePosition;
+
+    // Jumping Variables
+    private bool isGrounded;
+    private float airTime;
+    [SerializeField] private float coyoteTime;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private bool canDoubleJump;
+    private int currentJump;
+    private int maxJumps;
+
+    // Air Control Variables
+    [SerializeField] private bool rotateVelocity;
+    [SerializeField] private float airControl;
+    private float airDeltaX;
+    private float airDeltaZ;
+    private Vector3 airVelocity;
+    private Vector3 highestVelocity;
+    [SerializeField] private float rotationVelocityCap;
+
+    // Bunny Hop Variables
+    [SerializeField] private bool canBunnyHop;
+    private bool bunnyHopFrame;
+    [SerializeField] private float bunnyHopModifier;
+    private bool hasBunnyHopped;
+    [SerializeField] private float bunnyHopCap;
 
     // Weapon Variables
     public int weapon;
@@ -148,7 +153,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         if (play)
-        {                     
+        {
             GetControls();
             CameraPosition();
             Jumping();
@@ -162,7 +167,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         if (play)
-        {            
+        {
             CameraRotation();
             Movement();
             RotateVelocity();
@@ -174,6 +179,8 @@ public class Player : MonoBehaviour
     {
         if (collision.transform.tag == "Ground")
         {
+            lastStablePosition = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+
             isGrounded = true;
             currentJump = 0;
 
@@ -186,6 +193,8 @@ public class Player : MonoBehaviour
     {
         if (collision.transform.tag == "Ground")
         {
+            lastStablePosition = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+
             isGrounded = true;
 
             if (bunnyHopFrame)
@@ -208,6 +217,19 @@ public class Player : MonoBehaviour
             }
 
             LimitAirSpeed();
+        }
+    }
+
+    // Entering Trigger
+    private void OnTriggerEnter(Collider other)
+    {
+        // Falling Out of World
+        if (other.tag == "Fall Boundary")
+        {
+            transform.position = lastStablePosition;
+
+            Rigidbody.velocity = Vector3.zero;
+            airVelocity = Vector3.zero;
         }
     }
 
@@ -647,7 +669,7 @@ public class Player : MonoBehaviour
     private void RotateVelocity()
     {
         // Rotate Velocity
-        if (isGrounded == false && Camera.transform.eulerAngles.y - cameraYaw != 0 && airControl < 1)
+        if (rotateVelocity && isGrounded == false && Camera.transform.eulerAngles.y - cameraYaw != 0 && airControl < 1)
         {
             Rigidbody.velocity = Quaternion.Euler(0, Camera.transform.eulerAngles.y - cameraYaw, 0) * Rigidbody.velocity;
             Rigidbody.velocity = new Vector3(Mathf.Clamp(Rigidbody.velocity.x, -rotationVelocityCap, rotationVelocityCap), Rigidbody.velocity.y, Mathf.Clamp(Rigidbody.velocity.z, -rotationVelocityCap, rotationVelocityCap));
