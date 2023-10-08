@@ -115,6 +115,7 @@ public class Player : MonoBehaviour
     private bool bunnyHopFrame;
     [SerializeField] private float bunnyHopModifier;
     private bool hasBunnyHopped;
+    [SerializeField] private float bunnyHopCap;
 
     // Camera Variables
     public bool thirdPerson;
@@ -545,7 +546,7 @@ public class Player : MonoBehaviour
             {
                 hasBunnyHopped = false;
 
-                Rigidbody.velocity = new Vector3(airVelocity.x * bunnyHopModifier, Rigidbody.velocity.y, airVelocity.z * bunnyHopModifier);
+                Rigidbody.velocity = new Vector3(Mathf.Clamp(airVelocity.x * bunnyHopModifier, -bunnyHopCap, bunnyHopCap), Rigidbody.velocity.y, Mathf.Clamp(airVelocity.z * bunnyHopModifier, -bunnyHopCap, bunnyHopCap));
             }
         }
     }
