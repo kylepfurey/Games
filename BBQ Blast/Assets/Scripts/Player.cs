@@ -109,11 +109,12 @@ public class Player : MonoBehaviour
     private float airDeltaZ;
     private Vector3 airVelocity;
     private Vector3 highestVelocity;
-    [SerializeField] private float velocityRotationCap;
+    [SerializeField] private float rotationVelocityCap;
 
     [SerializeField] private bool canBunnyHop;
     private bool bunnyHopFrame;
     [SerializeField] private float bunnyHopModifier;
+    private bool hasBunnyHopped;
 
     // Camera Variables
     public bool thirdPerson;
@@ -531,11 +532,21 @@ public class Player : MonoBehaviour
         else
         {
             // Air Movement
-            airVelocity = new Vector3(Rigidbody.velocity.x - airDeltaX, Rigidbody.velocity.y, Rigidbody.velocity.z - airDeltaZ);
-            airDeltaX = movement.x * airControl;
-            airDeltaZ = movement.z * airControl;
+            if (hasBunnyHopped == false)
+            {
+                airVelocity = new Vector3(Rigidbody.velocity.x - airDeltaX, Rigidbody.velocity.y, Rigidbody.velocity.z - airDeltaZ);
 
-            Rigidbody.velocity = airVelocity + new Vector3(airDeltaX, 0, airDeltaZ);
+                airDeltaX = movement.x * airControl;
+                airDeltaZ = movement.z * airControl;
+
+                Rigidbody.velocity = airVelocity + new Vector3(airDeltaX, 0, airDeltaZ);
+            }
+            else
+            {
+                hasBunnyHopped = false;
+
+                Rigidbody.velocity = new Vector3(airVelocity.x * bunnyHopModifier, Rigidbody.velocity.y, airVelocity.z * bunnyHopModifier);
+            }
         }
     }
 
@@ -559,7 +570,7 @@ public class Player : MonoBehaviour
             // Bunny Hopping
             if (canBunnyHop && bunnyHopFrame)
             {
-                // BUNNY HOP LOGIC
+                hasBunnyHopped = true;
             }
             else
             {
@@ -633,7 +644,7 @@ public class Player : MonoBehaviour
         {
             float rotationAngle = Camera.transform.eulerAngles.y - cameraYaw;
             Rigidbody.velocity = Quaternion.Euler(0, rotationAngle, 0) * Rigidbody.velocity;
-            Rigidbody.velocity = new Vector3(Mathf.Clamp(Rigidbody.velocity.x, -velocityRotationCap, velocityRotationCap), Rigidbody.velocity.y, Mathf.Clamp(Rigidbody.velocity.z, -velocityRotationCap, velocityRotationCap));
+            Rigidbody.velocity = new Vector3(Mathf.Clamp(Rigidbody.velocity.x, -rotationVelocityCap, rotationVelocityCap), Rigidbody.velocity.y, Mathf.Clamp(Rigidbody.velocity.z, -rotationVelocityCap, rotationVelocityCap));
         }
     }
 
