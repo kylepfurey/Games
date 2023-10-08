@@ -46,11 +46,11 @@ public class Pointer : MonoBehaviour
 
         // Calculate Center Position of Camera
         Vector3 currentPosition = Player.Camera.transform.position;
-        Player.Camera.transform.Translate(new Vector3(0, 0, -Player.cameraDistance.z + Player.transform.localScale.z / 2));
+        Player.Camera.transform.Translate(new Vector3(0, 0, -Player.thirdPersonCameraDistance.z + Player.transform.localScale.z / 2));
         hitscanCamera = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
         Player.Camera.transform.position = currentPosition;
 
-        if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance + -Player.cameraDistance.z, layerMask))
+        if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance + -Player.thirdPersonCameraDistance.z, layerMask))
         {
             pointerCameraPosition = hitpointCamera.point;
         }
@@ -58,7 +58,7 @@ public class Pointer : MonoBehaviour
         {
             PointerDot.transform.position = Player.Camera.transform.position;
             PointerDot.transform.eulerAngles = new Vector3(Player.Camera.transform.eulerAngles.x, Player.Camera.transform.eulerAngles.y, 0);
-            PointerDot.transform.Translate(new Vector3(0, 0, maxDistance + -Player.cameraDistance.z));
+            PointerDot.transform.Translate(new Vector3(0, 0, maxDistance + -Player.thirdPersonCameraDistance.z));
             pointerCameraPosition = PointerDot.transform.position;
         }
 
@@ -106,17 +106,17 @@ public class Pointer : MonoBehaviour
         if (aimCorrection && Player.thirdPerson && Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance, layerMask) && pointerPosition != pointerCameraPosition)
         {
             // Aim Correction Distance
-            aimCorrectionDistance = aimCorrectionStart + hitpoint.distance + -Player.cameraDistance.z;
+            aimCorrectionDistance = aimCorrectionStart + hitpoint.distance + -Player.thirdPersonCameraDistance.z;
 
-            if (aimCorrectionDistance == aimCorrectionStart + -Player.cameraDistance.z || aimCorrectionDistance > maxDistance + -Player.cameraDistance.z)
+            if (aimCorrectionDistance == aimCorrectionStart + -Player.thirdPersonCameraDistance.z || aimCorrectionDistance > maxDistance + -Player.thirdPersonCameraDistance.z)
             {
-                aimCorrectionDistance = maxDistance + -Player.cameraDistance.z;
+                aimCorrectionDistance = maxDistance + -Player.thirdPersonCameraDistance.z;
             }
 
 
             // Calculate Center Position of Camera
             currentPosition = Player.Camera.transform.position;
-            Player.Camera.transform.Translate(new Vector3(0, 0, -Player.cameraDistance.z + Player.transform.localScale.z / 2));
+            Player.Camera.transform.Translate(new Vector3(0, 0, -Player.thirdPersonCameraDistance.z + Player.transform.localScale.z / 2));
             hitscanCamera = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
             Player.Camera.transform.position = currentPosition;
 
@@ -192,11 +192,11 @@ public class Pointer : MonoBehaviour
 
             // Calculate Center Position of Camera
             Vector3 currentPosition = Player.Camera.transform.position;
-            Player.Camera.transform.Translate(new Vector3(0, 0, -Player.cameraDistance.z + Player.transform.localScale.z / 2));
+            Player.Camera.transform.Translate(new Vector3(0, 0, -Player.thirdPersonCameraDistance.z + Player.transform.localScale.z / 2));
             hitscanCamera = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
             Player.Camera.transform.position = currentPosition;
 
-            if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance + -Player.cameraDistance.z, layerMask))
+            if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance + -Player.thirdPersonCameraDistance.z, layerMask))
             {
                 pointerCameraPosition = hitpointCamera.point;
             }
@@ -204,7 +204,7 @@ public class Pointer : MonoBehaviour
             {
                 PointerDot.transform.position = Player.Camera.transform.position;
                 PointerDot.transform.eulerAngles = new Vector3(Player.Camera.transform.eulerAngles.x, Player.Camera.transform.eulerAngles.y, 0);
-                PointerDot.transform.Translate(new Vector3(0, 0, maxDistance + -Player.cameraDistance.z));
+                PointerDot.transform.Translate(new Vector3(0, 0, maxDistance + -Player.thirdPersonCameraDistance.z));
                 pointerCameraPosition = PointerDot.transform.position;
             }
 
@@ -354,17 +354,17 @@ public class Pointer : MonoBehaviour
             if (aimCorrection && Player.thirdPerson && Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance, layerMask) && pointerPosition != pointerCameraPosition)
             {
                 // Aim Correction Distance
-                aimCorrectionDistance = aimCorrectionStart + hitpoint.distance + -Player.cameraDistance.z;
+                aimCorrectionDistance = aimCorrectionStart + hitpoint.distance + -Player.thirdPersonCameraDistance.z;
 
-                if (aimCorrectionDistance == aimCorrectionStart + -Player.cameraDistance.z || aimCorrectionDistance > maxDistance + -Player.cameraDistance.z)
+                if (aimCorrectionDistance == aimCorrectionStart + -Player.thirdPersonCameraDistance.z || aimCorrectionDistance > maxDistance + -Player.thirdPersonCameraDistance.z)
                 {
-                    aimCorrectionDistance = maxDistance + -Player.cameraDistance.z;
+                    aimCorrectionDistance = maxDistance + -Player.thirdPersonCameraDistance.z;
                 }
 
 
                 // Calculate Center Position of Camera
                 currentPosition = Player.Camera.transform.position;
-                Player.Camera.transform.Translate(new Vector3(0, 0, -Player.cameraDistance.z + Player.transform.localScale.z / 2));
+                Player.Camera.transform.Translate(new Vector3(0, 0, -Player.thirdPersonCameraDistance.z + Player.transform.localScale.z / 2));
                 hitscanCamera = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
                 Player.Camera.transform.position = currentPosition;
 
@@ -536,11 +536,11 @@ public class Pointer : MonoBehaviour
 
         // Calculate Center Position of Camera
         Vector3 currentPosition = Player.Camera.transform.position;
-        Player.Camera.transform.Translate(new Vector3(0, 0, -Player.cameraDistance.z + Player.transform.localScale.z / 2));
+        Player.Camera.transform.Translate(new Vector3(0, 0, -Player.thirdPersonCameraDistance.z + Player.transform.localScale.z / 2));
         hitscanCamera = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
         Player.Camera.transform.position = currentPosition;
 
-        if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance + -Player.cameraDistance.z, layerMask))
+        if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance + -Player.thirdPersonCameraDistance.z, layerMask))
         {
             pointerCameraPosition = hitpointCamera.point;
         }
@@ -548,7 +548,7 @@ public class Pointer : MonoBehaviour
         {
             PointerDot.transform.position = Player.Camera.transform.position;
             PointerDot.transform.eulerAngles = new Vector3(Player.Camera.transform.eulerAngles.x, Player.Camera.transform.eulerAngles.y, 0);
-            PointerDot.transform.Translate(new Vector3(0, 0, maxDistance + -Player.cameraDistance.z));
+            PointerDot.transform.Translate(new Vector3(0, 0, maxDistance + -Player.thirdPersonCameraDistance.z));
             pointerCameraPosition = PointerDot.transform.position;
         }
 
@@ -706,17 +706,17 @@ public class Pointer : MonoBehaviour
         if (aimCorrection && Player.thirdPerson && Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance, layerMask) && pointerPosition != pointerCameraPosition)
         {
             // Aim Correction Distance
-            aimCorrectionDistance = aimCorrectionStart + hitpoint.distance + -Player.cameraDistance.z;
+            aimCorrectionDistance = aimCorrectionStart + hitpoint.distance + -Player.thirdPersonCameraDistance.z;
 
-            if (aimCorrectionDistance == aimCorrectionStart + -Player.cameraDistance.z || aimCorrectionDistance > maxDistance + -Player.cameraDistance.z)
+            if (aimCorrectionDistance == aimCorrectionStart + -Player.thirdPersonCameraDistance.z || aimCorrectionDistance > maxDistance + -Player.thirdPersonCameraDistance.z)
             {
-                aimCorrectionDistance = maxDistance + -Player.cameraDistance.z;
+                aimCorrectionDistance = maxDistance + -Player.thirdPersonCameraDistance.z;
             }
 
 
             // Calculate Center Position of Camera
             currentPosition = Player.Camera.transform.position;
-            Player.Camera.transform.Translate(new Vector3(0, 0, -Player.cameraDistance.z + Player.transform.localScale.z / 2));
+            Player.Camera.transform.Translate(new Vector3(0, 0, -Player.thirdPersonCameraDistance.z + Player.transform.localScale.z / 2));
             hitscanCamera = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
             Player.Camera.transform.position = currentPosition;
 

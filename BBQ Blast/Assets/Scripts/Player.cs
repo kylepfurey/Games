@@ -94,7 +94,9 @@ public class Player : MonoBehaviour
     // Camera Variables
     public bool thirdPerson;
     public Vector3 cameraStart;
-    public Vector3 cameraDistance;
+    public Vector3 thirdPersonCameraDistance;
+    [SerializeField] private float firstPersonCameraClamp;
+    [SerializeField] private float thirdPersonCameraClamp;
     private bool isMouse;
     [SerializeField] private bool forceController;
     [SerializeField] private float lookSpeedMouse;
@@ -509,14 +511,22 @@ public class Player : MonoBehaviour
 
         if (thirdPerson)
         {
-            Camera.transform.Translate(cameraDistance);
+            Camera.transform.Translate(thirdPersonCameraDistance);
         }
 
 
         // Camera Clamp
         cameraRotationX += LOOK_X;
         cameraRotationY -= LOOK_Y;
-        cameraRotationY = Mathf.Clamp(cameraRotationY, -85, 85);
+
+        if (thirdPerson == false)
+        {
+            cameraRotationY = Mathf.Clamp(cameraRotationY, -firstPersonCameraClamp, firstPersonCameraClamp);
+        }
+        else
+        {
+            cameraRotationY = Mathf.Clamp(cameraRotationY, -thirdPersonCameraClamp, thirdPersonCameraClamp);
+        }
     }
 
     private void CameraRotation()
