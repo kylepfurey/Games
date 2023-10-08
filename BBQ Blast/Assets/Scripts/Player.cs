@@ -148,10 +148,11 @@ public class Player : MonoBehaviour
     private void Update()
     {
         if (play)
-        {
+        {                     
             GetControls();
-            Jumping();
             CameraPosition();
+            Jumping();
+            Dodging();
             DebugVelocity();
         }
 
@@ -161,9 +162,9 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         if (play)
-        {
-            Movement();
+        {            
             CameraRotation();
+            Movement();
             RotateVelocity();
         }
     }
@@ -594,6 +595,11 @@ public class Player : MonoBehaviour
         {
             airTime += Time.deltaTime;
         }
+    }
+
+    private void Dodging()
+    {
+        // DODGING LOGIC
     }
 
     private void LimitAirSpeed()
