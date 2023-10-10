@@ -140,6 +140,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float bunnyHopModifier;
     private bool isBunnyHopping;
     [SerializeField] private float bunnyHopCap;
+    [SerializeField] private bool canAimBunnyHop;
 
     // Dodging Variables
     [SerializeField] private bool canDodge;
@@ -631,14 +632,18 @@ public class Player : MonoBehaviour
         }
 
         // Jumping
-        if (JUMP && JUMP_UP && (JUMP_COOLDOWN_TIME <= 0 || (canBunnyHop && bunnyHopFrame)) && (isGrounded || (airTime <= coyoteTime && currentJump == 0) || (currentJump < maxJumps && canDoubleJump)))
+        // TO DO: RE-ADD COYOTE TIME
+        if (JUMP && JUMP_UP && (JUMP_COOLDOWN_TIME <= 0 || (canBunnyHop && bunnyHopFrame)) && (isGrounded || (currentJump < maxJumps && canDoubleJump)))
         {
             JUMP_UP = false;
 
             // Bunny Hopping
+            // TO DO: ADD DISABLING DODGING INTO BUNNY HOPS
             if (canBunnyHop && bunnyHopFrame)
             {
                 isBunnyHopping = true;
+
+                // TO DO: ADD AIMING BUNNY HOPS
             }
             else
             {
@@ -673,6 +678,8 @@ public class Player : MonoBehaviour
 
             if (isGrounded)
             {
+                // TO DO: ADD DISABLING LUNGING
+
                 // Dodging on Ground
                 if (Mathf.Abs(movement.x) > 0 || Mathf.Abs(movement.z) > 0)
                 {
@@ -686,6 +693,8 @@ public class Player : MonoBehaviour
                     transform.Translate(0, .1f, 0);
                     Rigidbody.AddRelativeForce(new Vector3(0, dodgeForceVertical, dodgeForceGround), ForceMode.Impulse);
                 }
+
+                // TO DO: CONTROL LUNGING
             }
             else
             {
@@ -753,6 +762,8 @@ public class Player : MonoBehaviour
         {
             Rigidbody.velocity = Quaternion.Euler(0, Camera.transform.eulerAngles.y - cameraYaw, 0) * Rigidbody.velocity;
             Rigidbody.velocity = new Vector3(Mathf.Clamp(Rigidbody.velocity.x, -rotationVelocityCap, rotationVelocityCap), Rigidbody.velocity.y, Mathf.Clamp(Rigidbody.velocity.z, -rotationVelocityCap, rotationVelocityCap));
+
+            // TO DO: NEW VELOCITY ROTATION
         }
     }
 
