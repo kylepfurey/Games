@@ -366,15 +366,15 @@ MonoBehaviour:
   coyoteTime: 0.25
   jumpForce: 12
   canDoubleJump: 0
-  rotateVelocity: 1
+  rotateVelocity: 0
   airControl: 0.3
-  rotationVelocityCap: 15
+  rotationVelocityCap: 10
   canBunnyHop: 1
   bunnyHopModifier: 1.1
-  bunnyHopCap: 15
-  canAimBunnyHop: 1
+  bunnyHopCap: 12
+  canAimBunnyHop: 0
   canDodge: 1
-  canDodgeIntoBunnyHop: 1
+  canDodgeIntoBunnyHop: 0
   dodgeForceGround: 15
   dodgeForceVertical: 4
   dodgeForceAir: 12

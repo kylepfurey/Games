@@ -278,6 +278,7 @@ public class Player : MonoBehaviour
             JUMP_UP = true;
         }
 
+        // TO DO: PREVENT BUFFERING BUNNY HOP
         if (JUMP_COOLDOWN != 0)
         {
             if (JUMP_UP && JUMP_COOLDOWN_TIME > JUMP_COOLDOWN_RESET)
@@ -644,6 +645,7 @@ public class Player : MonoBehaviour
                 isBunnyHopping = true;
 
                 // TO DO: ADD AIMING BUNNY HOPS
+                // TO DO: PREVENT BUNNY HOP RESETTING DODGE
             }
             else
             {
