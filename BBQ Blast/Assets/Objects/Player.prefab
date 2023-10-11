@@ -368,17 +368,17 @@ MonoBehaviour:
   canDoubleJump: 0
   rotateVelocity: 0
   airControl: 0.3
-  rotationVelocityCap: 10
   canBunnyHop: 1
+  bunnyHopWindow: 0.05
   bunnyHopModifier: 1.1
   bunnyHopCap: 12
-  canAimBunnyHop: 0
-  canDodge: 1
+  canAimBunnyHop: 1
+  canDodge: 0
   canDodgeIntoBunnyHop: 0
   dodgeForceGround: 15
   dodgeForceVertical: 4
   dodgeForceAir: 12
-  canLunge: 1
+  canLunge: 0
   weapon: 2
   play: 1
 --- !u!1 &1480859495862007308

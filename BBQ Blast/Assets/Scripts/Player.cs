@@ -132,11 +132,11 @@ public class Player : MonoBehaviour
     private float airDeltaZ;
     private Vector3 airVelocity;
     private Vector3 highestVelocity;
-    [SerializeField] private float rotationVelocityCap;
 
     // Bunny Hop Variables
     [SerializeField] private bool canBunnyHop;
     private bool bunnyHopFrame;
+    [SerializeField] private float bunnyHopWindow;
     [SerializeField] private float bunnyHopModifier;
     private bool isBunnyHopping;
     [SerializeField] private float bunnyHopCap;
@@ -194,13 +194,15 @@ public class Player : MonoBehaviour
     {
         if (collision.transform.tag == "Ground")
         {
+            isGrounded = true;
+
             lastStablePosition = new Vector3(transform.position.x, transform.position.y + cameraStart.y * 2, transform.position.z);
 
-            isGrounded = true;
+            currentJump = 0;
 
             JUMP_COOLDOWN_TIME = JUMP_COOLDOWN;
 
-            currentJump = 0;
+            airTime = 0;
 
             bunnyHopFrame = true;
 
@@ -213,13 +215,13 @@ public class Player : MonoBehaviour
     {
         if (collision.transform.tag == "Ground")
         {
-            lastStablePosition = new Vector3(transform.position.x, transform.position.y + cameraStart.y * 2, transform.position.z);
-
             isGrounded = true;
+
+            lastStablePosition = new Vector3(transform.position.x, transform.position.y + cameraStart.y * 2, transform.position.z);
 
             if (bunnyHopFrame)
             {
-                bunnyHopFrame = false;
+                Invoke("BunnyHopFrame", bunnyHopWindow);
             }
         }
     }
@@ -230,13 +232,6 @@ public class Player : MonoBehaviour
         if (collision.transform.tag == "Ground")
         {
             isGrounded = false;
-
-            if (canDoubleJump)
-            {
-                currentJump = 1;
-            }
-
-            LimitAirSpeed();
         }
     }
 
@@ -278,7 +273,6 @@ public class Player : MonoBehaviour
             JUMP_UP = true;
         }
 
-        // TO DO: PREVENT BUFFERING BUNNY HOP
         if (JUMP_COOLDOWN != 0)
         {
             if (JUMP_UP && JUMP_COOLDOWN_TIME > JUMP_COOLDOWN_RESET)
@@ -615,6 +609,8 @@ public class Player : MonoBehaviour
             {
                 isBunnyHopping = false;
 
+                // TO DO: ADD BUNNY HOP AIMING
+
                 Rigidbody.velocity = new Vector3(Mathf.Clamp(airVelocity.x * bunnyHopModifier, -bunnyHopCap, bunnyHopCap), Rigidbody.velocity.y, Mathf.Clamp(airVelocity.z * bunnyHopModifier, -bunnyHopCap, bunnyHopCap));
             }
         }
@@ -633,8 +629,7 @@ public class Player : MonoBehaviour
         }
 
         // Jumping
-        // TO DO: RE-ADD COYOTE TIME
-        if (JUMP && JUMP_UP && (JUMP_COOLDOWN_TIME <= 0 || (canBunnyHop && bunnyHopFrame)) && (isGrounded || (currentJump < maxJumps && canDoubleJump)))
+        if (JUMP && JUMP_UP && (isGrounded || (airTime < coyoteTime && currentJump == 0) || (currentJump < maxJumps)) && (JUMP_COOLDOWN_TIME <= 0 || (canBunnyHop && bunnyHopFrame)))
         {
             JUMP_UP = false;
 
@@ -644,7 +639,6 @@ public class Player : MonoBehaviour
             {
                 isBunnyHopping = true;
 
-                // TO DO: ADD AIMING BUNNY HOPS
                 // TO DO: PREVENT BUNNY HOP RESETTING DODGE
             }
             else
@@ -658,21 +652,26 @@ public class Player : MonoBehaviour
 
             currentJump += 1;
         }
+        else if (JUMP && JUMP_UP && bunnyHopFrame == false)
+        {
+            JUMP_UP = false;
+        }
 
         // Airtime
-        if (isGrounded)
-        {
-            airTime = 0;
-        }
-        else
+        if (isGrounded == false)
         {
             airTime += Time.deltaTime;
+
+            if (coyoteTime < airTime && currentJump < 1)
+            {
+                currentJump++;
+            }
         }
     }
 
     private void Dodging()
     {
-        if (DODGE && DODGE_UP && DODGE_COOLDOWN_TIME <= 0 && isDodging == false)
+        if (canDodge && DODGE && DODGE_UP && DODGE_COOLDOWN_TIME <= 0 && isDodging == false)
         {
             DODGE_UP = false;
             DODGE_COOLDOWN_TIME = DODGE_COOLDOWN;
@@ -715,59 +714,25 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void LimitAirSpeed()
-    {
-        // Limit Air Speed so players are not faster while jumping.
-        Vector3 airSpeedControl = new Vector3(moveSpeed * moveSpeedModifier * airControl, 0, moveSpeed * moveSpeedModifier * airControl);
-
-        if (Mathf.Abs(Rigidbody.velocity.x) >= airSpeedControl.x)
-        {
-            if (Rigidbody.velocity.x < 0)
-            {
-                airSpeedControl.x *= -1;
-            }
-        }
-        else
-        {
-            airSpeedControl.x = Mathf.Abs(Rigidbody.velocity.x);
-
-            if (Rigidbody.velocity.x < 0)
-            {
-                airSpeedControl.x *= -1;
-            }
-        }
-
-        if (Mathf.Abs(Rigidbody.velocity.z) >= airSpeedControl.z)
-        {
-            if (Rigidbody.velocity.z < 0)
-            {
-                airSpeedControl.z *= -1;
-            }
-        }
-        else
-        {
-            airSpeedControl.z = Mathf.Abs(Rigidbody.velocity.z);
-
-            if (Rigidbody.velocity.z < 0)
-            {
-                airSpeedControl.z *= -1;
-            }
-        }
-
-        Rigidbody.velocity -= airSpeedControl;
-    }
-
     private void RotateVelocity()
     {
         // Rotate Velocity
-        if (rotateVelocity && isGrounded == false && Camera.transform.eulerAngles.y - cameraYaw != 0 && airControl < 1)
+        if (rotateVelocity)
         {
-            Rigidbody.velocity = Quaternion.Euler(0, Camera.transform.eulerAngles.y - cameraYaw, 0) * Rigidbody.velocity;
-            Rigidbody.velocity = new Vector3(Mathf.Clamp(Rigidbody.velocity.x, -rotationVelocityCap, rotationVelocityCap), Rigidbody.velocity.y, Mathf.Clamp(Rigidbody.velocity.z, -rotationVelocityCap, rotationVelocityCap));
-
-            // TO DO: NEW VELOCITY ROTATION
+            // TO DO: VELOCITY ROTATION
         }
     }
+
+    // TO DO: LIMIT AIR SPEED BASED ON MOVEMENT
+
+    private void BunnyHopFrame()
+    {
+        if (isGrounded || currentJump < maxJumps)
+        {
+            bunnyHopFrame = false;
+        }
+    }
+
 
     private void ExitGame()
     {
