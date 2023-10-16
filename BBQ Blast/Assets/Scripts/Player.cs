@@ -501,7 +501,7 @@ public class Player : MonoBehaviour
 
 
         // Mouse and Controller Input
-        if (Input.GetDevice<Mouse>() != null && forceController == false)
+        if (Input.GetDevice<Mouse>() != null && !forceController)
         {
             isMouse = true;
 
@@ -513,7 +513,7 @@ public class Player : MonoBehaviour
         {
             isMouse = false;
 
-            if (flickStick == false)
+            if (!flickStick)
             {
                 // Controller
                 LOOK_X = Input.actions.FindAction("Look X").ReadValue<float>() * lookSpeedX * lookSpeedModifier * Time.deltaTime;
@@ -549,7 +549,7 @@ public class Player : MonoBehaviour
         cameraRotationX += LOOK_X;
         cameraRotationY -= LOOK_Y;
 
-        if (thirdPerson == false)
+        if (!thirdPerson)
         {
             cameraRotationY = Mathf.Clamp(cameraRotationY, -firstPersonCameraClamp, firstPersonCameraClamp);
         }
@@ -564,7 +564,7 @@ public class Player : MonoBehaviour
         // Camera Rotation
         cameraYaw = Camera.transform.eulerAngles.y;
 
-        if (flickStick == false)
+        if (!flickStick)
         {
             Camera.transform.rotation = Quaternion.Euler(cameraRotationY, cameraRotationX, 0);
         }
@@ -590,13 +590,16 @@ public class Player : MonoBehaviour
             // Ground Movement
             Rigidbody.velocity = new Vector3(movement.x, Rigidbody.velocity.y, movement.z);
 
-            airDeltaX = 0;
-            airDeltaZ = 0;
+            if (!bunnyHopFrame)
+            {
+                airDeltaX = 0;
+                airDeltaZ = 0;
+            }
         }
         else
         {
             // Air Movement
-            if (isBunnyHopping == false)
+            if (!isBunnyHopping)
             {
                 airVelocity = new Vector3(Rigidbody.velocity.x - airDeltaX, Rigidbody.velocity.y, Rigidbody.velocity.z - airDeltaZ);
 
@@ -609,7 +612,15 @@ public class Player : MonoBehaviour
             {
                 isBunnyHopping = false;
 
-                // TO DO: ADD BUNNY HOP AIMING
+                if (canAimBunnyHop)
+                {
+                    airVelocity = new Vector3(Rigidbody.velocity.x - airDeltaX, Rigidbody.velocity.y, Rigidbody.velocity.z - airDeltaZ);
+
+                    airDeltaX = movement.x * airControl;
+                    airDeltaZ = movement.z * airControl;
+
+                    Rigidbody.velocity = airVelocity + new Vector3(airDeltaX, 0, airDeltaZ);
+                }
 
                 Rigidbody.velocity = new Vector3(Mathf.Clamp(airVelocity.x * bunnyHopModifier, -bunnyHopCap, bunnyHopCap), Rigidbody.velocity.y, Mathf.Clamp(airVelocity.z * bunnyHopModifier, -bunnyHopCap, bunnyHopCap));
             }
@@ -652,13 +663,13 @@ public class Player : MonoBehaviour
 
             currentJump += 1;
         }
-        else if (JUMP && JUMP_UP && bunnyHopFrame == false)
+        else if (JUMP && JUMP_UP && !bunnyHopFrame)
         {
             JUMP_UP = false;
         }
 
         // Airtime
-        if (isGrounded == false)
+        if (!isGrounded)
         {
             airTime += Time.deltaTime;
 
@@ -671,7 +682,7 @@ public class Player : MonoBehaviour
 
     private void Dodging()
     {
-        if (canDodge && DODGE && DODGE_UP && DODGE_COOLDOWN_TIME <= 0 && isDodging == false)
+        if (canDodge && DODGE && DODGE_UP && DODGE_COOLDOWN_TIME <= 0 && !isDodging)
         {
             DODGE_UP = false;
             DODGE_COOLDOWN_TIME = DODGE_COOLDOWN;
@@ -717,9 +728,17 @@ public class Player : MonoBehaviour
     private void RotateVelocity()
     {
         // Rotate Velocity
-        if (rotateVelocity)
+        if (rotateVelocity && isGrounded == false)
         {
-            // TO DO: VELOCITY ROTATION
+            Vector3 originalVelocity = Rigidbody.velocity;
+            Rigidbody.velocity = Quaternion.Euler(0, Camera.transform.eulerAngles.y - cameraYaw, 0) * Rigidbody.velocity;
+            Vector3 rotatedVelocity = new Vector3(Rigidbody.velocity.x, originalVelocity.y, Rigidbody.velocity.z);
+            Rigidbody.velocity = rotatedVelocity;
+
+            if (Rigidbody.velocity.magnitude > originalVelocity.magnitude)
+            {
+                print("Too fast!");
+            }
         }
     }
 
