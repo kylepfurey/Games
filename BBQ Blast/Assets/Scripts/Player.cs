@@ -22,8 +22,8 @@ public class Player : MonoBehaviour
 
     private float LOOK_X;
     private float LOOK_Y;
-    private float cameraRotationY;
-    private float cameraRotationX;
+    [HideInInspector] public float cameraRotationY;
+    [HideInInspector] public float cameraRotationX;
     private float cameraYaw;
 
     private bool JUMP;
@@ -529,8 +529,8 @@ public class Player : MonoBehaviour
 
 
         // Movement Input
-        Vector3 forward = MOVE.y * transform.forward * moveSpeed * moveSpeedModifier;
-        Vector3 right = MOVE.x * transform.right * moveSpeed * moveSpeedModifier;
+        Vector3 forward = MOVE.y * Pointer.cameraForward * moveSpeed * moveSpeedModifier;
+        Vector3 right = MOVE.x * Pointer.cameraRight * moveSpeed * moveSpeedModifier;
         movement = forward + right;
     }
 
@@ -730,10 +730,10 @@ public class Player : MonoBehaviour
         // Rotate Velocity
         if (rotateVelocity && isGrounded == false)
         {
-            Vector3 originalVelocity = Rigidbody.velocity;
-            Rigidbody.velocity = Quaternion.Euler(0, -(Camera.transform.eulerAngles.y - cameraYaw), 0) * Rigidbody.velocity;
-            Vector3 rotatedVelocity = new Vector3(Rigidbody.velocity.x, originalVelocity.y, Rigidbody.velocity.z);
-            Rigidbody.velocity = rotatedVelocity;
+            float angle = Camera.transform.eulerAngles.y - cameraYaw;
+            float rotatedX = Rigidbody.velocity.x * Mathf.Cos(angle) - Rigidbody.velocity.z * Mathf.Sin(angle);
+            float rotatedY = Rigidbody.velocity.x * Mathf.Sin(angle) + Rigidbody.velocity.z * Mathf.Cos(angle);
+            Rigidbody.velocity = new Vector3(rotatedX, Rigidbody.velocity.y, rotatedY);
         }
     }
 

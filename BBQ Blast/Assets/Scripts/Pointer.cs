@@ -20,7 +20,7 @@ public class Pointer : MonoBehaviour
     [SerializeField] private bool randomDeviation;
     [SerializeField] private bool fixedDeviation;
     [SerializeField] private Vector2 deviation;
-    
+
     // Multiple Shots
     private int shotCounter;
     [SerializeField] private int totalShots;
@@ -30,10 +30,15 @@ public class Pointer : MonoBehaviour
     [SerializeField] private float aimCorrectionStart;
     private float aimCorrectionDistance;
 
+    // Camera Forward and Right Vector
+    [SerializeField] private bool rotateToPointer;
+    [HideInInspector] public Vector3 cameraForward;
+    [HideInInspector] public Vector3 cameraRight;
+
     void Update()
     {
         TestHitscan();
-        RotatePlayer();
+        RotatePlayer(rotateToPointer);
     }
 
     // Singular Shot
@@ -893,11 +898,18 @@ public class Pointer : MonoBehaviour
         }
     }
 
-    private void RotatePlayer()
+    private void RotatePlayer(bool rotateToPointer)
     {
         // Face Player
-        Vector3 playerRotation = Player.transform.eulerAngles;
-        Player.transform.LookAt(PointerDot.transform.position);
-        Player.transform.eulerAngles = new Vector3(playerRotation.x, transform.eulerAngles.y, playerRotation.z);
+        Player.transform.eulerAngles = new Vector3(Player.transform.eulerAngles.x, Player.Camera.transform.eulerAngles.y, Player.transform.eulerAngles.z);
+        cameraForward = Player.transform.forward;
+        cameraRight = Player.transform.right;
+
+        if (rotateToPointer)
+        {
+            Vector3 playerRotation = Player.transform.eulerAngles;
+            Player.transform.LookAt(PointerDot.transform.position);
+            Player.transform.eulerAngles = new Vector3(playerRotation.x, transform.eulerAngles.y, playerRotation.z);
+        }
     }
 }
