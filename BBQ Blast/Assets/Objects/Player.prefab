@@ -331,6 +331,8 @@ MonoBehaviour:
   Rigidbody: {fileID: 917094451624610506}
   Camera: {fileID: 9147290475958741825}
   Pointer: {fileID: 1207509266239218185}
+  cameraRotationY: 0
+  cameraRotationX: 0
   JUMP_COOLDOWN: 0.25
   JUMP_COOLDOWN_RESET: 0.25
   DODGE_COOLDOWN: 0.75
@@ -367,6 +369,7 @@ MonoBehaviour:
   jumpForce: 12
   canDoubleJump: 0
   rotateVelocity: 1
+  rotationScale: 0.1
   airControl: 0.3
   canBunnyHop: 0
   bunnyHopWindow: 0.05
@@ -905,6 +908,9 @@ MonoBehaviour:
   totalShots: 9
   aimCorrection: 1
   aimCorrectionStart: 0
+  rotateToPointer: 0
+  cameraForward: {x: 0, y: 0, z: 0}
+  cameraRight: {x: 0, y: 0, z: 0}
 --- !u!1 &6173670444364307986
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,7 +24,6 @@ public class Player : MonoBehaviour
     private float LOOK_Y;
     [HideInInspector] public float cameraRotationY;
     [HideInInspector] public float cameraRotationX;
-    private float cameraYaw;
 
     private bool JUMP;
     private bool JUMP_UP;
@@ -127,6 +126,7 @@ public class Player : MonoBehaviour
 
     // Air Control Variables
     [SerializeField] private bool rotateVelocity;
+    [SerializeField] private float rotationScale;
     [SerializeField] private float airControl;
     private float airDeltaX;
     private float airDeltaZ;
@@ -171,6 +171,7 @@ public class Player : MonoBehaviour
         {
             GetControls();
             CameraPosition();
+            CameraRotation();
             Dodging();
             Jumping();
             DebugVelocity();
@@ -183,7 +184,6 @@ public class Player : MonoBehaviour
     {
         if (play)
         {
-            CameraRotation();
             Movement();
             RotateVelocity();
         }
@@ -562,8 +562,6 @@ public class Player : MonoBehaviour
     private void CameraRotation()
     {
         // Camera Rotation
-        cameraYaw = Camera.transform.eulerAngles.y;
-
         if (!flickStick)
         {
             Camera.transform.rotation = Quaternion.Euler(cameraRotationY, cameraRotationX, 0);
@@ -730,7 +728,7 @@ public class Player : MonoBehaviour
         // Rotate Velocity
         if (rotateVelocity && isGrounded == false)
         {
-            float angle = Camera.transform.eulerAngles.y - cameraYaw;
+            float angle = LOOK_Y * rotationScale;
             float rotatedX = Rigidbody.velocity.x * Mathf.Cos(angle) - Rigidbody.velocity.z * Mathf.Sin(angle);
             float rotatedY = Rigidbody.velocity.x * Mathf.Sin(angle) + Rigidbody.velocity.z * Mathf.Cos(angle);
             Rigidbody.velocity = new Vector3(rotatedX, Rigidbody.velocity.y, rotatedY);
