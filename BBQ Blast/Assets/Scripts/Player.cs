@@ -731,14 +731,9 @@ public class Player : MonoBehaviour
         if (rotateVelocity && isGrounded == false)
         {
             Vector3 originalVelocity = Rigidbody.velocity;
-            Rigidbody.velocity = Quaternion.Euler(0, Camera.transform.eulerAngles.y - cameraYaw, 0) * Rigidbody.velocity;
+            Rigidbody.velocity = Quaternion.Euler(0, -(Camera.transform.eulerAngles.y - cameraYaw), 0) * Rigidbody.velocity;
             Vector3 rotatedVelocity = new Vector3(Rigidbody.velocity.x, originalVelocity.y, Rigidbody.velocity.z);
             Rigidbody.velocity = rotatedVelocity;
-
-            if (Rigidbody.velocity.magnitude > originalVelocity.magnitude)
-            {
-                print("Too fast!");
-            }
         }
     }
 
