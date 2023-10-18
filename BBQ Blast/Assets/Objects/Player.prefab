@@ -372,7 +372,9 @@ MonoBehaviour:
   airControl: 0.3
   canBunnyHop: 1
   bunnyHopWindow: 0.05
-  bunnyHopModifier: 1.2
+  bunnyHopModifier: 1.1
+  bunnyHopCap: 15
+  bunnyHopAcceleration: 1
   canAimBunnyHop: 0
   canDodge: 0
   canDodgeIntoBunnyHop: 0
@@ -381,6 +383,7 @@ MonoBehaviour:
   dodgeForceAir: 12
   canLunge: 0
   weapon: 2
+  debugVelocity: 1
   play: 1
 --- !u!1 &1480859495862007308
 GameObject:

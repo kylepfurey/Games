@@ -142,6 +142,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float bunnyHopModifier;
     private bool isBunnyHopping;
     [SerializeField] private float bunnyHopCap;
+    [SerializeField] private bool bunnyHopAcceleration;
     [SerializeField] private bool canAimBunnyHop;
 
     // Dodging Variables
@@ -155,6 +156,9 @@ public class Player : MonoBehaviour
 
     // Weapon Variables
     public int weapon;
+
+    // Debug
+    [SerializeField] private bool debugVelocity;
 
     // Player Variables
     private int playerNumber;
@@ -224,6 +228,10 @@ public class Player : MonoBehaviour
             if (bunnyHopFrame)
             {
                 Invoke("BunnyHopFrame", bunnyHopWindow);
+            }
+            else
+            {
+                isBunnyHopping = false;
             }
         }
     }
@@ -610,16 +618,15 @@ public class Player : MonoBehaviour
             }
             else
             {
-                isBunnyHopping = false;
-
-                // TO DO: ADD OPTION TO ENABLE AIMING BUNNY HOPS
                 if (canAimBunnyHop)
                 {
-
+                    // TO DO: ADD OPTION TO ENABLE AIMING BUNNY HOPS
                 }
 
-                // TO DO: RE-ADD BUNNY HOPPING
-                Rigidbody.velocity = new Vector3(Mathf.Clamp(Rigidbody.velocity.x * bunnyHopModifier, -bunnyHopCap, bunnyHopCap), Rigidbody.velocity.y, Mathf.Clamp(Rigidbody.velocity.z * bunnyHopModifier, -bunnyHopCap, bunnyHopCap));
+                // TO DO: FIX BUNNY HOPPING STICKING TO WALLS
+                // TO DO: FIX BUNNY HOPPING REDUCING VELOCITY
+                Rigidbody.velocity = new Vector3(Mathf.Clamp(airVelocity.x, -bunnyHopCap, bunnyHopCap), Rigidbody.velocity.y, Mathf.Clamp(airVelocity.z, -bunnyHopCap, bunnyHopCap));
+                airVelocity = Rigidbody.velocity;
             }
         }
     }
@@ -647,9 +654,14 @@ public class Player : MonoBehaviour
             {
                 isBunnyHopping = true;
 
+                if (bunnyHopAcceleration)
+                {
+                    airVelocity *= bunnyHopModifier;
+                }
+
                 // TO DO: PREVENT BUNNY HOP RESETTING DODGE
             }
-            else
+            else if (!isBunnyHopping)
             {
                 Rigidbody.velocity = new Vector3(movement.x, 0, movement.z);
             }
@@ -760,23 +772,27 @@ public class Player : MonoBehaviour
 
     private void DebugVelocity()
     {
-        // Record the Greatest Velocity and Print It
-        if (Mathf.Abs(Rigidbody.velocity.x) > highestVelocity.x)
+        if (debugVelocity)
         {
-            highestVelocity = new Vector3(Mathf.Abs(Rigidbody.velocity.x), highestVelocity.y, highestVelocity.z);
-        }
+            // Record the Greatest Velocity and Print It
+            if (Mathf.Abs(Rigidbody.velocity.x) > highestVelocity.x)
+            {
+                highestVelocity = new Vector3(Mathf.Abs(Rigidbody.velocity.x), highestVelocity.y, highestVelocity.z);
+                print(highestVelocity);
+            }
 
-        if (Mathf.Abs(Rigidbody.velocity.y) > highestVelocity.y)
-        {
-            highestVelocity = new Vector3(highestVelocity.x, Mathf.Abs(Rigidbody.velocity.y), highestVelocity.z);
-        }
+            if (Mathf.Abs(Rigidbody.velocity.y) > highestVelocity.y)
+            {
+                highestVelocity = new Vector3(highestVelocity.x, Mathf.Abs(Rigidbody.velocity.y), highestVelocity.z);
+                print(highestVelocity);
+            }
 
-        if (Mathf.Abs(Rigidbody.velocity.z) > highestVelocity.z)
-        {
-            highestVelocity = new Vector3(highestVelocity.x, highestVelocity.y, Mathf.Abs(Rigidbody.velocity.z));
+            if (Mathf.Abs(Rigidbody.velocity.z) > highestVelocity.z)
+            {
+                highestVelocity = new Vector3(highestVelocity.x, highestVelocity.y, Mathf.Abs(Rigidbody.velocity.z));
+                print(highestVelocity);
+            }
         }
-
-        print(highestVelocity);
     }
 
     private bool Button(float input)
