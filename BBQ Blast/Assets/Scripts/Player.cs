@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -22,8 +23,8 @@ public class Player : MonoBehaviour
 
     private float LOOK_X;
     private float LOOK_Y;
-    [HideInInspector] public float cameraRotationY;
     [HideInInspector] public float cameraRotationX;
+    [HideInInspector] public float cameraRotationY;
 
     private bool JUMP;
     private bool JUMP_UP;
@@ -105,6 +106,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float lookSpeedX;
     [SerializeField] private float lookSpeedY;
     [SerializeField] private float lookSpeedModifier;
+
+    // Flick Stick
     [SerializeField] private bool flickStick;
     private float flickStickRotation;
     [SerializeField] private float flickStickDeadzone;
@@ -126,7 +129,6 @@ public class Player : MonoBehaviour
 
     // Air Control Variables
     [SerializeField] private bool rotateVelocity;
-    [SerializeField] private float rotationScale;
     [SerializeField] private float airControl;
     private float airDeltaX;
     private float airDeltaZ;
@@ -610,17 +612,14 @@ public class Player : MonoBehaviour
             {
                 isBunnyHopping = false;
 
+                // TO DO: ADD OPTION TO ENABLE AIMING BUNNY HOPS
                 if (canAimBunnyHop)
                 {
-                    airVelocity = new Vector3(Rigidbody.velocity.x - airDeltaX, Rigidbody.velocity.y, Rigidbody.velocity.z - airDeltaZ);
 
-                    airDeltaX = movement.x * airControl;
-                    airDeltaZ = movement.z * airControl;
-
-                    Rigidbody.velocity = airVelocity + new Vector3(airDeltaX, 0, airDeltaZ);
                 }
 
-                Rigidbody.velocity = new Vector3(Mathf.Clamp(airVelocity.x * bunnyHopModifier, -bunnyHopCap, bunnyHopCap), Rigidbody.velocity.y, Mathf.Clamp(airVelocity.z * bunnyHopModifier, -bunnyHopCap, bunnyHopCap));
+                // TO DO: RE-ADD BUNNY HOPPING
+                Rigidbody.velocity = new Vector3(Mathf.Clamp(Rigidbody.velocity.x * bunnyHopModifier, -bunnyHopCap, bunnyHopCap), Rigidbody.velocity.y, Mathf.Clamp(Rigidbody.velocity.z * bunnyHopModifier, -bunnyHopCap, bunnyHopCap));
             }
         }
     }
@@ -726,12 +725,9 @@ public class Player : MonoBehaviour
     private void RotateVelocity()
     {
         // Rotate Velocity
-        if (rotateVelocity && isGrounded == false)
+        if (rotateVelocity && !isGrounded)
         {
-            float angle = LOOK_Y * rotationScale;
-            float rotatedX = Rigidbody.velocity.x * Mathf.Cos(angle) - Rigidbody.velocity.z * Mathf.Sin(angle);
-            float rotatedY = Rigidbody.velocity.x * Mathf.Sin(angle) + Rigidbody.velocity.z * Mathf.Cos(angle);
-            Rigidbody.velocity = new Vector3(rotatedX, Rigidbody.velocity.y, rotatedY);
+            // TO DO: PROPER VELOCITY ROTATION
         }
     }
 

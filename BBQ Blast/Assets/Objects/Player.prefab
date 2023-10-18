@@ -331,8 +331,8 @@ MonoBehaviour:
   Rigidbody: {fileID: 917094451624610506}
   Camera: {fileID: 9147290475958741825}
   Pointer: {fileID: 1207509266239218185}
-  cameraRotationY: 0
   cameraRotationX: 0
+  cameraRotationY: 0
   JUMP_COOLDOWN: 0.25
   JUMP_COOLDOWN_RESET: 0.25
   DODGE_COOLDOWN: 0.75
@@ -368,13 +368,11 @@ MonoBehaviour:
   coyoteTime: 0.25
   jumpForce: 12
   canDoubleJump: 0
-  rotateVelocity: 1
-  rotationScale: 0.1
+  rotateVelocity: 0
   airControl: 0.3
-  canBunnyHop: 0
+  canBunnyHop: 1
   bunnyHopWindow: 0.05
-  bunnyHopModifier: 1.1
-  bunnyHopCap: 12
+  bunnyHopModifier: 1.2
   canAimBunnyHop: 0
   canDodge: 0
   canDodgeIntoBunnyHop: 0
