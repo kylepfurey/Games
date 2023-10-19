@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
 
     // References
     public PlayerInput Input;
-    public PlayerAnimation Animation;
     public Rigidbody Rigidbody;
     public Camera Camera;
     public Pointer Pointer;
