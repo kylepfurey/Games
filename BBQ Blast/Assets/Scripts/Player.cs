@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public Rigidbody Rigidbody;
     public Camera Camera;
     public Pointer Pointer;
+    public PlayerAnimation Animation;
 
     // Controls - CAPITALS are direct input values and behavior
     private Vector2 MOVE;
