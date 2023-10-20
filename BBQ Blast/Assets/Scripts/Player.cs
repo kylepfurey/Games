@@ -180,7 +180,6 @@ public class Player : MonoBehaviour
             CameraRotation();
             Dodging();
             Jumping();
-            DebugVelocity();
         }
 
         ExitGame();
@@ -193,6 +192,8 @@ public class Player : MonoBehaviour
             Movement();
             RotateVelocity();
         }
+
+        DebugVelocity();
     }
 
     // Entering Collision
@@ -242,6 +243,8 @@ public class Player : MonoBehaviour
         if (collision.transform.tag == "Ground")
         {
             isGrounded = false;
+
+            LimitAirControl();
         }
     }
 
@@ -598,36 +601,18 @@ public class Player : MonoBehaviour
             // Ground Movement
             Rigidbody.velocity = new Vector3(movement.x, Rigidbody.velocity.y, movement.z);
 
-            if (!bunnyHopFrame)
-            {
-                airDeltaX = 0;
-                airDeltaZ = 0;
-            }
+            airDeltaX = 0;
+            airDeltaZ = 0;
         }
         else
         {
             // Air Movement
-            if (!isBunnyHopping)
-            {
-                airVelocity = new Vector3(Rigidbody.velocity.x - airDeltaX, Rigidbody.velocity.y, Rigidbody.velocity.z - airDeltaZ);
+            airVelocity = new Vector3(Rigidbody.velocity.x - airDeltaX, Rigidbody.velocity.y, Rigidbody.velocity.z - airDeltaZ);
 
-                airDeltaX = movement.x * airControl;
-                airDeltaZ = movement.z * airControl;
+            airDeltaX = movement.x * airControl;
+            airDeltaZ = movement.z * airControl;
 
-                Rigidbody.velocity = airVelocity + new Vector3(airDeltaX, 0, airDeltaZ);
-            }
-            else
-            {
-                if (canAimBunnyHop)
-                {
-                    // TO DO: ADD OPTION TO ENABLE AIMING BUNNY HOPS
-                }
-
-                // TO DO: FIX BUNNY HOPPING STICKING TO WALLS
-                // TO DO: FIX BUNNY HOPPING REDUCING VELOCITY
-                Rigidbody.velocity = new Vector3(Mathf.Clamp(airVelocity.x, -bunnyHopCap, bunnyHopCap), Rigidbody.velocity.y, Mathf.Clamp(airVelocity.z, -bunnyHopCap, bunnyHopCap));
-                airVelocity = Rigidbody.velocity;
-            }
+            Rigidbody.velocity = airVelocity + new Vector3(airDeltaX, 0, airDeltaZ);
         }
     }
 
@@ -649,17 +634,20 @@ public class Player : MonoBehaviour
             JUMP_UP = false;
 
             // Bunny Hopping
+
+            // TO DO: ADD OPTION TO ENABLE BUNNY HOP ACCELERATION
+            // TO DO: ADD OPTION TO ENABLE AIMING BUNNY HOPS
             // TO DO: ADD DISABLING DODGING INTO BUNNY HOPS
+            // TO DO: PREVENT BUNNY HOP RESETTING DODGE
+
             if (canBunnyHop && bunnyHopFrame)
             {
                 isBunnyHopping = true;
 
                 if (bunnyHopAcceleration)
                 {
-                    airVelocity *= bunnyHopModifier;
+                    Rigidbody.velocity = new Vector3(Rigidbody.velocity.x * bunnyHopModifier, Rigidbody.velocity.y, Rigidbody.velocity.z * bunnyHopModifier);
                 }
-
-                // TO DO: PREVENT BUNNY HOP RESETTING DODGE
             }
             else if (!isBunnyHopping)
             {
@@ -686,6 +674,14 @@ public class Player : MonoBehaviour
             {
                 currentJump++;
             }
+        }
+    }
+
+    private void BunnyHopFrame()
+    {
+        if (isGrounded || currentJump < maxJumps)
+        {
+            bunnyHopFrame = false;
         }
     }
 
@@ -734,6 +730,34 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void LimitAirControl()
+    {
+        float airSpeedX = moveSpeed * moveSpeedModifier * airControl;
+        float airSpeedZ = moveSpeed * moveSpeedModifier * airControl;
+
+        if (Rigidbody.velocity.x < 0)
+        {
+            airSpeedX *= -1;
+        }
+
+        if (Rigidbody.velocity.z < 0)
+        {
+            airSpeedZ *= -1;
+        }
+
+        if (Mathf.Abs(Rigidbody.velocity.x) < Mathf.Abs(airSpeedX))
+        {
+            airSpeedX = 0;
+        }
+
+        if (Mathf.Abs(Rigidbody.velocity.z) < Mathf.Abs(airSpeedZ))
+        {
+            airSpeedZ = 0;
+        }
+
+        Rigidbody.velocity -= new Vector3(airSpeedX, 0, airSpeedZ);
+    }
+
     private void RotateVelocity()
     {
         // Rotate Velocity
@@ -742,17 +766,6 @@ public class Player : MonoBehaviour
             // TO DO: PROPER VELOCITY ROTATION
         }
     }
-
-    // TO DO: LIMIT AIR SPEED BASED ON MOVEMENT
-
-    private void BunnyHopFrame()
-    {
-        if (isGrounded || currentJump < maxJumps)
-        {
-            bunnyHopFrame = false;
-        }
-    }
-
 
     private void ExitGame()
     {
