@@ -98,6 +98,7 @@ public class Player : MonoBehaviour
     public bool thirdPerson;
     public Vector3 cameraStart;
     public Vector3 thirdPersonCameraDistance;
+    private float cameraYaw;
     [SerializeField] private float firstPersonCameraClamp;
     [SerializeField] private float thirdPersonCameraClamp;
     private bool isMouse;
@@ -128,22 +129,25 @@ public class Player : MonoBehaviour
     private int maxJumps;
 
     // Air Control Variables
-    [SerializeField] private bool rotateVelocity;
     [SerializeField] private float airControl;
     private float airDeltaX;
     private float airDeltaZ;
     private Vector3 airVelocity;
     private Vector3 highestVelocity;
+    [SerializeField] private bool rotateVelocity;
+    [SerializeField] private float velocityRotationScale;
 
     // Bunny Hop Variables
     [SerializeField] private bool canBunnyHop;
     private bool bunnyHopFrame;
+    private Vector3 bunnyHopVelocity;
     [SerializeField] private float bunnyHopWindow;
-    [SerializeField] private float bunnyHopModifier;
     private bool isBunnyHopping;
-    [SerializeField] private float bunnyHopCap;
     [SerializeField] private bool bunnyHopAcceleration;
+    [SerializeField] private float bunnyHopModifier;
+    [SerializeField] private float bunnyHopCap;
     [SerializeField] private bool canAimBunnyHop;
+    private float bunnyHopYaw;
 
     // Dodging Variables
     [SerializeField] private bool canDodge;
@@ -577,6 +581,7 @@ public class Player : MonoBehaviour
         // Camera Rotation
         if (!flickStick)
         {
+            cameraYaw = Camera.transform.eulerAngles.y;
             Camera.transform.rotation = Quaternion.Euler(cameraRotationY, cameraRotationX, 0);
         }
         else
@@ -596,7 +601,7 @@ public class Player : MonoBehaviour
     private void Movement()
     {
         // Movement
-        if (isGrounded)
+        if (isGrounded && (!canBunnyHop || !bunnyHopFrame))
         {
             // Ground Movement
             Rigidbody.velocity = new Vector3(movement.x, Rigidbody.velocity.y, movement.z);
@@ -633,23 +638,22 @@ public class Player : MonoBehaviour
         {
             JUMP_UP = false;
 
-            // Bunny Hopping
-
-            // TO DO: ADD OPTION TO ENABLE BUNNY HOP ACCELERATION
-            // TO DO: ADD OPTION TO ENABLE AIMING BUNNY HOPS
             // TO DO: ADD DISABLING DODGING INTO BUNNY HOPS
             // TO DO: PREVENT BUNNY HOP RESETTING DODGE
 
+            // Bunny Hopping
             if (canBunnyHop && bunnyHopFrame)
             {
                 isBunnyHopping = true;
 
-                if (bunnyHopAcceleration)
+                Rigidbody.velocity = new Vector3(bunnyHopVelocity.x, Rigidbody.velocity.y, bunnyHopVelocity.z);
+
+                if (canAimBunnyHop)
                 {
-                    Rigidbody.velocity = new Vector3(Rigidbody.velocity.x * bunnyHopModifier, Rigidbody.velocity.y, Rigidbody.velocity.z * bunnyHopModifier);
+                    Rigidbody.velocity = Quaternion.Euler(0, (Camera.transform.eulerAngles.y - bunnyHopYaw), 0) * Rigidbody.velocity;
                 }
             }
-            else if (!isBunnyHopping)
+            else
             {
                 Rigidbody.velocity = new Vector3(movement.x, 0, movement.z);
             }
@@ -659,8 +663,20 @@ public class Player : MonoBehaviour
             airTime = 0;
 
             currentJump += 1;
+
+            // Bunny Hop Acceleration
+            if (bunnyHopAcceleration && isBunnyHopping)
+            {
+                if (Mathf.Abs(Rigidbody.velocity.x) < bunnyHopCap * moveSpeedModifier && Mathf.Abs(Rigidbody.velocity.z) < bunnyHopCap * moveSpeedModifier)
+                {
+                    Rigidbody.velocity = new Vector3(Mathf.Clamp(Rigidbody.velocity.x * bunnyHopModifier, -bunnyHopCap * moveSpeedModifier, bunnyHopCap * moveSpeedModifier), Rigidbody.velocity.y, Mathf.Clamp(Rigidbody.velocity.z * bunnyHopModifier, -bunnyHopCap, bunnyHopCap));
+                }
+            }
+
+            bunnyHopVelocity = Rigidbody.velocity;
+            bunnyHopYaw = Camera.transform.eulerAngles.y;
         }
-        else if (JUMP && JUMP_UP && !bunnyHopFrame)
+        else if (JUMP && JUMP_UP)
         {
             JUMP_UP = false;
         }
@@ -761,9 +777,9 @@ public class Player : MonoBehaviour
     private void RotateVelocity()
     {
         // Rotate Velocity
-        if (rotateVelocity && !isGrounded)
+        if ((rotateVelocity && !isGrounded))
         {
-            // TO DO: PROPER VELOCITY ROTATION
+            Rigidbody.velocity = Quaternion.Euler(0, (Camera.transform.eulerAngles.y - cameraYaw) * velocityRotationScale, 0) * Rigidbody.velocity;
         }
     }
 
