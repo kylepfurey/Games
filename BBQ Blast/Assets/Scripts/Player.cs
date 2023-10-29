@@ -157,6 +157,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float dodgeForceAir;
     [SerializeField] private float dodgeCapHorizontal;
     [SerializeField] private float dodgeCapVertical;
+    [SerializeField] private bool idleDodgeDive;
+    [SerializeField] private bool movingDodgeDive;
     [SerializeField] private bool canDodgeIntoBunnyHop;
     [SerializeField] private bool canDodgeAfterBunnyHop;
     [SerializeField] private bool canLunge;
@@ -625,12 +627,22 @@ public class Player : MonoBehaviour
         else
         {
             // Air Movement
-            airVelocity = new Vector3(Rigidbody.velocity.x - airDeltaX, Rigidbody.velocity.y, Rigidbody.velocity.z - airDeltaZ);
+            if (airControl < 1)
+            {
+                airVelocity = new Vector3(Rigidbody.velocity.x - airDeltaX, Rigidbody.velocity.y, Rigidbody.velocity.z - airDeltaZ);
 
-            airDeltaX = movement.x * airControl;
-            airDeltaZ = movement.z * airControl;
+                airDeltaX = movement.x * moveSpeedModifier * airControl;
+                airDeltaZ = movement.z * moveSpeedModifier * airControl;
 
-            Rigidbody.velocity = airVelocity + new Vector3(airDeltaX, 0, airDeltaZ);
+                Rigidbody.velocity = airVelocity + new Vector3(airDeltaX, 0, airDeltaZ);
+            }
+            else
+            {
+                Rigidbody.velocity = new Vector3(movement.x, Rigidbody.velocity.y, movement.z);
+
+                airDeltaX = 0;
+                airDeltaZ = 0;
+            }
         }
     }
 
@@ -731,11 +743,10 @@ public class Player : MonoBehaviour
 
             isDodging = true;
 
-            Rigidbody.velocity = new Vector3(Rigidbody.velocity.x, 0, Rigidbody.velocity.z);
-
             if (isGrounded)
             {
                 // Dodging on Ground
+                Rigidbody.velocity = new Vector3(Rigidbody.velocity.x, 0, Rigidbody.velocity.z);
                 transform.Translate(0, .1f, 0);
 
                 if (Mathf.Abs(movement.x) > 0 || Mathf.Abs(movement.z) > 0)
@@ -744,7 +755,7 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
-                    Rigidbody.AddRelativeForce(new Vector3(0, dodgeForceVertical, dodgeForceGround + moveSpeed), ForceMode.Impulse);
+                    Rigidbody.AddRelativeForce(new Vector3(0, dodgeForceVertical, dodgeForceGround + moveSpeed * moveSpeedModifier), ForceMode.Impulse);
                 }
             }
             else
@@ -752,11 +763,29 @@ public class Player : MonoBehaviour
                 // Dodging in Air
                 if (Mathf.Abs(movement.x) > 0 || Mathf.Abs(movement.z) > 0)
                 {
-                    Rigidbody.AddForce(new Vector3(2 * movement.x * dodgeForceAir / moveSpeed, 0, 2 * movement.z * dodgeForceAir / moveSpeed), ForceMode.Impulse);
+                    if (movingDodgeDive)
+                    {
+                        Rigidbody.velocity = Vector3.zero;
+                    }
+                    else
+                    {
+                        Rigidbody.velocity = new Vector3(0, Rigidbody.velocity.y, 0);
+                    }
+
+                    Rigidbody.AddForce(new Vector3(movement.x * dodgeForceAir / moveSpeed, 0, movement.z * dodgeForceAir / moveSpeed), ForceMode.Impulse);
                 }
                 else
                 {
-                    Rigidbody.AddRelativeForce(new Vector3(0, 0, dodgeForceAir + moveSpeed), ForceMode.Impulse);
+                    if (idleDodgeDive)
+                    {
+                        Rigidbody.velocity = Vector3.zero;
+                    }
+                    else
+                    {
+                        Rigidbody.velocity = new Vector3(0, Rigidbody.velocity.y, 0);
+                    }
+
+                    Rigidbody.AddRelativeForce(new Vector3(0, 0, dodgeForceAir + moveSpeed * moveSpeedModifier), ForceMode.Impulse);
                 }
             }
         }

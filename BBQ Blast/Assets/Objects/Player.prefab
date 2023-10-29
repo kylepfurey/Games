@@ -381,9 +381,11 @@ MonoBehaviour:
   canDodge: 1
   dodgeForceGround: 5
   dodgeForceVertical: 8
-  dodgeForceAir: 2.5
+  dodgeForceAir: 15
   dodgeCapHorizontal: 15
   dodgeCapVertical: 8
+  idleDodgeDive: 1
+  movingDodgeDive: 1
   canDodgeIntoBunnyHop: 0
   canDodgeAfterBunnyHop: 0
   canLunge: 1
