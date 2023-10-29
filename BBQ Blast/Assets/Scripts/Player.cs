@@ -146,6 +146,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float bunnyHopModifier;
     [SerializeField] private float bunnyHopCap;
     [SerializeField] private bool canAimBunnyHop;
+    [SerializeField] private bool bunnyHopResetsJump;
     private float bunnyHopYaw;
 
     // Dodging Variables
@@ -157,6 +158,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float dodgeCapHorizontal;
     [SerializeField] private float dodgeCapVertical;
     [SerializeField] private bool canDodgeIntoBunnyHop;
+    [SerializeField] private bool canDodgeAfterBunnyHop;
     [SerializeField] private bool canLunge;
     [SerializeField] private float lungeCapHorizontal;
     [SerializeField] private float lungeCapVertical;
@@ -212,7 +214,14 @@ public class Player : MonoBehaviour
 
             lastStablePosition = new Vector3(transform.position.x, transform.position.y + cameraStart.y * 2, transform.position.z);
 
-            currentJump = 0;
+            if (bunnyHopResetsJump)
+            {
+                currentJump = 0;
+            }
+            else
+            {
+                currentJump = maxJumps;
+            }
 
             JUMP_COOLDOWN_TIME = JUMP_COOLDOWN;
 
@@ -220,7 +229,12 @@ public class Player : MonoBehaviour
 
             bunnyHopFrame = true;
 
-            isDodging = false;
+            Invoke("BunnyHopFrame", bunnyHopWindow);
+
+            if (canDodgeIntoBunnyHop)
+            {
+                isDodging = false;
+            }
         }
     }
 
@@ -233,11 +247,7 @@ public class Player : MonoBehaviour
 
             lastStablePosition = new Vector3(transform.position.x, transform.position.y + cameraStart.y * 2, transform.position.z);
 
-            if (bunnyHopFrame)
-            {
-                Invoke("BunnyHopFrame", bunnyHopWindow);
-            }
-            else
+            if (!bunnyHopFrame)
             {
                 isBunnyHopping = false;
             }
@@ -637,15 +647,12 @@ public class Player : MonoBehaviour
         }
 
         // Jumping
-        if (JUMP && JUMP_UP && (isGrounded || (airTime < coyoteTime && currentJump == 0) || (currentJump < maxJumps)) && (JUMP_COOLDOWN_TIME <= 0 || (canBunnyHop && bunnyHopFrame)))
+        if (JUMP && JUMP_UP && (isGrounded || (airTime < coyoteTime && currentJump == 0) || (currentJump < maxJumps)) && (JUMP_COOLDOWN_TIME <= 0 || (canBunnyHop && bunnyHopFrame)) && (canDodgeIntoBunnyHop || !isDodging))
         {
             JUMP_UP = false;
 
-            // TO DO: ADD DISABLING DODGING INTO BUNNY HOPS
-            // TO DO: PREVENT BUNNY HOP RESETTING DODGE
-
             // Bunny Hopping
-            if (canBunnyHop && bunnyHopFrame)
+            if (canBunnyHop && bunnyHopFrame && (canDodgeIntoBunnyHop || !isDodging))
             {
                 isBunnyHopping = true;
 
@@ -701,12 +708,22 @@ public class Player : MonoBehaviour
         if (isGrounded || currentJump < maxJumps)
         {
             bunnyHopFrame = false;
+
+            if (!canDodgeIntoBunnyHop)
+            {
+                isDodging = false;
+            }
+
+            if (!bunnyHopResetsJump)
+            {
+                currentJump = 0;
+            }
         }
     }
 
     private void Dodging()
     {
-        if (canDodge && DODGE && DODGE_UP && DODGE_COOLDOWN_TIME <= 0 && !isDodging)
+        if (canDodge && DODGE && DODGE_UP && DODGE_COOLDOWN_TIME <= 0 && !isDodging && (canDodgeAfterBunnyHop || !isBunnyHopping))
         {
             DODGE_UP = false;
 
@@ -733,7 +750,6 @@ public class Player : MonoBehaviour
             else
             {
                 // Dodging in Air
-
                 if (Mathf.Abs(movement.x) > 0 || Mathf.Abs(movement.z) > 0)
                 {
                     Rigidbody.AddForce(new Vector3(2 * movement.x * dodgeForceAir / moveSpeed, 0, 2 * movement.z * dodgeForceAir / moveSpeed), ForceMode.Impulse);
@@ -756,6 +772,9 @@ public class Player : MonoBehaviour
             {
                 Rigidbody.velocity = new Vector3(Mathf.Clamp(Rigidbody.velocity.x, -dodgeCapHorizontal, dodgeCapHorizontal), Mathf.Clamp(Rigidbody.velocity.y, Rigidbody.velocity.y, dodgeCapVertical), Mathf.Clamp(Rigidbody.velocity.z, -dodgeCapHorizontal, dodgeCapHorizontal));
             }
+
+            bunnyHopVelocity = Rigidbody.velocity;
+            bunnyHopYaw = Camera.transform.eulerAngles.y;
         }
     }
 
@@ -820,19 +839,19 @@ public class Player : MonoBehaviour
             if (Mathf.Abs(Rigidbody.velocity.x) > highestVelocity.x)
             {
                 highestVelocity = new Vector3(Mathf.Abs(Rigidbody.velocity.x), highestVelocity.y, highestVelocity.z);
-                print(highestVelocity);
+                print("Player " + playerNumber + "'s Highest Velocity: " + highestVelocity);
             }
 
             if (Mathf.Abs(Rigidbody.velocity.y) > highestVelocity.y)
             {
                 highestVelocity = new Vector3(highestVelocity.x, Mathf.Abs(Rigidbody.velocity.y), highestVelocity.z);
-                print(highestVelocity);
+                print("Player " + playerNumber + "'s Highest Velocity: " + highestVelocity);
             }
 
             if (Mathf.Abs(Rigidbody.velocity.z) > highestVelocity.z)
             {
                 highestVelocity = new Vector3(highestVelocity.x, highestVelocity.y, Mathf.Abs(Rigidbody.velocity.z));
-                print(highestVelocity);
+                print("Player " + playerNumber + "'s Highest Velocity: " + highestVelocity);
             }
         }
     }
@@ -840,6 +859,16 @@ public class Player : MonoBehaviour
     private bool Button(float input)
     {
         if (input > 0)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool Trigger(float input, float threshold)
+    {
+        if (input > threshold)
         {
             return true;
         }

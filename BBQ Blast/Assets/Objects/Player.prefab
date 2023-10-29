@@ -371,19 +371,21 @@ MonoBehaviour:
   airControl: 0.3
   rotateVelocity: 0
   velocityRotationScale: 2
-  canBunnyHop: 0
+  canBunnyHop: 1
   bunnyHopWindow: 0.02
   bunnyHopAcceleration: 1
   bunnyHopModifier: 1.1
   bunnyHopCap: 15
   canAimBunnyHop: 0
+  bunnyHopResetsJump: 1
   canDodge: 1
-  dodgeForceGround: 8
+  dodgeForceGround: 5
   dodgeForceVertical: 8
-  dodgeForceAir: 8
+  dodgeForceAir: 2.5
   dodgeCapHorizontal: 15
   dodgeCapVertical: 8
   canDodgeIntoBunnyHop: 0
+  canDodgeAfterBunnyHop: 0
   canLunge: 1
   lungeCapHorizontal: 18
   lungeCapVertical: 10
