@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -121,9 +120,9 @@ public class Player : MonoBehaviour
 
     // Jumping Variables
     private bool isGrounded;
+    [SerializeField] private float jumpForce;
     private float airTime;
     [SerializeField] private float coyoteTime;
-    [SerializeField] private float jumpForce;
     [SerializeField] private bool canDoubleJump;
     private int currentJump;
     private int maxJumps;
@@ -151,12 +150,16 @@ public class Player : MonoBehaviour
 
     // Dodging Variables
     [SerializeField] private bool canDodge;
-    [SerializeField] private bool canDodgeIntoBunnyHop;
+    private bool isDodging;
     [SerializeField] private float dodgeForceGround;
     [SerializeField] private float dodgeForceVertical;
     [SerializeField] private float dodgeForceAir;
-    private bool isDodging;
+    [SerializeField] private float dodgeCapHorizontal;
+    [SerializeField] private float dodgeCapVertical;
+    [SerializeField] private bool canDodgeIntoBunnyHop;
     [SerializeField] private bool canLunge;
+    [SerializeField] private float lungeCapHorizontal;
+    [SerializeField] private float lungeCapVertical;
 
     // Weapon Variables
     public int weapon;
@@ -182,8 +185,8 @@ public class Player : MonoBehaviour
             GetControls();
             CameraPosition();
             CameraRotation();
-            Dodging();
             Jumping();
+            Dodging();
         }
 
         ExitGame();
@@ -601,7 +604,7 @@ public class Player : MonoBehaviour
     private void Movement()
     {
         // Movement
-        if (isGrounded && (!canBunnyHop || !bunnyHopFrame))
+        if (isGrounded && !bunnyHopFrame)
         {
             // Ground Movement
             Rigidbody.velocity = new Vector3(movement.x, Rigidbody.velocity.y, movement.z);
@@ -706,42 +709,52 @@ public class Player : MonoBehaviour
         if (canDodge && DODGE && DODGE_UP && DODGE_COOLDOWN_TIME <= 0 && !isDodging)
         {
             DODGE_UP = false;
+
             DODGE_COOLDOWN_TIME = DODGE_COOLDOWN;
+
             isDodging = true;
+
+            Rigidbody.velocity = new Vector3(Rigidbody.velocity.x, 0, Rigidbody.velocity.z);
 
             if (isGrounded)
             {
-                // TO DO: ADD DISABLING LUNGING
-
                 // Dodging on Ground
+                transform.Translate(0, .1f, 0);
+
                 if (Mathf.Abs(movement.x) > 0 || Mathf.Abs(movement.z) > 0)
                 {
-                    Rigidbody.velocity = new Vector3(Rigidbody.velocity.x, 0, Rigidbody.velocity.z);
-                    transform.Translate(0, .1f, 0);
                     Rigidbody.AddForce(new Vector3(movement.x * dodgeForceGround / moveSpeed, dodgeForceVertical, movement.z * dodgeForceGround / moveSpeed), ForceMode.Impulse);
                 }
                 else
                 {
-                    Rigidbody.velocity = new Vector3(Rigidbody.velocity.x, 0, Rigidbody.velocity.z);
-                    transform.Translate(0, .1f, 0);
-                    Rigidbody.AddRelativeForce(new Vector3(0, dodgeForceVertical, dodgeForceGround), ForceMode.Impulse);
+                    Rigidbody.AddRelativeForce(new Vector3(0, dodgeForceVertical, dodgeForceGround + moveSpeed), ForceMode.Impulse);
                 }
-
-                // TO DO: CONTROL LUNGING
             }
             else
             {
                 // Dodging in Air
+
                 if (Mathf.Abs(movement.x) > 0 || Mathf.Abs(movement.z) > 0)
                 {
-                    Rigidbody.velocity = new Vector3(Rigidbody.velocity.x, 0, Rigidbody.velocity.z);
-                    Rigidbody.AddForce(new Vector3(movement.x * dodgeForceAir / moveSpeed, 0, movement.z * dodgeForceAir / moveSpeed), ForceMode.Impulse);
+                    Rigidbody.AddForce(new Vector3(2 * movement.x * dodgeForceAir / moveSpeed, 0, 2 * movement.z * dodgeForceAir / moveSpeed), ForceMode.Impulse);
                 }
                 else
                 {
-                    Rigidbody.velocity = new Vector3(Rigidbody.velocity.x, 0, Rigidbody.velocity.z);
-                    Rigidbody.AddRelativeForce(new Vector3(0, 0, dodgeForceAir), ForceMode.Impulse);
+                    Rigidbody.AddRelativeForce(new Vector3(0, 0, dodgeForceAir + moveSpeed), ForceMode.Impulse);
                 }
+            }
+        }
+
+        // Dodge and Lunge Control
+        if (isDodging)
+        {
+            if (canLunge)
+            {
+                Rigidbody.velocity = new Vector3(Mathf.Clamp(Rigidbody.velocity.x, -lungeCapHorizontal, lungeCapHorizontal), Mathf.Clamp(Rigidbody.velocity.y, Rigidbody.velocity.y, lungeCapVertical), Mathf.Clamp(Rigidbody.velocity.z, -lungeCapHorizontal, lungeCapHorizontal));
+            }
+            else
+            {
+                Rigidbody.velocity = new Vector3(Mathf.Clamp(Rigidbody.velocity.x, -dodgeCapHorizontal, dodgeCapHorizontal), Mathf.Clamp(Rigidbody.velocity.y, Rigidbody.velocity.y, dodgeCapVertical), Mathf.Clamp(Rigidbody.velocity.z, -dodgeCapHorizontal, dodgeCapHorizontal));
             }
         }
     }

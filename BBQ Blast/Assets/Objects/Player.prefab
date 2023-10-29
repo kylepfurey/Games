@@ -365,24 +365,28 @@ MonoBehaviour:
   flickStickDeadzone: 0.25
   moveSpeed: 10
   moveSpeedModifier: 1
-  coyoteTime: 0.25
   jumpForce: 12
+  coyoteTime: 0.25
   canDoubleJump: 0
   airControl: 0.3
   rotateVelocity: 0
   velocityRotationScale: 2
-  canBunnyHop: 1
+  canBunnyHop: 0
   bunnyHopWindow: 0.02
   bunnyHopAcceleration: 1
   bunnyHopModifier: 1.1
   bunnyHopCap: 15
   canAimBunnyHop: 0
-  canDodge: 0
+  canDodge: 1
+  dodgeForceGround: 8
+  dodgeForceVertical: 8
+  dodgeForceAir: 8
+  dodgeCapHorizontal: 15
+  dodgeCapVertical: 8
   canDodgeIntoBunnyHop: 0
-  dodgeForceGround: 15
-  dodgeForceVertical: 4
-  dodgeForceAir: 12
-  canLunge: 0
+  canLunge: 1
+  lungeCapHorizontal: 18
+  lungeCapVertical: 10
   weapon: 2
   debugVelocity: 1
   play: 1
