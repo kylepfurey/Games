@@ -188,7 +188,6 @@ public class Player : MonoBehaviour
         {
             GetControls();
             CameraPosition();
-            CameraRotation();
             Jumping();
             Dodging();
         }
@@ -201,6 +200,7 @@ public class Player : MonoBehaviour
         if (play)
         {
             Movement();
+            CameraRotation();
             RotateVelocity();
         }
 
