@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 
 
     // References
+    public Settings Settings;
     public PlayerInput Input;
     public Rigidbody Rigidbody;
     public Camera Camera;
@@ -60,6 +61,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float RELOAD_COOLDOWN;
     [SerializeField] private float RELOAD_COOLDOWN_RESET;
     private float RELOAD_COOLDOWN_TIME;
+
+    private bool FLASHLIGHT;
+    private bool FLASHLIGHT_UP;
 
     private bool WEAPON_LEFT;
     private bool WEAPON_LEFT_UP;
@@ -165,6 +169,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float lungeCapHorizontal;
     [SerializeField] private float lungeCapVertical;
 
+    // Flashlight
+    [SerializeField] private Light flashlight;
+
     // Weapon Variables
     public int weapon;
 
@@ -172,7 +179,9 @@ public class Player : MonoBehaviour
     [SerializeField] private bool debugVelocity;
 
     // Player Variables
-    private int playerNumber;
+    public int playerNumber;
+    public int team;
+
     public bool play;
 
     void Start()
@@ -290,6 +299,7 @@ public class Player : MonoBehaviour
         SHOOT = Button(Input.actions.FindAction("Shoot").ReadValue<float>());
         AIM = Button(Input.actions.FindAction("Aim").ReadValue<float>());
         RELOAD = Button(Input.actions.FindAction("Reload").ReadValue<float>());
+        FLASHLIGHT = Button(Input.actions.FindAction("Flashlight").ReadValue<float>());
         WEAPON_LEFT = Button(Input.actions.FindAction("Weapon Left").ReadValue<float>());
         WEAPON_RIGHT = Button(Input.actions.FindAction("Weapon Right").ReadValue<float>());
         WEAPON_PREVIOUS = Button(Input.actions.FindAction("Previous Weapon").ReadValue<float>());
@@ -432,6 +442,11 @@ public class Player : MonoBehaviour
             }
         }
 
+        if (!FLASHLIGHT)
+        {
+            FLASHLIGHT_UP = true;
+        }
+
         if (!WEAPON_LEFT)
         {
             WEAPON_LEFT_UP = true;
@@ -564,12 +579,21 @@ public class Player : MonoBehaviour
         Vector3 forward = MOVE.y * Pointer.cameraForward * moveSpeed * moveSpeedModifier;
         Vector3 right = MOVE.x * Pointer.cameraRight * moveSpeed * moveSpeedModifier;
         movement = forward + right;
+
+
+        // Flashlight
+        if (FLASHLIGHT && FLASHLIGHT_UP)
+        {
+            FLASHLIGHT_UP = false;
+
+            flashlight.enabled = !flashlight.enabled;
+        }
     }
 
     private void CameraPosition()
     {
         // Camera Position
-        Camera.transform.position = transform.position + cameraStart;
+        Camera.transform.position = transform.position + (transform.right * cameraStart.x + Vector3.up * cameraStart.y + transform.forward * cameraStart.z);
 
         if (thirdPerson)
         {
@@ -895,6 +919,16 @@ public class Player : MonoBehaviour
         return false;
     }
 
+    private bool Button(float input, float threshold)
+    {
+        if (input > threshold)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     private bool Trigger(float input, float threshold)
     {
         if (input > threshold)
@@ -904,4 +938,5 @@ public class Player : MonoBehaviour
 
         return false;
     }
+
 }

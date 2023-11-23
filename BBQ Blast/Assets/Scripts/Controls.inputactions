@@ -114,6 +114,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Flashlight",
+                    "type": "Button",
+                    "id": "8b0b4eab-538d-4009-894f-28176916d5cc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Weapon Left",
                     "type": "Button",
                     "id": "d3cbfab8-1175-4375-b43e-957093e39d32",
@@ -1042,6 +1051,28 @@
                     "action": "Look Y",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "82552d94-783b-4cc1-b688-713975fa96c3",
+                    "path": "<Gamepad>/rightStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Flashlight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fc0f54e1-3aaa-4060-91b6-c0ef50a83840",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Flashlight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

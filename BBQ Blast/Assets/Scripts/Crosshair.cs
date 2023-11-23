@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class Crosshair : MonoBehaviour
 {
+    public Player Player;
+
     public Vector2[] distance;
     public Vector2[] size;
-    public Player Player;
 
     public GameObject Left;
     public GameObject Right;
