@@ -4,12 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    // PUBLIC              is used for variables that have other scripts accessing it and need to be modified in the editor.
-    // HIDE IN INSPECTOR   is used for variables that have other scripts accessing it and don't need to be modified in the editor.
-    // SERIALIZED PRIVATE  is used for variables only used by this script that need to be modified in the editor.
-    // PRIVATE             is used for variables only used by this script that don't need to be modified in the editor.
-
-
     // References
     public Settings Settings;
     public PlayerInput Input;
@@ -131,6 +125,9 @@ public class Player : MonoBehaviour
     [SerializeField] private bool canDoubleJump;
     private int currentJump;
     private int maxJumps;
+    [SerializeField] private float jumpCheckHeight;
+    [SerializeField] private float jumpCheckWidth;
+    [SerializeField] private float jumpCheckDepth;
 
     // Air Control Variables
     [SerializeField] private float airControl;
@@ -196,6 +193,7 @@ public class Player : MonoBehaviour
         {
             GetControls();
             CameraPosition();
+            GroundCheck();
             Jumping();
             Dodging();
         }
@@ -213,65 +211,6 @@ public class Player : MonoBehaviour
         }
 
         DebugVelocity();
-    }
-
-    // Entering Collision
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.tag == "Ground")
-        {
-            isGrounded = true;
-
-            lastStablePosition = new Vector3(transform.position.x, transform.position.y + cameraStart.y * 2, transform.position.z);
-
-            if (bunnyHopResetsJump)
-            {
-                currentJump = 0;
-            }
-            else
-            {
-                currentJump = maxJumps;
-            }
-
-            JUMP_COOLDOWN_TIME = JUMP_COOLDOWN;
-
-            airTime = 0;
-
-            bunnyHopFrame = true;
-
-            Invoke("BunnyHopFrame", bunnyHopWindow);
-
-            if (canDodgeIntoBunnyHop)
-            {
-                isDodging = false;
-            }
-        }
-    }
-
-    // In Collision
-    void OnCollisionStay(Collision collision)
-    {
-        if (collision.transform.tag == "Ground")
-        {
-            isGrounded = true;
-
-            lastStablePosition = new Vector3(transform.position.x, transform.position.y + cameraStart.y * 2, transform.position.z);
-
-            if (!bunnyHopFrame)
-            {
-                isBunnyHopping = false;
-            }
-        }
-    }
-
-    // Exiting Collision
-    void OnCollisionExit(Collision collision)
-    {
-        if (collision.transform.tag == "Ground")
-        {
-            isGrounded = false;
-            airVelocity = Rigidbody.velocity;
-        }
     }
 
     // Entering Trigger
@@ -572,13 +511,6 @@ public class Player : MonoBehaviour
             }
         }
 
-
-        // Movement Input
-        Vector3 forward = MOVE.y * Pointer.cameraForward * moveSpeed * moveSpeedModifier;
-        Vector3 right = MOVE.x * Pointer.cameraRight * moveSpeed * moveSpeedModifier;
-        movement = forward + right;
-
-
         // Flashlight
         if (FLASHLIGHT && FLASHLIGHT_UP)
         {
@@ -586,6 +518,11 @@ public class Player : MonoBehaviour
 
             flashlight.enabled = !flashlight.enabled;
         }
+
+        // Movement Input
+        Vector3 forward = MOVE.y * Pointer.cameraForward * moveSpeed * moveSpeedModifier;
+        Vector3 right = MOVE.x * Pointer.cameraRight * moveSpeed * moveSpeedModifier;
+        movement = forward + right;
     }
 
     private void CameraPosition()
@@ -650,21 +587,77 @@ public class Player : MonoBehaviour
     private void Movement()
     {
         // Movement
+        float fallingSpeed = Rigidbody.velocity.y;
+
         if (isGrounded && !bunnyHopFrame)
         {
             // Ground Movement
-            Vector3 targetVelocity = transform.forward * moveSpeed * MOVE.y + transform.right * moveSpeed * MOVE.x;
-            float fallingSpeed = Rigidbody.velocity.y;
-
-            Rigidbody.velocity = Vector3.Lerp(Rigidbody.velocity, targetVelocity, moveLerpSpeed * Time.deltaTime);
-            Rigidbody.velocity = new Vector3(Rigidbody.velocity.x, fallingSpeed, Rigidbody.velocity.z);
+            Rigidbody.velocity = Vector3.Lerp(Rigidbody.velocity, movement, moveLerpSpeed * Time.deltaTime);
         }
         else
         {
             // Air Movement
             Rigidbody.velocity = airVelocity - airVelocity * airControl;
 
-            Rigidbody.velocity += transform.forward * moveSpeed * movement.y * airControl + transform.right * moveSpeed * movement.x * airControl;
+            Rigidbody.velocity += movement * airControl;
+        }
+
+        Rigidbody.velocity = new Vector3(Rigidbody.velocity.x, fallingSpeed, Rigidbody.velocity.z);
+    }
+
+    private void GroundCheck()
+    {
+        if (isGrounded && Physics.BoxCast(new Vector3(transform.position.x, transform.position.y - transform.lossyScale.y / 2 + jumpCheckHeight, transform.position.z), new Vector3(transform.lossyScale.x / 2 * jumpCheckWidth, 0, transform.lossyScale.z / 2 * jumpCheckWidth), -Vector3.up, Quaternion.identity, jumpCheckHeight + jumpCheckDepth))
+        {
+            // On Ground
+            isGrounded = true;
+
+            lastStablePosition = new Vector3(transform.position.x, transform.position.y + cameraStart.y * 2, transform.position.z);
+
+            if (!bunnyHopFrame)
+            {
+                isBunnyHopping = false;
+            }
+        }
+        else if (!isGrounded && !Physics.BoxCast(new Vector3(transform.position.x, transform.position.y - transform.lossyScale.y / 2 + jumpCheckHeight, transform.position.z), new Vector3(transform.lossyScale.x / 2 * jumpCheckWidth, 0, transform.lossyScale.z / 2 * jumpCheckWidth), -Vector3.up, Quaternion.identity, jumpCheckHeight + jumpCheckDepth))
+        {
+            // Off Ground
+        }
+        else if (!isGrounded && Physics.BoxCast(new Vector3(transform.position.x, transform.position.y - transform.lossyScale.y / 2 + jumpCheckHeight, transform.position.z), new Vector3(transform.lossyScale.x / 2 * jumpCheckWidth, 0, transform.lossyScale.z / 2 * jumpCheckWidth), -Vector3.up, Quaternion.identity, jumpCheckHeight + jumpCheckDepth))
+        {
+            // Entering Ground
+            isGrounded = true;
+
+            lastStablePosition = new Vector3(transform.position.x, transform.position.y + cameraStart.y * 2, transform.position.z);
+
+            if (bunnyHopResetsJump)
+            {
+                currentJump = 0;
+            }
+            else
+            {
+                currentJump = maxJumps;
+            }
+
+            JUMP_COOLDOWN_TIME = JUMP_COOLDOWN;
+
+            airTime = 0;
+
+            bunnyHopFrame = true;
+
+            Invoke("BunnyHopFrame", bunnyHopWindow);
+
+            if (canDodgeIntoBunnyHop)
+            {
+                isDodging = false;
+            }
+        }
+        else if (isGrounded && !Physics.BoxCast(new Vector3(transform.position.x, transform.position.y - transform.lossyScale.y / 2 + jumpCheckHeight, transform.position.z), new Vector3(transform.lossyScale.x / 2 * jumpCheckWidth, 0, transform.lossyScale.z / 2 * jumpCheckWidth), -Vector3.up, Quaternion.identity, jumpCheckHeight + jumpCheckDepth))
+        {
+            // Leaving Ground
+            isGrounded = false;
+
+            airVelocity = Rigidbody.velocity;
         }
     }
 
@@ -702,7 +695,7 @@ public class Player : MonoBehaviour
                 Rigidbody.velocity = new Vector3(movement.x, 0, movement.z);
             }
 
-            Rigidbody.AddRelativeForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+            Rigidbody.AddForce(new Vector3(0, jumpForce * Rigidbody.mass, 0), ForceMode.Impulse);
 
             airTime = 0;
 
@@ -773,11 +766,12 @@ public class Player : MonoBehaviour
 
                 if (Mathf.Abs(movement.x) > 0 || Mathf.Abs(movement.z) > 0)
                 {
-                    Rigidbody.AddForce(new Vector3(movement.x * dodgeForceGround / moveSpeed, dodgeForceVertical, movement.z * dodgeForceGround / moveSpeed), ForceMode.Impulse);
+                    Rigidbody.velocity += new Vector3(movement.x * dodgeForceGround / moveSpeed, dodgeForceVertical, movement.z * dodgeForceGround / moveSpeed);
                 }
                 else
                 {
-                    Rigidbody.AddRelativeForce(new Vector3(0, dodgeForceVertical, dodgeForceGround + moveSpeed * moveSpeedModifier), ForceMode.Impulse);
+                    Rigidbody.velocity += transform.forward * (dodgeForceGround + moveSpeed * moveSpeedModifier);
+                    Rigidbody.velocity += new Vector3(0, dodgeForceVertical, 0);
                 }
             }
             else
@@ -794,7 +788,7 @@ public class Player : MonoBehaviour
                         Rigidbody.velocity = new Vector3(0, Rigidbody.velocity.y, 0);
                     }
 
-                    Rigidbody.AddForce(new Vector3(movement.x * dodgeForceAir / moveSpeed, 0, movement.z * dodgeForceAir / moveSpeed), ForceMode.Impulse);
+                    Rigidbody.velocity += new Vector3(movement.x * dodgeForceAir / moveSpeed, 0, movement.z * dodgeForceAir / moveSpeed) * 4;
                 }
                 else
                 {
@@ -807,8 +801,10 @@ public class Player : MonoBehaviour
                         Rigidbody.velocity = new Vector3(0, Rigidbody.velocity.y, 0);
                     }
 
-                    Rigidbody.AddRelativeForce(new Vector3(0, 0, dodgeForceAir + moveSpeed * moveSpeedModifier), ForceMode.Impulse);
+                    Rigidbody.velocity += transform.forward * (dodgeForceAir + moveSpeed * moveSpeedModifier);
                 }
+
+                airVelocity = Rigidbody.velocity;
             }
         }
 
@@ -832,7 +828,7 @@ public class Player : MonoBehaviour
     private void RotateVelocity()
     {
         // Rotate Velocity
-        if ((rotateVelocity && !isGrounded))
+        if (rotateVelocity && !isGrounded)
         {
             Rigidbody.velocity = Quaternion.Euler(0, (Camera.transform.eulerAngles.y - cameraYaw) * velocityRotationScale, 0) * Rigidbody.velocity;
         }
