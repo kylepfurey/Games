@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
     [Header("Third Person Variables")]
     [SerializeField] private bool thirdPerson = true;
     [SerializeField] private Vector3 thirdPersonCameraDistance = new Vector3(0, 0, -5);
-    [SerializeField] private float cameraCheckEnd = 1;
 
     [Header("Rotation Variables")]
     [SerializeField] private bool playerRotatesToCamera = false;
@@ -37,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 5;
     [SerializeField] private float jumpCheckHeight = 0.25f;
     [SerializeField] private float jumpCheckWidth = 1;
-    [SerializeField] private float jumpCheckDepth = 0.25f;
+    [SerializeField] private float jumpCheckDepth = 0.51f;
     [SerializeField] private Vector3 gravity = new Vector3(0, -9.8f, 0);
 
     [Header("Sprinting Variables")]
@@ -152,6 +151,7 @@ public class PlayerMovement : MonoBehaviour
         tag = "Player";
         Camera.name = "Player Camera";
         Camera.tag = "MainCamera";
+        Camera.nearClipPlane = 0.01f;
 
         currentSpeed = speed;
         startingScale = transform.localScale.y;
@@ -254,11 +254,16 @@ public class PlayerMovement : MonoBehaviour
             Camera.transform.position = transform.position;
             Camera.transform.Translate(Camera.transform.rotation * new Vector3(0, transform.lossyScale.y / 8, 0) + thirdPersonCameraDistance);
 
-            RaycastHit[] hits = Physics.RaycastAll(Camera.transform.position, Camera.transform.forward, Mathf.Abs(Vector3.Distance(Camera.transform.position, transform.position) - cameraCheckEnd));
+            RaycastHit hit;
 
-            if (hits.Length > 0)
+            Vector3 cameraRotation = Camera.transform.eulerAngles;
+            Camera.transform.LookAt(transform.position);
+            Vector3 direction = Camera.transform.forward;
+            Camera.transform.eulerAngles = cameraRotation;
+
+            if (Physics.Raycast(transform.position, -direction, out hit, Mathf.Abs(Vector3.Distance(Camera.transform.position, transform.position)), 1, QueryTriggerInteraction.Ignore))
             {
-                Camera.transform.position = hits[hits.Length - 1].point;
+                Camera.transform.position = hit.point;
             }
         }
     }

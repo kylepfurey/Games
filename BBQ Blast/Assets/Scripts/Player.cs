@@ -119,6 +119,7 @@ public class Player : MonoBehaviour
     // Movement Variables
     [SerializeField] private float moveSpeed;
     [SerializeField] private float moveSpeedModifier;
+    [SerializeField] private float moveLerpSpeed;
     private Vector3 movement;
     private Vector3 lastStablePosition;
 
@@ -133,8 +134,6 @@ public class Player : MonoBehaviour
 
     // Air Control Variables
     [SerializeField] private float airControl;
-    private float airDeltaX;
-    private float airDeltaZ;
     private Vector3 airVelocity;
     private Vector3 highestVelocity;
     [SerializeField] private bool rotateVelocity;
@@ -271,8 +270,7 @@ public class Player : MonoBehaviour
         if (collision.transform.tag == "Ground")
         {
             isGrounded = false;
-
-            LimitAirControl();
+            airVelocity = Rigidbody.velocity;
         }
     }
 
@@ -598,6 +596,18 @@ public class Player : MonoBehaviour
         if (thirdPerson)
         {
             Camera.transform.Translate(thirdPersonCameraDistance);
+
+            RaycastHit hit;
+
+            Vector3 cameraRotation = Camera.transform.eulerAngles;
+            Camera.transform.LookAt(transform.position);
+            Vector3 direction = Camera.transform.forward;
+            Camera.transform.eulerAngles = cameraRotation;
+
+            if (Physics.Raycast(transform.position, -direction, out hit, Mathf.Abs(Vector3.Distance(Camera.transform.position, transform.position)), 1, QueryTriggerInteraction.Ignore))
+            {
+                Camera.transform.position = hit.point;
+            }
         }
 
 
@@ -643,30 +653,18 @@ public class Player : MonoBehaviour
         if (isGrounded && !bunnyHopFrame)
         {
             // Ground Movement
-            Rigidbody.velocity = new Vector3(movement.x, Rigidbody.velocity.y, movement.z);
+            Vector3 targetVelocity = transform.forward * moveSpeed * MOVE.y + transform.right * moveSpeed * MOVE.x;
+            float fallingSpeed = Rigidbody.velocity.y;
 
-            airDeltaX = 0;
-            airDeltaZ = 0;
+            Rigidbody.velocity = Vector3.Lerp(Rigidbody.velocity, targetVelocity, moveLerpSpeed * Time.deltaTime);
+            Rigidbody.velocity = new Vector3(Rigidbody.velocity.x, fallingSpeed, Rigidbody.velocity.z);
         }
         else
         {
             // Air Movement
-            if (airControl < 1)
-            {
-                airVelocity = new Vector3(Rigidbody.velocity.x - airDeltaX, Rigidbody.velocity.y, Rigidbody.velocity.z - airDeltaZ);
+            Rigidbody.velocity = airVelocity - airVelocity * airControl;
 
-                airDeltaX = movement.x * moveSpeedModifier * airControl;
-                airDeltaZ = movement.z * moveSpeedModifier * airControl;
-
-                Rigidbody.velocity = airVelocity + new Vector3(airDeltaX, 0, airDeltaZ);
-            }
-            else
-            {
-                Rigidbody.velocity = new Vector3(movement.x, Rigidbody.velocity.y, movement.z);
-
-                airDeltaX = 0;
-                airDeltaZ = 0;
-            }
+            Rigidbody.velocity += transform.forward * moveSpeed * movement.y * airControl + transform.right * moveSpeed * movement.x * airControl;
         }
     }
 
@@ -829,34 +827,6 @@ public class Player : MonoBehaviour
             bunnyHopVelocity = Rigidbody.velocity;
             bunnyHopYaw = Camera.transform.eulerAngles.y;
         }
-    }
-
-    private void LimitAirControl()
-    {
-        float airSpeedX = moveSpeed * moveSpeedModifier * airControl;
-        float airSpeedZ = moveSpeed * moveSpeedModifier * airControl;
-
-        if (Rigidbody.velocity.x < 0)
-        {
-            airSpeedX *= -1;
-        }
-
-        if (Rigidbody.velocity.z < 0)
-        {
-            airSpeedZ *= -1;
-        }
-
-        if (Mathf.Abs(Rigidbody.velocity.x) < Mathf.Abs(airSpeedX))
-        {
-            airSpeedX = 0;
-        }
-
-        if (Mathf.Abs(Rigidbody.velocity.z) < Mathf.Abs(airSpeedZ))
-        {
-            airSpeedZ = 0;
-        }
-
-        Rigidbody.velocity -= new Vector3(airSpeedX, 0, airSpeedZ);
     }
 
     private void RotateVelocity()
