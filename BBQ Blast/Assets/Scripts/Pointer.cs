@@ -55,7 +55,7 @@ public class Pointer : MonoBehaviour
         hitscanCamera = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
         Player.Camera.transform.position = currentPosition;
 
-        if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance + -Player.thirdPersonCameraDistance.z, layerMask))
+        if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance + -Player.thirdPersonCameraDistance.z, layerMask, QueryTriggerInteraction.Ignore))
         {
             pointerCameraPosition = hitpointCamera.point;
         }
@@ -91,7 +91,7 @@ public class Pointer : MonoBehaviour
 
 
         // Check Hitscan
-        if (Physics.Raycast(hitscan, out hitpoint, maxDistance, layerMask))
+        if (Physics.Raycast(hitscan, out hitpoint, maxDistance, layerMask, QueryTriggerInteraction.Ignore))
         {
             // Calculate Hit Position
             pointerPosition = hitpoint.point;
@@ -108,7 +108,7 @@ public class Pointer : MonoBehaviour
 
 
         // Smart Aim Correction
-        if (aimCorrection && Player.thirdPerson && Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance, layerMask) && pointerPosition != pointerCameraPosition)
+        if (aimCorrection && Player.thirdPerson && Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance, layerMask, QueryTriggerInteraction.Ignore) && pointerPosition != pointerCameraPosition)
         {
             // Aim Correction Distance
             aimCorrectionDistance = aimCorrectionStart + hitpoint.distance + -Player.thirdPersonCameraDistance.z;
@@ -125,7 +125,7 @@ public class Pointer : MonoBehaviour
             hitscanCamera = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
             Player.Camera.transform.position = currentPosition;
 
-            if (Physics.Raycast(hitscanCamera, out hitpointCamera, aimCorrectionDistance, layerMask))
+            if (Physics.Raycast(hitscanCamera, out hitpointCamera, aimCorrectionDistance, layerMask, QueryTriggerInteraction.Ignore))
             {
                 pointerCameraPosition = hitpointCamera.point;
             }
@@ -161,7 +161,7 @@ public class Pointer : MonoBehaviour
 
 
             // Check Hitscan
-            if (Physics.Raycast(hitscan, out hitpoint, maxDistance, layerMask))
+            if (Physics.Raycast(hitscan, out hitpoint, maxDistance, layerMask, QueryTriggerInteraction.Ignore))
             {
                 // Calculate Hit Position
                 pointerPosition = hitpoint.point;
@@ -201,7 +201,7 @@ public class Pointer : MonoBehaviour
             hitscanCamera = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
             Player.Camera.transform.position = currentPosition;
 
-            if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance + -Player.thirdPersonCameraDistance.z, layerMask))
+            if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance + -Player.thirdPersonCameraDistance.z, layerMask, QueryTriggerInteraction.Ignore))
             {
                 pointerCameraPosition = hitpointCamera.point;
             }
@@ -339,7 +339,7 @@ public class Pointer : MonoBehaviour
 
 
             // Check Hitscan
-            if (Physics.Raycast(hitscan, out hitpoint, maxDistance, layerMask))
+            if (Physics.Raycast(hitscan, out hitpoint, maxDistance, layerMask, QueryTriggerInteraction.Ignore))
             {
                 // Calculate Hit Position
                 pointerPosition = hitpoint.point;
@@ -356,7 +356,7 @@ public class Pointer : MonoBehaviour
 
 
             // Smart Aim Correction
-            if (aimCorrection && Player.thirdPerson && Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance, layerMask) && pointerPosition != pointerCameraPosition)
+            if (aimCorrection && Player.thirdPerson && Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance, layerMask, QueryTriggerInteraction.Ignore) && pointerPosition != pointerCameraPosition)
             {
                 // Aim Correction Distance
                 aimCorrectionDistance = aimCorrectionStart + hitpoint.distance + -Player.thirdPersonCameraDistance.z;
@@ -373,7 +373,7 @@ public class Pointer : MonoBehaviour
                 hitscanCamera = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
                 Player.Camera.transform.position = currentPosition;
 
-                if (Physics.Raycast(hitscanCamera, out hitpointCamera, aimCorrectionDistance, layerMask))
+                if (Physics.Raycast(hitscanCamera, out hitpointCamera, aimCorrectionDistance, layerMask, QueryTriggerInteraction.Ignore))
                 {
                     pointerCameraPosition = hitpointCamera.point;
                 }
@@ -511,7 +511,7 @@ public class Pointer : MonoBehaviour
 
 
                 // Check Hitscan
-                if (Physics.Raycast(hitscan, out hitpoint, maxDistance, layerMask))
+                if (Physics.Raycast(hitscan, out hitpoint, maxDistance, layerMask, QueryTriggerInteraction.Ignore))
                 {
                     // Calculate Hit Position
                     pointerPosition = hitpoint.point;
@@ -545,7 +545,7 @@ public class Pointer : MonoBehaviour
         hitscanCamera = Player.Camera.ScreenPointToRay(new Vector3(Player.Camera.pixelWidth / 2, Player.Camera.pixelHeight / 2, 0));
         Player.Camera.transform.position = currentPosition;
 
-        if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance + -Player.thirdPersonCameraDistance.z, layerMask))
+        if (Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance + -Player.thirdPersonCameraDistance.z, layerMask, QueryTriggerInteraction.Ignore))
         {
             pointerCameraPosition = hitpointCamera.point;
         }
@@ -683,7 +683,7 @@ public class Pointer : MonoBehaviour
 
 
         // Check Hitscan
-        if (Physics.Raycast(hitscan, out hitpoint, maxDistance, layerMask))
+        if (Physics.Raycast(hitscan, out hitpoint, maxDistance, layerMask, QueryTriggerInteraction.Ignore))
         {
             // Calculate Hit Position
             pointerPosition = hitpoint.point;
@@ -708,7 +708,7 @@ public class Pointer : MonoBehaviour
 
 
         // Smart Aim Correction
-        if (aimCorrection && Player.thirdPerson && Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance, layerMask) && pointerPosition != pointerCameraPosition)
+        if (aimCorrection && Player.thirdPerson && Physics.Raycast(hitscanCamera, out hitpointCamera, maxDistance, layerMask, QueryTriggerInteraction.Ignore) && pointerPosition != pointerCameraPosition)
         {
             // Aim Correction Distance
             aimCorrectionDistance = aimCorrectionStart + hitpoint.distance + -Player.thirdPersonCameraDistance.z;
@@ -726,7 +726,7 @@ public class Pointer : MonoBehaviour
             Player.Camera.transform.position = currentPosition;
 
 
-            if (Physics.Raycast(hitscanCamera, out hitpointCamera, aimCorrectionDistance, layerMask))
+            if (Physics.Raycast(hitscanCamera, out hitpointCamera, aimCorrectionDistance, layerMask, QueryTriggerInteraction.Ignore))
             {
                 pointerCameraPosition = hitpointCamera.point;
             }
@@ -864,7 +864,7 @@ public class Pointer : MonoBehaviour
 
 
             // Check Hitscan
-            if (Physics.Raycast(hitscan, out hitpoint, maxDistance, layerMask))
+            if (Physics.Raycast(hitscan, out hitpoint, maxDistance, layerMask, QueryTriggerInteraction.Ignore))
             {
                 // Calculate Hit Position
                 pointerPosition = hitpoint.point;

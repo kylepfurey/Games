@@ -287,7 +287,7 @@ public class PlayerMovement : MonoBehaviour
         // Jumping
         Physics.gravity = gravity;
 
-        isGrounded = Physics.BoxCast(new Vector3(transform.position.x, transform.position.y - transform.lossyScale.y / 2 + jumpCheckHeight, transform.position.z), new Vector3(transform.lossyScale.x / 2 * jumpCheckWidth, 0, transform.lossyScale.z / 2 * jumpCheckWidth), -Vector3.up, Quaternion.identity, jumpCheckHeight + jumpCheckDepth);
+        isGrounded = Physics.BoxCast(new Vector3(transform.position.x, transform.position.y - transform.lossyScale.y / 2 + jumpCheckHeight, transform.position.z), new Vector3(transform.lossyScale.x / 2 * jumpCheckWidth, 0, transform.lossyScale.z / 2 * jumpCheckWidth), -Vector3.up, Quaternion.identity, jumpCheckHeight + jumpCheckDepth, 1, QueryTriggerInteraction.Ignore);
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded && canJump)
         {
