@@ -1,0 +1,1015 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &554282291506189110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7540276223764874581}
+  - component: {fileID: 1102545067039701401}
+  m_Layer: 0
+  m_Name: Walk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7540276223764874581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554282291506189110}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3776304895408554489}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1102545067039701401
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554282291506189110}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1cc5c5bdd09c8d54b98ee9c79153a4b2, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!1 &5508322449269277936
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1360082779679943476}
+  - component: {fileID: 4950789189664327211}
+  m_Layer: 0
+  m_Name: Win
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1360082779679943476
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5508322449269277936}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3776304895408554489}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &4950789189664327211
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5508322449269277936}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 66036f338b500a543b7c8cbdf30f51af, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!1 &6244176179490376778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1326176147861531530}
+  - component: {fileID: 8252726495382604163}
+  m_Layer: 0
+  m_Name: Jump
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1326176147861531530
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6244176179490376778}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3776304895408554489}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &8252726495382604163
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6244176179490376778}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1addf25361a63a54790c4a8796d61117, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!1 &6422649483931968977
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3512093683550321873}
+  - component: {fileID: 3859394014921801380}
+  - component: {fileID: 7646762893435385914}
+  - component: {fileID: 1660066138244803200}
+  - component: {fileID: 5583266253048623183}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3512093683550321873
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6422649483931968977}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3776304895408554489}
+  m_Father: {fileID: 0}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3859394014921801380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6422649483931968977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f72ba36626c1d34db582a565b4ea6cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0
+  start: 0
+  gameStarted: 0
+  win: 0
+  topFloor: {fileID: 0}
+  floorPrefab: {fileID: 9191136599878945222, guid: c68bafd80ae25d54bb63c5ef0e6e7715, type: 3}
+--- !u!114 &7646762893435385914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6422649483931968977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ad736e8809b344d97af00cb0e82b12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seed: 0
+  randomizeSeed: 1
+  seedMinimum: -2147483647
+  seedMaximum: 2147483647
+  StartFunctions:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1660066138244803200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6422649483931968977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b401a15bdec2734488f9ba90a7257c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allModules:
+  - name: Ladder Left
+    prefab: {fileID: 7662628132229268138, guid: dac8b1a5198a3114082a8455d1284e3b, type: 3}
+    spawnRate: 0.3
+    exclusiveModules: []
+    numberOfSpawns: 3
+    spawnPositionOffset: {x: 0, y: 0, z: 0}
+    spawnRotationOffset: {x: 0, y: 0, z: 0}
+    spawnScale: {x: 1, y: 1, z: 1}
+    randomizeTransform: 0
+    spawnPositionOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnPositionOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnScaleMinimum: {x: 0, y: 0, z: 0}
+    spawnScaleMaximum: {x: 0, y: 0, z: 0}
+  - name: Ladder Right
+    prefab: {fileID: 6363887031134713574, guid: 2bb6132521cca8b47936a134af9a676d, type: 3}
+    spawnRate: 0.3
+    exclusiveModules: []
+    numberOfSpawns: 3
+    spawnPositionOffset: {x: 0, y: 0, z: 0}
+    spawnRotationOffset: {x: 0, y: 0, z: 0}
+    spawnScale: {x: 1, y: 1, z: 1}
+    randomizeTransform: 0
+    spawnPositionOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnPositionOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnScaleMinimum: {x: 0, y: 0, z: 0}
+    spawnScaleMaximum: {x: 0, y: 0, z: 0}
+  - name: Ladder Both
+    prefab: {fileID: 5368631290902294397, guid: e4112520e6073924992eab727de9361c, type: 3}
+    spawnRate: 0.3
+    exclusiveModules: []
+    numberOfSpawns: 3
+    spawnPositionOffset: {x: 0, y: 0, z: 0}
+    spawnRotationOffset: {x: 0, y: 0, z: 0}
+    spawnScale: {x: 1, y: 1, z: 1}
+    randomizeTransform: 0
+    spawnPositionOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnPositionOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnScaleMinimum: {x: 0, y: 0, z: 0}
+    spawnScaleMaximum: {x: 0, y: 0, z: 0}
+  - name: Jump Blocker
+    prefab: {fileID: 8456808153017480784, guid: 45d6795faa26d364ea1b12e52695c291, type: 3}
+    spawnRate: 0.3
+    exclusiveModules: []
+    numberOfSpawns: 3
+    spawnPositionOffset: {x: 0, y: 0, z: 0}
+    spawnRotationOffset: {x: 0, y: 0, z: 0}
+    spawnScale: {x: 1, y: 1, z: 1}
+    randomizeTransform: 0
+    spawnPositionOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnPositionOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnScaleMinimum: {x: 0, y: 0, z: 0}
+    spawnScaleMaximum: {x: 0, y: 0, z: 0}
+  - name: Wide Blocker
+    prefab: {fileID: 4492653790060648473, guid: e24bc810d81a6d04ea77f2548a8ee34f, type: 3}
+    spawnRate: 0.3
+    exclusiveModules:
+    - exclusiveModuleName: Web Blocker
+      spawnModifier: -0.3
+      description: 
+    numberOfSpawns: 1
+    spawnPositionOffset: {x: 0, y: 0, z: 0}
+    spawnRotationOffset: {x: 0, y: 0, z: 0}
+    spawnScale: {x: 1, y: 1, z: 1}
+    randomizeTransform: 0
+    spawnPositionOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnPositionOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnScaleMinimum: {x: 0, y: 0, z: 0}
+    spawnScaleMaximum: {x: 0, y: 0, z: 0}
+  - name: Web Blocker
+    prefab: {fileID: 4281103302625474972, guid: 70172dd2740f8db45a2f1a8cb7a681a0, type: 3}
+    spawnRate: 0.3
+    exclusiveModules:
+    - exclusiveModuleName: Stagger Web Right
+      spawnModifier: -0.15
+      description: 
+    - exclusiveModuleName: Stagger Web Left
+      spawnModifier: -0.15
+      description: 
+    - exclusiveModuleName: Jump Web Right
+      spawnModifier: -0.15
+      description: 
+    - exclusiveModuleName: Web Right
+      spawnModifier: -0.15
+      description: 
+    - exclusiveModuleName: Wide Blocker
+      spawnModifier: -0.3
+      description: 
+    numberOfSpawns: 1
+    spawnPositionOffset: {x: 0, y: 0, z: 0}
+    spawnRotationOffset: {x: 0, y: 0, z: 0}
+    spawnScale: {x: 1, y: 1, z: 1}
+    randomizeTransform: 0
+    spawnPositionOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnPositionOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnScaleMinimum: {x: 0, y: 0, z: 0}
+    spawnScaleMaximum: {x: 0, y: 0, z: 0}
+  - name: Stagger Left
+    prefab: {fileID: 4848435002661634706, guid: 4c5ba6f29137fad408d7a70708c62c63, type: 3}
+    spawnRate: 0.3
+    exclusiveModules: []
+    numberOfSpawns: 3
+    spawnPositionOffset: {x: 0, y: 0, z: 0}
+    spawnRotationOffset: {x: 0, y: 0, z: 0}
+    spawnScale: {x: 1, y: 1, z: 1}
+    randomizeTransform: 0
+    spawnPositionOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnPositionOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnScaleMinimum: {x: 0, y: 0, z: 0}
+    spawnScaleMaximum: {x: 0, y: 0, z: 0}
+  - name: Stagger Right
+    prefab: {fileID: 664486755148297047, guid: 371080c8d1495e6429cf695776e1467d, type: 3}
+    spawnRate: 0.3
+    exclusiveModules: []
+    numberOfSpawns: 3
+    spawnPositionOffset: {x: 0, y: 0, z: 0}
+    spawnRotationOffset: {x: 0, y: 0, z: 0}
+    spawnScale: {x: 1, y: 1, z: 1}
+    randomizeTransform: 0
+    spawnPositionOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnPositionOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnScaleMinimum: {x: 0, y: 0, z: 0}
+    spawnScaleMaximum: {x: 0, y: 0, z: 0}
+  - name: Stagger Web Left
+    prefab: {fileID: 1338924123858574939, guid: d52d1843c47667248b574900935cd7d2, type: 3}
+    spawnRate: 0.3
+    exclusiveModules:
+    - exclusiveModuleName: Web Blocker
+      spawnModifier: -0.15
+      description: 
+    - exclusiveModuleName: Stagger Web Right
+      spawnModifier: -0.15
+      description: 
+    - exclusiveModuleName: Stagger Web Left
+      spawnModifier: -0.15
+      description: 
+    - exclusiveModuleName: Jump Web Right
+      spawnModifier: -0.15
+      description: 
+    - exclusiveModuleName: Web Right
+      spawnModifier: -0.15
+      description: 
+    numberOfSpawns: 3
+    spawnPositionOffset: {x: 0, y: 0, z: 0}
+    spawnRotationOffset: {x: 0, y: 0, z: 0}
+    spawnScale: {x: 1, y: 1, z: 1}
+    randomizeTransform: 0
+    spawnPositionOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnPositionOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnScaleMinimum: {x: 0, y: 0, z: 0}
+    spawnScaleMaximum: {x: 0, y: 0, z: 0}
+  - name: Stagger Web Right
+    prefab: {fileID: 2052674095200079357, guid: 113f47e518779bc4aa38503193f24ae3, type: 3}
+    spawnRate: 0.3
+    exclusiveModules:
+    - exclusiveModuleName: Web Blocker
+      spawnModifier: -0.15
+      description: 
+    - exclusiveModuleName: Stagger Web Right
+      spawnModifier: -0.15
+      description: 
+    - exclusiveModuleName: Stagger Web Left
+      spawnModifier: -0.15
+      description: 
+    - exclusiveModuleName: Jump Web Right
+      spawnModifier: -0.15
+      description: 
+    - exclusiveModuleName: Web Right
+      spawnModifier: -0.15
+      description: 
+    numberOfSpawns: 3
+    spawnPositionOffset: {x: 0, y: 0, z: 0}
+    spawnRotationOffset: {x: 0, y: 0, z: 0}
+    spawnScale: {x: 1, y: 1, z: 1}
+    randomizeTransform: 0
+    spawnPositionOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnPositionOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnScaleMinimum: {x: 0, y: 0, z: 0}
+    spawnScaleMaximum: {x: 0, y: 0, z: 0}
+  - name: Jump Left
+    prefab: {fileID: 5009984426253233013, guid: 9a3e8ac245b7b5d43853cb3135ef0b6c, type: 3}
+    spawnRate: 0.3
+    exclusiveModules: []
+    numberOfSpawns: 3
+    spawnPositionOffset: {x: 0, y: 0, z: 0}
+    spawnRotationOffset: {x: 0, y: 0, z: 0}
+    spawnScale: {x: 1, y: 1, z: 1}
+    randomizeTransform: 0
+    spawnPositionOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnPositionOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnScaleMinimum: {x: 0, y: 0, z: 0}
+    spawnScaleMaximum: {x: 0, y: 0, z: 0}
+  - name: Jump Web Left
+    prefab: {fileID: 7484220359882366415, guid: b61fccfba6625fa4eb6a2b7e94c1855f, type: 3}
+    spawnRate: 0.3
+    exclusiveModules:
+    - exclusiveModuleName: Web Blocker
+      spawnModifier: -0.15
+      description: 
+    - exclusiveModuleName: Stagger Web Right
+      spawnModifier: -0.15
+      description: 
+    - exclusiveModuleName: Stagger Web Left
+      spawnModifier: -0.15
+      description: 
+    - exclusiveModuleName: Jump Web Right
+      spawnModifier: -0.15
+      description: 
+    - exclusiveModuleName: Web Right
+      spawnModifier: -0.15
+      description: 
+    numberOfSpawns: 3
+    spawnPositionOffset: {x: 0, y: 0, z: 0}
+    spawnRotationOffset: {x: 0, y: 0, z: 0}
+    spawnScale: {x: 1, y: 1, z: 1}
+    randomizeTransform: 0
+    spawnPositionOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnPositionOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnScaleMinimum: {x: 0, y: 0, z: 0}
+    spawnScaleMaximum: {x: 0, y: 0, z: 0}
+  - name: Jump
+    prefab: {fileID: 5011015908379663619, guid: 8a8c51d52eb2ad448a318805bc4da310, type: 3}
+    spawnRate: 0.3
+    exclusiveModules: []
+    numberOfSpawns: 3
+    spawnPositionOffset: {x: 0, y: 0, z: 0}
+    spawnRotationOffset: {x: 0, y: 0, z: 0}
+    spawnScale: {x: 1, y: 1, z: 1}
+    randomizeTransform: 0
+    spawnPositionOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnPositionOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnScaleMinimum: {x: 0, y: 0, z: 0}
+    spawnScaleMaximum: {x: 0, y: 0, z: 0}
+  - name: Jump Web
+    prefab: {fileID: 6938964429776072396, guid: 0329d7b2dc633c3419ba18529cc3b35d, type: 3}
+    spawnRate: 0.3
+    exclusiveModules:
+    - exclusiveModuleName: Web Blocker
+      spawnModifier: -0.15
+      description: 
+    - exclusiveModuleName: Stagger Web Right
+      spawnModifier: -0.15
+      description: 
+    - exclusiveModuleName: Stagger Web Left
+      spawnModifier: -0.15
+      description: 
+    - exclusiveModuleName: Jump Web Right
+      spawnModifier: -0.15
+      description: 
+    - exclusiveModuleName: Web Right
+      spawnModifier: -0.15
+      description: 
+    numberOfSpawns: 3
+    spawnPositionOffset: {x: 0, y: 0, z: 0}
+    spawnRotationOffset: {x: 0, y: 0, z: 0}
+    spawnScale: {x: 1, y: 1, z: 1}
+    randomizeTransform: 0
+    spawnPositionOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnPositionOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnScaleMinimum: {x: 0, y: 0, z: 0}
+    spawnScaleMaximum: {x: 0, y: 0, z: 0}
+  - name: Jump Right
+    prefab: {fileID: 3086816828193134581, guid: e105a721217d2f1419ef9adad0709b3f, type: 3}
+    spawnRate: 0.3
+    exclusiveModules: []
+    numberOfSpawns: 3
+    spawnPositionOffset: {x: 0, y: 0, z: 0}
+    spawnRotationOffset: {x: 0, y: 0, z: 0}
+    spawnScale: {x: 1, y: 1, z: 1}
+    randomizeTransform: 0
+    spawnPositionOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnPositionOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnScaleMinimum: {x: 0, y: 0, z: 0}
+    spawnScaleMaximum: {x: 0, y: 0, z: 0}
+  - name: Jump Web Right
+    prefab: {fileID: 6283376177873782628, guid: 299bc4919398fad4894d1c1606b4eb04, type: 3}
+    spawnRate: 0.3
+    exclusiveModules:
+    - exclusiveModuleName: Web Blocker
+      spawnModifier: -0.15
+      description: 
+    - exclusiveModuleName: Stagger Web Right
+      spawnModifier: -0.15
+      description: 
+    - exclusiveModuleName: Stagger Web Left
+      spawnModifier: -0.15
+      description: 
+    - exclusiveModuleName: Jump Web Right
+      spawnModifier: -0.15
+      description: 
+    - exclusiveModuleName: Web Right
+      spawnModifier: -0.15
+      description: 
+    numberOfSpawns: 3
+    spawnPositionOffset: {x: 0, y: 0, z: 0}
+    spawnRotationOffset: {x: 0, y: 0, z: 0}
+    spawnScale: {x: 1, y: 1, z: 1}
+    randomizeTransform: 0
+    spawnPositionOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnPositionOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnScaleMinimum: {x: 0, y: 0, z: 0}
+    spawnScaleMaximum: {x: 0, y: 0, z: 0}
+  - name: Jump Blocker Full
+    prefab: {fileID: 6511797391195284629, guid: 75a6aa44a03c2224c9771bae93bfc92b, type: 3}
+    spawnRate: 0.3
+    exclusiveModules: []
+    numberOfSpawns: 1
+    spawnPositionOffset: {x: 0, y: 0, z: 0}
+    spawnRotationOffset: {x: 0, y: 0, z: 0}
+    spawnScale: {x: 1, y: 1, z: 1}
+    randomizeTransform: 0
+    spawnPositionOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnPositionOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMinimum: {x: 0, y: 0, z: 0}
+    spawnRotationOffsetMaximum: {x: 0, y: 0, z: 0}
+    spawnScaleMinimum: {x: 0, y: 0, z: 0}
+    spawnScaleMaximum: {x: 0, y: 0, z: 0}
+  sets:
+  - name: Top Floor
+    spawnPoints:
+    - {fileID: 0}
+    - {fileID: 0}
+    useAllModules: 1
+    setModules: []
+  testSpawns: 0
+--- !u!114 &5583266253048623183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6422649483931968977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36fa49bf734b17d45b5b30bed4f5ae2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioCategories:
+  - name: Sounds
+    audio:
+    - Name: Walk
+      Source: {fileID: 1102545067039701401}
+    - Name: Jump
+      Source: {fileID: 8252726495382604163}
+    - Name: Win
+      Source: {fileID: 4950789189664327211}
+    - Name: Lose
+      Source: {fileID: 8754115537528540059}
+  audio: []
+--- !u!1 &7014887688238608687
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3776304895408554489}
+  m_Layer: 0
+  m_Name: Sounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3776304895408554489
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7014887688238608687}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7540276223764874581}
+  - {fileID: 1326176147861531530}
+  - {fileID: 1360082779679943476}
+  - {fileID: 510428577854430913}
+  m_Father: {fileID: 3512093683550321873}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8222234349637259439
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 510428577854430913}
+  - component: {fileID: 8754115537528540059}
+  m_Layer: 0
+  m_Name: Lose
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &510428577854430913
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8222234349637259439}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3776304895408554489}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &8754115537528540059
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8222234349637259439}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3cfbe8f33276d1c4884e35cb3efa9457, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
