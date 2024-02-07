@@ -95,6 +95,12 @@ public static class Pathfinding
         // Loop until our frontier is empty
         while (frontier.Count > 0)
         {
+            // Loop check
+            if (loopCount > 300)
+            {
+                break;
+            }
+
             // Dequeue our current node and increment our number of loops
             current = frontier.Dequeue();
             loopCount++;
@@ -127,9 +133,6 @@ public static class Pathfinding
 
             return new List<Node>();
         }
-
-        // Set our current node to the end node
-        current = end;
 
         // Store our route
         List<Node> route = new List<Node>();
@@ -211,6 +214,12 @@ public static class Pathfinding
         // Loop until our frontier is empty
         while (frontier.Queue.Count > 0)
         {
+            // Loop check
+            if (loopCount > 300)
+            {
+                break;
+            }
+
             // Dequeue our current node and increment our number of loops
             current = frontier.Dequeue();
             loopCount++;
@@ -228,7 +237,7 @@ public static class Pathfinding
                 if (!from.ContainsKey(connection.connectedNode))
                 {
                     // Enqueue our connected node to the frontier based on the heuristic function
-                    frontier.Enqueue(connection.connectedNode, Heuristic(connection.connectedNode, end, loopCount));
+                    frontier.Enqueue(connection.connectedNode, Heuristic(connection.connectedNode, end));
 
                     // Add our connected node as our key and our current node as our value to the dictionary
                     from[connection.connectedNode] = current;
@@ -243,9 +252,6 @@ public static class Pathfinding
 
             return new List<Node>();
         }
-
-        // Set our current node to the end node
-        current = end;
 
         // Store our route
         List<Node> route = new List<Node>();
@@ -279,7 +285,7 @@ public static class Pathfinding
 
     // Calculates a priority value between two nodes from the given heuristic function
     /// The condition to determine whether an element is closer to the goal or not
-    private static float Heuristic(Node current, Node end, int loop)
+    private static float Heuristic(Node current, Node end)
     {
         // HEURISTIC = Squared euclidean distance between two nodes
         float xDistance = current.transform.position.x - end.transform.position.x;
@@ -346,6 +352,12 @@ public static class Pathfinding
         // Loop until our frontier is empty
         while (frontier.Queue.Count > 0)
         {
+            // Loop check
+            if (loopCount > 300)
+            {
+                break;
+            }
+
             // Dequeue our current node and increment our number of loops
             current = frontier.Dequeue();
             loopCount++;
@@ -384,9 +396,6 @@ public static class Pathfinding
 
             return new List<Node>();
         }
-
-        // Set our current node to the end node
-        current = end;
 
         // Store our route
         List<Node> route = new List<Node>();
@@ -475,6 +484,12 @@ public static class Pathfinding
         // Loop until our frontier is empty
         while (frontier.Queue.Count > 0)
         {
+            // Loop check
+            if (loopCount > 300)
+            {
+                break;
+            }
+
             // Dequeue our current node and increment our number of loops
             current = frontier.Dequeue();
             loopCount++;
@@ -498,7 +513,7 @@ public static class Pathfinding
                     weights[connection.connectedNode] = newCost;
 
                     // Enqueue our connected node to the frontier based on the heuristic function
-                    frontier.Enqueue(connection.connectedNode, newCost + (HeuristicAStar(connection.connectedNode, end, loopCount) * heuristicScale * 2));
+                    frontier.Enqueue(connection.connectedNode, newCost + (HeuristicAStar(connection.connectedNode, end) * heuristicScale * 2));
 
                     // Add our connected node as our key and our current node as our value to the dictionary
                     from[connection.connectedNode] = current;
@@ -546,7 +561,7 @@ public static class Pathfinding
 
     // Calculates a priority value between two nodes from the given heuristic function, used by the A Star Search Algorithm
     /// The condition to determine whether an element is closer to the goal or not
-    private static float HeuristicAStar(Node current, Node end, int loop)
+    private static float HeuristicAStar(Node current, Node end)
     {
         // HEURISTIC = Manhattan distance between two nodes multiplied by the default weight
         float xDistance = current.transform.position.x - end.transform.position.x;
@@ -610,6 +625,12 @@ public static class Pathfinding
         // Loop until our frontier is empty
         while (frontier.Queue.Count > 0)
         {
+            // Loop check
+            if (loopCount > 300)
+            {
+                break;
+            }
+
             // Dequeue our current node and increment our number of loops
             current = frontier.Dequeue();
             loopCount++;
@@ -627,7 +648,7 @@ public static class Pathfinding
                 if (!from.ContainsKey(connection.connectedNode))
                 {
                     // Enqueue our connected node to the frontier based on the heuristic function
-                    frontier.Enqueue(connection.connectedNode, Heuristic(connection.connectedNode, end, loopCount));
+                    frontier.Enqueue(connection.connectedNode, Heuristic(connection.connectedNode, end));
 
                     // Add our connected node as our key and our current node as our value to the dictionary
                     from[connection.connectedNode] = current;
@@ -642,9 +663,6 @@ public static class Pathfinding
 
             return new List<Node>();
         }
-
-        // Set our current node to the end node
-        current = end;
 
         // Store our route
         List<Node> route = new List<Node>();
@@ -733,6 +751,12 @@ public static class Pathfinding
         // Loop until our frontier is empty
         while (frontier.Queue.Count > 0)
         {
+            // Loop check
+            if (loopCount > 300)
+            {
+                break;
+            }
+
             // Dequeue our current node and increment our number of loops
             current = frontier.Dequeue();
             loopCount++;
@@ -771,9 +795,6 @@ public static class Pathfinding
 
             return new List<Node>();
         }
-
-        // Set our current node to the end node
-        current = end;
 
         // Store our route
         List<Node> route = new List<Node>();
@@ -855,6 +876,12 @@ public static class Pathfinding
         // Loop until our frontier is empty
         while (frontier.Count > 0)
         {
+            // Loop check
+            if (loopCount > 300)
+            {
+                break;
+            }
+
             // Dequeue our current node and increment our number of loops
             current = frontier.First.Value;
             frontier.RemoveFirst();
@@ -888,9 +915,6 @@ public static class Pathfinding
 
             return new List<Node>();
         }
-
-        // Set our current node to the end node
-        current = end;
 
         // Store our route
         List<Node> route = new List<Node>();
@@ -972,6 +996,12 @@ public static class Pathfinding
         // Loop until our frontier is empty
         while (frontier.Queue.Count > 0)
         {
+            // Loop check
+            if (loopCount > 300)
+            {
+                break;
+            }
+
             // Dequeue our current node and increment our number of loops
             current = frontier.Dequeue();
             loopCount++;
@@ -1002,7 +1032,7 @@ public static class Pathfinding
                 PriorityQueue<Node> heuristicSort = new PriorityQueue<Node>();
                 foreach (PriorityQueueElement<Node> node in frontier.Queue)
                 {
-                    heuristicSort.Enqueue(node.data, Heuristic(node.data, end, loopCount));
+                    heuristicSort.Enqueue(node.data, Heuristic(node.data, end));
                 }
 
                 while (heuristicSort.Queue.Count > beamWidth)
@@ -1020,9 +1050,6 @@ public static class Pathfinding
 
             return new List<Node>();
         }
-
-        // Set our current node to the end node
-        current = end;
 
         // Store our route
         List<Node> route = new List<Node>();
@@ -1106,6 +1133,12 @@ public static class Pathfinding
         // Loop until our frontier is empty
         while (frontier.Queue.Count > 0)
         {
+            // Loop check
+            if (loopCount > 300)
+            {
+                break;
+            }
+
             // Dequeue our latest node and increment our number of loops
             current = frontier.Queue.Last.Value.data;
             frontier.Queue.RemoveLast();
@@ -1124,7 +1157,7 @@ public static class Pathfinding
                 if (!from.ContainsKey(connection.connectedNode))
                 {
                     // Enqueue our connected node to the frontier based on the heuristic function
-                    frontier.Enqueue(connection.connectedNode, Heuristic(connection.connectedNode, end, loopCount));
+                    frontier.Enqueue(connection.connectedNode, Heuristic(connection.connectedNode, end));
 
                     // Add our connected node as our key and our current node as our value to the dictionary
                     from[connection.connectedNode] = current;
@@ -1139,9 +1172,6 @@ public static class Pathfinding
 
             return new List<Node>();
         }
-
-        // Set our current node to the end node
-        current = end;
 
         // Store our route
         List<Node> route = new List<Node>();
