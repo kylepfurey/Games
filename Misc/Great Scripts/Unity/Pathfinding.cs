@@ -283,18 +283,6 @@ public static class Pathfinding
         return route;
     }
 
-    // Calculates a priority value between two nodes from the given heuristic function
-    /// The condition to determine whether an element is closer to the goal or not
-    private static float Heuristic(Node current, Node end)
-    {
-        // HEURISTIC = Squared euclidean distance between two nodes
-        float xDistance = current.transform.position.x - end.transform.position.x;
-        float yDistance = current.transform.position.y - end.transform.position.y;
-        float zDistance = current.transform.position.z - end.transform.position.z;
-
-        return (xDistance * xDistance + yDistance * yDistance + zDistance * zDistance);
-    }
-
     // Starting from the start node, returns a list of nodes representing a route to the ending node using Dijkstra's Search Algorithm
     /// Searches every possible node from oldest to newest but queues nodes with less weight first, and recalculates routes if a faster way to a node is found. Guarantees the fastest and least resistant route but increases in time exponentially
     public static List<Node> DijkstraSearch(Node start, Node end)
@@ -513,7 +501,7 @@ public static class Pathfinding
                     weights[connection.connectedNode] = newCost;
 
                     // Enqueue our connected node to the frontier based on the heuristic function
-                    frontier.Enqueue(connection.connectedNode, newCost + (HeuristicAStar(connection.connectedNode, end) * heuristicScale * 2));
+                    frontier.Enqueue(connection.connectedNode, newCost + (Heuristic(connection.connectedNode, end) * heuristicScale * 2));
 
                     // Add our connected node as our key and our current node as our value to the dictionary
                     from[connection.connectedNode] = current;
@@ -559,9 +547,9 @@ public static class Pathfinding
         return route;
     }
 
-    // Calculates a priority value between two nodes from the given heuristic function, used by the A Star Search Algorithm
+    // Calculates a priority value between two nodes from the given heuristic function
     /// The condition to determine whether an element is closer to the goal or not
-    private static float HeuristicAStar(Node current, Node end)
+    private static float Heuristic(Node current, Node end)
     {
         // HEURISTIC = Manhattan distance between two nodes multiplied by the default weight
         float xDistance = current.transform.position.x - end.transform.position.x;
@@ -570,6 +558,16 @@ public static class Pathfinding
         float heuristic = Mathf.Abs(xDistance) + Mathf.Abs(yDistance) + Mathf.Abs(zDistance);
 
         return heuristic;
+
+        /*
+        // HEURISTIC = Squared euclidean distance between two nodes
+        float xDistance = current.transform.position.x - end.transform.position.x;
+        float yDistance = current.transform.position.y - end.transform.position.y;
+        float zDistance = current.transform.position.z - end.transform.position.z;
+        float heuristic = xDistance * xDistance + yDistance * yDistance + zDistance * zDistance;
+
+        return heuristic;
+        */
     }
 
 
