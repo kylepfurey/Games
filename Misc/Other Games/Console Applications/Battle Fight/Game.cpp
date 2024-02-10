@@ -251,7 +251,7 @@ std::string Game::EndRound()
 					allTurns += enemy->GetName() + " died.\n\n";
 				}
 				else
-				{					
+				{
 					allTurns += std::to_string(currentTurn) + ". ";
 
 					allTurns += playerName + " attacked " + enemy->GetName() + ".\n\n";
@@ -343,7 +343,10 @@ void Game::StartRound()
 
 		for (int i = 0; i < playerCount; i++)
 		{
-			Turn(i);
+			if (currentPlayerPtr->IsAlive())
+			{
+				Turn(i);
+			}
 
 			currentPlayerPtr++;
 		}
@@ -353,6 +356,8 @@ void Game::StartRound()
 		winningPlayer = EndRound();
 
 		allPlayers = "\n================================================================================================\n\n\nF I G H T !\n\n\nREMAINING PLAYERS:\n";
+
+		remainingPlayers = playerCount;
 
 		for (int i = 0; i < playerCount; i++)
 		{
