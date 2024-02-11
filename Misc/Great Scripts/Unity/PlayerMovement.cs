@@ -1,7 +1,6 @@
 
 // Player Movement Template Script
-// Made for educational purposes.
-// Copyright © 2023 by Kyle Furey
+// by Kyle Furey
 
 using UnityEngine;
 using UnityEngine.SceneManagement;

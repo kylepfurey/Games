@@ -1,7 +1,6 @@
 
 // Random Seed Generator Script
-// Made for educational purposes.
-// Copyright © 2024 by Kyle Furey
+// by Kyle Furey
 
 using UnityEngine;
 using UnityEngine.Events;

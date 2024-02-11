@@ -1,7 +1,6 @@
 
 // Randomly Generated Modules Script
-// Made for educational purposes.
-// Copyright © 2024 by Kyle Furey
+// by Kyle Furey
 
 using System.Collections.Generic;
 using UnityEngine;
