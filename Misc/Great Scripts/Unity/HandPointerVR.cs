@@ -1,7 +1,3 @@
-
-// VR Hand Pointing Script
-// by Kyle Furey
-
 using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine;
@@ -16,9 +12,14 @@ public class HandPointerVR : MonoBehaviour
     [Header("The player's body GameObject:")]
     [SerializeField] private GameObject player = null;
 
-    [Header("The objects that represent the player's hands:")]
-    [SerializeField] private GameObject leftHand = null;
-    [SerializeField] private GameObject rightHand = null;
+    [Header("The parent object of the player's tracked hands:")]
+    [SerializeField] private GameObject handParentObject = null;
+
+    [Header("The names of the hand objects to be stored as the player's tracked hands:")]
+    [SerializeField] private string leftHandObjectName = "L_Wrist";
+    [SerializeField] private string rightHandObjectName = "R_Wrist";
+    [HideInInspector] public GameObject leftHand = null;
+    [HideInInspector] public GameObject rightHand = null;
 
     // Whether the player's hands are currently in a pointing state
     private bool isPointingRight = false;
@@ -54,6 +55,22 @@ public class HandPointerVR : MonoBehaviour
     [SerializeField] private Image[] sliderImages = null;
     [SerializeField] private float sliderFadeSpeed = 300;
 
+    // Sets the left hand object (call when the left hand spawns)
+    public void SetLeftHand()
+    {
+        leftHand = handParentObject.transform.Find(leftHandObjectName).gameObject;
+
+        print("Left hand spawned! Object name is " + leftHand.name + ".");
+    }
+
+    // Sets the right hand object (call when the right hand spawns)
+    public void SetRightHand()
+    {
+        rightHand = handParentObject.transform.Find(rightHandObjectName).gameObject;
+
+        print("Right hand spawned! Object name is " + rightHand.name + ".");
+    }
+
     private void Start()
     {
         // Hide the slider
@@ -65,23 +82,27 @@ public class HandPointerVR : MonoBehaviour
 
     private void Update()
     {
-        // DEBUGGING KEYS
-
-        isPointingLeft = Input.GetKey(KeyCode.Alpha1);
-        isPointingRight = Input.GetKey(KeyCode.Alpha2);
-
-
-        // TELEPORTATION
-
-        // Teleportation with right hand
-        if (canTeleportRight && isPointingRight)
+        // Check the player's hands
+        if (leftHand != null && rightHand != null)
         {
-            CheckTeleport(isPointingRight, rightHand.transform.position, rightHand.transform.rotation);
-        }
-        // Teleportation with left hand
-        else if (canTeleportLeft)
-        {
-            CheckTeleport(isPointingLeft, leftHand.transform.position, leftHand.transform.rotation);
+            // DEBUGGING KEYS
+
+            isPointingLeft = Input.GetKey(KeyCode.Alpha1);
+            isPointingRight = Input.GetKey(KeyCode.Alpha2);
+
+
+            // TELEPORTATION
+
+            // Teleportation with right hand
+            if (canTeleportRight && isPointingRight)
+            {
+                CheckTeleport(isPointingRight, rightHand.transform.position, rightHand.transform.rotation);
+            }
+            // Teleportation with left hand
+            else if (canTeleportLeft)
+            {
+                CheckTeleport(isPointingLeft, leftHand.transform.position, leftHand.transform.rotation);
+            }
         }
     }
 
@@ -94,6 +115,9 @@ public class HandPointerVR : MonoBehaviour
         // Is the player pointing
         if (isPointing && !isTeleporting)
         {
+            // Draw the pointing direction
+            Debug.DrawRay(aimPosition, aimRotation * Vector3.forward, Color.green);
+
             // Does the player hit something
             if (Physics.Raycast(aimPosition, aimRotation * Vector3.forward, out hit, 100, ~(0 >> 1), QueryTriggerInteraction.Collide))
             {

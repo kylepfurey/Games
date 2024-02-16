@@ -81,18 +81,11 @@ public class PlayerMovement : MonoBehaviour
             Jumping();
             Sprinting();
             Crouching();
-        }
-
-        RestartAndExit();
-    }
-
-    private void FixedUpdate()
-    {
-        if (active)
-        {
             Movement();
             CameraRotation();
         }
+
+        RestartAndExit();
     }
 
     private void Initalize()

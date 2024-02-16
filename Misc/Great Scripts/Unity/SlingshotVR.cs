@@ -1,7 +1,3 @@
-
-// VR Slingshot Script
-// by Kyle Furey
-
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
@@ -16,9 +12,14 @@ public class SlingshotVR : MonoBehaviour
     [Header("Whether the player has the slingshot:")]
     [SerializeField] private bool hasSlingshot = true;
 
-    [Header("The objects that represent the player's hands:")]
-    [SerializeField] private GameObject leftHand = null;
-    [SerializeField] private GameObject rightHand = null;
+    [Header("The parent object of the player's tracked hands:")]
+    [SerializeField] private GameObject handParentObject = null;
+
+    [Header("The names of the hand objects to be stored as the player's tracked hands:")]
+    [SerializeField] private string leftHandObjectName = "L_Wrist";
+    [SerializeField] private string rightHandObjectName = "R_Wrist";
+    [HideInInspector] public GameObject leftHand = null;
+    [HideInInspector] public GameObject rightHand = null;
 
     // Whether the player's hands are currently in a pinching state
     private bool isPinchingRight = false;
@@ -70,6 +71,22 @@ public class SlingshotVR : MonoBehaviour
     // The current slingshot state
     public enum SlingshotState { Unloaded, LoadedRight, LoadedLeft };
 
+    // Sets the left hand object (call when the left hand spawns)
+    public void SetLeftHand()
+    {
+        leftHand = handParentObject.transform.Find(leftHandObjectName).gameObject;
+
+        print("Left hand spawned! Object name is " + leftHand.name + ".");
+    }
+
+    // Sets the right hand object (call when the right hand spawns)
+    public void SetRightHand()
+    {
+        rightHand = handParentObject.transform.Find(rightHandObjectName).gameObject;
+
+        print("Right hand spawned! Object name is " + rightHand.name + ".");
+    }
+
     private void Start()
     {
         // Disable slingshot and crosshair
@@ -80,106 +97,110 @@ public class SlingshotVR : MonoBehaviour
 
     private void Update()
     {
-        // PINCHING INPUT
-
-        onPinchRight = !isPinchingRight;
-
-        // DEBUGGING
-        isPinchingRight = Input.GetKey(KeyCode.Alpha4);
-
-        onPinchLeft = !isPinchingLeft;
-
-        // DEBUGGING
-        isPinchingLeft = Input.GetKey(KeyCode.Alpha3);
-
-
-        // SLINGSHOT
-
-        // Slingshot logic based on slingshot state
-        if (hasSlingshot)
+        // Check the player's hands
+        if (leftHand != null && rightHand != null)
         {
-            if (slingshotState == SlingshotState.Unloaded)
+            // PINCHING INPUT
+
+            onPinchRight = !isPinchingRight;
+
+            // DEBUGGING
+            isPinchingRight = Input.GetKey(KeyCode.Alpha4);
+
+            onPinchLeft = !isPinchingLeft;
+
+            // DEBUGGING
+            isPinchingLeft = Input.GetKey(KeyCode.Alpha3);
+
+
+            // SLINGSHOT
+
+            // Slingshot logic based on slingshot state
+            if (hasSlingshot)
             {
-                // Loading slingshot by pinching
-                if (pinchWithRightHand && isPinchingRight && onPinchRight)
+                if (slingshotState == SlingshotState.Unloaded)
                 {
-                    if (!mustPinchWithOneHand || !isPinchingLeft)
+                    // Loading slingshot by pinching
+                    if (pinchWithRightHand && isPinchingRight && onPinchRight)
                     {
-                        // Pinching with right hand
-                        if (PinchCheck(rightHand, leftHand))
+                        if (!mustPinchWithOneHand || !isPinchingLeft)
                         {
-                            // Loading the slingshot
-                            LoadSlingshot(rightHand, true);
+                            // Pinching with right hand
+                            if (PinchCheck(rightHand, leftHand))
+                            {
+                                // Loading the slingshot
+                                LoadSlingshot(rightHand, true);
 
-                            AimSlingshot(rightHand, leftHand);
+                                AimSlingshot(rightHand, leftHand);
+                            }
                         }
                     }
-                }
-                else if (pinchWithLeftHand && isPinchingLeft && onPinchLeft)
-                {
-                    if (!mustPinchWithOneHand || !isPinchingRight)
+                    else if (pinchWithLeftHand && isPinchingLeft && onPinchLeft)
                     {
-                        // Pinching with left hand
-                        if (PinchCheck(leftHand, rightHand))
+                        if (!mustPinchWithOneHand || !isPinchingRight)
                         {
-                            // Loading the slingshot
-                            LoadSlingshot(leftHand, false);
+                            // Pinching with left hand
+                            if (PinchCheck(leftHand, rightHand))
+                            {
+                                // Loading the slingshot
+                                LoadSlingshot(leftHand, false);
 
-                            AimSlingshot(leftHand, rightHand);
+                                AimSlingshot(leftHand, rightHand);
+                            }
                         }
                     }
-                }
 
-                // Fade the slider out
+                    // Fade the slider out
+                    for (int i = 0; i < sliderImages.Length; i++)
+                    {
+                        sliderImages[i].color = new Vector4(sliderImages[i].color.r, sliderImages[i].color.g, sliderImages[i].color.b, Mathf.Min(sliderImages[i].color.a - (sliderFadeSpeed * Time.deltaTime / 255), 1));
+                    }
+                }
+                else if (slingshotState == SlingshotState.LoadedRight)
+                {
+                    if (isPinchingRight)
+                    {
+                        // Aiming slingshot (right moving towards left)
+                        AimSlingshot(rightHand, leftHand);
+                    }
+                    else
+                    {
+                        // Shooting slingshot (right moving towards left)
+                        ShootSlingshot(rightHand, leftHand);
+                    }
+
+                    UpdateSlider(leftHand);
+                }
+                else
+                {
+                    if (isPinchingLeft)
+                    {
+                        // Aiming slingshot (left moving towards right)
+                        AimSlingshot(leftHand, rightHand);
+                    }
+                    else
+                    {
+                        // Shooting slingshot (left moving towards right)
+                        ShootSlingshot(leftHand, rightHand);
+                    }
+
+                    UpdateSlider(rightHand);
+                }
+            }
+            else if (slungRigidbody != null)
+            {
+                slingshotState = SlingshotState.Unloaded;
+
+                slingshot.active = false;
+
+                crosshair.active = false;
+
+                Destroy(slungRigidbody.gameObject);
+
                 for (int i = 0; i < sliderImages.Length; i++)
                 {
-                    sliderImages[i].color = new Vector4(sliderImages[i].color.r, sliderImages[i].color.g, sliderImages[i].color.b, Mathf.Min(sliderImages[i].color.a - (sliderFadeSpeed * Time.deltaTime / 255), 1));
+                    sliderImages[i].color = new Vector4(sliderImages[i].color.r, sliderImages[i].color.g, sliderImages[i].color.b, 0);
                 }
-            }
-            else if (slingshotState == SlingshotState.LoadedRight)
-            {
-                if (isPinchingRight)
-                {
-                    // Aiming slingshot (right moving towards left)
-                    AimSlingshot(rightHand, leftHand);
-                }
-                else
-                {
-                    // Shooting slingshot (right moving towards left)
-                    ShootSlingshot(rightHand, leftHand);
-                }
-
-                UpdateSlider(leftHand);
-            }
-            else
-            {
-                if (isPinchingLeft)
-                {
-                    // Aiming slingshot (left moving towards right)
-                    AimSlingshot(leftHand, rightHand);
-                }
-                else
-                {
-                    // Shooting slingshot (left moving towards right)
-                    ShootSlingshot(leftHand, rightHand);
-                }
-
-                UpdateSlider(rightHand);
-            }
-        }
-        else if (slungRigidbody != null)
-        {
-            slingshotState = SlingshotState.Unloaded;
-
-            slingshot.active = false;
-
-            crosshair.active = false;
-
-            Destroy(slungRigidbody.gameObject);
-
-            for (int i = 0; i < sliderImages.Length; i++)
-            {
-                sliderImages[i].color = new Vector4(sliderImages[i].color.r, sliderImages[i].color.g, sliderImages[i].color.b, 0);
             }
         }
     }
