@@ -5,55 +5,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// A component that allows easy access to play sounds.
 public class AudioManager : MonoBehaviour
 {
-    public AudioCategory[] audioCategories;
-    [HideInInspector] public AudioInstance[] audio;
+    [Header("A component that allows easy access to play sounds.")]
 
-    // Audio Instance Class
-    [System.Serializable]
-    public class AudioInstance
+    public List<AudioCategory> audioCategories = new List<AudioCategory>();
+
+    private List<AudioInstance> audio = new List<AudioInstance>();
+
+    private void Awake()
     {
-        public string Name;
-        public AudioSource Source;
-    }
-
-    // Audio Category Class
-    [System.Serializable]
-    public class AudioCategory
-    {
-        public string name;
-        public AudioInstance[] audio;
-    }
-
-    private void Start()
-    {
-        // Cumulate Audio Instances in One Array
-        List<AudioInstance> list = new List<AudioInstance>();
-
-        foreach (AudioCategory category in audioCategories)
+        // Compile all audio categories into one list of audio instances
+        foreach (AudioCategory audioCategory in audioCategories)
         {
-            foreach (AudioInstance sound in category.audio)
+            foreach (AudioInstance audioInstance in audioCategory.audio)
             {
-                list.Add(sound);
+                audio.Add(audioInstance);
+            }
+        }
+    }
+
+    // Get a sound instance by name
+    public AudioSource Get(string sound)
+    {
+        for (int i = 0; i < audio.Count; i++)
+        {
+            if (sound.ToLower() == audio[i].name.ToLower() && audio[i] != null)
+            {
+                return audio[i].source;
             }
         }
 
-        audio = list.ToArray();
-
-        list.Clear();
+        return null;
     }
 
     // Start playing a sound
     public void Play(string sound)
     {
-        for (int i = 0; i < audio.Length; i++)
+        for (int i = 0; i < audio.Count; i++)
         {
-            if (sound.ToLower() == audio[i].Name.ToLower() && audio[i] != null && audio[i].Source.clip != null)
+            if (sound.ToLower() == audio[i].name.ToLower() && audio[i] != null && audio[i].source.clip != null)
             {
-                audio[i].Source.Stop();
-                audio[i].Source.time = 0;
-                audio[i].Source.Play();
+                audio[i].source.Stop();
+                audio[i].source.time = 0;
+                audio[i].source.Play();
                 break;
             }
         }
@@ -61,13 +57,13 @@ public class AudioManager : MonoBehaviour
 
     public void Play(string sound, float startTime)
     {
-        for (int i = 0; i < audio.Length; i++)
+        for (int i = 0; i < audio.Count; i++)
         {
-            if (sound.ToLower() == audio[i].Name.ToLower() && audio[i] != null && audio[i].Source.clip != null)
+            if (sound.ToLower() == audio[i].name.ToLower() && audio[i] != null && audio[i].source.clip != null)
             {
-                audio[i].Source.Stop();
-                audio[i].Source.time = startTime;
-                audio[i].Source.Play();
+                audio[i].source.Stop();
+                audio[i].source.time = startTime;
+                audio[i].source.Play();
                 break;
             }
         }
@@ -76,14 +72,14 @@ public class AudioManager : MonoBehaviour
     // Stop playing a designated sound
     public void Stop(string sound)
     {
-        for (int i = 0; i < audio.Length; i++)
+        for (int i = 0; i < audio.Count; i++)
         {
-            if (sound.ToLower() == audio[i].Name.ToLower() && audio[i] != null && audio[i].Source.clip != null)
+            if (sound.ToLower() == audio[i].name.ToLower() && audio[i] != null && audio[i].source.clip != null)
             {
-                if (audio[i].Source.isPlaying)
+                if (audio[i].source.isPlaying)
                 {
-                    audio[i].Source.Stop();
-                    audio[i].Source.time = 0;
+                    audio[i].source.Stop();
+                    audio[i].source.time = 0;
                 }
                 break;
             }
@@ -93,11 +89,11 @@ public class AudioManager : MonoBehaviour
     // Play a sound once
     public void PlayOnce(string sound)
     {
-        for (int i = 0; i < audio.Length; i++)
+        for (int i = 0; i < audio.Count; i++)
         {
-            if (sound.ToLower() == audio[i].Name.ToLower() && audio[i] != null && audio[i].Source.clip != null)
+            if (sound.ToLower() == audio[i].name.ToLower() && audio[i] != null && audio[i].source.clip != null)
             {
-                audio[i].Source.PlayOneShot(audio[i].Source.clip);
+                audio[i].source.PlayOneShot(audio[i].source.clip);
                 break;
             }
         }
@@ -105,35 +101,34 @@ public class AudioManager : MonoBehaviour
 
     public void PlayOnce(string sound, float volume)
     {
-        for (int i = 0; i < audio.Length; i++)
+        for (int i = 0; i < audio.Count; i++)
         {
-            if (sound.ToLower() == audio[i].Name.ToLower() && audio[i] != null && audio[i].Source.clip != null)
+            if (sound.ToLower() == audio[i].name.ToLower() && audio[i] != null && audio[i].source.clip != null)
             {
-                audio[i].Source.PlayOneShot(audio[i].Source.clip, volume);
+                audio[i].source.PlayOneShot(audio[i].source.clip, volume);
                 break;
             }
         }
     }
 
-
     // Play a sound after another sound ends
     public void PlayMusic(string opening, string music)
     {
-        for (int i = 0; i < audio.Length; i++)
+        for (int i = 0; i < audio.Count; i++)
         {
-            if (opening.ToLower() == audio[i].Name.ToLower() && audio[i] != null && audio[i].Source.clip != null)
+            if (opening.ToLower() == audio[i].name.ToLower() && audio[i] != null && audio[i].source.clip != null)
             {
-                audio[i].Source.Stop();
-                audio[i].Source.time = 0;
-                audio[i].Source.Play();
+                audio[i].source.Stop();
+                audio[i].source.time = 0;
+                audio[i].source.Play();
 
-                for (int j = 0; j < audio.Length; j++)
+                for (int j = 0; j < audio.Count; j++)
                 {
-                    if (music.ToLower() == audio[j].Name.ToLower() && audio[j] != null && audio[j].Source.clip != null)
+                    if (music.ToLower() == audio[j].name.ToLower() && audio[j] != null && audio[j].source.clip != null)
                     {
-                        audio[j].Source.Stop();
-                        audio[j].Source.time = 0;
-                        audio[j].Source.PlayDelayed(audio[i].Source.clip.length);
+                        audio[j].source.Stop();
+                        audio[j].source.time = 0;
+                        audio[j].source.PlayDelayed(audio[i].source.clip.length);
                         break;
                     }
                 }
@@ -144,21 +139,21 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(string opening, float openingStartTime, string music)
     {
-        for (int i = 0; i < audio.Length; i++)
+        for (int i = 0; i < audio.Count; i++)
         {
-            if (opening.ToLower() == audio[i].Name.ToLower() && audio[i] != null && audio[i].Source.clip != null)
+            if (opening.ToLower() == audio[i].name.ToLower() && audio[i] != null && audio[i].source.clip != null)
             {
-                audio[i].Source.Stop();
-                audio[i].Source.time = openingStartTime;
-                audio[i].Source.Play();
+                audio[i].source.Stop();
+                audio[i].source.time = openingStartTime;
+                audio[i].source.Play();
 
-                for (int j = 0; j < audio.Length; j++)
+                for (int j = 0; j < audio.Count; j++)
                 {
-                    if (music.ToLower() == audio[j].Name.ToLower() && audio[j] != null && audio[j].Source.clip != null)
+                    if (music.ToLower() == audio[j].name.ToLower() && audio[j] != null && audio[j].source.clip != null)
                     {
-                        audio[j].Source.Stop();
-                        audio[j].Source.time = 0;
-                        audio[j].Source.PlayDelayed(audio[i].Source.clip.length - openingStartTime);
+                        audio[j].source.Stop();
+                        audio[j].source.time = 0;
+                        audio[j].source.PlayDelayed(audio[i].source.clip.length - openingStartTime);
                         break;
                     }
                 }
@@ -169,21 +164,21 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(string opening, string music, float musicStartTime)
     {
-        for (int i = 0; i < audio.Length; i++)
+        for (int i = 0; i < audio.Count; i++)
         {
-            if (opening.ToLower() == audio[i].Name.ToLower() && audio[i] != null && audio[i].Source.clip != null)
+            if (opening.ToLower() == audio[i].name.ToLower() && audio[i] != null && audio[i].source.clip != null)
             {
-                audio[i].Source.Stop();
-                audio[i].Source.time = 0;
-                audio[i].Source.Play();
+                audio[i].source.Stop();
+                audio[i].source.time = 0;
+                audio[i].source.Play();
 
-                for (int j = 0; j < audio.Length; j++)
+                for (int j = 0; j < audio.Count; j++)
                 {
-                    if (music.ToLower() == audio[j].Name.ToLower() && audio[j] != null && audio[j].Source.clip != null)
+                    if (music.ToLower() == audio[j].name.ToLower() && audio[j] != null && audio[j].source.clip != null)
                     {
-                        audio[j].Source.Stop();
-                        audio[j].Source.time = musicStartTime;
-                        audio[j].Source.PlayDelayed(audio[i].Source.clip.length);
+                        audio[j].source.Stop();
+                        audio[j].source.time = musicStartTime;
+                        audio[j].source.PlayDelayed(audio[i].source.clip.length);
                         break;
                     }
                 }
@@ -194,21 +189,21 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(string opening, float openingStartTime, string music, float musicStartTime)
     {
-        for (int i = 0; i < audio.Length; i++)
+        for (int i = 0; i < audio.Count; i++)
         {
-            if (opening.ToLower() == audio[i].Name.ToLower() && audio[i] != null && audio[i].Source.clip != null)
+            if (opening.ToLower() == audio[i].name.ToLower() && audio[i] != null && audio[i].source.clip != null)
             {
-                audio[i].Source.Stop();
-                audio[i].Source.time = openingStartTime;
-                audio[i].Source.Play();
+                audio[i].source.Stop();
+                audio[i].source.time = openingStartTime;
+                audio[i].source.Play();
 
-                for (int j = 0; j < audio.Length; j++)
+                for (int j = 0; j < audio.Count; j++)
                 {
-                    if (music.ToLower() == audio[j].Name.ToLower() && audio[j] != null && audio[j].Source.clip != null)
+                    if (music.ToLower() == audio[j].name.ToLower() && audio[j] != null && audio[j].source.clip != null)
                     {
-                        audio[j].Source.Stop();
-                        audio[j].Source.time = musicStartTime;
-                        audio[j].Source.PlayDelayed(audio[i].Source.clip.length - openingStartTime);
+                        audio[j].source.Stop();
+                        audio[j].source.time = musicStartTime;
+                        audio[j].source.PlayDelayed(audio[i].source.clip.length - openingStartTime);
                         break;
                     }
                 }
@@ -216,4 +211,20 @@ public class AudioManager : MonoBehaviour
             }
         }
     }
+}
+
+// Audio Instance Class
+[System.Serializable]
+public class AudioInstance
+{
+    public string name = "New Audio Clip";
+    public AudioSource source = null;
+}
+
+// Audio Category Class
+[System.Serializable]
+public class AudioCategory
+{
+    public string name = "New Audio Category";
+    public List<AudioInstance> audio = new List<AudioInstance>();
 }
