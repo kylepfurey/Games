@@ -1,3 +1,7 @@
+
+// Simple VR Slingshot Script
+// by Kyle Furey
+
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
@@ -12,14 +16,17 @@ public class SlingshotVR : MonoBehaviour
     [Header("Whether the player has the slingshot:")]
     [SerializeField] private bool hasSlingshot = true;
 
-    [Header("The parent object of the player's tracked hands:")]
-    [SerializeField] private GameObject handParentObject = null;
-
-    [Header("The names of the hand objects to be stored as the player's tracked hands:")]
-    [SerializeField] private string leftHandObjectName = "L_Wrist";
-    [SerializeField] private string rightHandObjectName = "R_Wrist";
+    // The hand game objects
     [HideInInspector] public GameObject leftHand = null;
     [HideInInspector] public GameObject rightHand = null;
+
+    [Header("The pivots of the player's tracked hands:")]
+    public GameObject leftHandPivot = null;
+    public GameObject rightHandPivot = null;
+
+    [Header("The offset position and rotation to add to the hand's position and rotation:")]
+    [SerializeField] private Vector3 offsetPosition = new Vector3(0, -0.05f, 0.1f);
+    [SerializeField] private Vector3 offsetRotation = new Vector3(-10, 0, -90);
 
     // Whether the player's hands are currently in a pinching state
     private bool isPinchingRight = false;
@@ -30,7 +37,7 @@ public class SlingshotVR : MonoBehaviour
     [Header("The object being slung from the slingshot:")]
     [SerializeField] private GameObject slungPrefab = null;
     private Rigidbody slungRigidbody = null;
-    [SerializeField] private Vector3 shootOffset = new Vector3(0, 1, 0);
+    [SerializeField] private Vector3 shootOffset = new Vector3(0, 0.15f, 0.1f);
 
     // The current state of the slingshot
     private SlingshotState slingshotState = SlingshotState.Unloaded;
@@ -39,11 +46,11 @@ public class SlingshotVR : MonoBehaviour
     [SerializeField] private bool pinchWithLeftHand = true;
     [SerializeField] private bool pinchWithRightHand = true;
     [SerializeField] private bool mustPinchWithOneHand = true;
-    [SerializeField] private float pinchGrabDistance = 0.5f;
-    [SerializeField] private float pinchReleaseDistance = 2;
+    [SerializeField] private float pinchGrabDistance = 0.1f;
+    [SerializeField] private float pinchReleaseDistance = 0.65f;
 
     [Header("Velocity settings:")]
-    [SerializeField] private float slingshotMultiplier = 10;
+    [SerializeField] private float slingshotMultiplier = 20;
     [SerializeField] private bool slingByCharge = false;
     [SerializeField] private bool lerpCharge = false;
     [SerializeField] private float chargeSpeed = 2.5f;
@@ -60,35 +67,35 @@ public class SlingshotVR : MonoBehaviour
     [SerializeField] private GameObject slingshot = null;
     [SerializeField] private GameObject crosshair = null;
     [SerializeField] private bool fixedCrosshair = false;
-    [SerializeField] private float crosshairScale = 0.9f;
+    [SerializeField] private float crosshairScale = 2;
 
     [Header("The slider and its components indicating when the player is using the slingshot:")]
     [SerializeField] private Slider slider = null;
-    [SerializeField] private Image[] sliderImages = null;
+    [SerializeField] private List<Image> sliderImages = new List<Image>();
     [SerializeField] private float sliderFadeSpeed = 1500;
-    [SerializeField] private Vector3 sliderOffset = new Vector3(0, -0.5f, -0.25f);
+    [SerializeField] private Vector3 sliderOffset = new Vector3(0, -0.1f, -0.15f);
 
     // The current slingshot state
     public enum SlingshotState { Unloaded, LoadedRight, LoadedLeft };
 
-    // Sets the left hand object (call when the left hand spawns)
-    public void SetLeftHand()
+    // Set this object's hands
+    public void SetHands()
     {
-        leftHand = handParentObject.transform.Find(leftHandObjectName).gameObject;
+        leftHand = HandTrackerVR.leftHand.wrist;
 
-        print("Left hand spawned! Object name is " + leftHand.name + ".");
-    }
+        leftHandPivot.transform.parent = leftHand.transform;
 
-    // Sets the right hand object (call when the right hand spawns)
-    public void SetRightHand()
-    {
-        rightHand = handParentObject.transform.Find(rightHandObjectName).gameObject;
+        rightHand = HandTrackerVR.rightHand.wrist;
 
-        print("Right hand spawned! Object name is " + rightHand.name + ".");
+        rightHandPivot.transform.parent = rightHand.transform;
     }
 
     private void Start()
     {
+        leftHand = null;
+
+        rightHand = null;
+
         // Disable slingshot and crosshair
         slingshot.active = false;
 
@@ -102,15 +109,24 @@ public class SlingshotVR : MonoBehaviour
         {
             // PINCHING INPUT
 
-            onPinchRight = !isPinchingRight;
-
-            // DEBUGGING
-            isPinchingRight = Input.GetKey(KeyCode.Alpha4);
-
             onPinchLeft = !isPinchingLeft;
 
-            // DEBUGGING
-            isPinchingLeft = Input.GetKey(KeyCode.Alpha3);
+            isPinchingLeft = HandTrackerVR.GetGesture(HandVR.Gesture.Pinch, false);
+
+            onPinchRight = !isPinchingRight;
+
+            isPinchingRight = HandTrackerVR.GetGesture(HandVR.Gesture.Pinch, true);
+
+
+            // OFFSET HANDS
+
+            leftHandPivot.transform.localPosition = offsetPosition;
+
+            leftHandPivot.transform.localEulerAngles = offsetRotation;
+
+            rightHandPivot.transform.localPosition = offsetPosition;
+
+            rightHandPivot.transform.localEulerAngles = -offsetRotation;
 
 
             // SLINGSHOT
@@ -126,12 +142,12 @@ public class SlingshotVR : MonoBehaviour
                         if (!mustPinchWithOneHand || !isPinchingLeft)
                         {
                             // Pinching with right hand
-                            if (PinchCheck(rightHand, leftHand))
+                            if (PinchCheck(rightHandPivot, leftHandPivot))
                             {
                                 // Loading the slingshot
-                                LoadSlingshot(rightHand, true);
+                                LoadSlingshot(rightHandPivot, true);
 
-                                AimSlingshot(rightHand, leftHand);
+                                AimSlingshot(rightHandPivot, leftHandPivot);
                             }
                         }
                     }
@@ -140,18 +156,18 @@ public class SlingshotVR : MonoBehaviour
                         if (!mustPinchWithOneHand || !isPinchingRight)
                         {
                             // Pinching with left hand
-                            if (PinchCheck(leftHand, rightHand))
+                            if (PinchCheck(leftHandPivot, rightHandPivot))
                             {
                                 // Loading the slingshot
-                                LoadSlingshot(leftHand, false);
+                                LoadSlingshot(leftHandPivot, false);
 
-                                AimSlingshot(leftHand, rightHand);
+                                AimSlingshot(leftHandPivot, rightHandPivot);
                             }
                         }
                     }
 
                     // Fade the slider out
-                    for (int i = 0; i < sliderImages.Length; i++)
+                    for (int i = 0; i < sliderImages.Count; i++)
                     {
                         sliderImages[i].color = new Vector4(sliderImages[i].color.r, sliderImages[i].color.g, sliderImages[i].color.b, Mathf.Min(sliderImages[i].color.a - (sliderFadeSpeed * Time.deltaTime / 255), 1));
                     }
@@ -161,30 +177,30 @@ public class SlingshotVR : MonoBehaviour
                     if (isPinchingRight)
                     {
                         // Aiming slingshot (right moving towards left)
-                        AimSlingshot(rightHand, leftHand);
+                        AimSlingshot(rightHandPivot, leftHandPivot);
                     }
                     else
                     {
                         // Shooting slingshot (right moving towards left)
-                        ShootSlingshot(rightHand, leftHand);
+                        ShootSlingshot(rightHandPivot, leftHandPivot);
                     }
 
-                    UpdateSlider(leftHand);
+                    UpdateSlider(leftHandPivot);
                 }
                 else
                 {
                     if (isPinchingLeft)
                     {
                         // Aiming slingshot (left moving towards right)
-                        AimSlingshot(leftHand, rightHand);
+                        AimSlingshot(leftHandPivot, rightHandPivot);
                     }
                     else
                     {
                         // Shooting slingshot (left moving towards right)
-                        ShootSlingshot(leftHand, rightHand);
+                        ShootSlingshot(leftHandPivot, rightHandPivot);
                     }
 
-                    UpdateSlider(rightHand);
+                    UpdateSlider(rightHandPivot);
                 }
             }
             else if (slungRigidbody != null)
@@ -197,7 +213,7 @@ public class SlingshotVR : MonoBehaviour
 
                 Destroy(slungRigidbody.gameObject);
 
-                for (int i = 0; i < sliderImages.Length; i++)
+                for (int i = 0; i < sliderImages.Count; i++)
                 {
                     sliderImages[i].color = new Vector4(sliderImages[i].color.r, sliderImages[i].color.g, sliderImages[i].color.b, 0);
                 }
@@ -228,7 +244,7 @@ public class SlingshotVR : MonoBehaviour
     // Whether the player pinching is within range of using the slingshot
     private bool PinchCheck(GameObject pinchHand, GameObject aimHand)
     {
-        return DistanceSquared(pinchHand.transform.position, TranslateRelative(aimHand.transform, shootOffset)) <= pinchGrabDistance * pinchGrabDistance;
+        return DistanceSquared(pinchHand.transform.position, aimHand.transform.position) <= pinchGrabDistance * pinchGrabDistance;
     }
 
     // Creating the slingshot object
@@ -292,7 +308,7 @@ public class SlingshotVR : MonoBehaviour
         slider.colors = sliderColor;
 
         // Fade the slider in
-        for (int i = 0; i < sliderImages.Length; i++)
+        for (int i = 0; i < sliderImages.Count; i++)
         {
             sliderImages[i].color = new Vector4(sliderImages[i].color.r, sliderImages[i].color.g, sliderImages[i].color.b, Mathf.Max(sliderImages[i].color.a + (sliderFadeSpeed * Time.deltaTime / 255), 0));
         }

@@ -235,6 +235,12 @@ public class Commander : MonoBehaviour
         Application.Quit();
     }
 
+    private void exit()
+    {
+        Application.Quit();
+    }
+
+
     // Restart scene
     private void restart()
     {

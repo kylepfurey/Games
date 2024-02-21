@@ -63,4 +63,22 @@ public static class VectorThree
 
         return pointA - pointB;
     }
+
+    // Returns the cross product of a vector 3
+    public static float CrossProduct(Vector3 pointA, Vector3 pointB, Vector3 pointC)
+    {
+        return (pointB.x - pointA.x) * (pointC.y - pointA.y) - (pointC.x - pointA.x) * (pointB.y - pointA.y);
+    }
+
+    // Returns a percentage relative to a value of a minimum and maximum
+    private static float Percentage(float value, float min, float max)
+    {
+        return (value - min) / (max - min);
+    }
+
+    // Returns a value relative to a percentage of a minimum and maximum
+    private static float Value(float percentage, float min, float max)
+    {
+        return (max - min) * percentage + min;
+    }
 }
