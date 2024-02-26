@@ -82,10 +82,22 @@ public class PlayerMovement : MonoBehaviour
             Sprinting();
             Crouching();
             Movement();
-            CameraRotation();
+
+            if (!thirdPerson)
+            {
+                CameraRotation();
+            }
         }
 
         RestartAndExit();
+    }
+
+    private void FixedUpdate()
+    {
+        if (thirdPerson)
+        {
+            CameraRotation();
+        }
     }
 
     private void Initalize()
