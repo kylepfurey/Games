@@ -5,14 +5,17 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// Drop onto any object in a 3D Unity game to generate a Player.
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Drop onto any object in a 3D Unity game to generate a Player!\nMade by Kyle Furey.")]
+    [Header("Drop onto any object in a 3D Unity game to generate a Player.")]
 
     // Player Settings
     [Header("Third Person Variables")]
     [SerializeField] private bool thirdPerson = true;
     [SerializeField] private Vector3 thirdPersonCameraDistance = new Vector3(0, 0, -5);
+    [SerializeField] private Vector3 firstPersonCameraDistance = new Vector3(0, 0.5f, 0);
+    [SerializeField] private float cameraObstructedDistance = 0.1f;
 
     [Header("Rotation Variables")]
     [SerializeField] private bool playerRotatesToCamera = false;
@@ -250,13 +253,13 @@ public class PlayerMovement : MonoBehaviour
         if (!thirdPerson)
         {
             Camera.transform.parent = transform;
-            Camera.transform.localPosition = new Vector3(0, transform.lossyScale.y / 8, 0);
+            Camera.transform.localPosition = firstPersonCameraDistance;
         }
         else
         {
             Camera.transform.parent = null;
             Camera.transform.position = transform.position;
-            Camera.transform.Translate(Camera.transform.rotation * new Vector3(0, transform.lossyScale.y / 8, 0) + thirdPersonCameraDistance);
+            Camera.transform.Translate(thirdPersonCameraDistance);
 
             RaycastHit hit;
 
@@ -268,6 +271,7 @@ public class PlayerMovement : MonoBehaviour
             if (Physics.Raycast(transform.position, -direction, out hit, Mathf.Abs(Vector3.Distance(Camera.transform.position, transform.position)), 1, QueryTriggerInteraction.Ignore))
             {
                 Camera.transform.position = hit.point;
+                Camera.transform.Translate(new Vector3(0, 0, cameraObstructedDistance));
             }
         }
     }

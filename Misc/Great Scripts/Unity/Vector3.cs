@@ -71,13 +71,13 @@ public static class VectorThree
     }
 
     // Returns a percentage relative to a value of a minimum and maximum
-    private static float Percentage(float value, float min, float max)
+    public static float Percentage(float value, float min, float max)
     {
         return (value - min) / (max - min);
     }
 
     // Returns a value relative to a percentage of a minimum and maximum
-    private static float Value(float percentage, float min, float max)
+    public static float Value(float percentage, float min, float max)
     {
         return (max - min) * percentage + min;
     }
