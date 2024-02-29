@@ -14,8 +14,8 @@ public class LightSwitch : MonoBehaviour
     [SerializeField] private bool on = true;
 
     [Header("The rotations of the switch being up or down:")]
-    [SerializeField] private float upRotation = 20;
-    [SerializeField] private float downRotation = 160;
+    [SerializeField] private float upRotation = 160;
+    [SerializeField] private float downRotation = 20;
 
     [Header("The flip speed of the switch:")]
     [SerializeField] private float speed = 8;

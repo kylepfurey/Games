@@ -10,14 +10,17 @@
 // Smart Pointer Class
 template <class DataType> class smart_ptr
 {
-public:
+private:
 
 	// The stored pointer
 	DataType* ptr = nullptr;
 
+public:
+
 	// Constructor
 	explicit smart_ptr(DataType* newPtr = nullptr)
 	{
+		// Set the pointer
 		ptr = newPtr;
 	}
 
@@ -26,12 +29,9 @@ public:
 	{
 		// Deletes the pointer
 		delete ptr;
-	}
 
-	// Setting pointer function
-	void equals(DataType& data)
-	{
-		ptr = &data;
+		// Set the pointer to null
+		ptr = nullptr;
 	}
 
 	// Dereferencing pointer function
@@ -44,12 +44,6 @@ public:
 	DataType* arrow()
 	{
 		return ptr;
-	}
-
-	// Setting pointer operator
-	void operator=(DataType& data)
-	{
-		ptr = &data;
 	}
 
 	// Dereferencing pointer operator
@@ -68,57 +62,51 @@ public:
 // Smart Pointer Class
 template <class DataType> class SmartPointer
 {
-public:
+private:
 
 	// The stored pointer
-	DataType* pointer = nullptr;
+	DataType* ptr = nullptr;
+
+public:
 
 	// Constructor
-	explicit SmartPointer(DataType* newPointer = nullptr)
+	explicit SmartPointer(DataType* newPtr = nullptr)
 	{
-		pointer = newPointer;
+		// Set the pointer
+		ptr = newPtr;
 	}
 
 	// Deconstructor
 	~SmartPointer()
 	{
 		// Deletes the pointer
-		delete pointer;
-	}
+		delete ptr;
 
-	// Setting pointer function
-	void Equals(DataType& data)
-	{
-		pointer = &data;
+		// Set the pointer to null
+		ptr = nullptr;
 	}
 
 	// Dereferencing pointer function
 	DataType& Dereference()
 	{
-		return *pointer;
+		return *ptr;
 	}
 
 	// Arrow pointer function
 	DataType* Arrow()
 	{
-		return pointer;
-	}
-
-	// Setting pointer operator
-	void operator=(DataType& data)
-	{
-		pointer = &data;
+		return ptr;
 	}
 
 	// Dereferencing pointer operator
 	DataType& operator*()
 	{
-		return *pointer;
+		return *ptr;
 	}
 
 	// Arrow pointer operator
 	DataType* operator->()
 	{
-		return pointer;
+		return ptr;
 	}
 };

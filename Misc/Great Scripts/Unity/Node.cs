@@ -45,7 +45,7 @@ public class Node : MonoBehaviour
             }
 
             // Check if the node is within range of the graph
-            if (Vector3.Distance(transform.position, Node.transform.position) <= maxDistance * maxDistance)
+            if (Vector3.Distance(transform.position, Node.transform.position) <= maxDistance)
             {
                 // Add the node to this node's connections
                 Connection newConnection = new Connection();

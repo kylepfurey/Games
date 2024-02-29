@@ -20,7 +20,7 @@ public class FadeImages : MonoBehaviour
     [SerializeField] private float fadeSpeed = 300;
 
     // Whether the screen is currently fading in or out
-    private FadingState isFading = FadingState.NotFading;
+    public FadingState state = FadingState.NotFading;
 
     // The current fading state
     public enum FadingState { NotFading, FadingIn, FadingOut };
@@ -38,10 +38,10 @@ public class FadeImages : MonoBehaviour
     private void Update()
     {
         // Check if we are fading
-        if (isFading != FadingState.NotFading)
+        if (state != FadingState.NotFading)
         {
             // Fading in
-            if (isFading == FadingState.FadingIn)
+            if (state == FadingState.FadingIn)
             {
                 for (int i = 0; i < fadeImages.Count; i++)
                 {
@@ -50,11 +50,11 @@ public class FadeImages : MonoBehaviour
 
                 if (fadeImages[0].color.a >= 1)
                 {
-                    isFading = FadingState.FadingOut;
+                    state = FadingState.FadingOut;
                 }
             }
             // Fading out
-            else if (isFading == FadingState.FadingOut)
+            else if (state == FadingState.FadingOut)
             {
                 for (int i = 0; i < fadeImages.Count; i++)
                 {
@@ -63,15 +63,27 @@ public class FadeImages : MonoBehaviour
 
                 if (fadeImages[0].color.a <= 0)
                 {
-                    isFading = FadingState.NotFading;
+                    state = FadingState.NotFading;
                 }
             }
         }
     }
 
     // Begin fading in and out the screen
-    public void Fade()
+    public void FadeIn()
     {
-        isFading = FadingState.FadingIn;
+        state = FadingState.FadingIn;
+    }
+
+    // Begin fading out the screen
+    public void FadeOut()
+    {
+        state = FadingState.FadingOut;
+    }
+
+    // Stop fading
+    public void Stop()
+    {
+        state = FadingState.NotFading;
     }
 }

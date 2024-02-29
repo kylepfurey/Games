@@ -23,6 +23,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector2 firstPersonCameraClamp = new Vector2(-85, 85);
     [SerializeField] private Vector2 thirdPersonCameraClamp = new Vector2(0, 85);
 
+    [Header("Camera Variables")]
+    [SerializeField] private float bobHeight = 0.1f;
+    [SerializeField] private float bobSpeed = 10;
+
     [Header("Mouse Sensitivity")]
     [SerializeField] private float mouseSensitivityX = 3;
     [SerializeField] private float mouseSensitivityY = 3;
@@ -36,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Jumping Variables")]
     [SerializeField] private bool canJump = true;
     [SerializeField] private float jumpForce = 5;
-    [SerializeField] private float jumpCheckHeight = 0.25f;
+    [SerializeField] private float jumpCheckHeight = 0.5f;
     [SerializeField] private float jumpCheckWidth = 1;
     [SerializeField] private float jumpCheckDepth = 0.51f;
     [SerializeField] private Vector3 gravity = new Vector3(0, -9.8f, 0);
@@ -54,42 +58,50 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float crouchSpeed = 0.75f;
     [SerializeField] private float crouchTime = 20;
 
-    [Header("Active")]
+    [Header("Other Settings")]
     [SerializeField] private bool canRestart = true;
     [SerializeField] private bool canExit = true;
     public bool active = true;
 
     // Variables
-    private Rigidbody Rigidbody;
-    private Camera Camera;
-    private float currentSpeed;
-    private bool isGrounded;
-    private Vector3 groundVelocity;
-    private Vector2 mouseDelta;
-    private bool isSprinting;
-    private bool isCrouching;
-    private float startingScale;
+    private Rigidbody Rigidbody = null;
+    private Camera Camera = null;
+    private float currentSpeed = 0;
+    private bool isGrounded = true;
+    private Vector3 groundVelocity = Vector3.zero;
+    private Vector2 mouseDelta = Vector2.zero;
+    private bool isSprinting = false;
+    private bool isCrouching = false;
+    private float startingScale = 0;
+    private float bobTime = 0;
 
     private void Start()
     {
-        Initalize();
+        Initialize();
     }
 
     private void Update()
     {
+        if (!thirdPerson)
+        {
+            CameraRotation();
+        }
+
+        CameraPosition();
+        HeadBob();
+
         if (active)
         {
-            CameraPosition();
             CameraInput();
             Jumping();
             Sprinting();
             Crouching();
             Movement();
-
-            if (!thirdPerson)
-            {
-                CameraRotation();
-            }
+        }
+        else
+        {
+            Rigidbody.velocity = new Vector3(0, Rigidbody.velocity.y, 0);
+            Rigidbody.angularVelocity = Vector3.zero;
         }
 
         RestartAndExit();
@@ -103,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Initalize()
+    private void Initialize()
     {
         if (!GetComponent<Collider>())
         {
@@ -287,6 +299,18 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             Camera.transform.eulerAngles = new Vector3(mouseDelta.y, mouseDelta.x, transform.eulerAngles.z);
+        }
+    }
+
+    private void HeadBob()
+    {
+        if (!thirdPerson)
+        {
+            if (Rigidbody.velocity.x != 0 || Rigidbody.velocity.z != 0)
+            {
+                bobTime += Time.deltaTime;
+                Camera.transform.localPosition += new Vector3(0, Mathf.Sin(bobTime * bobSpeed) * bobHeight, 0);
+            }
         }
     }
 
