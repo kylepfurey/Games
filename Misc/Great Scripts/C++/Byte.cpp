@@ -36,20 +36,6 @@ byte::byte(byte& byte)
 	bits[7] = byte[7];
 }
 
-byte::byte(bool isUnsigned)
-{
-	is_unsigned = isUnsigned;
-
-	bits[0] = false;
-	bits[1] = false;
-	bits[2] = false;
-	bits[3] = false;
-	bits[4] = false;
-	bits[5] = false;
-	bits[6] = false;
-	bits[7] = false;
-}
-
 byte::byte(bool boolean, bool isUnsigned)
 {
 	is_unsigned = isUnsigned;
@@ -3029,20 +3015,6 @@ Byte::Byte(Byte& byte)
 	bits[5] = byte[5];
 	bits[6] = byte[6];
 	bits[7] = byte[7];
-}
-
-Byte::Byte(bool is_unsigned)
-{
-	isUnsigned = is_unsigned;
-
-	bits[0] = false;
-	bits[1] = false;
-	bits[2] = false;
-	bits[3] = false;
-	bits[4] = false;
-	bits[5] = false;
-	bits[6] = false;
-	bits[7] = false;
 }
 
 Byte::Byte(bool boolean, bool is_unsigned)

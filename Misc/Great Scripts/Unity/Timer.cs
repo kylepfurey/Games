@@ -39,13 +39,16 @@ public class Timer : MonoBehaviour
 
     [Header("Debugging:")]
     public bool debugLogs = true;
-    [SerializeField] private bool restartTimer = false;
+    [SerializeField] private bool testTimer = false;
 
     // Timer incrementing enum
     public enum TimerIncrement { Default, Up, Down };
 
     // Timer looping enum
     public enum TimerLoop { Stop, Loop, Continue };
+
+
+    // UNITY FUNCTIONS
 
     private void Start()
     {
@@ -62,16 +65,90 @@ public class Timer : MonoBehaviour
 
     private void OnValidate()
     {
-        if (restartTimer)
+        if (testTimer)
         {
-            restartTimer = false;
+            testTimer = false;
 
-            StartTimer();
+            if (!start)
+            {
+                StartTimer();
+            }
+            else
+            {
+                StopTimer();
+            }
         }
     }
 
+
+    // TIMER CONTROL
+
     // Starts the timer
     public void StartTimer()
+    {
+        switch (increment)
+        {
+            case TimerIncrement.Default:
+
+                if (startTime < endTime)
+                {
+                    if (timer >= endTime)
+                    {
+                        RestartTimer();
+                    }
+                    else
+                    {
+                        ResumeTimer();
+                    }
+                }
+                else if (startTime > endTime)
+                {
+                    if (timer <= endTime)
+                    {
+                        RestartTimer();
+                    }
+                    else
+                    {
+                        ResumeTimer();
+                    }
+                }
+                else
+                {
+                    ResumeTimer();
+                }
+
+                break;
+
+            case TimerIncrement.Up:
+
+                if (timer >= endTime)
+                {
+                    RestartTimer();
+                }
+                else
+                {
+                    ResumeTimer();
+                }
+
+                break;
+
+            case TimerIncrement.Down:
+
+                if (timer <= endTime)
+                {
+                    RestartTimer();
+                }
+                else
+                {
+                    ResumeTimer();
+                }
+
+                break;
+        }
+    }
+
+    // Restarts the timer
+    public void RestartTimer()
     {
         if (debugLogs) { print("Timer on object " + gameObject.name + " started!"); }
 
@@ -80,6 +157,16 @@ public class Timer : MonoBehaviour
         timer = startTime;
 
         calledEndEvents = false;
+
+        startEvents.Invoke();
+    }
+
+    // Resumes the timer from where it left off
+    public void ResumeTimer()
+    {
+        if (debugLogs) { print("Timer on object " + gameObject.name + " resumed!"); }
+
+        start = true;
 
         startEvents.Invoke();
     }
@@ -96,6 +183,9 @@ public class Timer : MonoBehaviour
         return timer;
     }
 
+
+    // DURING TIMER
+
     // The timer's tick
     private void Tick()
     {
@@ -105,48 +195,56 @@ public class Timer : MonoBehaviour
 
             tickEvents.Invoke();
 
-            if (increment == TimerIncrement.Default)
+            switch (increment)
             {
-                if (startTime < endTime)
-                {
+                case TimerIncrement.Default:
+
+                    if (startTime < endTime)
+                    {
+                        timer += Time.deltaTime * timeScale;
+
+                        if (timer >= endTime)
+                        {
+                            End();
+                        }
+                    }
+                    else if (startTime > endTime)
+                    {
+                        timer -= Time.deltaTime * timeScale;
+
+                        if (timer <= endTime)
+                        {
+                            End();
+                        }
+                    }
+                    else
+                    {
+                        End();
+                    }
+
+                    break;
+
+                case TimerIncrement.Up:
+
                     timer += Time.deltaTime * timeScale;
 
                     if (timer >= endTime)
                     {
                         End();
                     }
-                }
-                else if (startTime > endTime)
-                {
+
+                    break;
+
+                case TimerIncrement.Down:
+
                     timer -= Time.deltaTime * timeScale;
 
                     if (timer <= endTime)
                     {
                         End();
                     }
-                }
-                else
-                {
-                    End();
-                }
-            }
-            else if (increment == TimerIncrement.Up)
-            {
-                timer += Time.deltaTime * timeScale;
 
-                if (timer >= endTime)
-                {
-                    End();
-                }
-            }
-            else if (increment == TimerIncrement.Down)
-            {
-                timer -= Time.deltaTime * timeScale;
-
-                if (timer <= endTime)
-                {
-                    End();
-                }
+                    break;
             }
         }
     }
@@ -172,7 +270,7 @@ public class Timer : MonoBehaviour
 
                 endEvents.Invoke();
 
-                StartTimer();
+                RestartTimer();
 
                 break;
 
@@ -190,6 +288,9 @@ public class Timer : MonoBehaviour
                 break;
         }
     }
+
+
+    // TIMER TO STRING FUNCTIONS
 
     // Converts a given time into a readable string (like 00.00.00)
     public static string ConvertTimeToString(float time)
@@ -301,5 +402,49 @@ public class Timer : MonoBehaviour
     public string ConvertTimerToString(char separator)
     {
         return ConvertTimeToString(timer, separator);
+    }
+
+
+    // EXTRA FUNCTIONS
+
+    // Destroy this script
+    public void Destroy()
+    {
+        Destroy(this);
+    }
+
+    // Destroy this object
+    public void DestroyObject()
+    {
+        Destroy(gameObject);
+    }
+
+    // Flip the increment of the timer
+    public void Flip()
+    {
+        switch (increment)
+        {
+            case TimerIncrement.Default:
+
+                float temporary = startTime;
+
+                startTime = endTime;
+
+                endTime = temporary;
+
+                break;
+
+            case TimerIncrement.Up:
+
+                increment = TimerIncrement.Up;
+
+                break;
+
+            case TimerIncrement.Down:
+
+                increment = TimerIncrement.Up;
+
+                break;
+        }
     }
 }

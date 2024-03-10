@@ -22,7 +22,6 @@ public:
 
 	byte();																	// Constructor
 	byte(byte& byte);														// Constructor (Byte)
-	byte(bool isUnsigned);													// Constructor (Boolean)
 	byte(bool boolean, bool isUnsigned);									// Constructor (Boolean)
 	byte(bool newBits[8]);													// Constructor (Bits)
 	byte(bool newBits[8], bool isUnsigned);									// Constructor (Bits)
@@ -261,17 +260,16 @@ public:
 class Byte
 {
 public:
-	// Instance Byte Data
+																			// Instance Byte Data
 
 	bool bits[8];															// The 8 bits that make up the Byte
 	bool isUnsigned = false;												// Whether this Byte is unsigned
 
 
-	// Constructors and Deconstructors
+																			// Constructors and Deconstructors
 
 	Byte();																	// Constructor
 	Byte(Byte& byte);														// Constructor (Byte)
-	Byte(bool is_unsigned);													// Constructor (Boolean)
 	Byte(bool boolean, bool is_unsigned);									// Constructor (Boolean)
 	Byte(bool newBits[8]);													// Constructor (Bits)
 	Byte(bool newBits[8], bool is_unsigned);								// Constructor (Bits)
@@ -286,7 +284,7 @@ public:
 	~Byte();																// Deconstructor
 
 
-	// Static Byte Conversions
+																			// Static Byte Conversions
 
 	static Byte& ToByte(bool bits[8]);										// Convert Bits to Byte
 	static Byte& ToByte(int bits[8]);										// Convert Int Bits to Byte
@@ -295,7 +293,7 @@ public:
 	static Byte& ToByte(std::string newString);								// Convert String to Byte
 
 
-	// Static Bit Conversions
+																			// Static Bit Conversions
 
 	static bool* ToBits(Byte byte);											// Convert Byte to Bits
 	static bool* ToBits(int bits[8]);										// Convert Int Bits to Bits
@@ -304,7 +302,7 @@ public:
 	static bool* ToBits(std::string newString);								// Convert String to Bits
 
 
-	// Static Int Bit Conversions
+																			// Static Int Bit Conversions
 
 	static int* ToBitsInt(bool bits[8]);									// Convert Bits to Int Bits
 	static int* ToBitsInt(Byte byte);										// Convert Byte to Int Bits
@@ -313,7 +311,7 @@ public:
 	static int* ToBitsInt(std::string newString);							// Convert String to Int Bits
 
 
-	// Static Int Conversions
+																			// Static Int Conversions
 
 	static signed int ToInt(bool bits[8]);									// Convert Bits to Int
 	static signed int ToInt(Byte byte);										// Convert Byte to Int
@@ -322,7 +320,7 @@ public:
 	static signed int ToInt(std::string newString);							// Convert String to Int
 
 
-	// Static Unsigned Int Conversions
+																			// Static Unsigned Int Conversions
 
 	static unsigned int ToUInt(bool bits[8]);								// Convert Bits to Unsigned Int
 	static unsigned int ToUInt(Byte byte);									// Convert Byte to Unsigned Int
@@ -331,7 +329,7 @@ public:
 	static unsigned int ToUInt(std::string newString);						// Convert String to Unsigned Int
 
 
-	// Static String Conversion
+																			// Static String Conversion
 
 	static std::string ToString(bool bits[8]);								// Convert Bits to String
 	static std::string ToString(Byte byte);									// Convert Byte to String
@@ -340,7 +338,7 @@ public:
 	static std::string ToString(unsigned int integer);						// Convert Unsigned Int to String
 
 
-	// Static Mathematical Functions
+																			// Static Mathematical Functions
 
 	static Byte Add(Byte byteA, Byte byteB);								// Addition Function
 	static Byte PlusPlus(Byte byte);										// ++ Function
@@ -353,7 +351,7 @@ public:
 	static Byte Modulo(Byte byteA, Byte byteB);								// Modulo Function
 
 
-	// Static Bitwise Functions
+																			// Static Bitwise Functions
 
 	static Byte And(Byte byteA, Byte byteB);								// And Function
 	static Byte Or(Byte byteA, Byte byteB);									// Or Function
@@ -363,7 +361,7 @@ public:
 	static Byte Not(Byte byte);												// Not Function
 
 
-	// Static Logical Functions
+																			// Static Logical Functions
 
 	static bool EqualTo(Byte byteA, Byte byteB);							// Equal To Function
 	static bool NotEqualTo(Byte byteA, Byte byteB);							// Not Equal To Function
@@ -375,7 +373,7 @@ public:
 	static bool NotBool(Byte byte);											// Not Bool Function
 
 
-	// Static Byte Array Conversions
+																			// Static Byte Array Conversions
 
 	static Byte* Copy(Byte* bytes, int byteCount);							// Copies the Bytes
 	static bool* ToBits(Byte* bytes, int byteCount);						// Converts Bytes to Bits
@@ -386,7 +384,7 @@ public:
 	static std::string ToString2(Byte* bytes, int byteCount);				// Converts Bytes to Int Bits (With Spaces Between Bytes)
 
 
-	// Instance Functions
+																			// Instance Functions
 
 	Byte Copy();															// Copies the byte
 	bool* ToBits();															// Converts the Byte to Bits
@@ -396,7 +394,7 @@ public:
 	std::string ToString();													// Convert the Byte to String
 
 
-	// Instance Bit Functions 
+																			// Instance Bit Functions 
 
 	bool& GetBit(int index);												// Get a bit
 	int GetBitInt(int index);												// Get a bit with an integer
@@ -408,7 +406,7 @@ public:
 	bool& SwitchSign(bool newSign);											// Switching Integer Signage Function
 
 
-	// Instance Mathematical Functions
+																			// Instance Mathematical Functions
 
 	Byte& Equals(Byte byte);												// Equals Function
 	Byte& Add(Byte byte);													// Addition Function
@@ -422,7 +420,7 @@ public:
 	Byte& Modulo(Byte byte);												// Modulo Function
 
 
-	// Instance Bitwise Functions
+																			// Instance Bitwise Functions
 
 	Byte& And(Byte byte);													// And Function
 	Byte& Or(Byte byte);													// Or Function
@@ -433,7 +431,7 @@ public:
 	Byte& Flip();															// Flip Function
 
 
-	// Instance Logical Functions
+																			// Instance Logical Functions
 
 	bool EqualTo(Byte byte);												// Equal To Function
 	bool NotEqualTo(Byte byte);												// Not Equal To Function
@@ -445,7 +443,7 @@ public:
 	bool NotBool();															// Not Bool Function
 
 
-	// Instance Bit Functions 
+																			// Instance Bit Functions 
 
 	bool& operator[](int index);											// Array Operator
 	operator int();															// Dereferencing Int Operator
@@ -454,7 +452,7 @@ public:
 	unsigned int operator+();												// Dereferencing Unsigned Int Operator
 
 
-	// Instance Mathematical Operators
+																			// Instance Mathematical Operators
 
 	Byte operator+(Byte byte);												// Addition Operator
 	Byte operator-(Byte byte);												// Subtraction Operator
@@ -463,7 +461,7 @@ public:
 	Byte operator%(Byte byte);												// Modulo Operator
 
 
-	// Instance Bitwise Operators
+																			// Instance Bitwise Operators
 
 	Byte operator&(Byte byte);												// And Operator
 	Byte operator|(Byte byte);												// Or Operator
@@ -473,7 +471,7 @@ public:
 	Byte operator~();														// Not Operator
 
 
-	// Instance Mathematical Operators
+																			// Instance Mathematical Operators
 
 	Byte& operator=(Byte byte);												// Equals Operator
 	Byte& operator+=(Byte byte);											// Addition Equals Operator
@@ -485,7 +483,7 @@ public:
 	Byte& operator%=(Byte byte);											// Modulo Equals Operator
 
 
-	// Instance Bitwise Operators
+																			// Instance Bitwise Operators
 
 	Byte& operator&=(Byte byte);											// And Equals Operator
 	Byte& operator|=(Byte byte);											// Or Equals Operator
@@ -494,7 +492,7 @@ public:
 	Byte& operator>>=(int shift);											// Right Shift Equals Operator
 
 
-	// Instance Logical Operators
+																			// Instance Logical Operators
 
 	bool operator==(Byte byte);												// Equal To Operator
 	bool operator!=(Byte byte);												// Not Equal To Operator
