@@ -101,7 +101,7 @@ int main(int argc, char* argv[])
 				// Relay what number task this was
 				if (tasksCompleted == 1)
 				{
-					cout << "\You have completed your first task! Nice work!" << endl;;
+					cout << "\nYou have completed your first task! Nice work!" << endl;;
 				}
 				else
 				{

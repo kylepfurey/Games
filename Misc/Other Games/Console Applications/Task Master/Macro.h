@@ -18,7 +18,6 @@
 
 #define SELECTION selection = 0; cout << "\nINPUT: "; cin >> selection;\
 
-// SOURCE: https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
 #define INPUT input = ""; cout << "\nINPUT: "; cin >> input;\
 
 #define END cout << "\n\nProgram closed! Goodbye!" << endl;\
