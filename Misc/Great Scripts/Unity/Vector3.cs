@@ -64,12 +64,6 @@ public static class VectorThree
         return pointA - pointB;
     }
 
-    // Returns the cross product of a vector 3
-    public static float CrossProduct(Vector3 pointA, Vector3 pointB, Vector3 pointC)
-    {
-        return (pointB.x - pointA.x) * (pointC.y - pointA.y) - (pointC.x - pointA.x) * (pointB.y - pointA.y);
-    }
-
     // Returns a percentage relative to a value of a minimum and maximum
     public static float Percentage(float value, float min, float max)
     {
@@ -80,5 +74,115 @@ public static class VectorThree
     public static float Value(float percentage, float min, float max)
     {
         return (max - min) * percentage + min;
+    }
+
+    // Returns the cross product of a vector 3
+    public static float CrossProduct(Vector3 pointA, Vector3 pointB, Vector3 pointC)
+    {
+        return (pointB.x - pointA.x) * (pointC.y - pointA.y) - (pointC.x - pointA.x) * (pointB.y - pointA.y);
+    }
+
+    // Get a normal from 3 points
+    public static Vector3 GetNormal(Vector3 pointA, Vector3 pointB, Vector3 pointC)
+    {
+        Plane plane = new Plane(pointA, pointB, pointC);
+
+        return plane.normal;
+    }
+
+    // Get a normal from an array of 3 points
+    public static Vector3 GetNormal(Vector3[] points)
+    {
+        Plane plane = new Plane(points[0], points[1], points[2]);
+
+        return plane.normal;
+    }
+
+    // Get a normal from a triangle
+    public static Vector3 GetNormal(Mesh triangle)
+    {
+        Plane plane = new Plane(triangle.vertices[0], triangle.vertices[1], triangle.vertices[2]);
+
+        return plane.normal;
+    }
+
+    // Get a normal from a color
+    public static Vector3 GetNormal(Color color)
+    {
+        return new Vector3(color.r, color.g, color.b);
+    }
+
+    // Returns whether the new point is convex relative to a given mesh
+    private static bool IsConvex(Vector3[] vertices, int[] triangles)
+    {
+        // Loop through triangles
+        for (int i = 0; i < triangles.Length; i += 3)
+        {
+            // Make triangle
+            Plane triangle = new Plane(vertices[triangles[i]], vertices[triangles[i + 1]], vertices[triangles[i + 2]]);
+
+            // Loop through points
+            for (int j = 0; j < vertices.Length; j++)
+            {
+                // Ignore the plane's points
+                if (j == i || j == i + 1 || j == i + 2)
+                {
+                    continue;
+                }
+
+                // Check that the point is not outside the triangle
+                if (triangle.GetSide(vertices[j]))
+                {
+                    // A point is concave
+                    return false;
+                }
+            }
+        }
+
+        // All points are convex
+        return true;
+    }
+
+    // Returns whether the new point is convex relative to a given mesh
+    private static bool IsConvex(Mesh mesh)
+    {
+        return IsConvex(mesh.vertices, mesh.triangles);
+    }
+
+    // Returns whether the new point is concave relative to a given mesh
+    private static bool IsConcave(Vector3[] vertices, int[] triangles)
+    {
+        // Loop through triangles
+        for (int i = 0; i < triangles.Length; i += 3)
+        {
+            // Make triangle
+            Plane triangle = new Plane(vertices[triangles[i]], vertices[triangles[i + 1]], vertices[triangles[i + 2]]);
+
+            // Loop through points
+            for (int j = 0; j < vertices.Length; j++)
+            {
+                // Ignore the plane's points
+                if (j == i || j == i + 1 || j == i + 2)
+                {
+                    continue;
+                }
+
+                // Check that the point is not outside the triangle
+                if (triangle.GetSide(vertices[j]))
+                {
+                    // A point is concave
+                    return true;
+                }
+            }
+        }
+
+        // All points are convex
+        return false;
+    }
+
+    // Returns whether the new point is concave relative to a given mesh
+    private static bool IsConcave(Mesh mesh)
+    {
+        return IsConcave(mesh.vertices, mesh.triangles);
     }
 }

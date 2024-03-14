@@ -14,8 +14,6 @@ int main(int argc, char* argv[])
 
 	map<string, string> phoneNumbers;
 
-	vector<string> names;
-
 	int tasksCompleted = 0;
 
 	// Program loop
@@ -29,8 +27,6 @@ int main(int argc, char* argv[])
 		cout << endl;
 		cout << "1. Add a new name and number" << endl;
 		cout << "2. Remove a name or number" << endl;
-		//cout << "2. Remove a name" << endl;
-		//cout << "3. Remove a number" << endl;
 		cout << "3. View your phone numbers" << endl;
 		cout << "4. Clear all names and numbers" << endl;
 		cout << "5. Close the program" << endl;
@@ -54,7 +50,7 @@ int main(int argc, char* argv[])
 
 		string name = "";
 
-		bool success = false;
+		int currentName = 0;
 
 		// Options
 		switch (selection)
@@ -81,8 +77,6 @@ int main(int argc, char* argv[])
 			// Insert this name and number
 			phoneNumbers.insert(std::pair<string, string>(name, input));
 
-			names.push_back(name);
-
 			break;
 
 		case 2:
@@ -97,16 +91,14 @@ int main(int argc, char* argv[])
 			INPUT;
 
 			// Search for that number
-			for (int i = 0; i < names.size(); i++)
+			for (auto i = phoneNumbers.begin(); i != phoneNumbers.end(); i++)
 			{
-				if (phoneNumbers[names[i]] == input)
+				if (i->first == input)
 				{
-					success = true;
+					currentName = true;
 
 					// Remove that name
-					phoneNumbers.erase(names[i]);
-
-					names.erase(names.begin() + i);
+					phoneNumbers.erase(i);
 
 					cout << "\n\nRemoved the name and number of phone number " << input << "." << endl;
 
@@ -114,7 +106,7 @@ int main(int argc, char* argv[])
 				}
 			}
 
-			if (!success)
+			if (!currentName)
 			{
 				// Search for that name
 				if (phoneNumbers.count(input))
@@ -122,11 +114,12 @@ int main(int argc, char* argv[])
 					// Remove that name
 					phoneNumbers.erase(input);
 
-					for (int i = 0; i < names.size(); i++)
+					for (auto i = phoneNumbers.begin(); i != phoneNumbers.end(); i++)
 					{
-						if (names[i] == input)
+						if (i->first == input)
 						{
-							names.erase(names.begin() + i);
+							// Remove that name
+							phoneNumbers.erase(i);
 
 							break;
 						}
@@ -144,86 +137,6 @@ int main(int argc, char* argv[])
 			INPUT;
 
 			break;
-
-			/*
-		case 3:
-
-			// Title text
-			TITLE;
-
-			// Prompt
-			cout << "Please enter a name to remove:" << endl;
-
-			// Input
-			INPUT;
-
-			// Search for that name
-			if (phoneNumbers.count(input))
-			{
-				// Remove that name
-				phoneNumbers.erase(input);
-
-				for (int i = 0; i < names.size(); i++)
-				{
-					if (names[i] == input)
-					{
-						names.erase(names.begin() + i);
-
-						break;
-					}
-				}
-
-				cout << "\n\nRemoved the name and number of \"" << input << "\"." << endl;
-			}
-			else
-			{
-				cout << "\n\nCould not find a matching name!" << endl;
-			}
-
-			// Input
-			INPUT;
-
-			break;
-
-		case 4:
-
-			// Title text
-			TITLE;
-
-			// Prompt
-			cout << "Please enter a number to remove:" << endl;
-
-			// Input
-			INPUT;
-
-			// Search for that number
-			for (int i = 0; i < names.size(); i++)
-			{
-				if (phoneNumbers[names[i]] == input)
-				{
-					success = true;
-
-					// Remove that name
-					phoneNumbers.erase(names[i]);
-
-					names.erase(names.begin() + i);
-
-					cout << "\n\nRemoved the name and number of phone number " << input << "." << endl;
-
-					break;
-				}
-			}
-
-			if (!success)
-			{
-				cout << "\n\nCould not find a matching number!" << endl;
-			}
-
-			// Input
-			INPUT;
-
-			break;
-			*/
 
 		case 3:
 
@@ -247,9 +160,11 @@ int main(int argc, char* argv[])
 			cout << endl;
 
 			// Relay all names and numbers
-			for (int currentName = 0; currentName < phoneNumbers.size(); currentName++)
+			for (auto i = phoneNumbers.begin(); i != phoneNumbers.end(); i++)
 			{
-				cout << (currentName + 1) << ". \"" << names[currentName] << "\"  -  " << phoneNumbers[names[currentName]] << endl;
+				cout << (currentName + 1) << ". \"" << i->first << "\"  -  " << i->second << endl;
+
+				currentName++;
 			}
 
 			// Input
@@ -261,8 +176,6 @@ int main(int argc, char* argv[])
 
 			// Clear the names and numbers
 			phoneNumbers.clear();
-
-			names.clear();
 
 			// Title text
 			TITLE;
