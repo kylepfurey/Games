@@ -11,13 +11,13 @@
 // Select statements.
 
 // Select from a boolean and return the chosen data
-template <class DataType> static DataType select_value(bool condition, DataType trueData, DataType falseData)
+template <class DataType> static DataType select(bool condition, DataType trueData, DataType falseData)
 {
 	return condition ? trueData : falseData;
 }
 
 // Select from a integer and return the chosen data
-template <class DataType> static DataType select_value(int n, DataType nData...)
+template <class DataType> static DataType select(int n, DataType nData...)
 {
 	if (n == 0)
 	{
@@ -71,7 +71,7 @@ template <class DataType> static DataType& select_ref(int n, DataType& nData...)
 }
 
 // Compare two integers and return the chosen data
-template <class DataType> static DataType greater_less_equal<DataType>(int comparer, int compared, DataType greaterThanData, DataType lessThanData, DataType equalToData)
+template <class DataType> static DataType greater_less_equal(int comparer, int compared, DataType greaterThanData, DataType lessThanData, DataType equalToData)
 {
 	if (comparer > compared)
 	{
@@ -88,7 +88,7 @@ template <class DataType> static DataType greater_less_equal<DataType>(int compa
 }
 
 // Compare two floats and return the chosen data
-template <class DataType> static DataType greater_less_equal<DataType>(float comparer, float compared, DataType greaterThanData, DataType lessThanData, DataType equalToData)
+template <class DataType> static DataType greater_less_equal(float comparer, float compared, DataType greaterThanData, DataType lessThanData, DataType equalToData)
 {
 	if (comparer > compared)
 	{
@@ -105,7 +105,7 @@ template <class DataType> static DataType greater_less_equal<DataType>(float com
 }
 
 // Compare two integers and return the chosen data
-template <class DataType> static DataType& greater_less_equal_ref<DataType>(int comparer, int compared, DataType& greaterThanData, DataType& lessThanData, DataType& equalToData)
+template <class DataType> static DataType& greater_less_equal_ref(int comparer, int compared, DataType& greaterThanData, DataType& lessThanData, DataType& equalToData)
 {
 	if (comparer > compared)
 	{
@@ -122,7 +122,7 @@ template <class DataType> static DataType& greater_less_equal_ref<DataType>(int 
 }
 
 // Compare two floats and return the chosen data
-template <class DataType> static DataType& greater_less_equal_ref<DataType>(float comparer, float compared, DataType& greaterThanData, DataType& lessThanData, DataType& equalToData)
+template <class DataType> static DataType& greater_less_equal_ref(float comparer, float compared, DataType& greaterThanData, DataType& lessThanData, DataType& equalToData)
 {
 	if (comparer > compared)
 	{
