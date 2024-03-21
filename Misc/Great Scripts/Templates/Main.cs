@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 
-namespace myApp
+namespace Application
 {
     internal class Program
     {
@@ -10,9 +11,5 @@ namespace myApp
 
             // New Code here
         }
-
-        // New Methods here
     }
-
-    // New Classes here
 }

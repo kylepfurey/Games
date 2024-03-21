@@ -6,8 +6,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
 
 // Include this heading to use the library
 #include "Macro.h"
 
-#define MACRO cout << "Macro inserted!" << endl;\
+// Example macro (use '\' to include the next line)
+#define MACRO std::cout << "Macro inserted!" << std::endl;
