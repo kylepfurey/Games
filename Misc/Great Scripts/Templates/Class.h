@@ -1,4 +1,11 @@
 #pragma once
+#include <iostream>
+#include <string>
+#include <vector>
+#include <map>
+#include <algorithm>
+#include <fstream>
+#include <thread>
 
 // Example Class
 class Class
