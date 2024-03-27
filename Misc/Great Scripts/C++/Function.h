@@ -7,6 +7,9 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <algorithm>
+#include <fstream>
+#include <thread>
 
 // Include this heading to use the library
 #include "Function.h"
