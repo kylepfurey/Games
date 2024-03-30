@@ -41,13 +41,13 @@ template <class DataType> static DataType select(int n, DataType nData...)
 }
 
 // Select from a boolean and return the chosen data
-template <class DataType> static DataType& select_ref(bool condition, DataType& trueData, DataType& falseData)
+template <class DataType> static DataType& selectref(bool condition, DataType& trueData, DataType& falseData)
 {
 	return condition ? trueData : falseData;
 }
 
 // Select from a integer and return the chosen data
-template <class DataType> static DataType& select_ref(int n, DataType& nData...)
+template <class DataType> static DataType& selectref(int n, DataType& nData...)
 {
 	if (n == 0)
 	{

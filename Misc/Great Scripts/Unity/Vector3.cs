@@ -81,4 +81,16 @@ public static class VectorThree
     {
         return (pointB.x - pointA.x) * (pointC.y - pointA.y) - (pointC.x - pointA.x) * (pointB.y - pointA.y);
     }
+
+    // Rotate a vector 3 by a euler rotation
+    public static Vector3 Rotate(Vector3 direction, Vector3 rotation)
+    {
+        return Quaternion.Euler(rotation) * direction;
+    }
+
+    // Rotate a vector 3 by a quaternion rotation
+    public static Vector3 Rotate(Vector3 direction, Quaternion rotation)
+    {
+        return rotation * direction;
+    }
 }
