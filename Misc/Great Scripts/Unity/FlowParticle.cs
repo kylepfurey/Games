@@ -17,7 +17,7 @@ public class FlowParticle : MonoBehaviour
     private GameObject flowDataScaleParent = null;
 
     [Header("Velocity Settings")]
-    [SerializeField] private float velocitySpeed = 1;
+    [SerializeField] private float velocitySpeed = 0.25f;
     [SerializeField] private float velocityLerp = 0.25f;
 
     [Header("Optimization")]
@@ -119,7 +119,7 @@ public class FlowParticle : MonoBehaviour
         if (flowData != null)
         {
             // Update the particle velocity
-            rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, TranslateRelative(flowDataScaleParent.transform, flowFile.Sample(GetRelativeToBounds(transform.position)) * velocitySpeed), velocityLerp);
+            rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, TranslateRelative(flowDataScaleParent.transform, flowFile.Sample(GetRelativeToBounds(transform.position)) * velocitySpeed) - flowDataScaleParent.transform.position, velocityLerp);
         }
     }
 
