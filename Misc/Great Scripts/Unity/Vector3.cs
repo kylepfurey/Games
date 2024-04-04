@@ -77,9 +77,9 @@ public static class VectorThree
     }
 
     // Returns the cross product of a vector 3
-    public static float CrossProduct(Vector3 pointA, Vector3 pointB, Vector3 pointC)
+    public static float CrossProduct(Vector3 pointA, Vector3 pointB, Vector3 pointC, bool useY = false)
     {
-        return (pointB.x - pointA.x) * (pointC.y - pointA.y) - (pointC.x - pointA.x) * (pointB.y - pointA.y);
+        return (pointB.x - pointA.x) * (useY ? (pointC.y - pointA.y) : (pointC.z - pointA.z)) - (pointC.x - pointA.x) * (useY ? (pointB.y - pointA.y) : (pointB.z - pointA.z));
     }
 
     // Rotate a vector 3 by a euler rotation

@@ -3,7 +3,6 @@
 // by Kyle Furey
 
 using System.Collections.Generic;
-using System;
 
 // A first in first out list of a specified data type with an associated priority value assigned to each element used for adding and removing data in a specific order.
 public class PriorityQueue<DataType>
@@ -22,16 +21,12 @@ public class PriorityQueue<DataType>
                 // Add the node to the queue right before the next node
                 Queue.AddBefore(Queue.Find(Node), enqueuedNode);
 
-                Console.WriteLine("Node with a priority of " + enqueuedNode.priority + " was added to the queue. The length of the queue is now " + Queue.Count + ".");
-
                 return;
             }
         }
 
         // Add the enqueued node to the end of the list
         Queue.AddLast(enqueuedNode);
-
-        Console.WriteLine("Node with a priority of " + enqueuedNode.priority + " was added to the queue. The length of the queue is now " + Queue.Count + ".");
     }
 
     // Add a new node to the queue
@@ -51,8 +46,6 @@ public class PriorityQueue<DataType>
         // Check if the queue is empty
         if (Queue.Count == 0)
         {
-            Console.WriteLine("Queue is empty!");
-
             return default;
         }
 
@@ -61,13 +54,6 @@ public class PriorityQueue<DataType>
 
         // Remove the oldest node with the lowest priority from the queue
         Queue.Remove(dequeuedNode);
-
-        Console.WriteLine("Node with a priority of " + dequeuedNode.priority + " was removed from the queue. The length of the queue is now " + Queue.Count + ".");
-
-        if (Queue.Count == 0)
-        {
-            Console.WriteLine("The queue is now empty.");
-        }
 
         // Return our removed node
         return dequeuedNode.data;
@@ -84,16 +70,12 @@ public class PriorityQueue<DataType>
                 // Add the node to the queue right before the next node
                 Queue.AddBefore(Queue.Find(Node), enqueuedNode);
 
-                Console.WriteLine("Node with a priority of " + enqueuedNode.priority + " was added to the queue. The length of the queue is now " + Queue.Count + ".");
-
                 return;
             }
         }
 
         // Add the enqueued node to the end of the list
         Queue.AddLast(enqueuedNode);
-
-        Console.WriteLine("Node with a priority of " + enqueuedNode.priority + " was added to the queue. The length of the queue is now " + Queue.Count + ".");
     }
 
     // Add a new node to the queue (identical to enqueue)
@@ -113,8 +95,6 @@ public class PriorityQueue<DataType>
         // Check if the queue is empty
         if (Queue.Count == 0)
         {
-            Console.WriteLine("Queue is empty!");
-
             return default;
         }
 
@@ -123,13 +103,6 @@ public class PriorityQueue<DataType>
 
         // Remove the oldest node with the lowest priority from the queue
         Queue.Remove(dequeuedNode);
-
-        Console.WriteLine("Node with a priority of " + dequeuedNode.priority + " was removed from the queue. The length of the queue is now " + Queue.Count + ".");
-
-        if (Queue.Count == 0)
-        {
-            Console.WriteLine("The queue is now empty.");
-        }
 
         // Return our removed node
         return dequeuedNode.data;
