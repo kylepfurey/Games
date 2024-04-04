@@ -7,6 +7,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <initializer_list>
 
 // Include this heading to use the class
 #include "Vector.h"
@@ -1135,6 +1136,23 @@ public:
 		vector_capacity = 1;
 
 		vector_expansions = 0;
+	}
+
+	// List constructor
+	vector(const std::initializer_list<DataType> new_vector)
+	{
+		vector_size = new_vector.size();
+
+		vector_capacity = new_vector.size();
+
+		vector_expansions = 0;
+
+		vector_data = new DataType[vector_capacity];
+
+		for (int i = 0; i < vector_size; i++)
+		{
+			vector_data[i] = *(new_vector.begin() + i);
+		}
 	}
 
 	// Copy constructor
@@ -2331,6 +2349,23 @@ public:
 		vectorCapacity = 1;
 
 		vectorExpansions = 0;
+	}
+
+	// List constructor
+	Vector(const std::initializer_list<DataType> new_vector)
+	{
+		vectorSize = new_vector.size();
+
+		vectorCapacity = new_vector.size();
+
+		vectorExpansions = 0;
+
+		vectorData = new DataType[vectorCapacity];
+
+		for (int i = 0; i < vectorSize; i++)
+		{
+			vectorData[i] = *(new_vector.begin() + i);
+		}
 	}
 
 	// Copy constructor

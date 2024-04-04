@@ -7,6 +7,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <initializer_list>
 
 // Include this heading to use the class
 #include "List.h"
@@ -1135,6 +1136,23 @@ public:
 		list_capacity = 1;
 
 		list_expansions = 0;
+	}
+
+	// List constructor
+	list(const std::initializer_list<DataType> new_list)
+	{
+		list_size = new_list.size();
+
+		list_capacity = new_list.size();
+
+		list_expansions = 0;
+
+		list_data = new DataType[list_capacity];
+
+		for (int i = 0; i < list_size; i++)
+		{
+			list_data[i] = *(new_list.begin() + i);
+		}
 	}
 
 	// Copy constructor
@@ -2331,6 +2349,23 @@ public:
 		listCapacity = 1;
 
 		listExpansions = 0;
+	}
+
+	// List constructor
+	List(const std::initializer_list<DataType> new_list)
+	{
+		listSize = new_list.size();
+
+		listCapacity = new_list.size();
+
+		listExpansions = 0;
+
+		listData = new DataType[listCapacity];
+
+		for (int i = 0; i < listSize; i++)
+		{
+			listData[i] = *(new_list.begin() + i);
+		}
 	}
 
 	// Copy constructor
