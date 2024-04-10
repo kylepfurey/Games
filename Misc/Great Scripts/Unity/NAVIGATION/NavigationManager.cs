@@ -19,23 +19,23 @@ namespace Navigation
         // Instance (to prevent duplicate components)
         private static NavigationManager instance = null;
 
-        [Header("BAKE NAVIGATION MESHES:")]
+        [Header("\nBAKE NAVIGATION MESHES:")]
         [SerializeField] private bool BAKE = false;
 
-        [Header("CLEAR BAKED NAVIGATION MESHES:")]
+        [Header("\nCLEAR BAKED NAVIGATION MESHES:")]
         [SerializeField] private bool CLEAR = false;
         public static List<GameObject> bakedMeshes = new List<GameObject>();
         public static List<Node> generatedNodes = new List<Node>();
 
-        [Header("MESHES TO BAKE:")]
+        [Header("\nMESHES TO BAKE:")]
         [SerializeField] private List<MeshObjectCollection> meshes = new List<MeshObjectCollection>();
         public static List<MeshObjectCollection> meshesToBake = new List<MeshObjectCollection>();
 
-        [Header("BAKING SETTINGS:")]
+        [Header("\nBAKING SETTINGS:")]
         [SerializeField] private float maxSlopeAngle = 60;
         public static float slopeAngle = 60;
 
-        [Header("NAVIGATION SETTINGS")]
+        [Header("\nNAVIGATION SETTINGS:")]
         [SerializeField] private float maxNavigationDistance = 15;
         public static float navigationDistance = 15;
 
@@ -386,7 +386,7 @@ namespace Navigation
                 foreach (Vector3 connectedNode in connectedNodes)
                 {
                     // Check that the current node position has not been connected to already
-                    if (!storedConnections.Contains(connectedNode))
+                    if (!storedConnections.Contains(connectedNode) && positionToNode.ContainsKey(connectedNode))
                     {
                         // Make a new connection with each node
                         Connection newConnection = new Connection();
@@ -544,8 +544,11 @@ namespace Navigation
         [Header("The list of objects to bake together as one mesh:")]
         public List<GameObject> bakedObjects = new List<GameObject>();
 
-        [Header("Whether this mesh is terrain:")]
-        public bool isTerrain = false;
+        [Header("The type of baking for this mesh collection:")]
+        public BakeMode bakeMode = BakeMode.Simplify;
+
+        // Bake mode enum
+        public enum BakeMode { Simplify, Decimate, Terrain };
 
         // Bakes the objects into a singular mesh object
         public GameObject Bake()
@@ -553,14 +556,16 @@ namespace Navigation
             // Store all of the meshes
             List<Mesh> meshes = GetMeshes(bakedObjects);
 
-            // Simplify all of the meshes
-            for (int i = 0; i < meshes.Count; i++)
+            if (bakeMode == BakeMode.Simplify)
             {
-                meshes[i] = Simplify(meshes[i]);
+                for (int i = 0; i < meshes.Count; i++)
+                {
+                    meshes[i] = Simplify(meshes[i]);
+                }
             }
 
             // Store the combined mesh
-            Mesh combinedMesh;
+            Mesh combinedMesh = null;
 
             // Check the number of meshes that are being baked together
             if (bakedObjects.Count > 1)
@@ -573,12 +578,20 @@ namespace Navigation
                     worldPositions[i] = bakedObjects[i].transform.position;
                 }
 
-                // Combine each of the meshes of this collection
+                // Combine the meshes
                 combinedMesh = Combine(meshes, worldPositions);
+
+                if (bakeMode == BakeMode.Decimate)
+                {
+                    combinedMesh = Decimate(combinedMesh);
+                }
             }
             else if (bakedObjects.Count == 1)
             {
-                combinedMesh = Simplify(GetMesh(bakedObjects[0]));
+                if (bakeMode == BakeMode.Decimate)
+                {
+                    combinedMesh = Decimate(GetMesh(bakedObjects[0]));
+                }
             }
             else
             {
@@ -591,7 +604,7 @@ namespace Navigation
             combinedMesh.name = name + " Navigation Mesh";
 
             // Check if this mesh collection is terrain
-            if (isTerrain)
+            if (bakeMode == BakeMode.Terrain)
             {
                 // Cut out steep parts of the terrain mesh
                 combinedMesh = Discard(combinedMesh, slopeAngle);

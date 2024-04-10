@@ -40,9 +40,6 @@ namespace Navigation
         [SerializeField] private Pathfinding.Algorithm algorithm = Pathfinding.Algorithm.AStar;
         [SerializeField] private bool calculateRoute = false;
 
-        [Header("Whether we can click on a node to test a route between a start and end node:")]
-        [SerializeField] private bool testRouteWithMouse = true;
-
         [Header("Whether to hide the mesh of each nodes when the game starts:")]
         [SerializeField] private bool hideNodeMeshes = true;
 
