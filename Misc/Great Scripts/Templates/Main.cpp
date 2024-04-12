@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <fstream>
 #include <thread>
+#include <functional>
 
 using namespace std;
 

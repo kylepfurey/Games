@@ -10,6 +10,7 @@
 #include <algorithm>
 #include <fstream>
 #include <thread>
+#include <functional>
 
 // Include this heading to use the library
 #include "Function.h"
