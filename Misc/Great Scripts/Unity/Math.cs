@@ -54,26 +54,14 @@ public static class Math
         return rotation * direction;
     }
 
-    // Moves a vector towards another vector by a linear speed (without overshooting)
-    public static Vector3 MoveTowards(Vector3 start, Vector3 end, float speed)
-    {
-        return (DistanceSquared(start, end) <= speed * speed) ? (end) : (start + ((end - start).normalized * speed));
-    }
-
-    // Moves a vector towards another vector by a percentage of the distance to the destination (and reaches the target after a certain distance is met)
-    public static Vector3 LinearInterpolate(Vector3 start, Vector3 end, float alpha, float minimumDistance = 0)
-    {
-        return (DistanceSquared(start, end) <= minimumDistance * minimumDistance) ? (end) : (start + ((end - start) * alpha));
-    }
-
     // Gets the bezier interpolation of two points based on a third point
-    public static Vector3 BezierInterpolate(Vector3 start, Vector3 end, Vector3 curve, float alpha)
+    public static Vector3 Bezier(Vector3 start, Vector3 end, Vector3 curve, float alpha)
     {
-        return LinearInterpolate(LinearInterpolate(start, curve, alpha, 0), LinearInterpolate(curve, end, alpha, 0), alpha, 0);
+        return Vector3.Lerp(Vector3.Lerp(start, curve, alpha), Vector3.Lerp(curve, end, alpha), alpha);
     }
 
     // Returns a list of vectors representing a bezier curve
-    public static List<Vector3[]> BezierCurve(Vector3 start, Vector3 end, Vector3 curve, int resolution)
+    public static List<Vector3[]> BezierCurve(Vector3 start, Vector3 end, Vector3 curvePoint, int resolution)
     {
         List<Vector3[]> result = new List<Vector3[]>(resolution);
 
@@ -83,7 +71,7 @@ public static class Math
         {
             float alpha = (i + 1) / resolution;
 
-            Vector3 next = BezierInterpolate(start, end, curve, alpha);
+            Vector3 next = BezierInterpolate(start, end, curvePoint, alpha);
 
             Vector3[] line = new Vector3[2]
             {
@@ -113,14 +101,8 @@ public static class Math
         return (max - min) * percentage + min;
     }
 
-    // Move a value towards another value by a linear speed (without overshooting)
-    public static float MoveTowards(float start, float end, float speed)
-    {
-        return (Mathf.Abs(end - start) <= speed) ? (end) : ((start > end) ? (start + speed) : (start - speed));
-    }
-
     // Moves a value towards another value by a percentage of the distance to the destination (and reaches the target after a certain distance is met)
-    public static float LinearInterpolate(float start, float end, float alpha, float minimumDistance = 0)
+    public static float SmartLerp(float start, float end, float alpha, float minimumDistance = 0.005f)
     {
         return (Mathf.Abs(end - start) <= minimumDistance) ? (end) : (start + ((end - start) * alpha));
     }

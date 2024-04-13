@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <fstream>
 #include <thread>
+#include <functional>
 
 // Example Class
 class Class
