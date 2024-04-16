@@ -127,8 +127,8 @@ namespace Navigation
             // from[currentNode] = the node immediately before currentNode
             Dictionary<Node, Node> from = new Dictionary<Node, Node>
         {
-            // Set our start node's value to itself in our route dictionary
-            { start, start }
+            // Set our start node's value to an impossible node in our route dictionary
+            { start, new Node(int.MaxValue, int.MaxValue) }
         };
 
             // Store our current value and number of loops
@@ -306,7 +306,7 @@ namespace Navigation
             List<Node> route = new List<Node>();
 
             // Build our final route through our dictionary's connections
-            while (from[current] != start)
+            while (from[current] != new Node(int.MaxValue, int.MaxValue))
             {
                 // Add our current node to the route
                 route.Add(current);
@@ -370,8 +370,8 @@ namespace Navigation
             // from[currentNode] = the node immediately before currentNode
             Dictionary<Node, Node> from = new Dictionary<Node, Node>
         {
-            // Set our start node's value to itself in our route dictionary
-            { start, start }
+            // Set our start node's value to an impossible node in our route dictionary
+            { start, new Node(int.MaxValue, int.MaxValue) }
         };
 
             // Store our current value and number of loops
@@ -549,7 +549,7 @@ namespace Navigation
             List<Node> route = new List<Node>();
 
             // Build our final route through our dictionary's connections
-            while (from[current] != start)
+            while (from[current] != new Node(int.MaxValue, int.MaxValue))
             {
                 // Add our current node to the route
                 route.Add(current);
@@ -613,8 +613,8 @@ namespace Navigation
             // from[currentNode] = the node immediately before currentNode
             Dictionary<Node, Node> from = new Dictionary<Node, Node>
         {
-            // Set our start node's value to itself in our route dictionary
-            { start, start }
+            // Set our start node's value to an impossible node in our route dictionary
+            { start, new Node(int.MaxValue, int.MaxValue) }
         };
 
             // Make a new dictionary that corresponds to the from dictionary's "to" nodes and store the total cost + weight to get to that node
@@ -906,7 +906,7 @@ namespace Navigation
             List<Node> route = new List<Node>();
 
             // Build our final route through our dictionary's connections
-            while (from[current] != start)
+            while (from[current] != new Node(int.MaxValue, int.MaxValue))
             {
                 // Add our current node to the route
                 route.Add(current);
@@ -970,8 +970,8 @@ namespace Navigation
             // from[currentNode] = the node immediately before currentNode
             Dictionary<Node, Node> from = new Dictionary<Node, Node>
         {
-            // Set our start node's value to itself in our route dictionary
-            { start, start }
+            // Set our start node's value to an impossible node in our route dictionary
+            { start, new Node(int.MaxValue, int.MaxValue) }
         };
 
             // Make a new dictionary that corresponds to the from dictionary's "to" nodes and store the total cost + weight to get to that node
@@ -1263,7 +1263,7 @@ namespace Navigation
             List<Node> route = new List<Node>();
 
             // Build our final route through our dictionary's connections
-            while (from[current] != start)
+            while (from[current] != new Node(int.MaxValue, int.MaxValue))
             {
                 // Add our current node to the route
                 route.Add(current);
@@ -1359,8 +1359,8 @@ namespace Navigation
             // from[currentNode] = the node immediately before currentNode
             Dictionary<Node, Node> from = new Dictionary<Node, Node>
         {
-            // Set our start node's value to itself in our route dictionary
-            { start, start }
+            // Set our start node's value to an impossible node in our route dictionary
+            { start, new Node(int.MaxValue, int.MaxValue) }
         };
 
             // Store our current value and number of loops
@@ -1538,7 +1538,7 @@ namespace Navigation
             List<Node> route = new List<Node>();
 
             // Build our final route through our dictionary's connections
-            while (from[current] != start)
+            while (from[current] != new Node(int.MaxValue, int.MaxValue))
             {
                 // Add our current node to the route
                 route.Add(current);
@@ -1601,8 +1601,8 @@ namespace Navigation
             // from[currentNode] = the node immediately before currentNode
             Dictionary<Node, Node> from = new Dictionary<Node, Node>
         {
-            // Set our start node's value to itself in our route dictionary
-            { start, start }
+            // Set our start node's value to an impossible node in our route dictionary
+            { start, new Node(int.MaxValue, int.MaxValue) }
         };
 
             // Make a new dictionary that corresponds to the from dictionary's "to" nodes and store the total cost + weight to get to that node
@@ -1894,7 +1894,7 @@ namespace Navigation
             List<Node> route = new List<Node>();
 
             // Build our final route through our dictionary's connections
-            while (from[current] != start)
+            while (from[current] != new Node(int.MaxValue, int.MaxValue))
             {
                 // Add our current node to the route
                 route.Add(current);
