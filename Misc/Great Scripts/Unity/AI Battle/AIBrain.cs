@@ -24,14 +24,17 @@ namespace AIBattle
             // Whether the AI team attempts to link their maps
             public const bool linkMaps = true;
 
-            // Whether to explode the AI on a linking failure
-            public const bool explodeOnFailure = false;
+            // Whether to link an AI based on similar spaces
+            public const bool heuristicLink = false;
 
             // The minimum number of matching adjacent spaces for two locations to be considered linked
             public const int minimumSimilarities = 4;
 
             // The maximum number of matching adjacent walls before two locations are not considered linked
             public const int maximumWalls = 1;
+
+            // Whether to explode the AI on a linking failure
+            public const bool explodeOnFailure = false;
 
             // The time to drop bombs with for enemies
             public const int enemyBombDropTime = 1;
@@ -119,10 +122,9 @@ namespace AIBattle
             // Whether an AI on this team is currently holding the key
             public static bool teamHasKey = false;
 
-            // Information for recovering a lost key
-            public static int teamKeyIndex = 0;
-            public static Node teamKeyPosition = Node.zero;
-            public static bool teamLostKey = false;
+            // Data used to recover a key when a key is lost
+            public static Node keyPosition = Node.zero;
+            public static bool lostKey = false;
 
             // The position of the exit if it has been found by the team
             public static Node teamExit = Node.zero;
@@ -281,150 +283,24 @@ namespace AIBattle
                             return;
                         }
 
-                        // Compare the map of this AI with the team's map
-                        foreach (Node mapPosition in teamMap.Keys)
+                        // Check for nearby teammates with the key
+
+                        // Check up
+                        if (teamHasKey && MapSpace.SpaceContains(sensorData.up, GameManager.SensorData.Diamond) && !lostKey)
                         {
-                            // Check if two spaces match up
-                            if (map[currentPosition].SpaceEquals(teamMap[mapPosition]))
+                            for (int i = 0; i < team.Count; i++)
                             {
-                                int similarities = 0;
-                                int walls = 0;
-
-                                // Check up
-                                if ((map.ContainsKey(currentPosition + new Node(0, 1)) && teamMap.ContainsKey(mapPosition + new Node(0, 1))) ||
-                                (occupied.Contains(currentPosition + new Node(0, 1)) && teamOccupied.Contains(mapPosition + new Node(0, 1))))
+                                if (i == index)
                                 {
-                                    // Check for a match
-                                    if ((occupied.Contains(currentPosition + new Node(0, 1)) && teamOccupied.Contains(mapPosition + new Node(0, 1))) ||
-                                    (map[currentPosition + new Node(0, 1)].SpaceEquals(teamMap[mapPosition + new Node(0, 1)])))
-                                    {
-                                        // Increment the number of similarities 
-                                        similarities++;
-
-                                        // Check if the space is an occupied space
-                                        if (occupied.Contains(currentPosition + new Node(0, 1)) && teamOccupied.Contains(mapPosition + new Node(0, 1)))
-                                        {
-                                            // Increment the number of walls
-                                            walls++;
-
-                                            // Check if there are too many walls for an accurate check
-                                            if (walls > maximumWalls)
-                                            {
-                                                // Two spaces do not match, move on to the next position
-                                                continue;
-                                            }
-                                        }
-                                    }
-                                    else
-                                    {
-                                        // Two spaces do not match, move on to the next position
-                                        continue;
-                                    }
+                                    continue;
                                 }
 
-                                // Check down
-                                if ((map.ContainsKey(currentPosition + new Node(0, -1)) && teamMap.ContainsKey(mapPosition + new Node(0, -1))) ||
-                                (occupied.Contains(currentPosition + new Node(0, -1)) && teamOccupied.Contains(mapPosition + new Node(0, -1))))
-                                {
-                                    // Check for a match
-                                    if ((occupied.Contains(currentPosition + new Node(0, -1)) && teamOccupied.Contains(mapPosition + new Node(0, -1))) ||
-                                    (map[currentPosition + new Node(0, -1)].SpaceEquals(teamMap[mapPosition + new Node(0, -1)])))
-                                    {
-                                        // Increment the number of similarities 
-                                        similarities++;
-
-                                        // Check if the space is an occupied space
-                                        if (occupied.Contains(currentPosition + new Node(0, -1)) && teamOccupied.Contains(mapPosition + new Node(0, -1)))
-                                        {
-                                            // Increment the number of walls
-                                            walls++;
-
-                                            // Check if there are too many walls for an accurate check
-                                            if (walls > maximumWalls)
-                                            {
-                                                // Two spaces do not match, move on to the next position
-                                                continue;
-                                            }
-                                        }
-                                    }
-                                    else
-                                    {
-                                        // Two spaces do not match, move on to the next position
-                                        continue;
-                                    }
-                                }
-
-                                // Check left
-                                if ((map.ContainsKey(currentPosition + new Node(-1, 0)) && teamMap.ContainsKey(mapPosition + new Node(-1, 0))) ||
-                                (occupied.Contains(currentPosition + new Node(-1, 0)) && teamOccupied.Contains(mapPosition + new Node(-1, 0))))
-                                {
-                                    // Check for a match
-                                    if ((occupied.Contains(currentPosition + new Node(-1, 0)) && teamOccupied.Contains(mapPosition + new Node(-1, 0))) ||
-                                    (map[currentPosition + new Node(-1, 0)].SpaceEquals(teamMap[mapPosition + new Node(-1, 0)])))
-                                    {
-                                        // Increment the number of similarities 
-                                        similarities++;
-
-                                        // Check if the space is an occupied space
-                                        if (occupied.Contains(currentPosition + new Node(-1, 0)) && teamOccupied.Contains(mapPosition + new Node(-1, 0)))
-                                        {
-                                            // Increment the number of walls
-                                            walls++;
-
-                                            // Check if there are too many walls for an accurate check
-                                            if (walls > maximumWalls)
-                                            {
-                                                // Two spaces do not match, move on to the next position
-                                                continue;
-                                            }
-                                        }
-                                    }
-                                    else
-                                    {
-                                        // Two spaces do not match, move on to the next position
-                                        continue;
-                                    }
-                                }
-
-                                // Check right
-                                if ((map.ContainsKey(currentPosition + new Node(1, 0)) && teamMap.ContainsKey(mapPosition + new Node(1, 0))) ||
-                                (occupied.Contains(currentPosition + new Node(1, 0)) && teamOccupied.Contains(mapPosition + new Node(1, 0))))
-                                {
-                                    // Check for a match
-                                    if ((occupied.Contains(currentPosition + new Node(1, 0)) && teamOccupied.Contains(mapPosition + new Node(1, 0))) ||
-                                    (map[currentPosition + new Node(1, 0)].SpaceEquals(teamMap[mapPosition + new Node(1, 0)])))
-                                    {
-                                        // Increment the number of similarities 
-                                        similarities++;
-
-                                        // Check if the space is an occupied space
-                                        if (occupied.Contains(currentPosition + new Node(1, 0)) && teamOccupied.Contains(mapPosition + new Node(1, 0)))
-                                        {
-                                            // Increment the number of walls
-                                            walls++;
-
-                                            // Check if there are too many walls for an accurate check
-                                            if (walls > maximumWalls)
-                                            {
-                                                // Two spaces do not match, move on to the next position
-                                                continue;
-                                            }
-                                        }
-                                    }
-                                    else
-                                    {
-                                        // Two spaces do not match, move on to the next position
-                                        continue;
-                                    }
-                                }
-
-                                // Check if the link is viable
-                                if (similarities >= minimumSimilarities)
+                                if (team[i].brain.hasKey)
                                 {
                                     Debug.Log("AI " + Enum.GetName(typeof(AIClass), classType) + " LINKED WITH TEAM!");
 
                                     // Offset all of this AI's positions
-                                    OffsetPositions(mapPosition - currentPosition);
+                                    OffsetPositions((i > index ? team[i].brain.currentPosition : team[i].brain.previousPosition) - currentPosition + new Node(0, -1));
 
                                     // Link the AI's positions
                                     UpdateTeamData(this);
@@ -432,14 +308,403 @@ namespace AIBattle
                                     // Complete the AI link
                                     CompleteLink(this);
 
-                                    // Stop looping
+                                    // Stop linking
                                     return;
+                                }
+                            }
+                        }
+
+                        // Check down
+                        if (teamHasKey && MapSpace.SpaceContains(sensorData.down, GameManager.SensorData.Diamond) && !lostKey)
+                        {
+                            for (int i = 0; i < team.Count; i++)
+                            {
+                                if (i == index)
+                                {
+                                    continue;
+                                }
+
+                                if (team[i].brain.hasKey)
+                                {
+                                    Debug.Log("AI " + Enum.GetName(typeof(AIClass), classType) + " LINKED WITH TEAM!");
+
+                                    // Offset all of this AI's positions
+                                    OffsetPositions((i > index ? team[i].brain.currentPosition : team[i].brain.previousPosition) - currentPosition + new Node(0, 1));
+
+                                    // Link the AI's positions
+                                    UpdateTeamData(this);
+
+                                    // Complete the AI link
+                                    CompleteLink(this);
+
+                                    // Stop linking
+                                    return;
+                                }
+                            }
+                        }
+
+                        // Check left
+                        if (teamHasKey && MapSpace.SpaceContains(sensorData.left, GameManager.SensorData.Diamond) && !lostKey)
+                        {
+                            for (int i = 0; i < team.Count; i++)
+                            {
+                                if (i == index)
+                                {
+                                    continue;
+                                }
+
+                                if (team[i].brain.hasKey)
+                                {
+                                    Debug.Log("AI " + Enum.GetName(typeof(AIClass), classType) + " LINKED WITH TEAM!");
+
+                                    // Offset all of this AI's positions
+                                    OffsetPositions((i > index ? team[i].brain.currentPosition : team[i].brain.previousPosition) - currentPosition + new Node(1, 0));
+
+                                    // Link the AI's positions
+                                    UpdateTeamData(this);
+
+                                    // Complete the AI link
+                                    CompleteLink(this);
+
+                                    // Stop linking
+                                    return;
+                                }
+                            }
+                        }
+
+                        // Check right
+                        if (teamHasKey && MapSpace.SpaceContains(sensorData.right, GameManager.SensorData.Diamond) && !lostKey)
+                        {
+                            for (int i = 0; i < team.Count; i++)
+                            {
+                                if (i == index)
+                                {
+                                    continue;
+                                }
+
+                                if (team[i].brain.hasKey)
+                                {
+                                    Debug.Log("AI " + Enum.GetName(typeof(AIClass), classType) + " LINKED WITH TEAM!");
+
+                                    // Offset all of this AI's positions
+                                    OffsetPositions((i > index ? team[i].brain.currentPosition : team[i].brain.previousPosition) - currentPosition + new Node(-1, 0));
+
+                                    // Link the AI's positions
+                                    UpdateTeamData(this);
+
+                                    // Complete the AI link
+                                    CompleteLink(this);
+
+                                    // Stop linking
+                                    return;
+                                }
+                            }
+                        }
+
+                        if (heuristicLink)
+                        {
+                            // Compare the map of this AI with the team's map
+                            foreach (Node mapPosition in teamMap.Keys)
+                            {
+                                // Check if two spaces match up
+                                if (map[currentPosition].SpaceEquals(teamMap[mapPosition]))
+                                {
+                                    int similarities = 0;
+                                    int walls = 0;
+
+                                    // Check up
+                                    if ((map.ContainsKey(currentPosition + new Node(0, 1)) && teamMap.ContainsKey(mapPosition + new Node(0, 1))) ||
+                                    (occupied.Contains(currentPosition + new Node(0, 1)) && teamOccupied.Contains(mapPosition + new Node(0, 1))))
+                                    {
+                                        // Check for a match
+                                        if ((occupied.Contains(currentPosition + new Node(0, 1)) && teamOccupied.Contains(mapPosition + new Node(0, 1))) ||
+                                        (map[currentPosition + new Node(0, 1)].SpaceEquals(teamMap[mapPosition + new Node(0, 1)])))
+                                        {
+                                            // Increment the number of similarities 
+                                            similarities++;
+
+                                            // Check if the space is an occupied space
+                                            if (occupied.Contains(currentPosition + new Node(0, 1)) && teamOccupied.Contains(mapPosition + new Node(0, 1)))
+                                            {
+                                                // Increment the number of walls
+                                                walls++;
+
+                                                // Check if there are too many walls for an accurate check
+                                                if (walls > maximumWalls)
+                                                {
+                                                    // Two spaces do not match, move on to the next position
+                                                    continue;
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            // Two spaces do not match, move on to the next position
+                                            continue;
+                                        }
+                                    }
+
+                                    // Check down
+                                    if ((map.ContainsKey(currentPosition + new Node(0, -1)) && teamMap.ContainsKey(mapPosition + new Node(0, -1))) ||
+                                    (occupied.Contains(currentPosition + new Node(0, -1)) && teamOccupied.Contains(mapPosition + new Node(0, -1))))
+                                    {
+                                        // Check for a match
+                                        if ((occupied.Contains(currentPosition + new Node(0, -1)) && teamOccupied.Contains(mapPosition + new Node(0, -1))) ||
+                                        (map[currentPosition + new Node(0, -1)].SpaceEquals(teamMap[mapPosition + new Node(0, -1)])))
+                                        {
+                                            // Increment the number of similarities 
+                                            similarities++;
+
+                                            // Check if the space is an occupied space
+                                            if (occupied.Contains(currentPosition + new Node(0, -1)) && teamOccupied.Contains(mapPosition + new Node(0, -1)))
+                                            {
+                                                // Increment the number of walls
+                                                walls++;
+
+                                                // Check if there are too many walls for an accurate check
+                                                if (walls > maximumWalls)
+                                                {
+                                                    // Two spaces do not match, move on to the next position
+                                                    continue;
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            // Two spaces do not match, move on to the next position
+                                            continue;
+                                        }
+                                    }
+
+                                    // Check left
+                                    if ((map.ContainsKey(currentPosition + new Node(-1, 0)) && teamMap.ContainsKey(mapPosition + new Node(-1, 0))) ||
+                                    (occupied.Contains(currentPosition + new Node(-1, 0)) && teamOccupied.Contains(mapPosition + new Node(-1, 0))))
+                                    {
+                                        // Check for a match
+                                        if ((occupied.Contains(currentPosition + new Node(-1, 0)) && teamOccupied.Contains(mapPosition + new Node(-1, 0))) ||
+                                        (map[currentPosition + new Node(-1, 0)].SpaceEquals(teamMap[mapPosition + new Node(-1, 0)])))
+                                        {
+                                            // Increment the number of similarities 
+                                            similarities++;
+
+                                            // Check if the space is an occupied space
+                                            if (occupied.Contains(currentPosition + new Node(-1, 0)) && teamOccupied.Contains(mapPosition + new Node(-1, 0)))
+                                            {
+                                                // Increment the number of walls
+                                                walls++;
+
+                                                // Check if there are too many walls for an accurate check
+                                                if (walls > maximumWalls)
+                                                {
+                                                    // Two spaces do not match, move on to the next position
+                                                    continue;
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            // Two spaces do not match, move on to the next position
+                                            continue;
+                                        }
+                                    }
+
+                                    // Check right
+                                    if ((map.ContainsKey(currentPosition + new Node(1, 0)) && teamMap.ContainsKey(mapPosition + new Node(1, 0))) ||
+                                    (occupied.Contains(currentPosition + new Node(1, 0)) && teamOccupied.Contains(mapPosition + new Node(1, 0))))
+                                    {
+                                        // Check for a match
+                                        if ((occupied.Contains(currentPosition + new Node(1, 0)) && teamOccupied.Contains(mapPosition + new Node(1, 0))) ||
+                                        (map[currentPosition + new Node(1, 0)].SpaceEquals(teamMap[mapPosition + new Node(1, 0)])))
+                                        {
+                                            // Increment the number of similarities 
+                                            similarities++;
+
+                                            // Check if the space is an occupied space
+                                            if (occupied.Contains(currentPosition + new Node(1, 0)) && teamOccupied.Contains(mapPosition + new Node(1, 0)))
+                                            {
+                                                // Increment the number of walls
+                                                walls++;
+
+                                                // Check if there are too many walls for an accurate check
+                                                if (walls > maximumWalls)
+                                                {
+                                                    // Two spaces do not match, move on to the next position
+                                                    continue;
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            // Two spaces do not match, move on to the next position
+                                            continue;
+                                        }
+                                    }
+
+                                    // Check if the link is viable
+                                    if (similarities >= minimumSimilarities)
+                                    {
+                                        Debug.Log("AI " + Enum.GetName(typeof(AIClass), classType) + " LINKED WITH TEAM!");
+
+                                        // Offset all of this AI's positions
+                                        OffsetPositions(mapPosition - currentPosition);
+
+                                        // Link the AI's positions
+                                        UpdateTeamData(this);
+
+                                        // Complete the AI link
+                                        CompleteLink(this);
+
+                                        // Stop looping
+                                        return;
+                                    }
                                 }
                             }
                         }
                     }
                     else
                     {
+                        // Check for nearby teammates with the key
+
+                        // Check up
+                        if (teamHasKey && MapSpace.SpaceContains(sensorData.up, GameManager.SensorData.Diamond) && !lostKey)
+                        {
+                            for (int i = 0; i < team.Count; i++)
+                            {
+                                if (i == index)
+                                {
+                                    continue;
+                                }
+
+                                if (team[i].brain.hasKey)
+                                {
+                                    Debug.Log("AI " + team[index].AIName + " LINKED WITH AI " + team[i].AIName + "!");
+
+                                    // Offset all of this AI's positions
+                                    OffsetPositions((i > index ? team[i].brain.currentPosition : team[i].brain.previousPosition) - currentPosition + new Node(0, -1));
+
+                                    // Link the AI's positions
+                                    UpdateTeamData(this);
+
+                                    // Link the other AI's positions
+                                    UpdateTeamData(team[i].brain);
+
+                                    // Complete the AI link
+                                    CompleteLink(this);
+
+                                    // Complete the other AI's link
+                                    CompleteLink(team[i].brain);
+
+                                    // Stop linking
+                                    return;
+                                }
+                            }
+                        }
+
+                        // Check down
+                        if (teamHasKey && MapSpace.SpaceContains(sensorData.down, GameManager.SensorData.Diamond) && !lostKey)
+                        {
+                            for (int i = 0; i < team.Count; i++)
+                            {
+                                if (i == index)
+                                {
+                                    continue;
+                                }
+
+                                if (team[i].brain.hasKey)
+                                {
+                                    Debug.Log("AI " + team[index].AIName + " LINKED WITH AI " + team[i].AIName + "!");
+
+                                    // Offset all of this AI's positions
+                                    OffsetPositions((i > index ? team[i].brain.currentPosition : team[i].brain.previousPosition) - currentPosition + new Node(0, 1));
+
+                                    // Link the AI's positions
+                                    UpdateTeamData(this);
+
+                                    // Link the other AI's positions
+                                    UpdateTeamData(team[i].brain);
+
+                                    // Complete the AI link
+                                    CompleteLink(this);
+
+                                    // Complete the other AI's link
+                                    CompleteLink(team[i].brain);
+
+                                    // Stop linking
+                                    return;
+                                }
+                            }
+                        }
+
+                        // Check left
+                        if (teamHasKey && MapSpace.SpaceContains(sensorData.left, GameManager.SensorData.Diamond) && !lostKey)
+                        {
+                            for (int i = 0; i < team.Count; i++)
+                            {
+                                if (i == index)
+                                {
+                                    continue;
+                                }
+
+                                if (team[i].brain.hasKey)
+                                {
+                                    Debug.Log("AI " + team[index].AIName + " LINKED WITH AI " + team[i].AIName + "!");
+
+                                    // Offset all of this AI's positions
+                                    OffsetPositions((i > index ? team[i].brain.currentPosition : team[i].brain.previousPosition) - currentPosition + new Node(1, 0));
+
+                                    // Link the AI's positions
+                                    UpdateTeamData(this);
+
+                                    // Link the other AI's positions
+                                    UpdateTeamData(team[i].brain);
+
+                                    // Complete the AI link
+                                    CompleteLink(this);
+
+                                    // Complete the other AI's link
+                                    CompleteLink(team[i].brain);
+
+                                    // Stop linking
+                                    return;
+                                }
+                            }
+                        }
+
+                        // Check right
+                        if (teamHasKey && MapSpace.SpaceContains(sensorData.right, GameManager.SensorData.Diamond) && !lostKey)
+                        {
+                            for (int i = 0; i < team.Count; i++)
+                            {
+                                if (i == index)
+                                {
+                                    continue;
+                                }
+
+                                if (team[i].brain.hasKey)
+                                {
+                                    Debug.Log("AI " + team[index].AIName + " LINKED WITH AI " + team[i].AIName + "!");
+
+                                    // Offset all of this AI's positions
+                                    OffsetPositions((i > index ? team[i].brain.currentPosition : team[i].brain.previousPosition) - currentPosition + new Node(-1, 0));
+
+                                    // Link the AI's positions
+                                    UpdateTeamData(this);
+
+                                    // Link the other AI's positions
+                                    UpdateTeamData(team[i].brain);
+
+                                    // Complete the AI link
+                                    CompleteLink(this);
+
+                                    // Complete the other AI's link
+                                    CompleteLink(team[i].brain);
+
+                                    // Stop linking
+                                    return;
+                                }
+                            }
+                        }
+
                         // Compare the map of this AI with each of the team's map
                         for (int i = 0; i < team.Count; i++)
                         {
@@ -473,164 +738,167 @@ namespace AIBattle
                                 return;
                             }
 
-                            foreach (Node mapPosition in team[i].brain.map.Keys)
+                            if (heuristicLink)
                             {
-                                // Check if two spaces match up
-                                if (map[currentPosition].SpaceEquals(team[i].brain.map[mapPosition]))
+                                foreach (Node mapPosition in team[i].brain.map.Keys)
                                 {
-                                    int similarities = 0;
-                                    int walls = 0;
-
-                                    // Check up
-                                    if ((map.ContainsKey(currentPosition + new Node(0, 1)) && team[i].brain.map.ContainsKey(mapPosition + new Node(0, 1))) ||
-                                    (occupied.Contains(currentPosition + new Node(0, 1)) && team[i].brain.occupied.Contains(mapPosition + new Node(0, 1))))
+                                    // Check if two spaces match up
+                                    if (map[currentPosition].SpaceEquals(team[i].brain.map[mapPosition]))
                                     {
-                                        // Check for a match
-                                        if ((occupied.Contains(currentPosition + new Node(0, 1)) && team[i].brain.occupied.Contains(mapPosition + new Node(0, 1)) ||
-                                        (map[currentPosition + new Node(0, 1)].SpaceEquals(team[i].brain.map[mapPosition + new Node(0, 1)]))))
+                                        int similarities = 0;
+                                        int walls = 0;
+
+                                        // Check up
+                                        if ((map.ContainsKey(currentPosition + new Node(0, 1)) && team[i].brain.map.ContainsKey(mapPosition + new Node(0, 1))) ||
+                                        (occupied.Contains(currentPosition + new Node(0, 1)) && team[i].brain.occupied.Contains(mapPosition + new Node(0, 1))))
                                         {
-                                            // Increment the number of similarities 
-                                            similarities++;
-
-                                            // Check if the space is an occupied space
-                                            if (occupied.Contains(currentPosition + new Node(0, 1)) && team[i].brain.occupied.Contains(mapPosition + new Node(0, 1)))
+                                            // Check for a match
+                                            if ((occupied.Contains(currentPosition + new Node(0, 1)) && team[i].brain.occupied.Contains(mapPosition + new Node(0, 1)) ||
+                                            (map[currentPosition + new Node(0, 1)].SpaceEquals(team[i].brain.map[mapPosition + new Node(0, 1)]))))
                                             {
-                                                // Increment the number of walls
-                                                walls++;
+                                                // Increment the number of similarities 
+                                                similarities++;
 
-                                                // Check if there are too many walls for an accurate check
-                                                if (walls > maximumWalls)
+                                                // Check if the space is an occupied space
+                                                if (occupied.Contains(currentPosition + new Node(0, 1)) && team[i].brain.occupied.Contains(mapPosition + new Node(0, 1)))
                                                 {
-                                                    // Two spaces do not match, move on to the next position
-                                                    continue;
+                                                    // Increment the number of walls
+                                                    walls++;
+
+                                                    // Check if there are too many walls for an accurate check
+                                                    if (walls > maximumWalls)
+                                                    {
+                                                        // Two spaces do not match, move on to the next position
+                                                        continue;
+                                                    }
                                                 }
                                             }
-                                        }
-                                        else
-                                        {
-                                            // Two spaces do not match, move on to the next position
-                                            continue;
-                                        }
-                                    }
-
-                                    // Check down
-                                    if ((map.ContainsKey(currentPosition + new Node(0, -1)) && team[i].brain.map.ContainsKey(mapPosition + new Node(0, -1))) ||
-                                    (occupied.Contains(currentPosition + new Node(0, -1)) && team[i].brain.occupied.Contains(mapPosition + new Node(0, -1))))
-                                    {
-                                        // Check for a match
-                                        if ((occupied.Contains(currentPosition + new Node(0, -1)) && team[i].brain.occupied.Contains(mapPosition + new Node(0, -1))) ||
-                                        (map[currentPosition + new Node(0, -1)].SpaceEquals(team[i].brain.map[mapPosition + new Node(0, -1)])))
-                                        {
-                                            // Increment the number of similarities 
-                                            similarities++;
-
-                                            // Check if the space is an occupied space
-                                            if (occupied.Contains(currentPosition + new Node(0, -1)) && team[i].brain.occupied.Contains(mapPosition + new Node(0, -1)))
+                                            else
                                             {
-                                                // Increment the number of walls
-                                                walls++;
-
-                                                // Check if there are too many walls for an accurate check
-                                                if (walls > maximumWalls)
-                                                {
-                                                    // Two spaces do not match, move on to the next position
-                                                    continue;
-                                                }
+                                                // Two spaces do not match, move on to the next position
+                                                continue;
                                             }
                                         }
-                                        else
-                                        {
-                                            // Two spaces do not match, move on to the next position
-                                            continue;
-                                        }
-                                    }
 
-                                    // Check left
-                                    if ((map.ContainsKey(currentPosition + new Node(-1, 0)) && team[i].brain.map.ContainsKey(mapPosition + new Node(-1, 0))) ||
-                                    (occupied.Contains(currentPosition + new Node(-1, 0)) && team[i].brain.occupied.Contains(mapPosition + new Node(-1, 0))))
-                                    {
-                                        // Check for a match
-                                        if ((occupied.Contains(currentPosition + new Node(-1, 0)) && team[i].brain.occupied.Contains(mapPosition + new Node(-1, 0))) ||
-                                        (map[currentPosition + new Node(-1, 0)].SpaceEquals(team[i].brain.map[mapPosition + new Node(-1, 0)])))
+                                        // Check down
+                                        if ((map.ContainsKey(currentPosition + new Node(0, -1)) && team[i].brain.map.ContainsKey(mapPosition + new Node(0, -1))) ||
+                                        (occupied.Contains(currentPosition + new Node(0, -1)) && team[i].brain.occupied.Contains(mapPosition + new Node(0, -1))))
                                         {
-                                            // Increment the number of similarities 
-                                            similarities++;
-
-                                            // Check if the space is an occupied space
-                                            if (occupied.Contains(currentPosition + new Node(-1, 0)) && team[i].brain.occupied.Contains(mapPosition + new Node(-1, 0)))
+                                            // Check for a match
+                                            if ((occupied.Contains(currentPosition + new Node(0, -1)) && team[i].brain.occupied.Contains(mapPosition + new Node(0, -1))) ||
+                                            (map[currentPosition + new Node(0, -1)].SpaceEquals(team[i].brain.map[mapPosition + new Node(0, -1)])))
                                             {
-                                                // Increment the number of walls
-                                                walls++;
+                                                // Increment the number of similarities 
+                                                similarities++;
 
-                                                // Check if there are too many walls for an accurate check
-                                                if (walls > maximumWalls)
+                                                // Check if the space is an occupied space
+                                                if (occupied.Contains(currentPosition + new Node(0, -1)) && team[i].brain.occupied.Contains(mapPosition + new Node(0, -1)))
                                                 {
-                                                    // Two spaces do not match, move on to the next position
-                                                    continue;
+                                                    // Increment the number of walls
+                                                    walls++;
+
+                                                    // Check if there are too many walls for an accurate check
+                                                    if (walls > maximumWalls)
+                                                    {
+                                                        // Two spaces do not match, move on to the next position
+                                                        continue;
+                                                    }
                                                 }
                                             }
-                                        }
-                                        else
-                                        {
-                                            // Two spaces do not match, move on to the next position
-                                            continue;
-                                        }
-                                    }
-
-                                    // Check right
-                                    if ((map.ContainsKey(currentPosition + new Node(1, 0)) && team[i].brain.map.ContainsKey(mapPosition + new Node(1, 0))) ||
-                                    (occupied.Contains(currentPosition + new Node(1, 0)) && team[i].brain.occupied.Contains(mapPosition + new Node(1, 0))))
-                                    {
-                                        // Check for a match
-                                        if ((occupied.Contains(currentPosition + new Node(1, 0)) && team[i].brain.occupied.Contains(mapPosition + new Node(1, 0))) ||
-                                        (map[currentPosition + new Node(1, 0)].SpaceEquals(team[i].brain.map[mapPosition + new Node(1, 0)])))
-                                        {
-                                            // Increment the number of similarities 
-                                            similarities++;
-
-                                            // Check if the space is an occupied space
-                                            if (occupied.Contains(currentPosition + new Node(1, 0)) && team[i].brain.occupied.Contains(mapPosition + new Node(1, 0)))
+                                            else
                                             {
-                                                // Increment the number of walls
-                                                walls++;
-
-                                                // Check if there are too many walls for an accurate check
-                                                if (walls > maximumWalls)
-                                                {
-                                                    // Two spaces do not match, move on to the next position
-                                                    continue;
-                                                }
+                                                // Two spaces do not match, move on to the next position
+                                                continue;
                                             }
                                         }
-                                        else
+
+                                        // Check left
+                                        if ((map.ContainsKey(currentPosition + new Node(-1, 0)) && team[i].brain.map.ContainsKey(mapPosition + new Node(-1, 0))) ||
+                                        (occupied.Contains(currentPosition + new Node(-1, 0)) && team[i].brain.occupied.Contains(mapPosition + new Node(-1, 0))))
                                         {
-                                            // Two spaces do not match, move on to the next position
-                                            continue;
+                                            // Check for a match
+                                            if ((occupied.Contains(currentPosition + new Node(-1, 0)) && team[i].brain.occupied.Contains(mapPosition + new Node(-1, 0))) ||
+                                            (map[currentPosition + new Node(-1, 0)].SpaceEquals(team[i].brain.map[mapPosition + new Node(-1, 0)])))
+                                            {
+                                                // Increment the number of similarities 
+                                                similarities++;
+
+                                                // Check if the space is an occupied space
+                                                if (occupied.Contains(currentPosition + new Node(-1, 0)) && team[i].brain.occupied.Contains(mapPosition + new Node(-1, 0)))
+                                                {
+                                                    // Increment the number of walls
+                                                    walls++;
+
+                                                    // Check if there are too many walls for an accurate check
+                                                    if (walls > maximumWalls)
+                                                    {
+                                                        // Two spaces do not match, move on to the next position
+                                                        continue;
+                                                    }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                // Two spaces do not match, move on to the next position
+                                                continue;
+                                            }
                                         }
-                                    }
 
-                                    // Check if the link is viable
-                                    if (similarities >= minimumSimilarities)
-                                    {
-                                        Debug.Log("AI " + team[index].AIName + " LINKED WITH AI " + team[i].AIName + "!");
+                                        // Check right
+                                        if ((map.ContainsKey(currentPosition + new Node(1, 0)) && team[i].brain.map.ContainsKey(mapPosition + new Node(1, 0))) ||
+                                        (occupied.Contains(currentPosition + new Node(1, 0)) && team[i].brain.occupied.Contains(mapPosition + new Node(1, 0))))
+                                        {
+                                            // Check for a match
+                                            if ((occupied.Contains(currentPosition + new Node(1, 0)) && team[i].brain.occupied.Contains(mapPosition + new Node(1, 0))) ||
+                                            (map[currentPosition + new Node(1, 0)].SpaceEquals(team[i].brain.map[mapPosition + new Node(1, 0)])))
+                                            {
+                                                // Increment the number of similarities 
+                                                similarities++;
 
-                                        // Offset all of this AI's positions
-                                        OffsetPositions(mapPosition - currentPosition);
+                                                // Check if the space is an occupied space
+                                                if (occupied.Contains(currentPosition + new Node(1, 0)) && team[i].brain.occupied.Contains(mapPosition + new Node(1, 0)))
+                                                {
+                                                    // Increment the number of walls
+                                                    walls++;
 
-                                        // Link the AI's positions
-                                        UpdateTeamData(this);
+                                                    // Check if there are too many walls for an accurate check
+                                                    if (walls > maximumWalls)
+                                                    {
+                                                        // Two spaces do not match, move on to the next position
+                                                        continue;
+                                                    }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                // Two spaces do not match, move on to the next position
+                                                continue;
+                                            }
+                                        }
 
-                                        // Link the other AI's positions
-                                        UpdateTeamData(team[i].brain);
+                                        // Check if the link is viable
+                                        if (similarities >= minimumSimilarities)
+                                        {
+                                            Debug.Log("AI " + team[index].AIName + " LINKED WITH AI " + team[i].AIName + "!");
 
-                                        // Complete the AI link
-                                        CompleteLink(this);
+                                            // Offset all of this AI's positions
+                                            OffsetPositions(mapPosition - currentPosition);
 
-                                        // Complete the other AI's link
-                                        CompleteLink(team[i].brain);
+                                            // Link the AI's positions
+                                            UpdateTeamData(this);
 
-                                        // Stop looping
-                                        return;
+                                            // Link the other AI's positions
+                                            UpdateTeamData(team[i].brain);
+
+                                            // Complete the AI link
+                                            CompleteLink(this);
+
+                                            // Complete the other AI's link
+                                            CompleteLink(team[i].brain);
+
+                                            // Stop looping
+                                            return;
+                                        }
                                     }
                                 }
                             }
@@ -738,6 +1006,10 @@ namespace AIBattle
                     {
                         teamBombs[key] = brain.bombs[key];
                     }
+                    else
+                    {
+                        teamBombs[key] = teamBombs[key] > brain.bombs[key] ? teamBombs[key] : brain.bombs[key];
+                    }
                 }
             }
 
@@ -754,10 +1026,6 @@ namespace AIBattle
                 if (brain.hasKey)
                 {
                     teamHasKey = true;
-
-                    teamKeyIndex = brain.index;
-
-                    teamKeyPosition = brain.currentPosition;
                 }
 
                 // Update whether the team has found the exit
@@ -849,6 +1117,18 @@ namespace AIBattle
             // Remove an AI from the team as it has died
             public void RemoveAI(int index)
             {
+                // Mark the key as lost if the key was on the killed AI
+                if (team[index].brain.hasKey && team[index].brain.hasLinked)
+                {
+                    Debug.Log("AI Team lost the key!");
+
+                    teamHasKey = false;
+
+                    keyPosition = team[index].brain.currentPosition;
+
+                    lostKey = true;
+                }
+
                 // Remove our AI from the AI team
                 team.RemoveAt(index);
                 AIClass deceasedClass = classes[index];
@@ -868,16 +1148,6 @@ namespace AIBattle
                 {
                     // Call on destroy 
                     team[i].AIDestroyed(deceasedClass);
-                }
-
-                // Check if the key was lost
-                if (teamHasKey && index == teamKeyIndex)
-                {
-                    teamHasKey = false;
-
-                    Debug.Log("AI Team lost the key!");
-
-                    teamLostKey = true;
                 }
             }
 
@@ -903,10 +1173,6 @@ namespace AIBattle
                 teamBombs = new Dictionary<Node, int>();
 
                 teamHasKey = false;
-
-                teamKeyIndex = 0;
-                teamKeyPosition = Node.zero;
-                teamLostKey = false;
 
                 teamExit = Node.zero;
                 teamFoundExit = false;

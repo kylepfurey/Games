@@ -64,16 +64,10 @@ namespace AIBattle
                 // Link the AI team's maps
                 brain.LinkMaps();
 
-                // Check if we have the key and are at the exit
-                if (brain.hasKey && ((!brain.hasLinked && brain.currentPosition == brain.exit) || (AIBrain.shareTeamInformation && brain.hasLinked && brain.currentPosition == AIBrain.teamExit)))
-                {
-                    brain.hasKey = false;
-                }
-
                 // Check if we can grab the key
                 GameManager.Direction direction;
 
-                if (!brain.hasKey && !AIBrain.teamHasKey && brain.sensorData.FindData(GameManager.SensorData.Diamond, out direction) && direction != GameManager.Direction.Current && !MapSpace.SpaceContains(brain.sensorData.GetSpace(direction), GameManager.SensorData.Enemy))
+                if (!brain.hasKey && (!AIBrain.shareTeamInformation || !AIBrain.teamHasKey) && brain.sensorData.FindData(GameManager.SensorData.Diamond, out direction) && direction != GameManager.Direction.Current && !MapSpace.SpaceContains(brain.sensorData.GetSpace(direction), GameManager.SensorData.Enemy))
                 {
                     Debug.Log("AI " + AIName + " found the key!");
 
@@ -554,12 +548,6 @@ namespace AIBattle
 
                             break;
                     }
-                }
-
-                // Store the key's current position if possible
-                if (AIBrain.shareTeamInformation && brain.hasKey)
-                {
-                    AIBrain.teamKeyPosition = brain.currentPosition;
                 }
 
                 // Store that we have moved

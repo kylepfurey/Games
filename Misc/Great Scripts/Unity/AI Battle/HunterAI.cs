@@ -70,18 +70,23 @@ namespace AIBattle
                 // Update the AI's map knowledge and choose a set action if possible
                 CombatantAction setAction = base.GetAction(ref aMoves, ref aBombTime);
 
-                // Grab the key if it was lost
-                if (AIBrain.shareTeamInformation && AIBrain.teamLostKey && brain.hasLinked)
+                // Recover the key if possible
+                if (AIBrain.shareTeamInformation && AIBrain.lostKey && brain.hasLinked)
                 {
-                    AIBrain.teamLostKey = false;
-
-                    // Move to the next position
-                    aMoves = brain.GetMovements(AStar.Search(brain.currentPosition, AIBrain.teamKeyPosition, brain.available, brain.occupied));
+                    Debug.Log("AI " + AIName + " recovered the key!");
 
                     // Store the key
                     brain.hasKey = true;
 
-                    AIBrain.teamKeyIndex = brain.index;
+                    if (AIBrain.shareTeamInformation)
+                    {
+                        AIBrain.teamHasKey = true;
+                    }
+
+                    AIBrain.lostKey = false;
+
+                    // Move to the key
+                    aMoves = brain.GetMovements(AStar.Search(brain.currentPosition, AIBrain.keyPosition, AIBrain.teamAvailable, AIBrain.teamOccupied));
 
                     // Update our current position
                     GetNewPosition(aMoves);
@@ -125,7 +130,7 @@ namespace AIBattle
                         aMoves = new List<GameManager.Direction>();
                     }
 
-                    // Move to the next position
+                    // Win the game
                     return CombatantAction.Move;
                 }
 
@@ -135,13 +140,9 @@ namespace AIBattle
                     // Store the key
                     brain.hasKey = true;
 
-                    if (AIBrain.shareTeamInformation && brain.hasLinked)
+                    if (AIBrain.shareTeamInformation)
                     {
-                        AIBrain.teamKeyIndex = brain.index;
-
                         AIBrain.teamHasKey = true;
-
-                        AIBrain.teamKeyPosition = brain.currentPosition;
                     }
 
                     // Store the direction of the key
@@ -204,8 +205,19 @@ namespace AIBattle
                 // Win if possible
                 else if (setAction == CombatantAction.DropBomb)
                 {
+                    // Store the direction of the exit
+                    GameManager.Direction exitDirection;
+
+                    brain.sensorData.FindData(GameManager.SensorData.Diamond, out exitDirection);
+
+                    // Check if the exit is adjacent of us
+                    if (exitDirection != GameManager.Direction.Current)
+                    {
+                        // Go to the direction of the key
+                        aMoves.Add(exitDirection);
+                    }
                     // Move to the exit
-                    if (AIBrain.shareTeamInformation && brain.hasLinked)
+                    else if (AIBrain.shareTeamInformation && brain.hasLinked)
                     {
                         aMoves = brain.GetMovements(AStar.Search(brain.currentPosition, AIBrain.teamExit, AIBrain.teamAvailable, AIBrain.teamOccupied));
                     }
