@@ -38,7 +38,7 @@ public class Node<DataType>
     }
 
     // Node constructor
-    public Node(DataType data = default, List<Connection<DataType>> connections = null, float weight = 1, bool active = true)
+    public Node(DataType data, List<Connection<DataType>> connections = null, float weight = 1, bool active = true)
     {
         this.data = data;
         this.connections = connections;
@@ -46,7 +46,7 @@ public class Node<DataType>
         this.active = active;
     }
 
-    public Node(DataType data = default, List<Connection<DataType>> connections = null, bool active = true, float weight = 1)
+    public Node(DataType data, List<Connection<DataType>> connections, bool active, float weight = 1)
     {
         this.data = data;
         this.connections = connections;
@@ -54,7 +54,7 @@ public class Node<DataType>
         this.active = active;
     }
 
-    public Node(DataType data = default, Connection<DataType>[] connections = null, float weight = 1, bool active = true)
+    public Node(DataType data, Connection<DataType>[] connections = null, float weight = 1, bool active = true)
     {
         this.data = data;
 
@@ -69,7 +69,7 @@ public class Node<DataType>
         this.active = active;
     }
 
-    public Node(DataType data = default, Connection<DataType>[] connections = null, bool active = true, float weight = 1)
+    public Node(DataType data, Connection<DataType>[] connections, bool active, float weight = 1)
     {
         this.data = data;
 
@@ -84,7 +84,7 @@ public class Node<DataType>
         this.active = active;
     }
 
-    public Node(DataType data = default, float weight = 1, bool active = true, params Connection<DataType>[] connections)
+    public Node(DataType data, float weight, bool active, params Connection<DataType>[] connections)
     {
         this.data = data;
 
@@ -99,7 +99,7 @@ public class Node<DataType>
         this.active = active;
     }
 
-    public Node(DataType data = default, bool active = true, float weight = 1, params Connection<DataType>[] connections)
+    public Node(DataType data, bool active, float weight, params Connection<DataType>[] connections)
     {
         this.data = data;
 
@@ -127,7 +127,7 @@ public class Node<DataType>
         return connections;
     }
 
-    public List<Connection<DataType>> AddConnection(Node<DataType> connectedNode, bool active = true, float weight = 1)
+    public List<Connection<DataType>> AddConnection(Node<DataType> connectedNode, bool active, float weight = 1)
     {
         Connection<DataType> newConnection = new Connection<DataType>(this, connectedNode, active, weight);
 
@@ -146,7 +146,7 @@ public class Node<DataType>
         return connections;
     }
 
-    public List<Connection<DataType>> RemoveConnection(Node<DataType> connectedNode, bool active = true, float weight = 1)
+    public List<Connection<DataType>> RemoveConnection(Node<DataType> connectedNode, bool active, float weight = 1)
     {
         Connection<DataType> newConnection = new Connection<DataType>(this, connectedNode, active, weight);
 
@@ -195,7 +195,7 @@ public class Connection<DataType>
         this.active = active;
     }
 
-    public Connection(Node<DataType> from, Node<DataType> to, bool active = true, float weight = 1)
+    public Connection(Node<DataType> from, Node<DataType> to, bool active, float weight = 1)
     {
         this.from = from;
         this.to = to;
@@ -495,7 +495,7 @@ public class Node
         this.active = active;
     }
 
-    public Node(List<Connection> connections = null, bool active = true, float weight = 1)
+    public Node(List<Connection> connections, bool active, float weight = 1)
     {
         this.connections = connections;
         this.weight = weight;
@@ -515,7 +515,7 @@ public class Node
         this.active = active;
     }
 
-    public Node(Connection[] connections = null, bool active = true, float weight = 1)
+    public Node(Connection[] connections, bool active, float weight = 1)
     {
         this.connections = new List<Connection>(connections.Length);
 
@@ -528,7 +528,7 @@ public class Node
         this.active = active;
     }
 
-    public Node(float weight = 1, bool active = true, params Connection[] connections)
+    public Node(float weight, bool active, params Connection[] connections)
     {
         this.connections = new List<Connection>(connections.Length);
 
@@ -541,7 +541,7 @@ public class Node
         this.active = active;
     }
 
-    public Node(bool active = true, float weight = 1, params Connection[] connections)
+    public Node(bool active, float weight, params Connection[] connections)
     {
         this.connections = new List<Connection>(connections.Length);
 
@@ -567,7 +567,7 @@ public class Node
         return connections;
     }
 
-    public List<Connection> AddConnection(Node connectedNode, bool active = true, float weight = 1)
+    public List<Connection> AddConnection(Node connectedNode, bool active, float weight = 1)
     {
         Connection newConnection = new Connection(this, connectedNode, active, weight);
 
@@ -586,7 +586,7 @@ public class Node
         return connections;
     }
 
-    public List<Connection> RemoveConnection(Node connectedNode, bool active = true, float weight = 1)
+    public List<Connection> RemoveConnection(Node connectedNode, bool active, float weight = 1)
     {
         Connection newConnection = new Connection(this, connectedNode, active, weight);
 
@@ -635,7 +635,7 @@ public class Connection
         this.active = active;
     }
 
-    public Connection(Node from, Node to, bool active = true, float weight = 1)
+    public Connection(Node from, Node to, bool active, float weight = 1)
     {
         this.from = from;
         this.to = to;
