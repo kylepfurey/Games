@@ -1,8 +1,9 @@
 
-// List of Useful C++ Header Libraries
+// List of Useful C++ Standard Libraries
 // by Kyle Furey
 
-#pragma once
+#pragma once					// Prevents Duplicate #include
+
 #include <iostream>				// Reading and Writing to Console
 #include <string>				// String Class
 #include <vector>				// List Class
@@ -17,8 +18,6 @@
 #include <initializer_list>		// List Initializer { }
 #include <chrono>				// C++ Time Classes
 #include <ctime>				// C Time Classes
+#include <cassert>				// Debugging Macro
 
-using namespace std;			// C++ Standard Namespace
-
-// Include this heading to use all the header libraries
-#include "Include.h"
+using namespace std;			// C++ Standard Namespace (Only One Per Project)

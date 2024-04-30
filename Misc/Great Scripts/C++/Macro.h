@@ -17,6 +17,7 @@
 #include <initializer_list>
 #include <chrono>
 #include <ctime>
+#include <cassert>
 
 // Include this heading to use the library
 #include "Macro.h"

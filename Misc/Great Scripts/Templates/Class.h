@@ -13,6 +13,7 @@
 #include <initializer_list>
 #include <chrono>
 #include <ctime>
+#include <cassert>
 
 // Example Class
 class Class
