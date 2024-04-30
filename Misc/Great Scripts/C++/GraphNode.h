@@ -6,6 +6,7 @@
 #include <vector>
 #include <map>
 #include <cstdarg>
+#include <initializer_list>
 
 // Include this heading to use the classes
 #include "GraphNode.h"
@@ -231,16 +232,24 @@ public:
 	// NODE CONSTRUCTORS
 
 	// Default constructor
-	t_node()
+	t_node(float weight = 1, bool active = true)
 	{
 		data = DataType();
 		connections = std::vector<t_connection<DataType>>();
-		weight = 1;
-		active = true;
+		this->weight = weight;
+		this->active = active;
+	}
+
+	t_node(bool active, float weight = 1)
+	{
+		data = DataType();
+		connections = std::vector<t_connection<DataType>>();
+		this->weight = weight;
+		this->active = active;
 	}
 
 	// Node constructor
-	t_node(DataType data, std::vector<t_connection<DataType>> connections = std::vector<t_connection<DataType>>(0), float weight = 1, bool active = true)
+	t_node(DataType data, std::vector<t_connection<DataType>> connections, float weight, bool active)
 	{
 		this->data = data;
 		this->connections = connections;
@@ -248,7 +257,7 @@ public:
 		this->active = active;
 	}
 
-	t_node(DataType data, std::vector<t_connection<DataType>> connections, bool active, float weight = 1)
+	t_node(DataType data, std::vector<t_connection<DataType>> connections, bool active, float weight)
 	{
 		this->data = data;
 		this->connections = connections;
@@ -256,7 +265,7 @@ public:
 		this->active = active;
 	}
 
-	t_node(DataType data, t_connection<DataType> connections[] = new t_connection<DataType>[0], int number_of_connections = 0, float weight = 1, bool active = true)
+	t_node(DataType data, t_connection<DataType> connections[], int number_of_connections, float weight, bool active)
 	{
 		this->data = data;
 
@@ -271,7 +280,7 @@ public:
 		this->active = active;
 	}
 
-	t_node(DataType data, t_connection<DataType> connections[], int number_of_connections, bool active, float weight = 1)
+	t_node(DataType data, t_connection<DataType> connections[], int number_of_connections, bool active, float weight)
 	{
 		this->data = data;
 
@@ -286,7 +295,7 @@ public:
 		this->active = active;
 	}
 
-	t_node(DataType data, float weight = 1, bool active = true, int number_of_connections = 0)
+	t_node(DataType data, float weight, bool active, int number_of_connections)
 	{
 		this->data = data;
 
@@ -296,7 +305,7 @@ public:
 		this->active = active;
 	}
 
-	t_node(DataType data, bool active, float weight = 1, int number_of_connections = 0)
+	t_node(DataType data, bool active, float weight, int number_of_connections)
 	{
 		this->data = data;
 
@@ -450,6 +459,16 @@ public:
 		va_end(list);
 	}
 
+	t_graph(const std::initializer_list<t_node<DataType>*> nodes)
+	{
+		this->nodes = std::vector<t_node<DataType>*>(nodes.size());
+
+		for (int i = 0; i < nodes.size(); i++)
+		{
+			this->nodes.push_back(*(nodes.begin() + i));
+		}
+	}
+
 
 	// GRAPH FUNCTIONS
 
@@ -513,7 +532,7 @@ public:
 
 		for (int i = 0; i < nodes.size(); i++)
 		{
-			all_connections[nodes[i]] = nodes[i]->connections;
+			all_connections[*nodes[i]] = nodes[i]->connections;
 		}
 
 		return all_connections;
@@ -754,29 +773,36 @@ public:
 	// NODE CONSTRUCTORS
 
 	// Default constructor
-	node()
+	node(float weight = 1, bool active = true)
 	{
 		connections = std::vector<connection>();
-		weight = 1;
-		active = true;
+		this->weight = weight;
+		this->active = active;
+	}
+
+	node(bool active, float weight = 1)
+	{
+		connections = std::vector<connection>();
+		this->weight = weight;
+		this->active = active;
 	}
 
 	// Node constructor
-	node(std::vector<connection> connections = std::vector<connection>(0), float weight = 1, bool active = true)
+	node(std::vector<connection> connections, float weight, bool active)
 	{
 		this->connections = connections;
 		this->weight = weight;
 		this->active = active;
 	}
 
-	node(std::vector<connection> connections, bool active, float weight = 1)
+	node(std::vector<connection> connections, bool active, float weight)
 	{
 		this->connections = connections;
 		this->weight = weight;
 		this->active = active;
 	}
 
-	node(connection connections[] = new connection[0], int number_of_connections = 0, float weight = 1, bool active = true)
+	node(connection connections[], int number_of_connections, float weight, bool active)
 	{
 		this->connections = std::vector<connection>(number_of_connections);
 
@@ -789,7 +815,7 @@ public:
 		this->active = active;
 	}
 
-	node(connection connections[], int number_of_connections, bool active, float weight = 1)
+	node(connection connections[], int number_of_connections, bool active, float weight)
 	{
 		this->connections = std::vector<connection>(number_of_connections);
 
@@ -802,7 +828,7 @@ public:
 		this->active = active;
 	}
 
-	node(float weight = 1, bool active = true, int number_of_connections = 0)
+	node(float weight, bool active, int number_of_connections)
 	{
 		this->connections = std::vector<connection>(number_of_connections);
 
@@ -810,7 +836,7 @@ public:
 		this->active = active;
 	}
 
-	node(bool active, float weight = 1, int number_of_connections = 0)
+	node(bool active, float weight, int number_of_connections)
 	{
 		this->connections = std::vector<connection>(number_of_connections);
 
@@ -958,6 +984,16 @@ public:
 		va_end(list);
 	}
 
+	graph(const std::initializer_list<node*> nodes)
+	{
+		this->nodes = std::vector<node*>(nodes.size());
+
+		for (int i = 0; i < nodes.size(); i++)
+		{
+			this->nodes.push_back(*(nodes.begin() + i));
+		}
+	}
+
 
 	// GRAPH FUNCTIONS
 
@@ -1021,7 +1057,7 @@ public:
 
 		for (int i = 0; i < nodes.size(); i++)
 		{
-			all_connections[nodes[i]] = nodes[i]->connections;
+			all_connections[*nodes[i]] = nodes[i]->connections;
 		}
 
 		return all_connections;
@@ -1265,16 +1301,24 @@ public:
 	// NODE CONSTRUCTORS
 
 	// Default constructor
-	TNode()
+	TNode(float weight = 1, bool active = true)
 	{
 		data = DataType();
 		connections = std::vector<TConnection<DataType>>();
-		weight = 1;
-		active = true;
+		this->weight = weight;
+		this->active = active;
+	}
+
+	TNode(bool active, float weight = 1)
+	{
+		data = DataType();
+		connections = std::vector<TConnection<DataType>>();
+		this->weight = weight;
+		this->active = active;
 	}
 
 	// Node constructor
-	TNode(DataType data, std::vector<TConnection<DataType>> connections = std::vector<TConnection<DataType>>(0), float weight = 1, bool active = true)
+	TNode(DataType data, std::vector<TConnection<DataType>> connections, float weight, bool active)
 	{
 		this->data = data;
 		this->connections = connections;
@@ -1282,7 +1326,7 @@ public:
 		this->active = active;
 	}
 
-	TNode(DataType data, std::vector<TConnection<DataType>> connections, bool active, float weight = 1)
+	TNode(DataType data, std::vector<TConnection<DataType>> connections, bool active, float weight)
 	{
 		this->data = data;
 		this->connections = connections;
@@ -1290,7 +1334,7 @@ public:
 		this->active = active;
 	}
 
-	TNode(DataType data, TConnection<DataType> connections[] = new TConnection<DataType>[0], int number_of_connections = 0, float weight = 1, bool active = true)
+	TNode(DataType data, TConnection<DataType> connections[], int number_of_connections, float weight, bool active)
 	{
 		this->data = data;
 
@@ -1305,7 +1349,7 @@ public:
 		this->active = active;
 	}
 
-	TNode(DataType data, TConnection<DataType> connections[], int number_of_connections, bool active, float weight = 1)
+	TNode(DataType data, TConnection<DataType> connections[], int number_of_connections, bool active, float weight)
 	{
 		this->data = data;
 
@@ -1320,7 +1364,7 @@ public:
 		this->active = active;
 	}
 
-	TNode(DataType data, float weight = 1, bool active = true, int number_of_connections = 0)
+	TNode(DataType data, float weight, bool active, int number_of_connections)
 	{
 		this->data = data;
 
@@ -1330,7 +1374,7 @@ public:
 		this->active = active;
 	}
 
-	TNode(DataType data, bool active, float weight = 1, int number_of_connections = 0)
+	TNode(DataType data, bool active, float weight, int number_of_connections)
 	{
 		this->data = data;
 
@@ -1484,6 +1528,16 @@ public:
 		va_end(list);
 	}
 
+	TGraph(const std::initializer_list<TNode<DataType>*> nodes)
+	{
+		this->nodes = std::vector<TNode<DataType>*>(nodes.size());
+
+		for (int i = 0; i < nodes.size(); i++)
+		{
+			this->nodes.push_back(*(nodes.begin() + i));
+		}
+	}
+
 
 	// GRAPH FUNCTIONS
 
@@ -1547,7 +1601,7 @@ public:
 
 		for (int i = 0; i < nodes.size(); i++)
 		{
-			all_connections[nodes[i]] = nodes[i]->connections;
+			all_connections[*nodes[i]] = nodes[i]->connections;
 		}
 
 		return all_connections;
@@ -1788,29 +1842,36 @@ public:
 	// NODE CONSTRUCTORS
 
 	// Default constructor
-	Node()
+	Node(float weight = 1, bool active = true)
 	{
 		connections = std::vector<Connection>();
-		weight = 1;
-		active = true;
+		this->weight = weight;
+		this->active = active;
+	}
+
+	Node(bool active, float weight = 1)
+	{
+		connections = std::vector<Connection>();
+		this->weight = weight;
+		this->active = active;
 	}
 
 	// Node constructor
-	Node(std::vector<Connection> connections = std::vector<Connection>(0), float weight = 1, bool active = true)
+	Node(std::vector<Connection> connections, float weight, bool active)
 	{
 		this->connections = connections;
 		this->weight = weight;
 		this->active = active;
 	}
 
-	Node(std::vector<Connection> connections, bool active, float weight = 1)
+	Node(std::vector<Connection> connections, bool active, float weight)
 	{
 		this->connections = connections;
 		this->weight = weight;
 		this->active = active;
 	}
 
-	Node(Connection connections[] = new Connection[0], int number_of_connections = 0, float weight = 1, bool active = true)
+	Node(Connection connections[], int number_of_connections, float weight, bool active)
 	{
 		this->connections = std::vector<Connection>(number_of_connections);
 
@@ -1823,7 +1884,7 @@ public:
 		this->active = active;
 	}
 
-	Node(Connection connections[], int number_of_connections, bool active, float weight = 1)
+	Node(Connection connections[], int number_of_connections, bool active, float weight)
 	{
 		this->connections = std::vector<Connection>(number_of_connections);
 
@@ -1836,7 +1897,7 @@ public:
 		this->active = active;
 	}
 
-	Node(float weight = 1, bool active = true, int number_of_connections = 0)
+	Node(float weight, bool active, int number_of_connections)
 	{
 		this->connections = std::vector<Connection>(number_of_connections);
 
@@ -1844,7 +1905,7 @@ public:
 		this->active = active;
 	}
 
-	Node(bool active, float weight = 1, int number_of_connections = 0)
+	Node(bool active, float weight, int number_of_connections)
 	{
 		this->connections = std::vector<Connection>(number_of_connections);
 
@@ -1992,6 +2053,16 @@ public:
 		va_end(list);
 	}
 
+	Graph(const std::initializer_list<Node*> nodes)
+	{
+		this->nodes = std::vector<Node*>(nodes.size());
+
+		for (int i = 0; i < nodes.size(); i++)
+		{
+			this->nodes.push_back(*(nodes.begin() + i));
+		}
+	}
+
 
 	// GRAPH FUNCTIONS
 
@@ -2055,7 +2126,7 @@ public:
 
 		for (int i = 0; i < nodes.size(); i++)
 		{
-			all_connections[nodes[i]] = nodes[i]->connections;
+			all_connections[*nodes[i]] = nodes[i]->connections;
 		}
 
 		return all_connections;

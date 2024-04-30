@@ -2,6 +2,7 @@
 // Graph and Node Data Structures Script
 // by Kyle Furey
 
+using System.Collections;
 using System.Collections.Generic;
 
 
@@ -14,7 +15,7 @@ public class Node<DataType>
     // NODE DATA
 
     // The data this node owns
-    public DataType data = default;
+    public DataType data = default(DataType);
 
     // The other nodes this node is connected to and the weight of that connection
     public List<Connection<DataType>> connections = new List<Connection<DataType>>();
@@ -29,16 +30,25 @@ public class Node<DataType>
     // NODE CONSTRUCTORS
 
     // Default constructor
-    public Node()
+    public Node(float weight = 1, bool active = true)
     {
-        data = default;
+        data = default(DataType);
         connections = new List<Connection<DataType>>();
-        weight = 1;
-        active = true;
+        this.weight = weight;
+        this.active = active;
     }
+
+    public Node(bool active, float weight = 1)
+    {
+        data = default(DataType);
+        connections = new List<Connection<DataType>>();
+        this.weight = weight;
+        this.active = active;
+    }
+
 
     // Node constructor
-    public Node(DataType data, List<Connection<DataType>> connections = null, float weight = 1, bool active = true)
+    public Node(DataType data, List<Connection<DataType>> connections, float weight, bool active)
     {
         this.data = data;
         this.connections = connections;
@@ -46,7 +56,7 @@ public class Node<DataType>
         this.active = active;
     }
 
-    public Node(DataType data, List<Connection<DataType>> connections, bool active, float weight = 1)
+    public Node(DataType data, List<Connection<DataType>> connections, bool active, float weight)
     {
         this.data = data;
         this.connections = connections;
@@ -54,7 +64,7 @@ public class Node<DataType>
         this.active = active;
     }
 
-    public Node(DataType data, Connection<DataType>[] connections = null, float weight = 1, bool active = true)
+    public Node(DataType data, Connection<DataType>[] connections, float weight, bool active)
     {
         this.data = data;
 
@@ -69,7 +79,7 @@ public class Node<DataType>
         this.active = active;
     }
 
-    public Node(DataType data, Connection<DataType>[] connections, bool active, float weight = 1)
+    public Node(DataType data, Connection<DataType>[] connections, bool active, float weight)
     {
         this.data = data;
 
@@ -340,7 +350,7 @@ public class Connection<DataType>
 
 // A graph that manages all the nodes and connections inside it.
 [System.Serializable]
-public class Graph<DataType>
+public class Graph<DataType> : IEnumerable
 {
     // GRAPH DATA
 
@@ -456,6 +466,15 @@ public class Graph<DataType>
 
         return totalConnections;
     }
+
+
+    // ENUMERATOR FUNCTION
+
+    // Enumerator implementation
+    public IEnumerator GetEnumerator()
+    {
+        return nodes.GetEnumerator();
+    }
 }
 
 
@@ -480,29 +499,36 @@ public class Node
     // NODE CONSTRUCTORS
 
     // Default constructor
-    public Node()
+    public Node(float weight = 1, bool active = true)
     {
         connections = new List<Connection>();
-        weight = 1;
-        active = true;
+        this.weight = weight;
+        this.active = active;
+    }
+
+    public Node(bool active, float weight = 1)
+    {
+        connections = new List<Connection>();
+        this.weight = weight;
+        this.active = active;
     }
 
     // Node constructor
-    public Node(List<Connection> connections = null, float weight = 1, bool active = true)
+    public Node(List<Connection> connections, float weight, bool active)
     {
         this.connections = connections;
         this.weight = weight;
         this.active = active;
     }
 
-    public Node(List<Connection> connections, bool active, float weight = 1)
+    public Node(List<Connection> connections, bool active, float weight)
     {
         this.connections = connections;
         this.weight = weight;
         this.active = active;
     }
 
-    public Node(Connection[] connections = null, float weight = 1, bool active = true)
+    public Node(Connection[] connections, float weight, bool active)
     {
         this.connections = new List<Connection>(connections.Length);
 
@@ -515,7 +541,7 @@ public class Node
         this.active = active;
     }
 
-    public Node(Connection[] connections, bool active, float weight = 1)
+    public Node(Connection[] connections, bool active, float weight)
     {
         this.connections = new List<Connection>(connections.Length);
 
@@ -780,7 +806,7 @@ public class Connection
 
 // A graph that manages all the nodes and connections inside it.
 [System.Serializable]
-public class Graph
+public class Graph : IEnumerable
 {
     // GRAPH DATA
 
@@ -895,5 +921,14 @@ public class Graph
         }
 
         return totalConnections;
+    }
+
+
+    // ENUMERATOR FUNCTION
+
+    // Enumerator implementation
+    public IEnumerator GetEnumerator()
+    {
+        return nodes.GetEnumerator();
     }
 }
