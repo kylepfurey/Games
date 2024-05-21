@@ -1,7 +1,14 @@
+
+// Legacy Player Movement Script (Deprecated)
+// by Kyle Furey
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Complex movement settings for a shooter game's player character.
+/// </summary>
 public class Player : MonoBehaviour
 {
     // References
@@ -13,174 +20,174 @@ public class Player : MonoBehaviour
     public PlayerAnimation Animation;
 
     // Controls - CAPITALS are direct input values and behavior
-    private Vector2 MOVE;
+    private Vector2 MOVE = Vector2.zero;
 
-    private float LOOK_X;
-    private float LOOK_Y;
-    [HideInInspector] public float cameraRotationX;
-    [HideInInspector] public float cameraRotationY;
+    private float LOOK_X = 0;
+    private float LOOK_Y = 0;
+    [HideInInspector] public float cameraRotationX = 0;
+    [HideInInspector] public float cameraRotationY = 0;
 
-    private bool JUMP;
-    private bool JUMP_UP;
-    [SerializeField] private float JUMP_COOLDOWN;
-    [SerializeField] private float JUMP_COOLDOWN_RESET;
-    private float JUMP_COOLDOWN_TIME;
+    private bool JUMP = false;
+    private bool JUMP_UP = true;
+    [SerializeField] private float JUMP_COOLDOWN = 0.25f;
+    [SerializeField] private float JUMP_COOLDOWN_RESET = 0.25f;
+    private float JUMP_COOLDOWN_TIME = 0;
 
-    private bool DODGE;
-    private bool DODGE_UP;
-    [SerializeField] private float DODGE_COOLDOWN;
-    [SerializeField] private float DODGE_COOLDOWN_RESET;
-    private float DODGE_COOLDOWN_TIME;
+    private bool DODGE = false;
+    private bool DODGE_UP = true;
+    [SerializeField] private float DODGE_COOLDOWN = 0.75f;
+    [SerializeField] private float DODGE_COOLDOWN_RESET = 0.75f;
+    private float DODGE_COOLDOWN_TIME = 0;
 
-    private bool CROUCH;
-    private bool CROUCH_UP;
-    [SerializeField] private float CROUCH_COOLDOWN;
-    [SerializeField] private float CROUCH_COOLDOWN_RESET;
-    private float CROUCH_COOLDOWN_TIME;
+    private bool CROUCH = false;
+    private bool CROUCH_UP = true;
+    [SerializeField] private float CROUCH_COOLDOWN = 0;
+    [SerializeField] private float CROUCH_COOLDOWN_RESET = 0;
+    private float CROUCH_COOLDOWN_TIME = 0;
 
-    private bool SHOOT;
-    private bool SHOOT_UP;
-    [SerializeField] private float SHOOT_COOLDOWN;
-    [SerializeField] private float SHOOT_COOLDOWN_RESET;
-    private float SHOOT_COOLDOWN_TIME;
+    private bool SHOOT = false;
+    private bool SHOOT_UP = true;
+    [SerializeField] private float SHOOT_COOLDOWN = 0;
+    [SerializeField] private float SHOOT_COOLDOWN_RESET = 0;
+    private float SHOOT_COOLDOWN_TIME = 0;
 
-    private bool AIM;
-    private bool AIM_UP;
-    [SerializeField] private float AIM_COOLDOWN;
-    [SerializeField] private float AIM_COOLDOWN_RESET;
-    private float AIM_COOLDOWN_TIME;
+    private bool AIM = false;
+    private bool AIM_UP = true;
+    [SerializeField] private float AIM_COOLDOWN = 0;
+    [SerializeField] private float AIM_COOLDOWN_RESET = 0;
+    private float AIM_COOLDOWN_TIME = 0;
 
-    private bool RELOAD;
-    private bool RELOAD_UP;
-    [SerializeField] private float RELOAD_COOLDOWN;
-    [SerializeField] private float RELOAD_COOLDOWN_RESET;
-    private float RELOAD_COOLDOWN_TIME;
+    private bool RELOAD = false;
+    private bool RELOAD_UP = true;
+    [SerializeField] private float RELOAD_COOLDOWN = 0;
+    [SerializeField] private float RELOAD_COOLDOWN_RESET = 0;
+    private float RELOAD_COOLDOWN_TIME = 0;
 
-    private bool FLASHLIGHT;
-    private bool FLASHLIGHT_UP;
+    private bool FLASHLIGHT = false;
+    private bool FLASHLIGHT_UP = true;
 
-    private bool WEAPON_LEFT;
-    private bool WEAPON_LEFT_UP;
-    [SerializeField] private float WEAPON_LEFT_COOLDOWN;
-    [SerializeField] private float WEAPON_LEFT_COOLDOWN_RESET;
-    private float WEAPON_LEFT_COOLDOWN_TIME;
+    private bool WEAPON_LEFT = false;
+    private bool WEAPON_LEFT_UP = true;
+    [SerializeField] private float WEAPON_LEFT_COOLDOWN = 0;
+    [SerializeField] private float WEAPON_LEFT_COOLDOWN_RESET = 0;
+    private float WEAPON_LEFT_COOLDOWN_TIME = 0;
 
-    private bool WEAPON_RIGHT;
-    private bool WEAPON_RIGHT_UP;
-    [SerializeField] private float WEAPON_RIGHT_COOLDOWN;
-    [SerializeField] private float WEAPON_RIGHT_COOLDOWN_RESET;
+    private bool WEAPON_RIGHT = false;
+    private bool WEAPON_RIGHT_UP = true;
+    [SerializeField] private float WEAPON_RIGHT_COOLDOWN = 0;
+    [SerializeField] private float WEAPON_RIGHT_COOLDOWN_RESET = 0;
     private float WEAPON_RIGHT_COOLDOWN_TIME;
 
-    private bool WEAPON_PREVIOUS;
-    private bool WEAPON_PREVIOUS_UP;
-    [SerializeField] private float WEAPON_PREVIOUS_COOLDOWN;
-    [SerializeField] private float WEAPON_PREVIOUS_COOLDOWN_RESET;
-    private float WEAPON_PREVIOUS_COOLDOWN_TIME;
+    private bool WEAPON_PREVIOUS = false;
+    private bool WEAPON_PREVIOUS_UP = true;
+    [SerializeField] private float WEAPON_PREVIOUS_COOLDOWN = 0;
+    [SerializeField] private float WEAPON_PREVIOUS_COOLDOWN_RESET = 0;
+    private float WEAPON_PREVIOUS_COOLDOWN_TIME = 0;
 
-    private bool PRIMARY;
-    private bool PRIMARY_UP;
+    private bool PRIMARY = false;
+    private bool PRIMARY_UP = true;
 
-    private bool SECONDARY;
-    private bool SECONDARY_UP;
+    private bool SECONDARY = false;
+    private bool SECONDARY_UP = true;
 
-    private bool MELEE;
-    private bool MELEE_UP;
+    private bool MELEE = false;
+    private bool MELEE_UP = true;
 
-    private bool SCOREBOARD;
+    private bool SCOREBOARD = false;
 
-    private bool RESTART;
-    private bool EXIT;
+    private bool RESTART = false;
+    private bool EXIT = true;
 
     // Camera Variables
-    public bool thirdPerson;
-    public Vector3 cameraStart;
-    public Vector3 thirdPersonCameraDistance;
-    private float cameraYaw;
-    [SerializeField] private float firstPersonCameraClamp;
-    [SerializeField] private float thirdPersonCameraClamp;
-    private bool isMouse;
-    [SerializeField] private bool forceController;
-    [SerializeField] private float lookSpeedMouse;
-    [SerializeField] private float lookSpeedX;
-    [SerializeField] private float lookSpeedY;
-    [SerializeField] private float lookSpeedModifier;
+    public bool thirdPerson = false;
+    public Vector3 cameraStart = new Vector3(0, 0.8f, 0.25f);
+    public Vector3 thirdPersonCameraDistance = new Vector3(0.75f, 0, -2);
+    private float cameraYaw = 0;
+    [SerializeField] private float firstPersonCameraClamp = 85;
+    [SerializeField] private float thirdPersonCameraClamp = 65;
+    private bool isMouse = false;
+    [SerializeField] private bool forceController = false;
+    [SerializeField] private float lookSpeedMouse = 0.25f;
+    [SerializeField] private float lookSpeedX = 150;
+    [SerializeField] private float lookSpeedY = 100;
+    [SerializeField] private float lookSpeedModifier = 1;
 
     // Flick Stick
-    [SerializeField] private bool flickStick;
-    private float flickStickRotation;
-    [SerializeField] private float flickStickDeadzone;
+    [SerializeField] private bool flickStick = false;
+    private float flickStickRotation = 0;
+    [SerializeField] private float flickStickDeadzone = 0.25f;
 
     // Movement Variables
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float moveSpeedModifier;
-    [SerializeField] private float moveLerpSpeed;
-    private Vector3 movement;
-    private Vector3 lastStablePosition;
+    [SerializeField] private float moveSpeed = 10;
+    [SerializeField] private float moveSpeedModifier = 1;
+    [SerializeField] private float moveLerpSpeed = 10;
+    private Vector3 movement = Vector3.zero;
+    private Vector3 lastStablePosition = Vector3.zero;
 
     // Jumping Variables
-    private bool isGrounded;
-    [SerializeField] private float jumpForce;
-    private float airTime;
-    [SerializeField] private float coyoteTime;
-    [SerializeField] private bool canDoubleJump;
-    private int currentJump;
-    private int maxJumps;
-    [SerializeField] private float jumpCheckHeight;
-    [SerializeField] private float jumpCheckWidth;
-    [SerializeField] private float jumpCheckDepth;
+    private bool isGrounded = true;
+    [SerializeField] private float jumpForce = 12;
+    private float airTime = 0;
+    [SerializeField] private float coyoteTime = 0.25f;
+    [SerializeField] private bool canDoubleJump = false;
+    private int currentJump = 0;
+    private int maxJumps = 1;
+    [SerializeField] private float jumpCheckHeight = 0.15f;
+    [SerializeField] private float jumpCheckWidth = 0.9f;
+    [SerializeField] private float jumpCheckDepth = 0.2f;
 
     // Air Control Variables
-    [SerializeField] private float airControl;
-    private Vector3 airVelocity;
-    private Vector3 highestVelocity;
-    [SerializeField] private bool rotateVelocity;
-    [SerializeField] private float velocityRotationScale;
+    [SerializeField] private float airControl = 0.4f;
+    private Vector3 airVelocity = Vector3.zero;
+    private Vector3 highestVelocity = Vector3.zero;
+    [SerializeField] private bool rotateVelocity = true;
+    [SerializeField] private float velocityRotationScale = 2;
 
     // Bunny Hop Variables
-    [SerializeField] private bool canBunnyHop;
-    private bool bunnyHopFrame;
-    private Vector3 bunnyHopVelocity;
-    [SerializeField] private float bunnyHopWindow;
-    private bool isBunnyHopping;
-    [SerializeField] private bool bunnyHopAcceleration;
-    [SerializeField] private float bunnyHopModifier;
-    [SerializeField] private float bunnyHopCap;
-    [SerializeField] private bool canAimBunnyHop;
-    [SerializeField] private bool bunnyHopResetsJump;
-    private float bunnyHopYaw;
+    [SerializeField] private bool canBunnyHop = true;
+    private bool bunnyHopFrame = false;
+    private Vector3 bunnyHopVelocity = Vector3.zero;
+    [SerializeField] private float bunnyHopWindow = 0.1f;
+    private bool isBunnyHopping = false;
+    [SerializeField] private bool bunnyHopAcceleration = true;
+    [SerializeField] private float bunnyHopModifier = 1.1f;
+    [SerializeField] private float bunnyHopCap = 15;
+    [SerializeField] private bool canAimBunnyHop = false;
+    [SerializeField] private bool bunnyHopResetsJump = true;
+    private float bunnyHopYaw = 0;
 
     // Dodging Variables
-    [SerializeField] private bool canDodge;
-    private bool isDodging;
-    [SerializeField] private float dodgeForceGround;
-    [SerializeField] private float dodgeForceVertical;
-    [SerializeField] private float dodgeForceAir;
-    [SerializeField] private float dodgeCapHorizontal;
-    [SerializeField] private float dodgeCapVertical;
-    [SerializeField] private bool idleDodgeDive;
-    [SerializeField] private bool movingDodgeDive;
-    [SerializeField] private bool canDodgeIntoBunnyHop;
-    [SerializeField] private bool canDodgeAfterBunnyHop;
-    [SerializeField] private bool canLunge;
-    [SerializeField] private float lungeCapHorizontal;
-    [SerializeField] private float lungeCapVertical;
+    [SerializeField] private bool canDodge = true;
+    private bool isDodging = false;
+    [SerializeField] private float dodgeForceGround = 5;
+    [SerializeField] private float dodgeForceVertical = 8;
+    [SerializeField] private float dodgeForceAir = 5;
+    [SerializeField] private float dodgeCapHorizontal = 15;
+    [SerializeField] private float dodgeCapVertical = 8;
+    [SerializeField] private bool idleDodgeDive = true;
+    [SerializeField] private bool movingDodgeDive = true;
+    [SerializeField] private bool canDodgeIntoBunnyHop = false;
+    [SerializeField] private bool canDodgeAfterBunnyHop = false;
+    [SerializeField] private bool canLunge = true;
+    [SerializeField] private float lungeCapHorizontal = 18;
+    [SerializeField] private float lungeCapVertical = 10;
 
     // Flashlight
-    [SerializeField] private Light flashlight;
+    [SerializeField] private Light flashlight = null;
 
     // Weapon Variables
-    public int weapon;
+    public int weapon = 0;
 
     // Debug
-    [SerializeField] private bool debugVelocity;
+    [SerializeField] private bool debugVelocity = false;
 
     // Player Variables
-    public int playerNumber;
-    public int team;
+    public int playerNumber = 1;
+    public int team = 1;
 
-    public bool play;
+    public bool play = true;
 
-    void Start()
+    private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -520,8 +527,8 @@ public class Player : MonoBehaviour
         }
 
         // Movement Input
-        Vector3 forward = MOVE.y * Pointer.cameraForward * moveSpeed * moveSpeedModifier;
-        Vector3 right = MOVE.x * Pointer.cameraRight * moveSpeed * moveSpeedModifier;
+        Vector3 forward = MOVE.y * transform.forward * moveSpeed * moveSpeedModifier;
+        Vector3 right = MOVE.x * transform.right * moveSpeed * moveSpeedModifier;
         movement = forward + right;
     }
 
@@ -904,5 +911,4 @@ public class Player : MonoBehaviour
 
         return false;
     }
-
 }

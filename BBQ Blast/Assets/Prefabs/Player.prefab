@@ -109,8 +109,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 917094451624610485}
-  - component: {fileID: 917094451624610486}
-  - component: {fileID: 917094451624610487}
   - component: {fileID: 917094451624610505}
   - component: {fileID: 917094451624610506}
   - component: {fileID: 917094451624610484}
@@ -138,56 +136,6 @@ Transform:
   m_Father: {fileID: 9156871082198628301}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &917094451624610486
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 917094451624610481}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &917094451624610487
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 917094451624610481}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: f81ec2ab1b62e814c89b223729acbc4b, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &917094451624610505
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -327,6 +275,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 7e059f5d-2b60-4f47-9ea7-1449b223849b
     m_ActionName: Controls/Look Y[/XInputControllerWindows/rightStick/y,/Mouse/delta/y,/Keyboard/downArrow,/Keyboard/upArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8b0b4eab-538d-4009-894f-28176916d5cc
+    m_ActionName: Controls/Flashlight[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controls
@@ -344,12 +296,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f746d0ca487cede4db3ea6ed8c4507f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Settings: {fileID: 0}
   Input: {fileID: 917094451624610484}
   Rigidbody: {fileID: 917094451624610506}
   Camera: {fileID: 9147290475958741825}
-  Pointer: {fileID: 1207509266239218185}
-  Animation: {fileID: 5283396322574775494}
   cameraRotationX: 0
   cameraRotationY: 0
   JUMP_COOLDOWN: 0.25
@@ -372,7 +321,7 @@ MonoBehaviour:
   WEAPON_PREVIOUS_COOLDOWN_RESET: 0
   thirdPerson: 0
   cameraStart: {x: 0, y: 0.8, z: 0.25}
-  thirdPersonCameraDistance: {x: 1.5, y: 0, z: -2}
+  thirdPersonCameraDistance: {x: 0.75, y: 0, z: -2}
   firstPersonCameraClamp: 85
   thirdPersonCameraClamp: 65
   forceController: 0
@@ -391,11 +340,11 @@ MonoBehaviour:
   jumpCheckHeight: 0.15
   jumpCheckWidth: 0.9
   jumpCheckDepth: 0.2
-  airControl: 0.3
-  rotateVelocity: 0
+  airControl: 0.4
+  rotateVelocity: 1
   velocityRotationScale: 2
   canBunnyHop: 1
-  bunnyHopWindow: 0.05
+  bunnyHopWindow: 0.1
   bunnyHopAcceleration: 1
   bunnyHopModifier: 1.1
   bunnyHopCap: 15
@@ -837,17 +786,6 @@ PrefabInstance:
       objectReference: {fileID: 917094451624610507}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 974c91fec76a6b6419847a67f47a44f6, type: 3}
---- !u!114 &5283396322574775494 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8235526309660155230, guid: 974c91fec76a6b6419847a67f47a44f6, type: 3}
-  m_PrefabInstance: {fileID: 4258174879414741400}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5f47ad4cdfba5548ae0299272bdd345, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &8177246101011394220 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5360261559089792820, guid: 974c91fec76a6b6419847a67f47a44f6, type: 3}
