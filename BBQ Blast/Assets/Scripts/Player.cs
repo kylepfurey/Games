@@ -141,7 +141,7 @@ public class Player : MonoBehaviour
     private Vector3 airVelocity = Vector3.zero;
     private Vector3 highestVelocity = Vector3.zero;
     [SerializeField] private bool rotateVelocity = true;
-    [SerializeField] private float velocityRotationScale = 2;
+    [SerializeField] private float velocityRotationScale = 1;
 
     // Bunny Hop Variables
     [SerializeField] private bool canBunnyHop = true;
@@ -220,7 +220,6 @@ public class Player : MonoBehaviour
         DebugVelocity();
     }
 
-    // Entering Trigger
     private void OnTriggerEnter(Collider other)
     {
         // Falling Out of World
@@ -835,9 +834,10 @@ public class Player : MonoBehaviour
     private void RotateVelocity()
     {
         // Rotate Velocity
-        if (rotateVelocity && !isGrounded)
+        if (rotateVelocity && !isGrounded && (!isBunnyHopping || canAimBunnyHop))
         {
             Rigidbody.velocity = Quaternion.Euler(0, (Camera.transform.eulerAngles.y - cameraYaw) * velocityRotationScale, 0) * Rigidbody.velocity;
+            airVelocity = Quaternion.Euler(0, (Camera.transform.eulerAngles.y - cameraYaw) * velocityRotationScale, 0) * airVelocity;
         }
     }
 

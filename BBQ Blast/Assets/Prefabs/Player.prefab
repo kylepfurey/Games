@@ -296,9 +296,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f746d0ca487cede4db3ea6ed8c4507f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Settings: {fileID: 0}
   Input: {fileID: 917094451624610484}
   Rigidbody: {fileID: 917094451624610506}
   Camera: {fileID: 9147290475958741825}
+  Pointer: {fileID: 1207509266239218185}
+  Animation: {fileID: 5283396322574775494}
   cameraRotationX: 0
   cameraRotationY: 0
   JUMP_COOLDOWN: 0.25
@@ -342,7 +345,7 @@ MonoBehaviour:
   jumpCheckDepth: 0.2
   airControl: 0.4
   rotateVelocity: 1
-  velocityRotationScale: 2
+  velocityRotationScale: 1
   canBunnyHop: 1
   bunnyHopWindow: 0.1
   bunnyHopAcceleration: 1
@@ -786,6 +789,17 @@ PrefabInstance:
       objectReference: {fileID: 917094451624610507}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 974c91fec76a6b6419847a67f47a44f6, type: 3}
+--- !u!114 &5283396322574775494 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8235526309660155230, guid: 974c91fec76a6b6419847a67f47a44f6, type: 3}
+  m_PrefabInstance: {fileID: 4258174879414741400}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5f47ad4cdfba5548ae0299272bdd345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8177246101011394220 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5360261559089792820, guid: 974c91fec76a6b6419847a67f47a44f6, type: 3}
